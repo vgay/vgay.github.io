@@ -1,3 +1,2 @@
 User-agent: *
-Disallow:
-Sitemap: http://myrealbook.vintherine.org/sitemap.xml
+Disallow: /
