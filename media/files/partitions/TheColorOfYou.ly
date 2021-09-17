@@ -55,7 +55,6 @@ realBookTitle = \markup {
 \header {
   pdftitle = #title
   pdfauthor = #composer
-  pdfcomposer = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
   asplayed = #"Lisa Ekdahl" % doit être commentée si vide

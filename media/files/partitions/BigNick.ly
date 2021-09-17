@@ -99,7 +99,7 @@ realBookTitle = \markup {
 harmonies = \chordmode {
   \set chordChanges = ##f
 g2:7+ e:m7 a:m7 d:7 g2:7+ e:m7 a:m7 d:7
-g g:7/b c c:dim7 g/d e:7 a:m7 d:7
+g g:7/b c cis:dim7 g/d e:7 a:m7 d:7
 g:7+ \startParenthesis \parenthesize e:7 a:m7 \endParenthesis \parenthesize  d:7
 }
 
@@ -138,7 +138,7 @@ grilleB = \chordmode {
 grille = \chordmode {
   \bar "[|:"
  \/g2:7+ e:m7 \/a:m7 d:7 \/g2:7+ e:m7 \/a:m7 d:7 \break
- \/g g:7/b \/c c:dim7 \/g/d e:7 \/a:m7 d:7 \break
+ \/g g:7/b \/c cis:dim7 \/g/d e:7 \/a:m7 d:7 \break
   \bar ":|]" 
 \/g:7+ e:7 \s a:m7 d:7 \stopStaff \bar ".." s1 \bar "" s \bar ""
 }

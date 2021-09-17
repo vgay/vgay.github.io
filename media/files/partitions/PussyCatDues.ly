@@ -1,5 +1,5 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 16)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -56,7 +56,6 @@ realBookTitle = \markup {
 \header {
   pdftitle = #title
   pdfauthor = #composer
-  pdfcomposer = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
   asplayed = #"Charles Mingus" % doit être commentée si vide
@@ -271,7 +270,7 @@ grille  =  \relative c'' {
       <<
         \new StaffGroup <<
           \new Staff \with { instrumentName = \CleSol } <<
-            \partcombine \IntroTenor \IntroTromb
+            \partCombine \IntroTenor \IntroTromb
           >>
           \new Staff <<
             \Piano
@@ -350,7 +349,7 @@ grille  =  \relative c'' {
       <<
         \new StaffGroup <<
           \new Staff \with { instrumentName = \Bb } <<
-             \transpose c d { \partcombine \IntroTenor \IntroTromb }
+             \transpose c d { \partCombine \IntroTenor \IntroTromb }
           >>
           \new Staff <<
             \Piano
@@ -430,7 +429,7 @@ grille  =  \relative c'' {
       <<
         \new StaffGroup <<
           \new Staff \with { instrumentName = \Eb } <<
-             \transpose c a { \partcombine \IntroTenor \IntroTromb }
+             \transpose c a { \partCombine \IntroTenor \IntroTromb }
           >>
           \new Staff <<
             \Piano
@@ -508,7 +507,7 @@ grille  =  \relative c'' {
       <<
         \new StaffGroup <<
           \new Staff \with { instrumentName = \CleSol } <<
-            \partcombine \IntroTenor \IntroTromb
+            \partCombine \IntroTenor \IntroTromb
           >>
           \new Staff <<
             \Piano
@@ -586,7 +585,7 @@ grille  =  \relative c'' {
       <<
         \new StaffGroup <<
           \new Staff \with { instrumentName = \Bb } <<
-             \transpose c d { \partcombine \IntroTenor \IntroTromb }
+             \transpose c d { \partCombine \IntroTenor \IntroTromb }
           >>
           \new Staff <<
             \Piano
@@ -664,7 +663,7 @@ grille  =  \relative c'' {
       <<
         \new StaffGroup <<
           \new Staff \with { instrumentName = \Eb } <<
-             \transpose c a { \partcombine \IntroTenor \IntroTromb }
+             \transpose c a { \partCombine \IntroTenor \IntroTromb }
           >>
           \new Staff <<
             \Piano
@@ -729,3 +728,8 @@ grille  =  \relative c'' {
     }
   }
 }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

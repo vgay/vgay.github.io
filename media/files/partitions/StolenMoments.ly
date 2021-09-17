@@ -1,4 +1,4 @@
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 16)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -54,7 +54,6 @@ realBookTitle = \markup {
 \header {
   pdftitle = #title
   pdfauthor = #composer
-  pdfcomposer = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
   %asplayed = #"Oliver Nelson" % doit être commentée si vide
@@ -247,3 +246,8 @@ c:m g:7 g2:7 r f
 } 
 \markup { \bold \pad-markup #1 "Chorus : blues en La mineur"  }
 } }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

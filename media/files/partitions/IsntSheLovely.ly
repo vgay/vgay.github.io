@@ -1,5 +1,5 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -113,7 +113,7 @@ g8 f es f~ f4 es8 c~ | c4. bes8 \tuplet 3/2 { g'4 as g } \break
 f2 es | c bes | \toCoda
 es r | r  \tuplet 3/2 { \startParenthesis \parenthesize g4 as \endParenthesis \parenthesize g } 
 \bar "|." \break
-	\mark \markup \with-color #(x11-color 'red) {  \bold \larger \center-column {\pad-markup #2 " "  \pad-markup #0 \musicglyph #"scripts.varcoda"} }
+	\mark \markup \with-color #(x11-color 'red) {  \bold \larger \center-column {\pad-markup #2 " "  \pad-markup #0 \musicglyph "scripts.varcoda"} }
 es4~ \tuplet 3/2 { es8 bes c } \tuplet 3/2 { es f g } \tuplet 3/2 { bes c es->~ } | es4 es-^ r2
   \bar ".."
 }
@@ -376,3 +376,8 @@ That's so ve -- ry love -- ly made from love
         \transpose c a \grille
       >>
 } } }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

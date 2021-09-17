@@ -56,10 +56,9 @@ realBookTitle = \markup {
 \header {
   pdftitle = #title
   pdfauthor = #composer
-  pdfcomposer = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  asplayed = #"ChicK Corea and Return to Forever" % doit être commentée si vide
+  asplayed = #"Chick Corea and Return to Forever" % doit être commentée si vide
   url = #"https://www.youtube.com/watch?v=UD21FG2Nmcw"
   arranger = \markup \on-the-fly #played?
   \with-url #url

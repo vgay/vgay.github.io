@@ -54,7 +54,6 @@ realBookTitle = \markup {
 \header {
   pdftitle = #title
   pdfauthor = #composer
-  pdfcomposer = #composer
   title = \realBookTitle
   arranger = "Ar. Vincent Gay"
   tagline = ##f

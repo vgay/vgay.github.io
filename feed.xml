@@ -3,7 +3,7 @@
     <title>MyRealBook</title>
     <link href="http://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="http://myrealbook.vintherine.org" />
-    <updated>2021-09-10T22:39:33+02:00</updated>
+    <updated>2021-09-11T14:03:47+02:00</updated>
     <author>
         <name>Vincent</name>
     </author>
@@ -174,14 +174,14 @@
         </content>
     </entry>
     <entry>
-        <title>À propos des partitions</title>
+        <title>À propos...</title>
         <author>
             <name>Vincent</name>
         </author>
         <link href="http://myrealbook.vintherine.org/about.html"/>
         <id>http://myrealbook.vintherine.org/about.html</id>
 
-        <updated>2021-09-10T22:31:39+02:00</updated>
+        <updated>2021-09-11T11:50:18+02:00</updated>
             <summary>
                 <![CDATA[
                     <p>À l'origine de ce site un simple besoin personnel de regrouper, sur un support de type tablette (plus facile à transporter qu'une collection de <a href="https://fr.wikipedia.org/wiki/Real_Book_(jazz)">Real books</a>), toutes les partitions que je suis successible de jouer. </p>
@@ -197,7 +197,20 @@
 <li>format paysage pour afficher des blocs de 4 mesures même en cas de reprises avec alternatives.</li>
 <li>limiter au maximum les changements de page sans pour autant perdre en lisibilité</li>
 </ul>
-<p>Assez vite j'ai eu à imprimer également ces partitions pour d'autres musiciens avec lesquels je jouais, en les transposant dans leurs tonalité et au format a4 la plupart du temps. La section rythmique quand à elle me réclamait plutôt ces fameuses <a href="https://fr.wikipedia.org/wiki/Grille_harmonique">grilles harmoniques</a> qui font paraît-il la spécificité du jazz français.</p>
+<p>Assez vite j'ai eu à imprimer également ces partitions pour d'autres musiciens avec lesquels je jouais, en les transposant dans leurs tonalité et ordinairement au format a4. La section rythmique quand à elle me réclamait plutôt ces fameuses <a href="https://fr.wikipedia.org/wiki/Grille_harmonique">grilles harmoniques</a> qui font paraît-il la spécificité du jazz français.</p>
+<p>De fil en aiguille j'ai été amené à créer ce site pour </p>
+<ul>
+<li>Regrouper et rendre accessibles ces partitions</li>
+<li>Regrouper et partager quelques idées ou astuces liées à l'éditions des partitions de jazz (voir À propos du blog)</li>
+</ul>
+<p>Pour plus de détail je vous renvois aux articles suivant :</p>
+<ul>
+<li>À propos de moi (et comment me contacter)</li>
+<li>À propos des partitions et des leurs sources</li>
+<li>À propos des outils d'éditions utilisé (Lilypond, Frescobaldi, MuseScore...)</li>
+<li>À propos du blog (avertissement, outils, hébergement)</li>
+</ul>
+<p> </p>
 <p>Parmi les outils disponibles sous Linux pour écrire des partitions de musique j'ai choisi <a href="http://lilypond.org/index.fr.html">Lilypond</a> à la fois pour l’extraordinaire qualité de son rendu mais aussi parce que, au prix d'un apprentissage pas toujours évident, il permet de faire très exactement ce que l'on veut. Puisqu'il s'agit d'un outil non wysiwyg il lui faut un éditeur de texte. N'importe lequel peut faire l'affaire mais <a href="http://frescobaldi.org/">Frescobaldi</a> est un éditeur spécialisé qui fait quasiment l'unanimité dans la communauté ds utilisateurs.</p>
 <p>Les fichiers sources des partitions sont incluses dans les fichiers pdf générés. Pour en savoir plus rapporter vous à l'article <a href="http://myrealbook.vintherine.org/sources.html">À propos des sources</a>.</p>
 <p> </p>
@@ -205,22 +218,24 @@
         </content>
     </entry>
     <entry>
-        <title>À propos des Sources</title>
+        <title>À propos des partitions</title>
         <author>
             <name>Vincent</name>
         </author>
         <link href="http://myrealbook.vintherine.org/sources.html"/>
         <id>http://myrealbook.vintherine.org/sources.html</id>
 
-        <updated>2021-09-10T22:39:33+02:00</updated>
+        <updated>2021-09-11T14:03:47+02:00</updated>
             <summary>
                 <![CDATA[
-                    Si vous souhaitez utiliser les sources fournies avec les partitions il vous faudra&hellip;
+                    Les partitions sont accessible via ce tableau utilisant un système de tri&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                <p>Si vous souhaitez utiliser les sources fournies avec les partitions il vous faudra</p>
+                <p>Les partitions sont accessible via <a href="http://myrealbook.vintherine.org/scores/index.html" rel="nofollow">ce tableau </a>utilisant un système de tri multi-critères (aide au dessus du tableau à droite)</p>
+<p> </p>
+<p>Si vous souhaitez utiliser les sources fournies avec les partitions il vous faudra</p>
 <ul>
 <li><a href="#toc_lilypond"> à minima installer Lilypond sur votre ordinateur.</a></li>
 <li><a href="#toc_frescobaldi">utiliser un éditeur tel Frescobaldi</a></li>
