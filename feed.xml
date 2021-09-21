@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>MyRealBook</title>
-    <link href="//myrealbook.vintherine.org/feed.xml" rel="self" />
-    <link href="//myrealbook.vintherine.org" />
+    <link href="http://myrealbook.vintherine.org/feed.xml" rel="self" />
+    <link href="http://myrealbook.vintherine.org" />
     <updated>2021-09-20T18:57:30+02:00</updated>
     <author>
         <name>Vincent</name>
     </author>
-    <id>//myrealbook.vintherine.org</id>
+    <id>http://myrealbook.vintherine.org</id>
 
     <entry>
         <title>À propos du blog (avertissement, hébergement, outils)</title>
         <author>
             <name>Vincent</name>
         </author>
-        <link href="//myrealbook.vintherine.org/a-propos-du-blog-avertissement-outils-hebergement.html"/>
-        <id>//myrealbook.vintherine.org/a-propos-du-blog-avertissement-outils-hebergement.html</id>
+        <link href="http://myrealbook.vintherine.org/a-propos-du-blog-avertissement-outils-hebergement.html"/>
+        <id>http://myrealbook.vintherine.org/a-propos-du-blog-avertissement-outils-hebergement.html</id>
 
         <updated>2021-09-20T18:57:30+02:00</updated>
             <summary>
@@ -42,8 +42,8 @@
         <author>
             <name>Vincent</name>
         </author>
-        <link href="//myrealbook.vintherine.org/a-propos-de-moi-et-comment-me-contacter.html"/>
-        <id>//myrealbook.vintherine.org/a-propos-de-moi-et-comment-me-contacter.html</id>
+        <link href="http://myrealbook.vintherine.org/a-propos-de-moi-et-comment-me-contacter.html"/>
+        <id>http://myrealbook.vintherine.org/a-propos-de-moi-et-comment-me-contacter.html</id>
 
         <updated>2021-09-20T18:42:48+02:00</updated>
             <summary>
@@ -64,8 +64,8 @@
         <author>
             <name>Vincent</name>
         </author>
-        <link href="//myrealbook.vintherine.org/a-propos-des-logiciels-deditions-utilises.html"/>
-        <id>//myrealbook.vintherine.org/a-propos-des-logiciels-deditions-utilises.html</id>
+        <link href="http://myrealbook.vintherine.org/a-propos-des-logiciels-deditions-utilises.html"/>
+        <id>http://myrealbook.vintherine.org/a-propos-des-logiciels-deditions-utilises.html</id>
 
         <updated>2021-09-20T18:57:12+02:00</updated>
             <summary>
@@ -100,15 +100,15 @@
         <author>
             <name>Vincent</name>
         </author>
-        <link href="//myrealbook.vintherine.org/glissandi-et-bends.html"/>
-        <id>//myrealbook.vintherine.org/glissandi-et-bends.html</id>
+        <link href="http://myrealbook.vintherine.org/glissandi-et-bends.html"/>
+        <id>http://myrealbook.vintherine.org/glissandi-et-bends.html</id>
 
         <updated>2021-09-20T18:04:27+02:00</updated>
             <summary>
                 <![CDATA[
                     <h4>Les Glissandi</h4>
-<figure class="post__image">Par défaut les glissandi de Lilypond sont rectilignes et relient obligatoirement deux notes.<br><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/8//GlissandiClassiques.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiClassiques-xs.png 300w ,/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiClassiques-sm.png 480w ,/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiClassiques-md.png 768w"  alt="" width="418" height="131"></figure>
-<p>De nos jours les glissandi sont plus souvent représentés par un zig-zag et la note d'arrivée n'est pas nécéssairement présente. <figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/8//GlissandiModernes.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-xs.png 300w ,/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-sm.png 480w ,/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-md.png 768w"  alt="" width="641" height="129"></figure>
+<figure class="post__image">Par défaut les glissandi de Lilypond sont rectilignes et relient obligatoirement deux notes.<br><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/8//GlissandiClassiques.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiClassiques-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiClassiques-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiClassiques-md.png 768w"  alt="" width="418" height="131"></figure>
+<p>De nos jours les glissandi sont plus souvent représentés par un zig-zag et la note d'arrivée n'est pas nécéssairement présente. <figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/8//GlissandiModernes.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-md.png 768w"  alt="" width="641" height="129"></figure>
 <p>Pour la forme il suffit d'un <code>\override Glissando.style = #'zigzag</code> dans le /score ou mieux dans un \layout. Quant à la note d'arrivée il faudra la masquer.</p>
 
                 ]]>
@@ -116,8 +116,8 @@
         <content type="html">
             <![CDATA[
                 <h4>Les Glissandi</h4>
-<figure class="post__image">Par défaut les glissandi de Lilypond sont rectilignes et relient obligatoirement deux notes.<br><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/8//GlissandiClassiques.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiClassiques-xs.png 300w ,/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiClassiques-sm.png 480w ,/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiClassiques-md.png 768w"  alt="" width="418" height="131"></figure>
-<p>De nos jours les glissandi sont plus souvent représentés par un zig-zag et la note d'arrivée n'est pas nécéssairement présente. <figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/8//GlissandiModernes.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-xs.png 300w ,/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-sm.png 480w ,/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-md.png 768w"  alt="" width="641" height="129"></figure>
+<figure class="post__image">Par défaut les glissandi de Lilypond sont rectilignes et relient obligatoirement deux notes.<br><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/8//GlissandiClassiques.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiClassiques-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiClassiques-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiClassiques-md.png 768w"  alt="" width="418" height="131"></figure>
+<p>De nos jours les glissandi sont plus souvent représentés par un zig-zag et la note d'arrivée n'est pas nécéssairement présente. <figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/8//GlissandiModernes.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-md.png 768w"  alt="" width="641" height="129"></figure>
 <p>Pour la forme il suffit d'un <code>\override Glissando.style = #'zigzag</code> dans le /score ou mieux dans un \layout. Quant à la note d'arrivée il faudra la masquer.</p>
 
 <p>La solution proposée dans la <a href="http://lilypond.org/doc/v2.19/Documentation/notation/expressive-marks-as-lines">documentation</a> est d'utiliser une note cachée dans une cadence avec les inconvénients suivants : du fait de la cadence le décompte de la mesure ne sera pas incrémentée (le rectifier avec \set Score.currentBarNumber = #[N° de la mesure]). il faudra également gérer les autres voix éventuelles et les ligatures ([ et ] derrière les notes concernées). </p>
@@ -133,10 +133,10 @@
   \cadenzaOff
   \bar "|"
 }</pre>
-<figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/8/GlissandiDoc.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/8/responsive/GlissandiDoc-xs.png 300w ,/myrealbook.vintherine.org/media/posts/8/responsive/GlissandiDoc-sm.png 480w ,/myrealbook.vintherine.org/media/posts/8/responsive/GlissandiDoc-md.png 768w"  alt="" width="325" height="139"></figure>
+<figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/8/GlissandiDoc.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/8/responsive/GlissandiDoc-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/8/responsive/GlissandiDoc-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/8/responsive/GlissandiDoc-md.png 768w"  alt="" width="325" height="139"></figure>
 <p>Pour ma  part je préfère passer par une afterGrace ce qui évite les désagréments évoqués plus haut.</p>
 <pre>\version "2.19.80"<br>\layout {<br>  \context {<br>  \Score<br>  \override Glissando.style = #'zigzag<br>  \override Glissando.minimum-length = #4<br>  \override Glissando.springs-and-rods = #ly:spanner::set-spacing-rods<br>  }<br>}<br><br>\relative c'' {<br>  c2 \afterGrace c \glissando { \hideNotes c,8 \unHideNotes } |<br> \afterGrace c'2 \glissando { \hideNotes c,8 \unHideNotes } r2 |<br> \afterGrace g' \glissando { \hideNotes g'8 \unHideNotes } r2<br>}</pre>
-<figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/8//GlissandiModernes.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-xs.png 300w ,/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-sm.png 480w ,/myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-md.png 768w"  alt="" width="641" height="129"></figure>
+<figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/8//GlissandiModernes.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/8//responsive/GlissandiModernes-md.png 768w"  alt="" width="641" height="129"></figure>
 <p>Notez dans le \layout les instructions  \override Glissando.minimum-length = #4 et \override Glissando.springs-and-rods = #ly:spanner::set-spacing-rods sans lesquels la longueur du glissando serait limitée à l'espace entre la note et l'afterGrace. Une alternative serait de définir afterGraceFraction en proportion de la note principale.<a href="http://lilypond.org/doc/v2.19/Documentation/notation/special-rhythmic-concerns.fr.html#grace-notes">Voir la documentation ici</a>.</p>
 <h3>Les bends</h3>
 <p>Lilypond utilise les sauts et chutes <strong>après</strong> une note avec la commande \bendAfter #±VALEUR, où valeur est positive pour une courbe vers le haut et négative pour une courbe vers le bas</p>
@@ -149,9 +149,9 @@
   c2\bendAfter #+8
   c2\bendAfter #-8
 }</pre>
-<figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/8/BendAfter.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/8/responsive/BendAfter-xs.png 300w ,/myrealbook.vintherine.org/media/posts/8/responsive/BendAfter-sm.png 480w ,/myrealbook.vintherine.org/media/posts/8/responsive/BendAfter-md.png 768w"  alt="" width="536" height="138"></figure><br>Malheureusement pas de bendBefore ! Si ce n'est en utilisant un markup crée par ces deux petites fonctions, scoopH et scoopB</p>
+<figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/8/BendAfter.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/8/responsive/BendAfter-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/8/responsive/BendAfter-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/8/responsive/BendAfter-md.png 768w"  alt="" width="536" height="138"></figure><br>Malheureusement pas de bendBefore ! Si ce n'est en utilisant un markup crée par ces deux petites fonctions, scoopH et scoopB</p>
 <pre>\version "2.19.83"<br><br>#(define (scoop-stencil grob)<br> (ly:stencil-add<br> (ly:note-head::print grob)<br> (grob-interpret-markup grob<br> (markup #:with-dimensions '(0 . 0) '(0 . 0)<br> #:translate '(-0.2 . -0.5)<br> #:path 0.25 '((moveto -0.2 0.5)<br> (curveto 0.2 2 -1.2 2.5 -1.7 2.5))))))<br>scoopH = \once \override NoteHead #'stencil = #scoop-stencil<br><br> #(define (scoop-stencil grob)<br> (ly:stencil-add<br> (ly:note-head::print grob)<br> (grob-interpret-markup grob<br> (markup #:with-dimensions '(0 . 0) '(0 . 0)<br> #:translate '(-0.2 . -0.5)<br> #:path 0.25 '((moveto 0 0)<br> (curveto 0.2 -1 -1.2 -1.5 -1.7 -1.5))))))<br>scoopB = \once \override NoteHead #'stencil = #scoop-stencil<br><br>\relative c'' {<br>  \scoopH c2 \scoopB c2 <br>}</pre>
-<figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/8/scoop.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/8/responsive/scoop-xs.png 300w ,/myrealbook.vintherine.org/media/posts/8/responsive/scoop-sm.png 480w ,/myrealbook.vintherine.org/media/posts/8/responsive/scoop-md.png 768w"  alt="" width="267" height="120"></figure>
+<figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/8/scoop.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/8/responsive/scoop-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/8/responsive/scoop-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/8/responsive/scoop-md.png 768w"  alt="" width="267" height="120"></figure>
 <p>Cette fonction est dérivé de <a href="https://lists.gnu.org/archive/html/lilypond-user/2014-01/msg01200.html">ce message</a> sur la liste lilypond-user. </p>
             ]]>
         </content>
@@ -161,8 +161,8 @@
         <author>
             <name>Vincent</name>
         </author>
-        <link href="//myrealbook.vintherine.org/repetitions-avec-fins-alternatives.html"/>
-        <id>//myrealbook.vintherine.org/repetitions-avec-fins-alternatives.html</id>
+        <link href="http://myrealbook.vintherine.org/repetitions-avec-fins-alternatives.html"/>
+        <id>http://myrealbook.vintherine.org/repetitions-avec-fins-alternatives.html</id>
 
         <updated>2021-09-20T18:09:04+02:00</updated>
             <summary>
@@ -170,7 +170,7 @@
                     <p>Avec Lilypond les répétitions avec fins alternatives sont indiquées ordinairement de la manière suivante :</p>
 <pre>\repeat volta x {<br> ... musique ...<br> }<br>\alternative {<br> { ... alternative 1 }<br> { ... alternative 2 }<br> { ... alternative x }<br> }</pre>
 <p>Ce qui donnera par exemple quelque chose comme ceci :</p>
-<figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/7/AlternatisesStandards.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-xs.png 300w ,/myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-sm.png 480w ,/myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-md.png 768w"  alt="" width="441" height="66"></figure>
+<figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/7/AlternatisesStandards.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-md.png 768w"  alt="" width="441" height="66"></figure>
 
                 ]]>
             </summary>
@@ -179,10 +179,10 @@
                 <p>Avec Lilypond les répétitions avec fins alternatives sont indiquées ordinairement de la manière suivante :</p>
 <pre>\repeat volta x {<br> ... musique ...<br> }<br>\alternative {<br> { ... alternative 1 }<br> { ... alternative 2 }<br> { ... alternative x }<br> }</pre>
 <p>Ce qui donnera par exemple quelque chose comme ceci :</p>
-<figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/7/AlternatisesStandards.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-xs.png 300w ,/myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-sm.png 480w ,/myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-md.png 768w"  alt="" width="441" height="66"></figure>
+<figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/7/AlternatisesStandards.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-md.png 768w"  alt="" width="441" height="66"></figure>
 
 <p>Il arrive toutefois que l'on soit amené à contrôler manuellement les indications de reprises. Prenons pour exemple le standart de Jazz <em><strong>Jeannine</strong></em> de Duke Pearson. C'est une pièce de la forme A1 A2 B A1. Imaginons que nous souhaitions indiquer la répétition sous la forme </p>
-<figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/7/JeanineAlternatives.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/7/responsive/JeanineAlternatives-xs.png 300w ,/myrealbook.vintherine.org/media/posts/7/responsive/JeanineAlternatives-sm.png 480w ,/myrealbook.vintherine.org/media/posts/7/responsive/JeanineAlternatives-md.png 768w"  alt="" width="1288" height="197"></figure>
+<figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/7/JeanineAlternatives.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/7/responsive/JeanineAlternatives-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/7/responsive/JeanineAlternatives-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/7/responsive/JeanineAlternatives-md.png 768w"  alt="" width="1288" height="197"></figure>
 <p>avec barre de reprise en fin de B. Avec la formulation standard nous nous heurterions à la double difficulté suivante :</p>
 <ul>
 <li>l'ordre retenu par défaut serait [ 1 &amp; 2 ] [ 3     ]</li>
@@ -198,10 +198,10 @@
 <li>Pour intégrer des indications textuelles il faut préalablement définir celles-ci dans un markup puis les intégrer par la comande <code>\set Score.repeatCommands = #(list(list 'volta le_markup))</code>. Par exemple :</li>
 </ul>
 <pre>\version "2.19.83"<br>voltaAdLib = \markup { 1. 2. 3... \text \italic { ad lib. } }<br>voltaOnCue= \markup \small \with-color #(x11-color 'red) { \text \italic { On Cue } }<br><br>\relative c'' {<br> c4 c c c<br> \set Score.repeatCommands = #'(start-repeat)<br> c4 c c c <br> \set Score.repeatCommands = #(list(list 'volta voltaAdLib))<br> c4 c c c<br> \set Score.repeatCommands = #(list '(volta #f) (list 'volta voltaOnCue) 'end-repeat)<br> c1<br> \set Score.repeatCommands = #'((volta #f))<br>}</pre>
-<figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/7/OnCue.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/7/responsive/OnCue-xs.png 300w ,/myrealbook.vintherine.org/media/posts/7/responsive/OnCue-sm.png 480w ,/myrealbook.vintherine.org/media/posts/7/responsive/OnCue-md.png 768w"  alt="" width="823" height="157"></figure>
+<figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/7/OnCue.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/7/responsive/OnCue-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/7/responsive/OnCue-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/7/responsive/OnCue-md.png 768w"  alt="" width="823" height="157"></figure>
 <p>Voici pour finir le code complet de <strong>Jeannine</strong> :  </p>
 <pre>\version "2.22.1"<br>#(set-global-staff-size 18)<br><br>\paper {<br>   indent = 0\mm<br>   markup-system-spacing = #'((basic-distance . 20)<br>                              (minimum-distance . 8)<br>                              (padding . 1))<br>}<br><br>\header {<br>   title = Jeannine<br>   composer = "Duke Pearson"<br>   poet = "Med. Up Swing"<br>   tagline = ##f<br>}<br><br>theChords = \chordmode {<br>   \set chordChanges = ##t<br>   as1*4:m7 as:m7 fis1:m7<br>   b1:7 e:7+ a:7 bes:m7 es:9+ as1:7+ es:9+<br>   as:7+ es2:m7 as:7 <br>   des1:7+ g2:m5-7 c:7 f1*2:7+ f1:m7 bes:7 bes:m7 es:7<br>}<br><br>voltaOne = \markup { 1 \text { &amp; } 3 \text \fontsize #4 \with-color #red \italic { " (fine)" }}<br><br><br>theNotes = \relative c'' {<br>  \set Score.markFormatter = #format-mark-box-alphabet<br>  \clef "treble" \key as \major \time 4/4 \mark #1<br>  \repeat volta 3 {<br>    r8 es4-. r8 es4-. r | r8 es4-. r8 es4-. f-. <br>    ges--( f8 es ~ es2 ~ | es1) \break<br>    r8 es4-. r8 es4-. r | r8 es4-. r8 es4-. f-. <br>    ges-- f8 es ~ es2 ~ | es r8 c des as' ~ \break<br>    as4. e8-. r des4-. a8 | as'!4-- g8 ges-&gt; ~ ges as ges b-&gt; ~ <br>    b2 ~ b8 bes b ges-&gt; ~ | ges2. e8 es~ \break | <br>    es4. es8 r2 | r8 bes( \times 2/3 { c des es } ges4 e8 es) ~ | <br>  }<br>  \alternative {<br>    { <br>      \set Score.repeatCommands = #(list(list 'volta voltaOne)) <br>      es1 ~ | es1 <br>      \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat) <br>    }<br>    { <br>      es2 \repeatTie \times 2/3 { es4 c es } f2 es <br>      \set Score.repeatCommands = #'((volta #f))<br>      \bar "||" \break \mark #2<br>      as,2 ~ as8( bes \times 2/3 { c des es } | <br>      f4-.) r8 g-&gt;~g( f g a-&gt;) ~ <br>      a1 | r8 e4.-&gt; \times 2/3 { f4 g a } \break<br>      as?2 \times 2/3 { as4 g as } | bes2 f | <br>      bes1 ~ | bes2. r4 \bar ":|." <br>    }<br>  }<br>}<br><br>\score {<br>   &lt;&lt;<br>     \new ChordNames \theChords<br>     \new Staff \theNotes<br>   &gt;&gt;<br>} </pre>
-<figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/7/jeannine.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/7/responsive/jeannine-xs.png 300w ,/myrealbook.vintherine.org/media/posts/7/responsive/jeannine-sm.png 480w ,/myrealbook.vintherine.org/media/posts/7/responsive/jeannine-md.png 768w"  alt="" width="1585" height="1090"> </figure>
+<figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/7/jeannine.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/7/responsive/jeannine-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/7/responsive/jeannine-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/7/responsive/jeannine-md.png 768w"  alt="" width="1585" height="1090"> </figure>
             ]]>
         </content>
     </entry>
@@ -210,8 +210,8 @@
         <author>
             <name>Vincent</name>
         </author>
-        <link href="//myrealbook.vintherine.org/lilypond-indications-rythmiques.html"/>
-        <id>//myrealbook.vintherine.org/lilypond-indications-rythmiques.html</id>
+        <link href="http://myrealbook.vintherine.org/lilypond-indications-rythmiques.html"/>
+        <id>http://myrealbook.vintherine.org/lilypond-indications-rythmiques.html</id>
 
         <updated>2021-09-20T18:45:54+02:00</updated>
             <summary>
@@ -241,7 +241,7 @@
 <p>La section est limitée par <code>\improvisationOn ../.. \improvisation\Off</code></p>
 <p>Par ailleurs c'est le contexte <code>\consists "Pitch_squash_engraver"</code> qui permet que toutes les notes s'affichent au centre de la portée. En son absence les notes s'afficheraient à leur emplacement ordinaire.</p>
 <p>Ce type de notation est fréquemment utilisé en jazz pour la mise en place de tout ou partie de la section rythmique, ici dans la voix basse :</p>
-<figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/5/729313fb13a2421f812e5632ae41638a.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/5/responsive/729313fb13a2421f812e5632ae41638a-xs.png 300w ,/myrealbook.vintherine.org/media/posts/5/responsive/729313fb13a2421f812e5632ae41638a-sm.png 480w ,/myrealbook.vintherine.org/media/posts/5/responsive/729313fb13a2421f812e5632ae41638a-md.png 768w"  alt="" width="1084" height="220"></figure>
+<figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/5/729313fb13a2421f812e5632ae41638a.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/5/responsive/729313fb13a2421f812e5632ae41638a-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/5/responsive/729313fb13a2421f812e5632ae41638a-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/5/responsive/729313fb13a2421f812e5632ae41638a-md.png 768w"  alt="" width="1084" height="220"></figure>
 <p>Le code :</p>
 <pre>\version "2.22.1"<br>#(set-global-staff-size 18)<br>\include "jazzchords.ily"<br>\include "lilyjazz.ily"<br>\include "jazzextras.ily"<br><br><br>theNotes = \relative c'' {<br> \clef "treble" \key bes \major \time 4/4<br> \override Rest #'staff-position = #0<br> r2 r8 es c4-. | bes2 es | a g | es4-. r ^\markup \small "Solo break..." r2<br>}<br><br><br>Rythme= \relative c' {<br> \improvisationOn<br> \override NoteHead.no-ledgers = ##t % pas de lignes additionelles<br> \override Rest #'staff-position = #-6 % position des silences<br> c4. 8~ 4 4 | r4 8 r8 2 | 2 2 | s1 <br>}<br><br>harmonies = \chordmode {<br> f4.:8 bes:13 bes/as g:8 c2:8 f:8 bes:9-13 es:6.9<br>}<br><br>\score {<br> &lt;&lt;<br> \new ChordNames {<br> \set chordChanges = ##t<br> \harmonies<br> }<br> \new Staff &lt;&lt;<br> \theNotes \\ \Rythme<br> &gt;&gt; &gt;&gt;<br>}</pre>
 <p>On notera :</p>
@@ -250,9 +250,9 @@
 <li>le positionnement manuel des silences grâce à l'instruction <code>\override Rest #'staff-position</code> dans les deux voix </li>
 </ul>
 <p>Pour passer la voix en haut changer la valeur de Rest #'staff-position dans Rythme ( par exemple #6) et inverser les 2 voix <code class="inline-code">\Rythme \\ \theNotes</code></p>
-<figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/5/3303fb7dc05041ce9e95b34b60fe1aea.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/5/responsive/3303fb7dc05041ce9e95b34b60fe1aea-xs.png 300w ,/myrealbook.vintherine.org/media/posts/5/responsive/3303fb7dc05041ce9e95b34b60fe1aea-sm.png 480w ,/myrealbook.vintherine.org/media/posts/5/responsive/3303fb7dc05041ce9e95b34b60fe1aea-md.png 768w"  alt="" width="1529" height="191"> </figure>
+<figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/5/3303fb7dc05041ce9e95b34b60fe1aea.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/5/responsive/3303fb7dc05041ce9e95b34b60fe1aea-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/5/responsive/3303fb7dc05041ce9e95b34b60fe1aea-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/5/responsive/3303fb7dc05041ce9e95b34b60fe1aea-md.png 768w"  alt="" width="1529" height="191"> </figure>
 <p>Dans l'exemple qui suit la ligne de basse est totalement écrite et seule le rythme est indiqué pour le piano (ou la guitare). Les temps non significatifs sont remplacés par des slashes obtenus en remplacement les soupirs (voir la fonction "comp" dans le code ci-dessous)</p>
-<figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/5/8eca286f0b1e4b428d91a67f9ad15def.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/5/responsive/8eca286f0b1e4b428d91a67f9ad15def-xs.png 300w ,/myrealbook.vintherine.org/media/posts/5/responsive/8eca286f0b1e4b428d91a67f9ad15def-sm.png 480w ,/myrealbook.vintherine.org/media/posts/5/responsive/8eca286f0b1e4b428d91a67f9ad15def-md.png 768w"  alt="" width="1533" height="459"></figure>
+<figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/5/8eca286f0b1e4b428d91a67f9ad15def.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/5/responsive/8eca286f0b1e4b428d91a67f9ad15def-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/5/responsive/8eca286f0b1e4b428d91a67f9ad15def-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/5/responsive/8eca286f0b1e4b428d91a67f9ad15def-md.png 768w"  alt="" width="1533" height="459"></figure>
 <p>le code complet :</p>
 <pre>\version "2.22.1"<br>#(set-global-staff-size 18)<br>\include "jazzchords.ily"<br>\include "lilyjazz.ily"<br>\include "jazzextras.ily"<br><br>comp = #(define-music-function (count) (integer?)<br> #{<br> \override Rest.stencil = #ly:percent-repeat-item-interface::beat-slash<br> \override Rest.thickness = #0.48<br> \repeat unfold $count { r4 }<br> \revert Rest.stencil<br> #}<br> )<br><br><br>chordsRhythm = \relative c' {<br> \override Rest #'staff-position = #8<br> \improvisationOn \override NoteHead.no-ledgers = ##t <br> <br> \comp #3 e8 8~ | 4 \comp #3 | \comp #3 8 8~ | 4 \comp #3<br> \comp #3 8 8~ | 4 8 8~ 4 \comp #3 r8 8 8 8~ | 4 \comp #3<br>}<br><br>Basse = \relative c {<br> \override Rest #'staff-position = #0<br> \clef "bass" \key as \major \time 4/4<br> bes4 4 c8 4 des8~ | 2 r8 c f, c' | bes4 4 c8 4 des8~ | 4 r8 es16 e f c f,8 ~ 4 |<br> bes4 4 c8 4 des8~ | 8 8 d es~ es4 g8 bes | as es as,4 8 g ges f8~ | 4. c'8 ges'4 f<br>}<br><br><br>harmonies = \chordmode {<br> \set chordChanges = ##t<br> bes2:m7 c4.:m7 des8:7+ s2 c:m7 bes2:m7 c4.:m7 des8:7+ s2 f:9+13-<br> bes2:m7 c4.:m7 des8:7+ s2 es:7sus4 as:7+ s8 g:7 as:7/ges f:9- s1<br>}<br><br><br>\score {<br> &lt;&lt;<br> \new ChordNames { \harmonies }<br> \new Staff \with {<br> instrumentName = \markup {<br> \column { "rhythm"<br> \line { "section" }<br> }<br> }<br> }<br> &lt;&lt;<br> \chordsRhythm \\ \Basse<br> &gt;&gt; <br> &gt;&gt;<br>} </pre>
 <p> </p>
@@ -264,8 +264,8 @@
         <author>
             <name>Vincent</name>
         </author>
-        <link href="//myrealbook.vintherine.org/about.html"/>
-        <id>//myrealbook.vintherine.org/about.html</id>
+        <link href="http://myrealbook.vintherine.org/about.html"/>
+        <id>http://myrealbook.vintherine.org/about.html</id>
 
         <updated>2021-09-20T18:44:20+02:00</updated>
             <summary>
@@ -291,10 +291,10 @@
 </ul>
 <p>Pour plus de détail je vous renvois aux articles suivant :</p>
 <ul>
-<li><a href="//myrealbook.vintherine.org/a-propos-de-moi-et-comment-me-contacter.html">À propos de moi (et comment me contacter)</a></li>
-<li><a href="//myrealbook.vintherine.org/sources.html" rel="nofollow">À propos des partitions et de leurs fichiers sources</a></li>
-<li><a href="//myrealbook.vintherine.org/a-propos-des-logiciels-deditions-utilises.html">À propos des outils d'éditions utilisé (Lilypond, Frescobaldi, MuseScore...)</a></li>
-<li><a href="//myrealbook.vintherine.org/a-propos-du-blog-avertissement-outils-hebergement.html">À propos du blog (avertissement, outils, hébergement)</a></li>
+<li><a href="http://myrealbook.vintherine.org/a-propos-de-moi-et-comment-me-contacter.html">À propos de moi (et comment me contacter)</a></li>
+<li><a href="http://myrealbook.vintherine.org/sources.html" rel="nofollow">À propos des partitions et de leurs fichiers sources</a></li>
+<li><a href="http://myrealbook.vintherine.org/a-propos-des-logiciels-deditions-utilises.html">À propos des outils d'éditions utilisé (Lilypond, Frescobaldi, MuseScore...)</a></li>
+<li><a href="http://myrealbook.vintherine.org/a-propos-du-blog-avertissement-outils-hebergement.html">À propos du blog (avertissement, outils, hébergement)</a></li>
 </ul>
 <p> </p>
 <p> </p>
@@ -307,8 +307,8 @@
         <author>
             <name>Vincent</name>
         </author>
-        <link href="//myrealbook.vintherine.org/sources.html"/>
-        <id>//myrealbook.vintherine.org/sources.html</id>
+        <link href="http://myrealbook.vintherine.org/sources.html"/>
+        <id>http://myrealbook.vintherine.org/sources.html</id>
 
         <updated>2021-09-20T18:55:52+02:00</updated>
             <summary>
@@ -329,11 +329,11 @@
 <h3 id="toc_lilypond">Lilypond</h3>
 <p>Bien loin des clicodromes commerciaux, <a href="http://lilypond.org/index.fr.html" target="_blank" rel="noopener noreferrer">Lilypond</a> est un langage descriptif permettant de produire un fichier source qui sera ensuite compilé. Il faut donc apprendre une syntaxe et de nombreuses règles… qui sont susceptibles d'évoluer d'une version à l'autre. La version stable à ce jour (septembre 2021) est la 2.22 mais si vous utilisez le gestionnaire de dépôts de certaines distributions Linux il se peut que la version installée soit plus ancienne. </p>
 <p>Pour faire court, l'intérêt principal que je trouve à Lilypond, c'est de pouvoir faire exactement ce que je veux avec une qualité de sortie irréprochable.  Comme par exemple ceci :</p>
-<figure class="post__image" ><img loading="lazy" src="/myrealbook.vintherine.org/media/posts/6/5f47fa692c1c4928bc7ef664202204a5.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/6/responsive/5f47fa692c1c4928bc7ef664202204a5-xs.png 300w ,/myrealbook.vintherine.org/media/posts/6/responsive/5f47fa692c1c4928bc7ef664202204a5-sm.png 480w ,/myrealbook.vintherine.org/media/posts/6/responsive/5f47fa692c1c4928bc7ef664202204a5-md.png 768w"  alt="" width="1523" height="426">
+<figure class="post__image" ><img loading="lazy" src="http://myrealbook.vintherine.org/media/posts/6/5f47fa692c1c4928bc7ef664202204a5.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/6/responsive/5f47fa692c1c4928bc7ef664202204a5-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/6/responsive/5f47fa692c1c4928bc7ef664202204a5-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/6/responsive/5f47fa692c1c4928bc7ef664202204a5-md.png 768w"  alt="" width="1523" height="426">
 <figcaption >Breakfast Wine (Randy Aldcroft)</figcaption>
 </figure>
 <p>ou ceci :</p>
-<figure class="post__image"><img loading="lazy"  src="/myrealbook.vintherine.org/media/posts/6/1f9ff908e3cd4be0a0d2079238bf8f0b-4.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="/myrealbook.vintherine.org/media/posts/6/responsive/1f9ff908e3cd4be0a0d2079238bf8f0b-4-xs.png 300w ,/myrealbook.vintherine.org/media/posts/6/responsive/1f9ff908e3cd4be0a0d2079238bf8f0b-4-sm.png 480w ,/myrealbook.vintherine.org/media/posts/6/responsive/1f9ff908e3cd4be0a0d2079238bf8f0b-4-md.png 768w"  alt="" width="1517" height="588"></figure>
+<figure class="post__image"><img loading="lazy"  src="http://myrealbook.vintherine.org/media/posts/6/1f9ff908e3cd4be0a0d2079238bf8f0b-4.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="http://myrealbook.vintherine.org/media/posts/6/responsive/1f9ff908e3cd4be0a0d2079238bf8f0b-4-xs.png 300w ,http://myrealbook.vintherine.org/media/posts/6/responsive/1f9ff908e3cd4be0a0d2079238bf8f0b-4-sm.png 480w ,http://myrealbook.vintherine.org/media/posts/6/responsive/1f9ff908e3cd4be0a0d2079238bf8f0b-4-md.png 768w"  alt="" width="1517" height="588"></figure>
 <h3 id="toc_frescobaldi">Frescobaldi</h3>
 <p>Pour utiliser Lilypond il suffit, a priori, d'un éditeur de texte, d'un terminal et d'une visionneuse poscript/pdf pour voir le résultat. Optionnellement, un lecteur midi car Lilypond sait aussi produire du midi. Par bonheur il existe un logiciel qui permet de faire tout ceci dans la même fenêtre, <a href="http://frescobaldi.org/">Frescobaldi</a>.</p>
 <p>C'est un éditeur de texte dédié à LilyPond, avec coloration syntaxique, visionneuse PDF et lecteur midi intégrés. La fonction « point and click » permet de rapidement retrouver la correspondance entre le PDF et le code, et ce dans les deux sens. Quelques palettes d'outils permettent un accès rapide à des symboles dont on aurait oublié la syntaxe et on peut afficher la documentation Lilypond à partir d'un emplacement local ou d'une URL. Les différents panneaux qui le composent peuvent être ancrés à la fenêtre principale ou détachés, ce qui est bien pratique quand on a un double écran. Il ne fait pas le café, c'est à mes yeux son seul défaut. </p>
