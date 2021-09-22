@@ -3,7 +3,7 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2021-09-22T15:58:14+02:00</updated>
+    <updated>2021-09-22T18:10:49+02:00</updated>
     <author>
         <name>Vincent</name>
     </author>
@@ -17,7 +17,7 @@
         <link href="https://myrealbook.vintherine.org/barres-de-reprises-style-realbook.html"/>
         <id>https://myrealbook.vintherine.org/barres-de-reprises-style-realbook.html</id>
 
-        <updated>2021-09-22T15:58:14+02:00</updated>
+        <updated>2021-09-22T15:59:51+02:00</updated>
             <summary>
                 <![CDATA[
                     <p>Deux points distinguent la manière dont sont présentée les reprises dans les realbooks par rapport au traitement par défaut de Lilypond :</p>
@@ -56,7 +56,7 @@
         <link href="https://myrealbook.vintherine.org/a-propos-du-blog-avertissement-outils-hebergement.html"/>
         <id>https://myrealbook.vintherine.org/a-propos-du-blog-avertissement-outils-hebergement.html</id>
 
-        <updated>2021-09-20T18:57:30+02:00</updated>
+        <updated>2021-09-22T18:10:49+02:00</updated>
             <summary>
                 <![CDATA[
                     Avertissement Ce blog est essentiellement le reflet de mon activé en matière&hellip;
@@ -65,7 +65,7 @@
         <content type="html">
             <![CDATA[
                 <h3>Avertissement</h3>
-<p>Ce blog est essentiellement le reflet de mon activé en matière d'édition de partitions de jazz avec Lilypond pour laquelle je note quelques trucs et astuces. C'est donc tout à la fois un pense-bête personnel et un lieux de partage de mes maigres compétences. À ce titre j'attire l'attention du lecteur sur le fait que ce site ne peut en aucun cas remplacer la <a href="https://lilypond.org/manuals.fr.html">documentation officielle de Lilypond</a>. En complément je lui recommande chaudement de s'inscrire à la <a href="https://lists.gnu.org/mailman/listinfo/lilypond-user-fr">mailing list des utilisateurs francophone de Lilypond</a>  où il pourra correspondre avec de nombreux interlocuteurs compétents et d'une extraordinaire disponibilité. </p>
+<p>Ce blog est essentiellement le reflet de mon activé en matière d'édition de partitions de jazz avec Lilypond pour laquelle je note quelques trucs et astuces. C'est donc tout à la fois un pense-bête personnel et un lieu de partage de mes maigres compétences. À ce titre j'attire l'attention du lecteur sur le fait que ce site ne peut en aucun cas remplacer la <a href="https://lilypond.org/manuals.fr.html">documentation officielle de Lilypond</a>. En complément je lui recommande chaudement de s'inscrire à la <a href="https://lists.gnu.org/mailman/listinfo/lilypond-user-fr">mailing list des utilisateurs francophone de Lilypond</a>  où il pourra correspondre avec de nombreux interlocuteurs compétents et d'une extraordinaire disponibilité. </p>
 <h3>Hébergement</h3>
 <p>Ce site est hébergé sur <a href="https://github.com/">Github</a>, qui est un service web collaboratif d'hébergement et de gestion de développement de logiciels, utilisant le logiciel de gestion de versions <a href="https://git-scm.com/">Git</a>. Même s'il est surtout connu pour ses hébergements de projets de logiciels libre il permet également, sous certaines conditions, d'héberger des sites web statiques : <a href="https://pages.github.com/">voir ici</a>. </p>
 <p>À noter que depuis l'acquisition de Github par Microsoft en 2018 deux cas de fermetures de compte liés à des problèmes de DRM (Youtube-dl, Widevine) ont provoqués un certain trouble dans la communauté des libristes. Dans ce contexte utiliser Github pour partager des partitions peut ne pas être une solution très indiquée. Peut-être devrais-je migrer sur <a href="https://docs.gitlab.com/ee/user/project/pages/">Gitlab</a> ? En attendant je me suis contenté de demander aux moteurs de recherche de ne pas l'indexer (NoIndex NoFollow) ce qui en restreint la diffusion au seul bouche à oreilles.</p>
@@ -346,7 +346,7 @@
         <link href="https://myrealbook.vintherine.org/sources.html"/>
         <id>https://myrealbook.vintherine.org/sources.html</id>
 
-        <updated>2021-09-20T18:55:52+02:00</updated>
+        <updated>2021-09-22T18:08:38+02:00</updated>
             <summary>
                 <![CDATA[
                     Les partitions sont accessible via ce tableau utilisant un système de tri&hellip;
@@ -357,7 +357,7 @@
                 <p>Les partitions sont accessible via <a href="http://myrealbook.vintherine.org/scores/index.html" rel="nofollow">ce tableau </a>utilisant un système de tri multicritères (aide au dessus du tableau à droite). Attention : ce tableau est la seule page de ce site ne fonctionnant pas (encore) avec une feuille de style en cascade (CSS) permettant un redimensionnement automatique en fonction du matériel client (ordinateur, tablette, ordiphone...).</p>
 <p>Si vous souhaitez utiliser les fichiers sources incluses dans les partitions il vous faudra</p>
 <ul>
-<li>évidemment un lecteur de fichiers pdf sachant afficher les fichiers inclus. Pour ma part j'utilise <a href="https://okular.kde.org/fr/">Okular</a>.  Evince et Xpdf ne semblent pas offrir cette fonctionnalité contrairement à Master PDF Editor mais ce dernier est un logiciel non libre.</li>
+<li>évidemment un lecteur de fichiers pdf sachant afficher les fichiers inclus. Pour ma part j'utilise <a href="https://okular.kde.org/fr/">Okular</a>.  On peut utiliser aussi <a href="https://wiki.gnome.org/Apps/Evince">Evince</a> (la visionneuse de documents de Gnome) mais pas Xpdf. Master PDF Editor offre cette fonctionnalité mais est un logiciel non libre. Sous Windows j'imagine que Acrobat Reader sait faire ça mais qui utilise encore Windows aujourd'hui ? 😁</li>
 <li><a href="#toc_lilypond">à minima installer Lilypond sur votre ordinateur.</a></li>
 <li><a href="#toc_frescobaldi">utiliser un éditeur tel Frescobaldi</a></li>
 <li><a href="#toc_lilyjazz">d'installer les polices LilyJazz</a> (pour le look Real Book)</li>
