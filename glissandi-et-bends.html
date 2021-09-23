@@ -15,8 +15,8 @@
 
         <meta property="og:title" content="Glissandi et bends" /><meta property="og:site_name" content="MyRealBook" /><meta property="og:description" content="Les GlissandiPar défaut les glissandi de Lilypond sont rectilignes et relient obligatoirement deux notes." /><meta property="og:url" content="https://myrealbook.vintherine.org/glissandi-et-bends.html" /><meta property="og:type" content="article" />
         <style>:root{--body-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--heading-font:var(--body-font);--logo-font:var(--body-font);--menu-font:var(--body-font)}</style>
-        <link rel="stylesheet" href="https://myrealbook.vintherine.org/assets/css/style.css?v=d696f18df6b11ba33249ddccce7b8578">       
-        <script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://myrealbook.vintherine.org/glissandi-et-bends.html"},"headline":"Glissandi et bends","datePublished":"2021-08-30T16:06","dateModified":"2021-09-22T12:46","description":"Les GlissandiPar défaut les glissandi de Lilypond sont rectilignes et relient obligatoirement deux notes.","author":{"@type":"Person","name":"Vincent"},"publisher":{"@type":"Organization","name":"Vincent"}}</script>        
+        <link rel="stylesheet" href="https://myrealbook.vintherine.org/assets/css/style.css?v=163604d766392a9a0bb827e8681088cc">       
+        <script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://myrealbook.vintherine.org/glissandi-et-bends.html"},"headline":"Glissandi et bends","datePublished":"2021-08-30T16:06","dateModified":"2021-09-23T15:42","description":"Les GlissandiPar défaut les glissandi de Lilypond sont rectilignes et relient obligatoirement deux notes.","author":{"@type":"Person","name":"Vincent"},"publisher":{"@type":"Organization","name":"Vincent"}}</script>        
         
         
     </head>
@@ -110,36 +110,20 @@
 <p>Pour la forme il suffit d'un <code>\override Glissando.style = #'zigzag</code> dans le /score ou mieux dans un \layout. Quant à la note d'arrivée il faudra la masquer.</p>
 
 <p>La solution proposée dans la <a href="http://lilypond.org/doc/v2.19/Documentation/notation/expressive-marks-as-lines">documentation</a> est d'utiliser une note cachée dans une cadence avec les inconvénients suivants : du fait de la cadence le décompte de la mesure ne sera pas incrémentée (le rectifier avec \set Score.currentBarNumber = #[N° de la mesure]). il faudra également gérer les autres voix éventuelles et les ligatures ([ et ] derrière les notes concernées). </p>
-<pre class="verbatim">\relative c'' {
-  \time 3/4
-  \override Glissando.style = #'zigzag
-  c4 c
-  \cadenzaOn
-  c4\glissando
-  \hideNotes
-  c,4
-  \unHideNotes
-  \cadenzaOff
-  \bar "|"
-}</pre>
+<p><code>\version "2.22.1"</code></p>
+<p><code>\relative c'' {</code><br><code>  \time 3/4</code><br><code>  \override Glissando.style = #'zigzag</code><br><code>  c4 c</code><br><code>  \cadenzaOn</code><br><code>  c4\glissando</code><br><code>  \hideNotes</code><br><code>  c,4</code><br><code>  \unHideNotes</code><br><code>  \cadenzaOff</code><br><code>  \bar "|"</code><br><code>}</code></p>
 <figure class="post__image"><img loading="lazy"  src="media/posts/8/GlissandiDoc.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="media/posts/8/responsive/GlissandiDoc-xs.png 300w ,media/posts/8/responsive/GlissandiDoc-sm.png 480w ,media/posts/8/responsive/GlissandiDoc-md.png 768w"  alt="" width="325" height="139"></figure>
 <p>Pour ma  part je préfère passer par une afterGrace ce qui évite les désagréments évoqués plus haut.</p>
-<pre>\version "2.19.80"<br>\layout {<br>  \context {<br>  \Score<br>  \override Glissando.style = #'zigzag<br>  \override Glissando.minimum-length = #4<br>  \override Glissando.springs-and-rods = #ly:spanner::set-spacing-rods<br>  }<br>}<br><br>\relative c'' {<br>  c2 \afterGrace c \glissando { \hideNotes c,8 \unHideNotes } |<br> \afterGrace c'2 \glissando { \hideNotes c,8 \unHideNotes } r2 |<br> \afterGrace g' \glissando { \hideNotes g'8 \unHideNotes } r2<br>}</pre>
+<p><code>\version "2.22.1"</code></p>
+<p><code>\layout {</code><br><code>  \context {</code><br><code>    \Score</code><br><code>    \override Glissando.style = #'zigzag</code><br><code>    \override Glissando.minimum-length = #4</code><br><code>    \override Glissando.springs-and-rods = #ly:spanner::set-spacing-rods</code><br><code>  }</code><br><code>}</code><br><br><code>\relative c'' {</code><br><code>  c2 \afterGrace c \glissando { \hideNotes c,8 \unHideNotes } |</code><br><code>  \afterGrace c'2 \glissando { \hideNotes c,8 \unHideNotes } r2 |</code><br><code>  \afterGrace g' \glissando { \hideNotes g'8 \unHideNotes } r2</code><br><code>}</code></p>
 <figure class="post__image"><img loading="lazy"  src="media/posts/8/GlissandiModernes.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="media/posts/8/responsive/GlissandiModernes-xs.png 300w ,media/posts/8/responsive/GlissandiModernes-sm.png 480w ,media/posts/8/responsive/GlissandiModernes-md.png 768w"  alt="" width="641" height="129"></figure>
 <p>Notez dans le \layout les instructions  \override Glissando.minimum-length = #4 et \override Glissando.springs-and-rods = #ly:spanner::set-spacing-rods sans lesquels la longueur du glissando serait limitée à l'espace entre la note et l'afterGrace. Une alternative serait de définir afterGraceFraction en proportion de la note principale.<a href="http://lilypond.org/doc/v2.19/Documentation/notation/special-rhythmic-concerns.fr.html#grace-notes">Voir la documentation ici</a>.</p>
 <h3>Les bends</h3>
 <p>Lilypond utilise les sauts et chutes <strong>après</strong> une note avec la commande \bendAfter #±VALEUR, où valeur est positive pour une courbe vers le haut et négative pour une courbe vers le bas</p>
-<pre class="codecontent">\version "2.19.80"
-\relative c'' {
-  c2\bendAfter #+4
-  c2\bendAfter #-4
-  c2\bendAfter #+6.5
-  c2\bendAfter #-6.5
-  c2\bendAfter #+8
-  c2\bendAfter #-8
-}</pre>
+<p><code>\version "2.22.1" </code></p>
+<p><code>\relative c'' { </code><br><code>  c2\bendAfter #+4 </code><br><code>  c2\bendAfter #-4 </code><br><code>  c2\bendAfter #+6.5 </code><br><code>  c2\bendAfter #-6.5 </code><br><code>  c2\bendAfter #+8 </code><br><code>  c2\bendAfter #-8</code><br><code>}</code></p>
 <figure class="post__image"><img loading="lazy"  src="media/posts/8/BendAfter.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="media/posts/8/responsive/BendAfter-xs.png 300w ,media/posts/8/responsive/BendAfter-sm.png 480w ,media/posts/8/responsive/BendAfter-md.png 768w"  alt="" width="536" height="138"></figure><br>Malheureusement pas de bendBefore ! Si ce n'est en utilisant un markup crée par ces deux petites fonctions, scoopH et scoopB</p>
-<pre>\version "2.19.83"<br><br>#(define (scoop-stencil grob)<br> (ly:stencil-add<br> (ly:note-head::print grob)<br> (grob-interpret-markup grob<br> (markup #:with-dimensions '(0 . 0) '(0 . 0)<br> #:translate '(-0.2 . -0.5)<br> #:path 0.25 '((moveto -0.2 0.5)<br> (curveto 0.2 2 -1.2 2.5 -1.7 2.5))))))<br>scoopH = \once \override NoteHead #'stencil = #scoop-stencil<br><br> #(define (scoop-stencil grob)<br> (ly:stencil-add<br> (ly:note-head::print grob)<br> (grob-interpret-markup grob<br> (markup #:with-dimensions '(0 . 0) '(0 . 0)<br> #:translate '(-0.2 . -0.5)<br> #:path 0.25 '((moveto 0 0)<br> (curveto 0.2 -1 -1.2 -1.5 -1.7 -1.5))))))<br>scoopB = \once \override NoteHead #'stencil = #scoop-stencil<br><br>\relative c'' {<br>  \scoopH c2 \scoopB c2 <br>}</pre>
+<p><code>\version "2.22.1"</code><br><br><code>#(define (scoop-stencil grob)</code><br><code>   (ly:stencil-add</code><br><code>    (ly:note-head::print grob)</code><br><code>    (grob-interpret-markup grob</code><br><code>                           (markup #:with-dimensions '(0 . 0) '(0 . 0)</code><br><code>                                   #:translate '(-0.2 . -0.5)</code><br><code>                                   #:path 0.25 '((moveto -0.2 0.5)</code><br><code>                                                 (curveto 0.2 2 -1.2 2.5 -1.7 2.5))))))</code><br><code>scoopH = \once \override NoteHead #'stencil = #scoop-stencil</code><br><br><code>#(define (scoop-stencil grob)</code><br><code>   (ly:stencil-add</code><br><code>    (ly:note-head::print grob)</code><br><code>    (grob-interpret-markup grob</code><br><code>                           (markup #:with-dimensions '(0 . 0) '(0 . 0)</code><br><code>                                   #:translate '(-0.2 . -0.5)</code><br><code>                                   #:path 0.25 '((moveto 0 0)</code><br><code>                                                 (curveto 0.2 -1 -1.2 -1.5 -1.7 -1.5))))))</code><br><code>scoopB = \once \override NoteHead #'stencil = #scoop-stencil</code><br><br><code>\relative c'' {</code><br><code>  \scoopH c2 \scoopB c2</code><br><code>}</code></p>
 <figure class="post__image"><img loading="lazy"  src="media/posts/8/scoop.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="media/posts/8/responsive/scoop-xs.png 300w ,media/posts/8/responsive/scoop-sm.png 480w ,media/posts/8/responsive/scoop-md.png 768w"  alt="" width="267" height="120"></figure>
 <p>Cette fonction est dérivé de <a href="https://lists.gnu.org/archive/html/lilypond-user/2014-01/msg01200.html">ce message</a> sur la liste lilypond-user. </p>
                </div>

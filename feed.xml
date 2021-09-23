@@ -3,12 +3,45 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2021-09-22T19:17:54+02:00</updated>
+    <updated>2021-09-23T15:51:25+02:00</updated>
     <author>
         <name>Vincent</name>
     </author>
     <id>https://myrealbook.vintherine.org</id>
 
+    <entry>
+        <title>Silences multi-mesures</title>
+        <author>
+            <name>Vincent</name>
+        </author>
+        <link href="https://myrealbook.vintherine.org/silences-multi-mesures.html"/>
+        <id>https://myrealbook.vintherine.org/silences-multi-mesures.html</id>
+
+        <updated>2021-09-23T15:31:56+02:00</updated>
+            <summary>
+                <![CDATA[
+                    En langage Lilypondien les silences durant 1 ou mesures entières s'expriment avec&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>En langage Lilypondien les silences durant 1 ou mesures entières s'expriment avec un R avec une durée indiquée comme une note ordinaire, par exemples R1 pour une mesure en 4/4 ou R2. pour une mesure en 3/4</p>
+<p>voyez ci-dessous la différence avec un silence ordinaire, notamment l'alignement des pauses.</p>
+<p><code>{ \time 4/4 c''1 r1 R1 \time 3/4 c''2. r2. R2. }</code></p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/14/document-2.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/14/responsive/document-2-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-2-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-2-md.png 768w"  alt="Silences" width="618" height="106"></figure>
+<p>Il est possible d'ajouter un multiplicateur à la durée mais pour les compresser il faut ajouter la commande \compressMMRests { }</p>
+<p><code>{ \time 4/4 R1*4 \compressMMRests { R1*4 }\time 4/4 R1*4 }</code></p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/14/document-3.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/14/responsive/document-3-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-3-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-3-md.png 768w"  alt="Silences avec mutliplicateur" width="567" height="120"></figure>
+<p>D'autres manières de faire seraient soit d'utiliser la commande <a href="https://lilypond.org/doc/v2.22/Documentation/notation/writing-parts#compressing-empty-measures">\compressEmptyMeasures </a>soit de modifier à true la valeur  <a href="https://lilypond.org/doc/v2.22/Documentation/notation/the-set-command">skipBars</a> dans le contexte score mais cela impacterait également le comportement de Lilypond dans les cas de notes excédant la durée d'une mesure.</p>
+<p>Par défaut Lilypond représente par des « silences d’église » (ensembles de bâtons et rectangles) les silences d'une durée maximale de 10 mesures et par un seul silence allongé au delà. Cette valeur est stockée dans la variable MultiMeasureRest.expand-limit et peut être modifiée.</p>
+<p><code>{</code><br><code>  \time 4/4 \compressMMRests { R1*3 R1*7 R1*12 } \break</code><br><code>  \override MultiMeasureRest.expand-limit = #2</code><br><code>  \compressMMRests { R1*3 R1*7 R1*12 } </code><br><code>}</code></p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/14/document-4.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/14/responsive/document-4-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-4-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-4-md.png 768w"  alt="MultiMeasureRest.expand-limit" width="1176" height="267"></figure>
+<p>Il est possible grâce à une fonction supplémentaire d'indiquer la durée au milieu de la portée dégageant ainsi l'espace au dessus de celle-ci. Cette manière de faire, utilisée notamment  dans les real books, peut rendre plus lisibles d'éventuels textes au dessus du silence.  Cette  fonction due à Robin Bannister est décrite <a title="https://lsr.di.unimi.it/LSR/Item?id=753">ici</a>. Elle est également incluse dans le fichier  jazzextras.ily du projet <a href="https://github.com/OpenLilyPondFonts/lilyjazz">lilyjazz</a>.</p>
+<p><code>\version "2.22.1"</code><br><br><code>\paper { </code><br><code>  indent = #0 </code><br><code>  ragged-last = ##f</code><br><code>}</code><br><br><code>#(define (white-under grob) (grob-interpret-markup grob </code><br><code>                                                   (markup #:vcenter #:whiteout #:pad-x 1 (ly:grob-property grob 'text))))</code><br><br><code>inlineMMRN = {</code><br><code>  \once \override MultiMeasureRest.layer = #-2</code><br><code>  \once \override MultiMeasureRestNumber.layer = #-1</code><br><code>  \once \override MultiMeasureRestNumber.Y-offset = #0</code><br><code>  \once \override MultiMeasureRestNumber.stencil = #white-under</code><br><code>}</code><br><br><br><code>{ </code><br><code>  \compressMMRests { </code><br><code>    \override MultiMeasureRest #'expand-limit = #3</code><br><code>    \repeat volta 2 {</code><br><code>      s1*0_\markup \pad-around #0.5 { \italic { affichage standard } }</code><br><code>      R1*30^\markup { [SOLOS] } }</code><br><code>    \repeat volta 2 {</code><br><code>      s1*0_\markup \pad-around #0.5 { \italic { avec inlineMMRN } }</code><br><code>      \inlineMMRN R1*30^\markup { [SOLOS] } }</code><br><code>  }</code><br><code>}</code></p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/14/document.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/14/responsive/document-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-md.png 768w"  alt="InlineMMRN" width="1167" height="171"></figure>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Barres de reprises style Realbook</title>
         <author>
@@ -17,10 +50,10 @@
         <link href="https://myrealbook.vintherine.org/barres-de-reprises-style-realbook.html"/>
         <id>https://myrealbook.vintherine.org/barres-de-reprises-style-realbook.html</id>
 
-        <updated>2021-09-22T15:59:51+02:00</updated>
+        <updated>2021-09-23T10:11:34+02:00</updated>
             <summary>
                 <![CDATA[
-                    <p>Deux points distinguent la manière dont sont présentée les reprises dans les realbooks par rapport au traitement par défaut de Lilypond :</p>
+                    <p>Deux points distinguent la manière dont sont présentées les reprises dans les realbooks par rapport au traitement par défaut de Lilypond :</p>
 <ol>
 <li>les barres de reprises sont imprimées avec des crochets</li>
 <li>Une barre de reprise est imprimé même au début de la partition</li>
@@ -31,14 +64,14 @@
             </summary>
         <content type="html">
             <![CDATA[
-                <p>Deux points distinguent la manière dont sont présentée les reprises dans les realbooks par rapport au traitement par défaut de Lilypond :</p>
+                <p>Deux points distinguent la manière dont sont présentées les reprises dans les realbooks par rapport au traitement par défaut de Lilypond :</p>
 <ol>
 <li>les barres de reprises sont imprimées avec des crochets</li>
 <li>Une barre de reprise est imprimé même au début de la partition</li>
 </ol>
 <figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/13/Reprises.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/13/responsive/Reprises-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/13/responsive/Reprises-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/13/responsive/Reprises-md.png 768w"  alt="" width="1350" height="312"></figure>
 
-<p>Pour le premier points il faut changer dans le contexte score les valeurs par défaut. Il faut également créer la combinaison double barre / saut de ligne / début de reprise pour remplacer le <code>".|:-||"</code> par défaut </p>
+<p>Pour le premier point il faut changer dans le contexte score les valeurs par défaut. Il faut également créer la combinaison double barre / saut de ligne / début de reprise pour remplacer le <code>".|:-||"</code> par défaut </p>
 <p><code>\layout {</code><br><code>  \context {</code><br><code>    \Score</code><br><code>    %% Changing the defaults from engraver-init.ly</code><br><code>    startRepeatType = #"[|:"</code><br><code>    endRepeatType = #":|]"</code><br><code>    doubleRepeatType = #":|][|:"</code><br><code>  }</code><br><code>}</code><br><code>\defineBarLine "||-[|:" #'("||" "[|:" "[|:") </code></p>
 <p>Pour le deuxième point c'est un peu plus compliqué : il faudra d'abord coller la fonction suivante :</p>
 <p><code>showStartRepeatBar = {</code><br><code>  \once \override Score.BreakAlignment.break-align-orders =</code><br><code>        #(make-vector 3 '(instrument-name</code><br><code>                          left-edge</code><br><code>                          ambitus</code><br><code>                          breathing-sign</code><br><code>                          clef</code><br><code>                          key-signature</code><br><code>                          time-signature</code><br><code>                          staff-bar</code><br><code>                          custos))</code><br><code>      \once \override Staff.TimeSignature.space-alist =</code><br><code>        #'((first-note . (fixed-space . 2.0))</code><br><code>           (right-edge . (extra-space . 0.5))</code><br><code>           ;; free up some space between time signature</code><br><code>           ;; and repeat bar line</code><br><code>           (staff-bar . (extra-space . 1)))</code><br><code>}</code></p>
@@ -142,7 +175,7 @@
         <link href="https://myrealbook.vintherine.org/glissandi-et-bends.html"/>
         <id>https://myrealbook.vintherine.org/glissandi-et-bends.html</id>
 
-        <updated>2021-09-22T12:46:30+02:00</updated>
+        <updated>2021-09-23T15:42:46+02:00</updated>
             <summary>
                 <![CDATA[
                     <h4>Les Glissandi</h4>
@@ -159,36 +192,20 @@
 <p>Pour la forme il suffit d'un <code>\override Glissando.style = #'zigzag</code> dans le /score ou mieux dans un \layout. Quant à la note d'arrivée il faudra la masquer.</p>
 
 <p>La solution proposée dans la <a href="http://lilypond.org/doc/v2.19/Documentation/notation/expressive-marks-as-lines">documentation</a> est d'utiliser une note cachée dans une cadence avec les inconvénients suivants : du fait de la cadence le décompte de la mesure ne sera pas incrémentée (le rectifier avec \set Score.currentBarNumber = #[N° de la mesure]). il faudra également gérer les autres voix éventuelles et les ligatures ([ et ] derrière les notes concernées). </p>
-<pre class="verbatim">\relative c'' {
-  \time 3/4
-  \override Glissando.style = #'zigzag
-  c4 c
-  \cadenzaOn
-  c4\glissando
-  \hideNotes
-  c,4
-  \unHideNotes
-  \cadenzaOff
-  \bar "|"
-}</pre>
+<p><code>\version "2.22.1"</code></p>
+<p><code>\relative c'' {</code><br><code>  \time 3/4</code><br><code>  \override Glissando.style = #'zigzag</code><br><code>  c4 c</code><br><code>  \cadenzaOn</code><br><code>  c4\glissando</code><br><code>  \hideNotes</code><br><code>  c,4</code><br><code>  \unHideNotes</code><br><code>  \cadenzaOff</code><br><code>  \bar "|"</code><br><code>}</code></p>
 <figure class="post__image"><img loading="lazy"  src="media/posts/8/GlissandiDoc.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="media/posts/8/responsive/GlissandiDoc-xs.png 300w ,media/posts/8/responsive/GlissandiDoc-sm.png 480w ,media/posts/8/responsive/GlissandiDoc-md.png 768w"  alt="" width="325" height="139"></figure>
 <p>Pour ma  part je préfère passer par une afterGrace ce qui évite les désagréments évoqués plus haut.</p>
-<pre>\version "2.19.80"<br>\layout {<br>  \context {<br>  \Score<br>  \override Glissando.style = #'zigzag<br>  \override Glissando.minimum-length = #4<br>  \override Glissando.springs-and-rods = #ly:spanner::set-spacing-rods<br>  }<br>}<br><br>\relative c'' {<br>  c2 \afterGrace c \glissando { \hideNotes c,8 \unHideNotes } |<br> \afterGrace c'2 \glissando { \hideNotes c,8 \unHideNotes } r2 |<br> \afterGrace g' \glissando { \hideNotes g'8 \unHideNotes } r2<br>}</pre>
+<p><code>\version "2.22.1"</code></p>
+<p><code>\layout {</code><br><code>  \context {</code><br><code>    \Score</code><br><code>    \override Glissando.style = #'zigzag</code><br><code>    \override Glissando.minimum-length = #4</code><br><code>    \override Glissando.springs-and-rods = #ly:spanner::set-spacing-rods</code><br><code>  }</code><br><code>}</code><br><br><code>\relative c'' {</code><br><code>  c2 \afterGrace c \glissando { \hideNotes c,8 \unHideNotes } |</code><br><code>  \afterGrace c'2 \glissando { \hideNotes c,8 \unHideNotes } r2 |</code><br><code>  \afterGrace g' \glissando { \hideNotes g'8 \unHideNotes } r2</code><br><code>}</code></p>
 <figure class="post__image"><img loading="lazy"  src="media/posts/8/GlissandiModernes.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="media/posts/8/responsive/GlissandiModernes-xs.png 300w ,media/posts/8/responsive/GlissandiModernes-sm.png 480w ,media/posts/8/responsive/GlissandiModernes-md.png 768w"  alt="" width="641" height="129"></figure>
 <p>Notez dans le \layout les instructions  \override Glissando.minimum-length = #4 et \override Glissando.springs-and-rods = #ly:spanner::set-spacing-rods sans lesquels la longueur du glissando serait limitée à l'espace entre la note et l'afterGrace. Une alternative serait de définir afterGraceFraction en proportion de la note principale.<a href="http://lilypond.org/doc/v2.19/Documentation/notation/special-rhythmic-concerns.fr.html#grace-notes">Voir la documentation ici</a>.</p>
 <h3>Les bends</h3>
 <p>Lilypond utilise les sauts et chutes <strong>après</strong> une note avec la commande \bendAfter #±VALEUR, où valeur est positive pour une courbe vers le haut et négative pour une courbe vers le bas</p>
-<pre class="codecontent">\version "2.19.80"
-\relative c'' {
-  c2\bendAfter #+4
-  c2\bendAfter #-4
-  c2\bendAfter #+6.5
-  c2\bendAfter #-6.5
-  c2\bendAfter #+8
-  c2\bendAfter #-8
-}</pre>
+<p><code>\version "2.22.1" </code></p>
+<p><code>\relative c'' { </code><br><code>  c2\bendAfter #+4 </code><br><code>  c2\bendAfter #-4 </code><br><code>  c2\bendAfter #+6.5 </code><br><code>  c2\bendAfter #-6.5 </code><br><code>  c2\bendAfter #+8 </code><br><code>  c2\bendAfter #-8</code><br><code>}</code></p>
 <figure class="post__image"><img loading="lazy"  src="media/posts/8/BendAfter.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="media/posts/8/responsive/BendAfter-xs.png 300w ,media/posts/8/responsive/BendAfter-sm.png 480w ,media/posts/8/responsive/BendAfter-md.png 768w"  alt="" width="536" height="138"></figure><br>Malheureusement pas de bendBefore ! Si ce n'est en utilisant un markup crée par ces deux petites fonctions, scoopH et scoopB</p>
-<pre>\version "2.19.83"<br><br>#(define (scoop-stencil grob)<br> (ly:stencil-add<br> (ly:note-head::print grob)<br> (grob-interpret-markup grob<br> (markup #:with-dimensions '(0 . 0) '(0 . 0)<br> #:translate '(-0.2 . -0.5)<br> #:path 0.25 '((moveto -0.2 0.5)<br> (curveto 0.2 2 -1.2 2.5 -1.7 2.5))))))<br>scoopH = \once \override NoteHead #'stencil = #scoop-stencil<br><br> #(define (scoop-stencil grob)<br> (ly:stencil-add<br> (ly:note-head::print grob)<br> (grob-interpret-markup grob<br> (markup #:with-dimensions '(0 . 0) '(0 . 0)<br> #:translate '(-0.2 . -0.5)<br> #:path 0.25 '((moveto 0 0)<br> (curveto 0.2 -1 -1.2 -1.5 -1.7 -1.5))))))<br>scoopB = \once \override NoteHead #'stencil = #scoop-stencil<br><br>\relative c'' {<br>  \scoopH c2 \scoopB c2 <br>}</pre>
+<p><code>\version "2.22.1"</code><br><br><code>#(define (scoop-stencil grob)</code><br><code>   (ly:stencil-add</code><br><code>    (ly:note-head::print grob)</code><br><code>    (grob-interpret-markup grob</code><br><code>                           (markup #:with-dimensions '(0 . 0) '(0 . 0)</code><br><code>                                   #:translate '(-0.2 . -0.5)</code><br><code>                                   #:path 0.25 '((moveto -0.2 0.5)</code><br><code>                                                 (curveto 0.2 2 -1.2 2.5 -1.7 2.5))))))</code><br><code>scoopH = \once \override NoteHead #'stencil = #scoop-stencil</code><br><br><code>#(define (scoop-stencil grob)</code><br><code>   (ly:stencil-add</code><br><code>    (ly:note-head::print grob)</code><br><code>    (grob-interpret-markup grob</code><br><code>                           (markup #:with-dimensions '(0 . 0) '(0 . 0)</code><br><code>                                   #:translate '(-0.2 . -0.5)</code><br><code>                                   #:path 0.25 '((moveto 0 0)</code><br><code>                                                 (curveto 0.2 -1 -1.2 -1.5 -1.7 -1.5))))))</code><br><code>scoopB = \once \override NoteHead #'stencil = #scoop-stencil</code><br><br><code>\relative c'' {</code><br><code>  \scoopH c2 \scoopB c2</code><br><code>}</code></p>
 <figure class="post__image"><img loading="lazy"  src="media/posts/8/scoop.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="media/posts/8/responsive/scoop-xs.png 300w ,media/posts/8/responsive/scoop-sm.png 480w ,media/posts/8/responsive/scoop-md.png 768w"  alt="" width="267" height="120"></figure>
 <p>Cette fonction est dérivé de <a href="https://lists.gnu.org/archive/html/lilypond-user/2014-01/msg01200.html">ce message</a> sur la liste lilypond-user. </p>
             ]]>
@@ -202,7 +219,7 @@
         <link href="https://myrealbook.vintherine.org/repetitions-avec-fins-alternatives.html"/>
         <id>https://myrealbook.vintherine.org/repetitions-avec-fins-alternatives.html</id>
 
-        <updated>2021-09-21T15:02:00+02:00</updated>
+        <updated>2021-09-23T15:44:59+02:00</updated>
             <summary>
                 <![CDATA[
                     <p>Avec Lilypond les répétitions avec fins alternatives sont indiquées ordinairement de la manière suivante :</p>
@@ -213,7 +230,7 @@
             <![CDATA[
                 <p>Avec Lilypond les répétitions avec fins alternatives sont indiquées ordinairement de la manière suivante :</p>
 
-<pre>\repeat volta x {<br> ... musique ...<br> }<br>\alternative {<br> { ... alternative 1 }<br> { ... alternative 2 }<br> { ... alternative x }<br> }</pre>
+<p><code>\repeat volta x {</code><br><code> ... musique ...</code><br><code> }</code><br><code>\alternative {</code><br><code> { ... alternative 1 }</code><br><code> { ... alternative 2 }</code><br><code> { ... alternative x }</code><br><code> }</code></p>
 <p>Ce qui donnera par exemple quelque chose comme ceci :</p>
 <figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/7/AlternatisesStandards.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-md.png 768w"  alt="" width="441" height="66"></figure>
 
@@ -233,10 +250,11 @@
 <li>Il est possible de mixer plusieurs instructions en une seule commande. Par exemple  <code>\set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)</code> termine le crochet, ouvre le crochet de l'alternative suivante et imprime la barre de reprise.</li>
 <li>Pour intégrer des indications textuelles il faut préalablement définir celles-ci dans un markup puis les intégrer par la comande <code>\set Score.repeatCommands = #(list(list 'volta le_markup))</code>. Par exemple :</li>
 </ul>
-<pre>\version "2.19.83"<br>voltaAdLib = \markup { 1. 2. 3... \text \italic { ad lib. } }<br>voltaOnCue= \markup \small \with-color #(x11-color 'red) { \text \italic { On Cue } }<br><br>\relative c'' {<br> c4 c c c<br> \set Score.repeatCommands = #'(start-repeat)<br> c4 c c c <br> \set Score.repeatCommands = #(list(list 'volta voltaAdLib))<br> c4 c c c<br> \set Score.repeatCommands = #(list '(volta #f) (list 'volta voltaOnCue) 'end-repeat)<br> c1<br> \set Score.repeatCommands = #'((volta #f))<br>}</pre>
+<p><code>\version "2.22.1"</code></p>
+<p><code>voltaAdLib = \markup { 1. 2. 3... \text \italic { ad lib. } }</code><br><code>voltaOnCue= \markup \small \with-color #(x11-color 'red) { \text \italic { On Cue } }</code><br><br><code>\relative c'' {</code><br><code> c4 c c c</code><br><code> \set Score.repeatCommands = #'(start-repeat)</code><br><code> c4 c c c </code><br><code> \set Score.repeatCommands = #(list(list 'volta voltaAdLib))</code><br><code> c4 c c c</code><br><code> \set Score.repeatCommands = #(list '(volta #f) (list 'volta voltaOnCue) 'end-repeat)</code><br><code> c1</code><br><code> \set Score.repeatCommands = #'((volta #f))</code><br><code>}</code></p>
 <figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/7/OnCue.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/7/responsive/OnCue-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/7/responsive/OnCue-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/7/responsive/OnCue-md.png 768w"  alt="" width="823" height="157"></figure>
 <p>Voici pour finir le code complet de <strong>Jeannine</strong> :  </p>
-<pre>\version "2.22.1"<br>#(set-global-staff-size 18)<br><br>\paper {<br>   indent = 0\mm<br>   markup-system-spacing = #'((basic-distance . 20)<br>                              (minimum-distance . 8)<br>                              (padding . 1))<br>}<br><br>\header {<br>   title = Jeannine<br>   composer = "Duke Pearson"<br>   poet = "Med. Up Swing"<br>   tagline = ##f<br>}<br><br>theChords = \chordmode {<br>   \set chordChanges = ##t<br>   as1*4:m7 as:m7 fis1:m7<br>   b1:7 e:7+ a:7 bes:m7 es:9+ as1:7+ es:9+<br>   as:7+ es2:m7 as:7 <br>   des1:7+ g2:m5-7 c:7 f1*2:7+ f1:m7 bes:7 bes:m7 es:7<br>}<br><br>voltaOne = \markup { 1 \text { &amp; } 3 \text \fontsize #4 \with-color #red \italic { " (fine)" }}<br><br><br>theNotes = \relative c'' {<br>  \set Score.markFormatter = #format-mark-box-alphabet<br>  \clef "treble" \key as \major \time 4/4 \mark #1<br>  \repeat volta 3 {<br>    r8 es4-. r8 es4-. r | r8 es4-. r8 es4-. f-. <br>    ges--( f8 es ~ es2 ~ | es1) \break<br>    r8 es4-. r8 es4-. r | r8 es4-. r8 es4-. f-. <br>    ges-- f8 es ~ es2 ~ | es r8 c des as' ~ \break<br>    as4. e8-. r des4-. a8 | as'!4-- g8 ges-&gt; ~ ges as ges b-&gt; ~ <br>    b2 ~ b8 bes b ges-&gt; ~ | ges2. e8 es~ \break | <br>    es4. es8 r2 | r8 bes( \times 2/3 { c des es } ges4 e8 es) ~ | <br>  }<br>  \alternative {<br>    { <br>      \set Score.repeatCommands = #(list(list 'volta voltaOne)) <br>      es1 ~ | es1 <br>      \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat) <br>    }<br>    { <br>      es2 \repeatTie \times 2/3 { es4 c es } f2 es <br>      \set Score.repeatCommands = #'((volta #f))<br>      \bar "||" \break \mark #2<br>      as,2 ~ as8( bes \times 2/3 { c des es } | <br>      f4-.) r8 g-&gt;~g( f g a-&gt;) ~ <br>      a1 | r8 e4.-&gt; \times 2/3 { f4 g a } \break<br>      as?2 \times 2/3 { as4 g as } | bes2 f | <br>      bes1 ~ | bes2. r4 \bar ":|." <br>    }<br>  }<br>}<br><br>\score {<br>   &lt;&lt;<br>     \new ChordNames \theChords<br>     \new Staff \theNotes<br>   &gt;&gt;<br>} </pre>
+<p><code>\version "2.22.1"</code><br><br><code>\paper {</code><br><code>   indent = 0\mm</code><br><code>   markup-system-spacing = #'((basic-distance . 20)</code><br><code>                              (minimum-distance . 8)</code><br><code>                              (padding . 1))</code><br><code>}</code><br><br><code>\header {</code><br><code>   title = Jeannine</code><br><code>   composer = "Duke Pearson"</code><br><code>   poet = "Med. Up Swing"</code><br><code>   tagline = ##f</code><br><code>}</code><br><br><code>theChords = \chordmode {</code><br><code>   \set chordChanges = ##t</code><br><code>   as1*4:m7 as:m7 fis1:m7</code><br><code>   b1:7 e:7+ a:7 bes:m7 es:9+ as1:7+ es:9+</code><br><code>   as:7+ es2:m7 as:7 </code><br><code>   des1:7+ g2:m5-7 c:7 f1*2:7+ f1:m7 bes:7 bes:m7 es:7</code><br><code>}</code><br><br><code>voltaOne = \markup { 1 \text { &amp; } 3 \text \fontsize #4 \with-color #red \italic { " (fine)" }}</code><br><br><br><code>theNotes = \relative c'' {</code><br><code>  \set Score.markFormatter = #format-mark-box-alphabet</code><br><code>  \clef "treble" \key as \major \time 4/4 \mark #1</code><br><code>  \repeat volta 3 {</code><br><code>    r8 es4-. r8 es4-. r | r8 es4-. r8 es4-. f-. </code><br><code>    ges--( f8 es ~ es2 ~ | es1) \break</code><br><code>    r8 es4-. r8 es4-. r | r8 es4-. r8 es4-. f-. </code><br><code>    ges-- f8 es ~ es2 ~ | es r8 c des as' ~ \break</code><br><code>    as4. e8-. r des4-. a8 | as'!4-- g8 ges-&gt; ~ ges as ges b-&gt; ~ </code><br><code>    b2 ~ b8 bes b ges-&gt; ~ | ges2. e8 es~ \break | </code><br><code>    es4. es8 r2 | r8 bes( \times 2/3 { c des es } ges4 e8 es) ~ | </code><br><code>  }</code><br><code>  \alternative {</code><br><code>    { </code><br><code>      \set Score.repeatCommands = #(list(list 'volta voltaOne)) </code><br><code>      es1 ~ | es1 </code><br><code>      \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat) </code><br><code>    }</code><br><code>    { </code><br><code>      es2 \repeatTie \times 2/3 { es4 c es } f2 es </code><br><code>      \set Score.repeatCommands = #'((volta #f))</code><br><code>      \bar "||" \break \mark #2</code><br><code>      as,2 ~ as8( bes \times 2/3 { c des es } | </code><br><code>      f4-.) r8 g-&gt;~g( f g a-&gt;) ~ </code><br><code>      a1 | r8 e4.-&gt; \times 2/3 { f4 g a } \break</code><br><code>      as?2 \times 2/3 { as4 g as } | bes2 f | </code><br><code>      bes1 ~ | bes2. r4 \bar ":|." </code><br><code>    }</code><br><code>  }</code><br><code>}</code><br><br><code>\score {</code><br><code>   &lt;&lt;</code><br><code>     \new ChordNames \theChords</code><br><code>     \new Staff \theNotes</code><br><code>   &gt;&gt;</code><br><code>} </code></p>
 <figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/7/jeannine.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/7/responsive/jeannine-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/7/responsive/jeannine-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/7/responsive/jeannine-md.png 768w"  alt="" width="1585" height="1090"> </figure>
             ]]>
         </content>
@@ -249,7 +267,7 @@
         <link href="https://myrealbook.vintherine.org/lilypond-indications-rythmiques.html"/>
         <id>https://myrealbook.vintherine.org/lilypond-indications-rythmiques.html</id>
 
-        <updated>2021-09-20T18:45:54+02:00</updated>
+        <updated>2021-09-23T15:51:25+02:00</updated>
             <summary>
                 <![CDATA[
                     <p>Lylipond dispose d'une instruction pour transformer les têtes de notes en formes de "slashes". Cela indique ordinairement une section où le musicien est libre de jouer les notes qu'il veut à condition de respecter le rythme. Par exemple :</p>
@@ -263,23 +281,14 @@
 <p><img loading="lazy" src="http://lilypond.org/doc/v2.19/Documentation/3b/lily-25cb0b78.png" data-is-external-image="true"  alt="[image of music]" align="middle" border="0"></p>
 
 <p>ce qui s'obtient par le code :</p>
-<pre class="verbatim">\new Voice \with {
-  \consists "Pitch_squash_engraver"
-} \relative {
-  e''8 e g a a16( bes) a8 g
-  \improvisationOn
-  e8 ~
-  2 ~ 8 f4 f8 ~
-  2
-  \improvisationOff
-  a16( bes) a8 g e
-}</pre>
+<p><code>\new Voice \with { \consists "Pitch_squash_engraver" } </code><br><code>\relative { </code><br><code>  e''8 e g a a16( bes) a8 g </code><br><code>  \improvisationOn e8 ~ 2 ~ 8 f4 f8 ~ 2 </code><br><code>  \improvisationOff a16( bes) a8 g e </code><br><code>}</code></p>
 <p>La section est limitée par <code>\improvisationOn ../.. \improvisation\Off</code></p>
 <p>Par ailleurs c'est le contexte <code>\consists "Pitch_squash_engraver"</code> qui permet que toutes les notes s'affichent au centre de la portée. En son absence les notes s'afficheraient à leur emplacement ordinaire.</p>
 <p>Ce type de notation est fréquemment utilisé en jazz pour la mise en place de tout ou partie de la section rythmique, ici dans la voix basse :</p>
 <figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/5/729313fb13a2421f812e5632ae41638a.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/5/responsive/729313fb13a2421f812e5632ae41638a-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/5/responsive/729313fb13a2421f812e5632ae41638a-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/5/responsive/729313fb13a2421f812e5632ae41638a-md.png 768w"  alt="" width="1084" height="220"></figure>
 <p>Le code :</p>
-<pre>\version "2.22.1"<br>#(set-global-staff-size 18)<br>\include "jazzchords.ily"<br>\include "lilyjazz.ily"<br>\include "jazzextras.ily"<br><br><br>theNotes = \relative c'' {<br> \clef "treble" \key bes \major \time 4/4<br> \override Rest #'staff-position = #0<br> r2 r8 es c4-. | bes2 es | a g | es4-. r ^\markup \small "Solo break..." r2<br>}<br><br><br>Rythme= \relative c' {<br> \improvisationOn<br> \override NoteHead.no-ledgers = ##t % pas de lignes additionelles<br> \override Rest #'staff-position = #-6 % position des silences<br> c4. 8~ 4 4 | r4 8 r8 2 | 2 2 | s1 <br>}<br><br>harmonies = \chordmode {<br> f4.:8 bes:13 bes/as g:8 c2:8 f:8 bes:9-13 es:6.9<br>}<br><br>\score {<br> &lt;&lt;<br> \new ChordNames {<br> \set chordChanges = ##t<br> \harmonies<br> }<br> \new Staff &lt;&lt;<br> \theNotes \\ \Rythme<br> &gt;&gt; &gt;&gt;<br>}</pre>
+<p><code>\version "2.22.1"</code></p>
+<p><code>#(set-global-staff-size 18)</code><br><code>\include "jazzchords.ily"</code><br><code>\include "lilyjazz.ily"</code><br><code>\include "jazzextras.ily"</code><br><br><br><code>theNotes = \relative c'' {</code><br><code> \clef "treble" \key bes \major \time 4/4</code><br><code> \override Rest #'staff-position = #0</code><br><code> r2 r8 es c4-. | bes2 es | a g | es4-. r ^\markup \small "Solo break..." r2</code><br><code>}</code><br><br><br><code>Rythme= \relative c' {</code><br><code> \improvisationOn</code><br><code> \override NoteHead.no-ledgers = ##t % pas de lignes additionelles</code><br><code> \override Rest #'staff-position = #-6 % position des silences</code><br><code> c4. 8~ 4 4 | r4 8 r8 2 | 2 2 | s1 </code><br><code>}</code><br><br><code>harmonies = \chordmode {</code><br><code> f4.:8 bes:13 bes/as g:8 c2:8 f:8 bes:9-13 es:6.9</code><br><code>}</code><br><br><code>\score {</code><br><code> &lt;&lt;</code><br><code> \new ChordNames {</code><br><code> \set chordChanges = ##t</code><br><code> \harmonies</code><br><code> }</code><br><code> \new Staff &lt;&lt;</code><br><code> \theNotes \\ \Rythme</code><br><code> &gt;&gt; &gt;&gt;</code><br><code>}</code></p>
 <p>On notera :</p>
 <ul>
 <li>l'absence de \consists "Pitch_squash_engraver" dans la voix rythmique et donc le positionnement des notes en fonction de leur valeur</li>
@@ -287,10 +296,10 @@
 </ul>
 <p>Pour passer la voix en haut changer la valeur de Rest #'staff-position dans Rythme ( par exemple #6) et inverser les 2 voix <code class="inline-code">\Rythme \\ \theNotes</code></p>
 <figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/5/3303fb7dc05041ce9e95b34b60fe1aea.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/5/responsive/3303fb7dc05041ce9e95b34b60fe1aea-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/5/responsive/3303fb7dc05041ce9e95b34b60fe1aea-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/5/responsive/3303fb7dc05041ce9e95b34b60fe1aea-md.png 768w"  alt="" width="1529" height="191"> </figure>
-<p>Dans l'exemple qui suit la ligne de basse est totalement écrite et seule le rythme est indiqué pour le piano (ou la guitare). Les temps non significatifs sont remplacés par des slashes obtenus en remplacement les soupirs (voir la fonction "comp" dans le code ci-dessous)</p>
+<p>Dans l'exemple qui suit la ligne de basse est totalement écrite et seul le rythme est indiqué pour le piano (ou la guitare). Les temps non significatifs sont remplacés par des slashes obtenus en remplacement les soupirs (voir la fonction "comp" dans le code ci-dessous)</p>
 <figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/5/8eca286f0b1e4b428d91a67f9ad15def.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/5/responsive/8eca286f0b1e4b428d91a67f9ad15def-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/5/responsive/8eca286f0b1e4b428d91a67f9ad15def-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/5/responsive/8eca286f0b1e4b428d91a67f9ad15def-md.png 768w"  alt="" width="1533" height="459"></figure>
 <p>le code complet :</p>
-<pre>\version "2.22.1"<br>#(set-global-staff-size 18)<br>\include "jazzchords.ily"<br>\include "lilyjazz.ily"<br>\include "jazzextras.ily"<br><br>comp = #(define-music-function (count) (integer?)<br> #{<br> \override Rest.stencil = #ly:percent-repeat-item-interface::beat-slash<br> \override Rest.thickness = #0.48<br> \repeat unfold $count { r4 }<br> \revert Rest.stencil<br> #}<br> )<br><br><br>chordsRhythm = \relative c' {<br> \override Rest #'staff-position = #8<br> \improvisationOn \override NoteHead.no-ledgers = ##t <br> <br> \comp #3 e8 8~ | 4 \comp #3 | \comp #3 8 8~ | 4 \comp #3<br> \comp #3 8 8~ | 4 8 8~ 4 \comp #3 r8 8 8 8~ | 4 \comp #3<br>}<br><br>Basse = \relative c {<br> \override Rest #'staff-position = #0<br> \clef "bass" \key as \major \time 4/4<br> bes4 4 c8 4 des8~ | 2 r8 c f, c' | bes4 4 c8 4 des8~ | 4 r8 es16 e f c f,8 ~ 4 |<br> bes4 4 c8 4 des8~ | 8 8 d es~ es4 g8 bes | as es as,4 8 g ges f8~ | 4. c'8 ges'4 f<br>}<br><br><br>harmonies = \chordmode {<br> \set chordChanges = ##t<br> bes2:m7 c4.:m7 des8:7+ s2 c:m7 bes2:m7 c4.:m7 des8:7+ s2 f:9+13-<br> bes2:m7 c4.:m7 des8:7+ s2 es:7sus4 as:7+ s8 g:7 as:7/ges f:9- s1<br>}<br><br><br>\score {<br> &lt;&lt;<br> \new ChordNames { \harmonies }<br> \new Staff \with {<br> instrumentName = \markup {<br> \column { "rhythm"<br> \line { "section" }<br> }<br> }<br> }<br> &lt;&lt;<br> \chordsRhythm \\ \Basse<br> &gt;&gt; <br> &gt;&gt;<br>} </pre>
+<p><code>\version "2.22.1"</code><br><br><code>#(set-global-staff-size 18)</code><br><code>\include "jazzchords.ily"</code><br><code>\include "lilyjazz.ily"</code><br><code>\include "jazzextras.ily"</code><br><br><code>comp = #(define-music-function (count) (integer?)</code><br><code>          #{</code><br><code>            \override Rest.stencil = #ly:percent-repeat-item-interface::beat-slash</code><br><code>            \override Rest.thickness = #0.48</code><br><code>            \repeat unfold $count { r4 }</code><br><code>            \revert Rest.stencil</code><br><code>          #}</code><br><code>          )</code><br><br><code>chordsRhythm = \relative c' {</code><br><code>  \override Rest #'staff-position = #8</code><br><code>  \improvisationOn \override NoteHead.no-ledgers = ##t</code><br><br><code>  \comp #3 e8 8~ | 4 \comp #3 | \comp #3 8 8~ | 4 \comp #3</code><br><code>  \comp #3 8 8~ | 4 8 8~ 4 \comp #3 r8 8 8 8~ | 4 \comp #3</code><br><code>}</code><br><br><code>Basse = \relative c {</code><br><code>  \override Rest #'staff-position = #0</code><br><code>  \clef "bass" \key as \major \time 4/4</code><br><code>  bes4 4 c8 4 des8~ | 2 r8 c f, c' | bes4 4 c8 4 des8~ | 4 r8 es16 e f c f,8 ~ 4 |</code><br><code>  bes4 4 c8 4 des8~ | 8 8 d es~ es4 g8 bes | as es as,4 8 g ges f8~ | 4. c'8 ges'4 f</code><br><code>}</code><br><br><code>harmonies = \chordmode {</code><br><code>  \set chordChanges = ##t</code><br><code>  bes2:m7 c4.:m7 des8:7+ s2 c:m7 bes2:m7 c4.:m7 des8:7+ s2 f:9+13-</code><br><code>  bes2:m7 c4.:m7 des8:7+ s2 es:7sus4 as:7+ s8 g:7 as:7/ges f:9- s1</code><br><code>}</code><br><br><code>\score {</code><br><code>  &lt;&lt;</code><br><code>    \new ChordNames { \harmonies }</code><br><code>    \new Staff \with {</code><br><code>      instrumentName = \markup {</code><br><code>        \column { "rhythm"</code><br><code>                  \line { "section" }</code><br><code>        }</code><br><code>      }</code><br><code>    }</code><br><code>    &lt;&lt;</code><br><code>      \chordsRhythm \\ \Basse</code><br><code>    &gt;&gt;</code><br><code>  &gt;&gt;</code><br><code>}</code><br><br></p>
 <p> </p>
             ]]>
         </content>
@@ -303,16 +312,16 @@
         <link href="https://myrealbook.vintherine.org/about.html"/>
         <id>https://myrealbook.vintherine.org/about.html</id>
 
-        <updated>2021-09-20T18:44:20+02:00</updated>
+        <updated>2021-09-23T10:22:51+02:00</updated>
             <summary>
                 <![CDATA[
-                    <p>À l'origine de ce site un simple besoin personnel de regrouper sur un support de type tablette (plus facile à transporter qu'une collection de <a href="https://fr.wikipedia.org/wiki/Real_Book_(jazz)">Real books</a>) toutes les partitions que je suis successible de jouer. </p>
+                    <p>À l'origine de ce site un simple besoin personnel de regrouper sur un support de type tablette (plus facile à transporter qu'une collection de <a href="https://fr.wikipedia.org/wiki/Real_Book_(jazz)">Real books</a>) toutes les partitions que je suis susceptible de jouer. </p>
 
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                <p>À l'origine de ce site un simple besoin personnel de regrouper sur un support de type tablette (plus facile à transporter qu'une collection de <a href="https://fr.wikipedia.org/wiki/Real_Book_(jazz)">Real books</a>) toutes les partitions que je suis successible de jouer. </p>
+                <p>À l'origine de ce site un simple besoin personnel de regrouper sur un support de type tablette (plus facile à transporter qu'une collection de <a href="https://fr.wikipedia.org/wiki/Real_Book_(jazz)">Real books</a>) toutes les partitions que je suis susceptible de jouer. </p>
 
 <p>Parmi mes contraintes :</p>
 <ul>
@@ -325,14 +334,14 @@
 <li>Regrouper et rendre accessibles ces partitions</li>
 <li>Partager quelques idées ou astuces liées à l'éditions des partitions de jazz</li>
 </ul>
-<p>Pour plus de détail je vous renvois aux articles suivant :</p>
+<p>Pour plus de détail je vous renvoies aux articles suivants :</p>
 <ul>
 <li><a href="https://myrealbook.vintherine.org/a-propos-de-moi-et-comment-me-contacter.html">À propos de moi (et comment me contacter)</a></li>
 <li><a href="https://myrealbook.vintherine.org/sources.html" rel="nofollow">À propos des partitions et de leurs fichiers sources</a></li>
 <li><a href="https://myrealbook.vintherine.org/a-propos-des-logiciels-deditions-utilises.html">À propos des outils d'éditions utilisé (Lilypond, Frescobaldi, MuseScore...)</a></li>
 <li><a href="https://myrealbook.vintherine.org/a-propos-du-blog-avertissement-outils-hebergement.html">À propos du blog (avertissement, outils, hébergement)</a></li>
 </ul>
-<p> </p>
+<p>Enfin un grand merci aux nombreux contributeurs de la liste de discussion des utilisateurs francophones de Lilypond pour leurs encouragements, remarques et corrections.</p>
 <p> </p>
 <p> </p>
             ]]>
@@ -346,7 +355,7 @@
         <link href="https://myrealbook.vintherine.org/sources.html"/>
         <id>https://myrealbook.vintherine.org/sources.html</id>
 
-        <updated>2021-09-22T19:17:54+02:00</updated>
+        <updated>2021-09-23T10:17:38+02:00</updated>
             <summary>
                 <![CDATA[
                     Les partitions sont accessible via ce tableau utilisant un système de tri&hellip;
@@ -357,7 +366,7 @@
                 <p>Les partitions sont accessible via <a href="http://myrealbook.vintherine.org/scores/index.html" rel="nofollow">ce tableau </a>utilisant un système de tri multicritères (aide au dessus du tableau à droite). Attention : ce tableau est la seule page de ce site ne fonctionnant pas (encore) avec une feuille de style en cascade (CSS) permettant un redimensionnement automatique en fonction du matériel client (ordinateur, tablette, ordiphone...).</p>
 <p>Si vous souhaitez utiliser les fichiers sources incluses dans les partitions il vous faudra</p>
 <ul>
-<li>évidemment un lecteur de fichiers pdf sachant afficher les fichiers inclus. Pour ma part j'utilise <a href="https://okular.kde.org/fr/">Okular</a>.  On peut utiliser aussi <a href="https://wiki.gnome.org/Apps/Evince">Evince</a> (la visionneuse de documents de Gnome) mais pas Xpdf. Master PDF Editor offre cette fonctionnalité mais est un logiciel non libre. Sous Windows j'imagine que Acrobat Reader sait faire ça mais qui utilise encore Windows aujourd'hui ? 😁</li>
+<li>évidemment un lecteur de fichiers pdf sachant afficher les fichiers inclus. Pour ma part j'utilise <a href="https://okular.kde.org/fr/">Okular</a>.  On peut utiliser aussi <a href="https://wiki.gnome.org/Apps/Evince">Evince</a> (la visionneuse de documents de Gnome) et même le lecteur PDF intégré dans Firefox mais pas Xpdf. Master PDF Editor offre cette fonctionnalité mais est un logiciel non libre. Sous Windows j'imagine que Acrobat Reader sait faire ça mais qui utilise encore Windows aujourd'hui ? 😁</li>
 <li><a href="#toc_lilypond">à minima installer Lilypond sur votre ordinateur.</a></li>
 <li><a href="#toc_frescobaldi">utiliser un éditeur tel Frescobaldi</a></li>
 <li><a href="#toc_lilyjazz">d'installer les polices LilyJazz</a> (pour le look Real Book)</li>
