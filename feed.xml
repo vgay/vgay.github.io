@@ -3,7 +3,7 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2021-09-23T15:51:25+02:00</updated>
+    <updated>2021-09-23T16:08:44+02:00</updated>
     <author>
         <name>Vincent</name>
     </author>
@@ -17,10 +17,14 @@
         <link href="https://myrealbook.vintherine.org/silences-multi-mesures.html"/>
         <id>https://myrealbook.vintherine.org/silences-multi-mesures.html</id>
 
-        <updated>2021-09-23T15:31:56+02:00</updated>
+        <updated>2021-09-23T16:08:44+02:00</updated>
             <summary>
                 <![CDATA[
-                    En langage Lilypondien les silences durant 1 ou mesures entières s'expriment avec&hellip;
+                    <p>En langage Lilypondien les silences durant 1 ou mesures entières s'expriment avec un R avec une durée indiquée comme une note ordinaire, par exemples R1 pour une mesure en 4/4 ou R2. pour une mesure en 3/4</p>
+<p>voyez ci-dessous la différence avec un silence ordinaire, notamment l'alignement des pauses.</p>
+<p><code>{ \time 4/4 c''1 r1 R1 \time 3/4 c''2. r2. R2. }</code></p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/14/document-2.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/14/responsive/document-2-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-2-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-2-md.png 768w"  alt="Silences" width="618" height="106"></figure>
+
                 ]]>
             </summary>
         <content type="html">
@@ -29,6 +33,7 @@
 <p>voyez ci-dessous la différence avec un silence ordinaire, notamment l'alignement des pauses.</p>
 <p><code>{ \time 4/4 c''1 r1 R1 \time 3/4 c''2. r2. R2. }</code></p>
 <figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/14/document-2.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/14/responsive/document-2-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-2-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-2-md.png 768w"  alt="Silences" width="618" height="106"></figure>
+
 <p>Il est possible d'ajouter un multiplicateur à la durée mais pour les compresser il faut ajouter la commande \compressMMRests { }</p>
 <p><code>{ \time 4/4 R1*4 \compressMMRests { R1*4 }\time 4/4 R1*4 }</code></p>
 <figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/14/document-3.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/14/responsive/document-3-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-3-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-3-md.png 768w"  alt="Silences avec mutliplicateur" width="567" height="120"></figure>
