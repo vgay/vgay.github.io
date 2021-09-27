@@ -268,16 +268,42 @@ marques = \relative c' {
 \book {
   \paper {
     #(set-paper-size "tablette")
-    page-count = #2
     print-page-number = #f
   }
   #(define output-suffix "CTab")
-  \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
-  \bookpart {
+  \header { meter = \markup \with-color #red \bold "partition sur 2 pages"
+   copyright = "please report any errors to vgay@vintherine.org" }
+\markup {
+      \column {      
+        \vspace #3
+        \fill-line { \fontsize #9 "The Color of You" }
+        \fill-line { "Music Sheet for Combo" }
+        \vspace #2
+        \fontsize #4 {
+          \fill-line { \circle \bold \concat {" " \musicglyph #"clefs.G_change" " "} }
+          \fill-line { "C version" } 
+         }
+        \vspace #2      
+        \fontsize #4 {
+           \line  {  \hspace #10 Vocal \fontsize #-2 "with lyrics (2 pages)" }
+          \vspace #0.3
+          \line  {  \hspace #10 Horn I \fontsize #-2 "trumpet, soprano or alto sax (2 pages)" }
+          \vspace #0.3
+          \line  {  \hspace #10 Horn II \fontsize #-2 "trombone or tenor sax (2 pages)" }
+          \vspace #0.3
+          \line  {  \hspace #10 Horn III \fontsize #-2 "Bass trombone or barytone sax (2 pages)" }
+        }
+        \vspace #3
+        \override #'(line-width . 120)
+        \fontsize #2 \fill-line { " " "Lilypond sources embeded in pdf file" }
+      }
+    }  \bookpart {
+  \header { copyright = "" }
+  \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \harmonies }
-        \new Staff \with { instrumentName = \CleSol } <<
+        \new Staff \with { instrumentName = "vocal" } <<
           << { \theNotes \addlyrics \verseA } \\ { s4 s1*20 \pageBreak } >>
           
         >> 
@@ -285,6 +311,8 @@ marques = \relative c' {
     }
   } 
   \bookpart {
+  \header { copyright = "" }
+  \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \harmonies }
@@ -295,6 +323,8 @@ marques = \relative c' {
     }
   } 
   \bookpart {
+  \header { copyright = "" }
+  \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \harmonies }
@@ -305,6 +335,8 @@ marques = \relative c' {
     } 
   } 
   \bookpart {
+  \header { copyright = "" }
+  \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \harmonies }
@@ -322,21 +354,50 @@ marques = \relative c' {
   \paper {
     #(set-paper-size "tablette")
     print-page-number =#f
-    page-count = #2
   }
   #(define output-suffix "BbTab") 
-  \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
-  \bookpart {
+  \header { meter = \markup \with-color #red \bold "partition sur 2 pages"
+   copyright = "please report any errors to vgay@vintherine.org" }
+\markup {
+      \column {      
+        \vspace #3
+        \fill-line { \fontsize #9 "The Color of You" }
+        \fill-line { "Music Sheet for Combo" }
+        \vspace #2
+        \fontsize #4 {
+           \fill-line { \pad-around #2 \fontsize #3 \circle \bold \concat {" " B \flat " "} }
+          \fill-line { \concat {B \small \flat " Version"} } 
+         }
+        \vspace #2      
+        \fontsize #4 {
+           \line  {  \hspace #10 Vocal \fontsize #-2 "with lyrics (2 pages)" }
+          \vspace #0.3
+          \line  {  \hspace #10 Horn I \fontsize #-2 "trumpet, soprano or alto sax (2 pages)" }
+          \vspace #0.3
+          \line  {  \hspace #10 Horn II \fontsize #-2 "trombone or tenor sax (2 pages)" }
+          \vspace #0.3
+          \line  {  \hspace #10 Horn III \fontsize #-2 "Bass trombone or barytone sax (2 pages)" }
+        }
+        \vspace #3
+        \override #'(line-width . 120)
+        \fontsize #2 \fill-line { " " "Lilypond sources embeded in pdf file" }
+      }  
+}
+      \bookpart {
+  \header { copyright = "" }
+  \paper { page-count = #2 }      
     \score {
       <<
         \new ChordNames { \transpose c d \harmonies } 
-        \new Staff \with { instrumentName = \Bb } <<
+        \new Staff \with { instrumentName = "Vocal" } <<
           << { \transpose c d \theNotes \addlyrics \verseA } \\ { s4 s1*20 \pageBreak } >>       
         >> 
       >>
     }
   } 
   \bookpart {
+  \header { copyright = "" }
+  \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \transpose c d \harmonies }
@@ -347,6 +408,8 @@ marques = \relative c' {
     } 
   } 
   \bookpart {
+  \header { copyright = "" }
+  \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \transpose c d \harmonies }
@@ -357,6 +420,8 @@ marques = \relative c' {
     } 
   } 
   \bookpart {
+  \header { copyright = "" }
+  \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \transpose c d \harmonies }
@@ -373,22 +438,51 @@ marques = \relative c' {
 \book {
   \paper {
     #(set-paper-size "tablette")
-    page-count = #2
     print-page-number = #f
   }
   #(define output-suffix "EbTab")
-  \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
-  \bookpart {
-    \score {
+  \header { meter = \markup \with-color #red \bold "partition sur 2 pages"
+   copyright = "please report any errors to vgay@vintherine.org" }
+\markup {
+      \column {      
+        \vspace #3
+        \fill-line { \fontsize #9 "The Color of You" }
+        \fill-line { "Music Sheet for Combo" }
+        \vspace #2
+        \fontsize #4 {
+          \fill-line { \pad-around #2 \fontsize #3 \circle \bold \concat {" " E \flat " "} }
+          \fill-line { \concat {E \small \flat " Version"} } 
+         }
+        \vspace #2      
+        \fontsize #4 {
+           \line  {  \hspace #10 Vocal \fontsize #-2 "with lyrics (2 pages)" }
+          \vspace #0.3
+          \line  {  \hspace #10 Horn I \fontsize #-2 "trumpet, soprano or alto sax (2 pages)" }
+          \vspace #0.3
+          \line  {  \hspace #10 Horn II \fontsize #-2 "trombone or tenor sax (2 pages)" }
+          \vspace #0.3
+          \line  {  \hspace #10 Horn III \fontsize #-2 "Bass trombone or barytone sax (2 pages)" }
+        }
+        \vspace #3
+        \override #'(line-width . 120)
+        \fontsize #2 \fill-line { " " "Lilypond sources embeded in pdf file" }
+      }  
+}
+\bookpart {
+  \header { copyright = "" }
+  \paper { page-count = #2 }    
+  \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
-        \new Staff \with { instrumentName = \Eb } <<
+        \new Staff \with { instrumentName = "Vocal" } <<
            << { \transpose c a, \theNotes \addlyrics \verseA } \\ { s4 s1*20 \pageBreak } >>   
         >> 
       >>
     }
   } 
   \bookpart {
+  \header { copyright = "" }
+  \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
@@ -399,6 +493,8 @@ marques = \relative c' {
     }
   } 
   \bookpart {
+  \header { copyright = "" }
+  \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
@@ -409,6 +505,8 @@ marques = \relative c' {
     } 
   } 
   \bookpart {
+  \header { copyright = "" }
+  \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
@@ -430,7 +528,7 @@ marques = \relative c' {
   }
   #(define output-suffix "Ca4")
   \bookpart {
-    \header { copyright = "please report any errors or bugs to vgay@vintherine.org" }
+    \header { copyright = "please report any errors to vgay@vintherine.org" }
     \paper {
       print-page-number =#f
     }    \markup {
@@ -453,7 +551,7 @@ marques = \relative c' {
           \vspace #0.3
           \line  {  \hspace #10 Horn I \fontsize #-2 "(trumpet, soprano or alto sax)" }
           \vspace #0.3
-          \line  {  \hspace #10 Horn II \fontsize #-2 "trombone or tenor sax)" }
+          \line  {  \hspace #10 Horn II \fontsize #-2 "(trombone or tenor sax)" }
           \vspace #0.3
           \line  {  \hspace #10 Horn III \fontsize #-2 "(Bass trombone or barytone sax)" }
         }
@@ -588,10 +686,11 @@ marques = \relative c' {
   }
   #(define output-suffix "Bba4") 
   \bookpart {
-    \header { copyright = "please report any errors or bugs to vgay@vintherine.org" }
+    \header { copyright = "please report any errors to vgay@vintherine.org" }
     \paper {
       print-page-number =#f
-    }    \markup {
+    }    
+    \markup {
       \column {      
         \vspace #5
         \fill-line { \fontsize #9 "The Color of You" }
@@ -611,7 +710,7 @@ marques = \relative c' {
           \vspace #0.3
           \line  {  \hspace #10 Horn I \fontsize #-2 "(trumpet, soprano or alto sax)" }
           \vspace #0.3
-          \line  {  \hspace #10 Horn II \fontsize #-2 "trombone or tenor sax)" }
+          \line  {  \hspace #10 Horn II \fontsize #-2 "(trombone or tenor sax)" }
           \vspace #0.3
           \line  {  \hspace #10 Horn III \fontsize #-2 "(Bass trombone or barytone sax)" }
         }
@@ -739,7 +838,7 @@ marques = \relative c' {
     \paper {
       print-page-number =#f
     }    
-    \header { copyright = "please report any errors or bugs to vgay@vintherine.org" }
+    \header { copyright = "please report any errors to vgay@vintherine.org" }
     \markup {
       \column {      
         \vspace #5
@@ -760,7 +859,7 @@ marques = \relative c' {
           \vspace #0.3
           \line  {  \hspace #10 Horn I \fontsize #-2 "(trumpet, soprano or alto sax)" }
           \vspace #0.3
-          \line  {  \hspace #10 Horn II \fontsize #-2 "trombone or tenor sax)" }
+          \line  {  \hspace #10 Horn II \fontsize #-2 "(trombone or tenor sax)" }
           \vspace #0.3
           \line  {  \hspace #10 Horn III \fontsize #-2 "(Bass trombone or barytone sax)" }
         }
