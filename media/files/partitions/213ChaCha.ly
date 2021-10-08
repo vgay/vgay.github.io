@@ -64,7 +64,7 @@ realBookTitle = \markup {
   url = #"https://www.youtube.com/watch?v=oguo-OmuSCU"
   arranger = \markup \on-the-fly #played?
   \with-url #url
-  \with-color #blue \underline
+  \underline
   \concat { "(as played by " \fromproperty #'header:asplayed ")" }
   tagline = ##f
 }
@@ -98,13 +98,13 @@ realBookTitle = \markup {
 
 
 ossatureTab = \relative c {
-  \mark \markup { \bold \box \fontsize #2 A \with-color #red { "Solo cont. on " \box A" last x" }  }
+  \autoPageBreaksOff
+  \mark \markup { \bold \box \fontsize #2 A \with-color #red { "Solo continue on " \box A" last x" } }
   \repeat volta 3 { s1*2 } \mark \markup 3X s1*2 \break \bar "||"
-  \B  s1*8 \break \bar "||" 
-  \B  s1*8 \break \bar "||"
-  \C  s1*8 \break \bar "||"
-  \B  s1*7 
-  \once \override TextScript #'extra-offset = #'( -2 . 0 ) 	
+  \B  s1*4 \break s1*4 \break \bar "||" 
+  \B  s1*4 \break s1*4 \bar "||"
+  \C \pageBreak s1*4 \break s1*4 \break \bar "||"
+  \B  s1*4 \break s1*3 
   s1 ^\markup \with-color #red \fontsize #2 "Solo Break" \bar ".."
   \once \override Score.RehearsalMark #'direction = #DOWN
   \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
@@ -182,7 +182,7 @@ harmoniesR = \chordmode {
 theNotesI =  \relative c'' {
   \clef "treble" \key as \major \time 4/4
   \showStartRepeatBar \bar "[|:"
-  \set Staff.instrumentName = "Horn 1"
+  \set Staff.instrumentName = \markup { \center-column { "Horn 1" \line { "(A. Sax)" } } }
   \override Rest.staff-position = #0
   \override MultiMeasureRest.staff-position = #0
   R1*3
@@ -234,7 +234,7 @@ theNotesI =  \relative c'' {
 
 theNotesII =  \relative c'' {
   \clef "treble" \key as \major \time 4/4
-  \set Staff.instrumentName = "Horn 2"
+  \set Staff.instrumentName = \markup { \center-column { "Horn 2" \line { "(Flugelh.)" } } }
   \showStartRepeatBar \bar "[|:"
   \override Rest.staff-position = #0
   \override MultiMeasureRest.staff-position = #0
@@ -278,7 +278,7 @@ theNotesII =  \relative c'' {
 
 theNotesIII =  \relative c' {
   \key as \major \time 4/4
-  \set Staff.instrumentName = "Horn 3"
+  \set Staff.instrumentName = \markup { \center-column { "Horn 3" \line { "(Trombone)" } } }
   \override Rest.staff-position = #0
   \override MultiMeasureRest.staff-position = #0
   \showStartRepeatBar \bar "[|:"
@@ -540,7 +540,6 @@ BasseDir =  \relative c, {
   }
   #(define output-suffix "Ca4")
   \bookpart {
-    \header { copyright = "please report any errors to vgay@vintherine.org" }
     \paper {
       print-page-number = ##f
     }   
@@ -556,15 +555,15 @@ BasseDir =  \relative c, {
         }
         \vspace #2      
         \fontsize #4 {
-          \line  {  \hspace #10 Full Score }
+          \page-link #2 \line  {  \hspace #10 \underline { Full Score } }
           \vspace #0.3
-          \line  {  \hspace #10 Rhythm section \fontsize #-2 "(Piano and Bass)" }
+          \page-link #5 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(alto sax)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn I \fontsize #-2 "(alto sax)" }
+          \page-link #6 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Flugelhorn)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn II \fontsize #-2 "(Flugelhorn)" }
+          \page-link #7 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Trombone)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn III \fontsize #-2 "(Trombone)" }
+          \page-link #8 \line  {  \hspace #10 \underline { Rhythm section \fontsize #-2 "(Piano and Bass)" } }
         }
         \vspace #3
         \override #'(line-width . 120)
@@ -573,9 +572,10 @@ BasseDir =  \relative c, {
     }
   }
   \bookpart {
-    \paper {
+    \paper { 
+      oddFooterMarkup = \markup \small { \fill-line { \line { \concat { "213 Cha Cha (David Torres) - C version - Full Score" } } } }
       print-page-number = ##t
-    }   
+    }
     \score {
       <<
         \new StaffGroup << 
@@ -614,25 +614,10 @@ BasseDir =  \relative c, {
       }
   } }
   \bookpart {
-    \paper {
-      #(set-paper-size "a4")
-      page-count = #1
-      markup-system-spacing = #'((basic-distance . 5)
-                                 (minimum-distance . 4)
-                                 (padding . 0))
-    }    \score {
-      <<
-        \new Staff \with { instrumentName = "Piano" shortInstrumentName = "P." } 
-        <<
-          \new Voice = "Mel" { << \Piano >> }
-        >>         \new ChordNames { \harmoniesR }
-        \new Staff \with { instrumentName = "Bass" shortInstrumentName = "B." } 
-        <<
-          \new Voice = "Mel" { << \clef "bass" \Basse \\ { s1*18 \break s1*8 \break } >> }
-        >> 
-      >> 
-  } }
-  \bookpart {
+    \paper { 
+      oddFooterMarkup = \markup \small { \fill-line { \line { \concat { "213 Cha Cha (David Torres) - C version - Horn 1" } } } }
+    }
+    \header { meter = \markup \pad-around #4 \circle \fontsize #2 { \pad-around #1 \bold \concat {C \raise #-1 K} } }
     \score {
       <<
         \new ChordNames { \harmonies }
@@ -644,6 +629,10 @@ BasseDir =  \relative c, {
       >>
   } }
   \bookpart {
+    \paper { 
+      oddFooterMarkup = \markup \small { \fill-line { \line { \concat { "213 Cha Cha (David Torres) - C version - Horn 2" } } } }
+    }
+    \header { meter = \markup \pad-around #4 \circle \fontsize #2 { \pad-around #1 \bold \concat {C \raise #-1 K} } }
     \score {
       <<
         \new ChordNames { \harmonies }
@@ -655,6 +644,10 @@ BasseDir =  \relative c, {
       >>
   } }
   \bookpart {
+    \paper { 
+      oddFooterMarkup = \markup \small { \fill-line { \line { \concat { "213 Cha Cha (David Torres) - C version - Horn 3" } } } }
+    }
+    \header { meter = \markup \pad-around #4 \circle \fontsize #2 { \pad-around #1 \bold \concat {C \raise #-1 K} } }
     \score {
       <<
         \new ChordNames { \harmonies }
@@ -664,6 +657,25 @@ BasseDir =  \relative c, {
           \new Voice = "ctrl" { \ossature }
         >> 
       >>
+  } } 
+  \bookpart {
+    \paper { 
+      oddFooterMarkup = \markup \small { \fill-line { \line { \concat { "213 Cha Cha (David Torres) - C version - Rhythm Section" } } } }
+     page-count = #1
+      }
+     \header { meter = \markup \pad-around #4 \circle \fontsize #2 { \pad-around #1 \bold \concat {C \raise #-1 K} } }
+    \score {
+      <<
+        \new Staff \with { instrumentName = "Piano" shortInstrumentName = "P." } 
+        <<
+          \new Voice = "Mel" { << \Piano >> }
+        >>         
+        \new ChordNames { \harmoniesR }
+        \new Staff \with { instrumentName = "Bass" shortInstrumentName = "B." } 
+        <<
+          \new Voice = "Mel" { << \clef "bass" \Basse \\ { s1*18 \break s1*8 \break } >> }
+        >> 
+      >> 
 } } }
 
 
@@ -674,7 +686,6 @@ BasseDir =  \relative c, {
   }
   #(define output-suffix "Bba4")
   \bookpart {
-    \header { copyright = "please report any errors to vgay@vintherine.org" }
     \paper {
       print-page-number = ##f
     }   
@@ -690,13 +701,13 @@ BasseDir =  \relative c, {
         }
         \vspace #2      
         \fontsize #4 {
-          \line  {  \hspace #10 Bass \fontsize #-2 \concat{ "(for B" \small \flat " Wind Bass)" } }
+          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(alto sax)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn I }
+          \page-link #3  \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Flugelhorn)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn II  }
+          \page-link #4  \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Trombone)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn III }
+          \page-link #5 \line  {  \hspace #10 \underline { Bass \fontsize #-2 \concat{ "(for B" \small \flat " Wind Bass)" } } }
         }
         \vspace #3
         \override #'(line-width . 120)
@@ -705,22 +716,10 @@ BasseDir =  \relative c, {
     }
   }
   \bookpart {
-    \paper {
-      #(set-paper-size "a4")
-      page-count = #1
-      markup-system-spacing = #'((basic-distance . 5)
-                                 (minimum-distance . 4)
-                                 (padding . 0))
-    }    \score {
-      <<
-        \new ChordNames { \transpose c d \harmoniesR }
-        \new Staff \with { instrumentName = "Wind Bass" } 
-        <<
-          \new Voice = "Mel" { << \clef "treble_15" \transpose c d \Basse \\ { s1*18 \break s1*8 \break } >> }
-        >> 
-      >> 
-  } }
-  \bookpart {
+    \header { meter = \markup \pad-around #4 \circle \bold \concat {" " B  \flat " "} }
+    \paper { 
+      oddFooterMarkup = \markup \small { \fill-line { \line { \concat { "213 Cha Cha (David Torres) - B"\flat" version - Horn 1" } } } }
+    }
     \score {
       <<
         \new ChordNames { \transpose c d \harmonies }
@@ -732,6 +731,10 @@ BasseDir =  \relative c, {
       >>
   } }
   \bookpart {
+    \header { meter = \markup \pad-around #4 \circle \bold \concat {" " B  \flat " "} }
+    \paper { 
+      oddFooterMarkup = \markup \small { \fill-line { \line { \concat { "213 Cha Cha (David Torres) - B"\flat" version - Horn 2" } } } }
+    }
     \score {
       <<
         \new ChordNames { \transpose c d \harmonies }
@@ -743,15 +746,33 @@ BasseDir =  \relative c, {
       >>
   } }
   \bookpart {
+    \header { meter = \markup \pad-around #4 \circle \bold \concat {" " B  \flat " "} }
+    \paper { 
+      oddFooterMarkup = \markup \small { \fill-line { \line { \concat { "213 Cha Cha (David Torres) - B"\flat" version - Horn 3" } } } }
+    }
     \score {
       <<
         \new ChordNames { \transpose c d \harmonies }
         \new Staff
         <<
-          \new Voice = "Mel" { \clef "treble_8" \transpose c d \theNotesIII }
+          \new Voice = "Mel" { \transpose c d' \theNotesIII }
           \new Voice = "ctrl" { \ossature }
         >> 
       >>
+  } } 
+  \bookpart {
+    \header { meter = \markup \pad-around #4 \circle \bold \concat {" " B  \flat " "} }
+    \paper { 
+      oddFooterMarkup = \markup \small { \fill-line { \line { \concat { "213 Cha Cha (David Torres) - B"\flat" version - Wind Bass" } } } }
+    }
+    \score {
+      <<
+        \new ChordNames { \transpose c d \harmoniesR }
+        \new Staff \with { instrumentName = \markup { \center-column { "Wind" \line { "Bass" } } } } 
+        <<
+          \new Voice = "Mel" { << \transpose c d'' \Basse \\ { s1*18 \break s1*8 \break } >> }
+        >> 
+      >> 
 } } }
 
 \book {
@@ -761,7 +782,6 @@ BasseDir =  \relative c, {
   }
   #(define output-suffix "Eba4")
   \bookpart {
-    \header { copyright = "please report any errors to vgay@vintherine.org" }
     \paper {
       print-page-number = ##f
     }   
@@ -777,13 +797,13 @@ BasseDir =  \relative c, {
         }
         \vspace #2      
         \fontsize #4 {
-          \line  {  \hspace #10 Bass \fontsize #-2 \concat { "(for E" \small \flat " Wind Bass)" } }
+          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(alto sax)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn I }
+          \page-link #3 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Flugelhorn)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn II }
+          \page-link #4 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Trombone)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn III }
+          \page-link #5 \line  {  \hspace #10 \underline { Bass \fontsize #-2 \concat{ "(for B" \small \flat " Wind Bass)" } } }
         }
         \vspace #3
         \override #'(line-width . 120)
@@ -792,22 +812,10 @@ BasseDir =  \relative c, {
     }
   }
   \bookpart {
-    \paper {
-      #(set-paper-size "a4")
-      page-count = #1
-      markup-system-spacing = #'((basic-distance . 5)
-                                 (minimum-distance . 4)
-                                 (padding . 0))
-    }    \score {
-      <<
-        \new ChordNames { \transpose c a \harmoniesR }
-        \new Staff \with { instrumentName = "Wind Bass" } 
-        <<
-          \new Voice = "Mel" { << \clef "treble_15" \transpose c a, \Basse \\ { s1*18 \break s1*8 \break } >> }
-        >> 
-      >> 
-  } }
-  \bookpart {
+    \header { meter = \markup \pad-around #4 \circle \bold \concat {" " E  \flat " "} }
+    \paper { 
+      oddFooterMarkup = \markup \small { \fill-line { \line { \concat { "213 Cha Cha (David Torres) - E"\flat" version - Horn 1" } } } }
+    }
     \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
@@ -819,6 +827,10 @@ BasseDir =  \relative c, {
       >>
   } }
   \bookpart {
+    \header { meter = \markup \pad-around #4 \circle \bold \concat {" " E  \flat " "} }
+    \paper { 
+      oddFooterMarkup = \markup \small { \fill-line { \line { \concat { "213 Cha Cha (David Torres) - E"\flat" version - Horn 2" } } } }
+    }
     \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
@@ -830,16 +842,35 @@ BasseDir =  \relative c, {
       >>
   } }
   \bookpart {
+    \header { meter = \markup \pad-around #4 \circle \bold \concat {" " E  \flat " "} }
+    \paper { 
+      oddFooterMarkup = \markup \small { \fill-line { \line { \concat { "213 Cha Cha (David Torres) - E"\flat" version - Horn 3" } } } }
+    }
     \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff
         <<
-          \new Voice = "Mel" { \clef "treble_8" \transpose c a, \theNotesIII }
+          \new Voice = "Mel" { \transpose c a \theNotesIII }
           \new Voice = "ctrl" { \ossature }
         >> 
       >>
-} } }
+  } } 
+  \bookpart {
+    \paper { 
+      oddFooterMarkup = \markup \small { \fill-line { \line { \concat { "213 Cha Cha (David Torres) - E"\flat" version - Wind Bass" } } } }
+    }
+    \header { meter = \markup \pad-around #4 \circle \bold \concat {" " E  \flat " "} }
+    \score {
+      <<
+        \new ChordNames { \transpose c a \harmoniesR }
+        \new Staff \with { instrumentName = \markup { \center-column { "Wind" \line { "Bass" } } } }
+        <<
+          \new Voice = "Mel" { << \transpose c a' \Basse \\ { s1*18 \break s1*8 \break } >> }
+        >> 
+      >> 
+  } }
+}
 
 
 
@@ -859,7 +890,6 @@ BasseDir =  \relative c, {
   }
   #(define output-suffix "CTab")
   \bookpart {
-    \header { copyright = "please report any errors to vgay@vintherine.org" }
     \paper {
       print-page-number = ##f
     }   
@@ -875,13 +905,13 @@ BasseDir =  \relative c, {
         }
         \vspace #2      
         \fontsize #4 {
-          \line  {  \hspace #10 Rhythm section \fontsize #-2 "(Piano and Bass)" }
+          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(alto sax)" } }  
           \vspace #0.3
-          \line  {  \hspace #10 Horn I \fontsize #-2 "(alto sax)" }
+          \page-link #4 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Flugelhorn)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn II \fontsize #-2 "(Flugelhorn)" }
+          \page-link #6 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Trombone)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn III \fontsize #-2 "(Trombone)" }
+          \page-link #8 \line  {  \hspace #10 \underline { Rhythm section \fontsize #-2 "(Piano and Bass)" } }
         }
         \vspace #3
         \override #'(line-width . 120)
@@ -891,22 +921,8 @@ BasseDir =  \relative c, {
   }
   \bookpart {
     \paper { page-count = #2 }    
-  \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
-    \score {
-      <<
-        \new Staff \with { instrumentName = "Piano" shortInstrumentName = "P." } 
-        <<
-          \new Voice = "Mel" { << \Piano >> }
-        >>         
-        \new ChordNames { \harmoniesR }
-        \new Staff \with { instrumentName = "Bass" shortInstrumentName = "B." } 
-        <<
-          \new Voice = "Mel" { << \clef "bass" \Basse \\ { s1*18 \break s1*8 \break s1*3 s1 ^\markup \with-color #red \fontsize #2 \pad-around #3 "Solo Break"  } >> }
-        >> 
-      >> 
-  } }
-  \bookpart {
-    \paper { page-count = #1 }    
+    \header { poet = \markup \with-color #red "2 pages score"
+      meter = \markup  { \pad-around #3 \circle \fontsize #1 { \pad-around #1 \bold \concat {C \raise #-1 K} } } } 
     \score {
       <<
         \new ChordNames { \harmonies }
@@ -918,7 +934,9 @@ BasseDir =  \relative c, {
       >>
   } }
   \bookpart {
-    \paper { page-count = #1 }    
+    \paper { page-count = #2 }    
+    \header { poet = \markup \with-color #red "2 pages score"
+      meter = \markup  { \pad-around #3 \circle \fontsize #1 { \pad-around #1 \bold \concat {C \raise #-1 K} } } } 
     \score {
       <<
         \new ChordNames { \harmonies }
@@ -930,7 +948,9 @@ BasseDir =  \relative c, {
       >>
   } }
   \bookpart {
-    \paper { page-count = #1 }    
+    \paper { page-count = #2 }    
+    \header { poet = \markup \with-color #red "2 pages score"
+      meter = \markup  { \pad-around #3 \circle \fontsize #1 { \pad-around #1 \bold \concat {C \raise #-1 K} } } } 
     \score {
       <<
         \new ChordNames { \harmonies }
@@ -940,14 +960,33 @@ BasseDir =  \relative c, {
           \new Voice = "ctrl" { \ossatureTab }
         >> 
       >>
-} } }
+} } 
+  \bookpart {
+    \paper { page-count = #2 }    
+    \header { poet = \markup \with-color #red "2 pages score"
+      meter = \markup  { \hspace #2 \circle \fontsize #1 { \pad-around #1 \bold \concat {C \raise #-1 K} } } } 
+    \score {
+      <<
+        \new Staff \with { instrumentName = "Piano" shortInstrumentName = "P." } 
+        <<
+          \new Voice = "Mel" { << \Piano >> }
+        >>         
+        \new ChordNames { \harmoniesR }
+        \new Staff \with { instrumentName = "Bass" shortInstrumentName = "B." } 
+        <<
+          \new Voice = "Mel" { << \clef "bass" \Basse \\ { \autoPageBreaksOff s1*4 \break s1*4 \break s1*6 \pageBreak  s1*4 \break s1*4 \break
+          s1*4 \break s1*3 s1 ^\markup \with-color #red \fontsize #2 \pad-around #3 "Solo Break"  } >> }
+        >> 
+      >> 
+  } } }
 
 \book {
+  #(define output-suffix "BbTab")
   \paper {
     #(set-paper-size "tablette")
     first-page-number =#0
   }
-  #(define output-suffix "BbTab")
+
   \bookpart {
     \paper {
       print-page-number = ##f
@@ -964,34 +1003,25 @@ BasseDir =  \relative c, {
         }
         \vspace #2      
         \fontsize #4 {
-          \line  {  \hspace #10 Bass \fontsize #-2 \concat { "(for B" \small \flat " Wind Bass)" } }
+          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(alto sax)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn I }
+          \page-link #4  \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Flugelhorn)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn II  }
+          \page-link #6  \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Trombone)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn III  }
+          \page-link #8 \line  {  \hspace #10 \underline { Bass \fontsize #-2 \concat{ "(for B" \small \flat " Wind Bass)" } } }
         }
-        \vspace #3
+        \vspace #2
         \override #'(line-width . 120)
         \fontsize #2 \fill-line { " " "Lilypond sources embeded in pdf file" }
       }
     }
   }
+
   \bookpart {
-    \paper { page-count = #1 }    
-    \score {
-      <<
-        \new ChordNames { \transpose c d \harmoniesR }
-        \new Staff \with { instrumentName = "Wind Bass" } 
-        <<
-         \new Voice = "Mel" { \clef "treble_15" \transpose c d \Basse }
-         \new Voice = "ctrl" { s1* 29 s1 ^\markup \with-color #red \fontsize #2 "Solo Break"  }
-        >> 
-      >> 
-  } }
-  \bookpart {
-    \paper { page-count = #1 }    
+    \header { poet = \markup \with-color #red "2 pages score"
+      meter = \markup { \pad-around #3 \circle \bold \concat {" " B  \flat " "} } }  
+    \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \transpose c d \harmonies }
@@ -1003,7 +1033,9 @@ BasseDir =  \relative c, {
       >>
   } }
   \bookpart {
-    \paper { page-count = #1 }    
+    \header { poet = \markup \with-color #red "2 pages score"
+      meter = \markup { \pad-around #3 \circle \bold \concat {" " B  \flat " "} } }  
+    \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \transpose c d \harmonies }
@@ -1015,7 +1047,9 @@ BasseDir =  \relative c, {
       >>
   } }
   \bookpart {
-    \paper { page-count = #1 }    
+    \header { poet = \markup \with-color #red "2 pages score"
+      meter = \markup { \pad-around #3 \circle \bold \concat {" " B  \flat " "} } }  
+    \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \transpose c d \harmonies }
@@ -1025,7 +1059,22 @@ BasseDir =  \relative c, {
           \new Voice = "ctrl" { \ossatureTab }
         >> 
       >>
-} } }
+  } } 
+  \bookpart {
+    \header { poet = \markup \with-color #red "2 pages score"
+      meter = \markup { \pad-around #3 \circle \bold \concat {" " B  \flat " "} } }  
+    \paper { page-count = #2 }    
+    \score {
+      <<
+        \new ChordNames { \transpose c d \harmoniesR }
+        \new Staff \with { instrumentName = \markup { \center-column { "Wind" \line {"Bass"} }  } } 
+        <<
+          \new Voice = "Mel" {  \transpose c d'' \Basse }
+          \new Voice = "ctrl" { \autoPageBreaksOff s1*4 \break s1*4 \break s1*6 \break s1*4 \break s1*4 \pageBreak
+                                s1*4 \break s1*3 s1 ^\markup \with-color #red \fontsize #2 "Solo Break"  }
+        >> 
+      >> 
+  } } }
 
 \book {
   \paper {
@@ -1049,13 +1098,13 @@ BasseDir =  \relative c, {
         }
         \vspace #2      
         \fontsize #4 {
-          \line  {  \hspace #10 Bass \fontsize #-2 \concat { "(for E" \small \flat " Wind Bass)" } }
+          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(alto sax)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn I }
+          \page-link #4  \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Flugelhorn)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn II  }
+          \page-link #6  \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Trombone)" } }
           \vspace #0.3
-          \line  {  \hspace #10 Horn III  }
+          \page-link #8 \line  {  \hspace #10 \underline { Bass \fontsize #-2 \concat{ "(for B" \small \flat " Wind Bass)" } } }
         }
         \vspace #3
         \override #'(line-width . 120)
@@ -1064,19 +1113,9 @@ BasseDir =  \relative c, {
     }
   }
   \bookpart {
-    \paper { page-count = #1 }    
-    \score {
-      <<
-        \new ChordNames { \transpose c a \harmoniesR }
-        \new Staff \with { instrumentName = "Wind Bass" } 
-        <<
-         \new Voice = "Mel" { \clef "treble_15" \transpose c a, \Basse }
-         \new Voice = "ctrl" { s1* 29 s1 ^\markup \with-color #red \fontsize #2 "Solo Break"  }
-        >> 
-      >> 
-  } }
-  \bookpart {
-    \paper { page-count = #1 }    
+    \header { poet = \markup \with-color #red "2 pages score"
+      meter = \markup { \pad-around #3 \circle \bold \concat {" " E  \flat " "} } }  
+    \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
@@ -1088,7 +1127,9 @@ BasseDir =  \relative c, {
       >>
   } }
   \bookpart {
-    \paper { page-count = #1 }    
+    \header { poet = \markup \with-color #red "2 pages score"
+      meter = \markup { \pad-around #3 \circle \bold \concat {" " E  \flat " "} } }  
+    \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
@@ -1100,14 +1141,31 @@ BasseDir =  \relative c, {
       >>
   } }
   \bookpart {
-    \paper { page-count = #1 }    
+    \header { poet = \markup \with-color #red "2 pages score"
+      meter = \markup { \pad-around #3 \circle \bold \concat {" " E  \flat " "} } }  
+    \paper { page-count = #2 }    
     \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff 
         <<
-          \new Voice = "Mel" { \clef "treble_8" \transpose c a \theNotesIII }
+          \new Voice = "Mel" { \transpose c a' \theNotesIII }
           \new Voice = "ctrl" { \ossatureTab }
         >> 
       >>
-} } }
+} } 
+  \bookpart {
+    \header { poet = \markup \with-color #red "2 pages score"
+      meter = \markup { \pad-around #3 \circle \bold \concat {" " E  \flat " "} } }  
+    \paper { page-count = #2 }    
+    \score {
+      <<
+        \new ChordNames { \transpose c a \harmoniesR }
+        \new Staff \with { instrumentName = "Wind Bass" } 
+        <<
+          \new Voice = "Mel" { \transpose c a' \Basse }
+          \new Voice = "ctrl" { \autoPageBreaksOff s1*4 \break s1*4 \break s1*6 \break s1*4 \break s1*4 \pageBreak
+                                s1*4 \break s1*3 s1 ^\markup \with-color #red \fontsize #2 "Solo Break"  }
+        >> 
+      >> 
+  } } }
