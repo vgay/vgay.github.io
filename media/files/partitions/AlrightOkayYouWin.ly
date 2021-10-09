@@ -1,5 +1,5 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -20,7 +20,7 @@
 }
 
 title = #"Alright, Okay, You Win"
-composer = #"Mayme Watts & Sid Wyche"
+composer = #"Mayme Watts and Sid Wyche"
 meter = #"(Med. Swing)"
 kwtempo = #"Medium"
 kwstyle = #"Swing"
@@ -279,39 +279,7 @@ marques = \relative c' {
   \column {  }
   \column { \line { \with-color #red \fontsize #2 { "Solos blues en Mi"\flat" puis D.S. al Coda" } } } }
     %}  \bookpart {
-    \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }    
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \grille
-      >>
-} } }
+ } }
 
 \book {
   \paper {
@@ -332,39 +300,7 @@ marques = \relative c' {
   \column {  }
   \column { \line { \with-color #red \fontsize #2 "Solos blues en Fa puis D.S. al Coda" } } }
     %}  \bookpart {
-    \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }    
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \transpose c d \grille
-      >>
-} } }
+} }
 
 \book {
   \paper {
@@ -385,36 +321,9 @@ marques = \relative c' {
   \column {  }
   \column { \line { \with-color #red \fontsize #2 "Solos blues en Do puis D.S. al Coda" } } }
     %}  \bookpart {
-    \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }    
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \transpose c a \grille
-      >>
-} } }
+} }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

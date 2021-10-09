@@ -23,7 +23,7 @@
 
 
 title = #"Don't Get Around Much Anymore"
-composer = #"D. Ellington & B. Russel"
+composer = #"D. Ellington and B. Russel"
 meter = #"(Med. Swing)"
 kwtempo = #"Medium"
 kwstyle = #"Swing"
@@ -133,7 +133,7 @@ theNotes =  \relative c'' {
 
 grille = \chordmode {
   \bar "[|:"
- \w d2:7+ e4:m7 es:dim c1/e \w d2:7+ b4:7 bes:7 a1:7 \break
+ \wa d2:7+ e4:m7 es:dim c1/e \w d2:7+ b4:7 bes:7 a1:7 \break
  d:7 g:7 c:6 \set Score.repeatCommands = #'((volta "1"))
  g:7   \set Score.repeatCommands = #'((volta #f) end-repeat) \break
  \stopStaff s \bar "" s \bar "" s
@@ -141,7 +141,7 @@ grille = \chordmode {
  \startStaff \set Score.repeatCommands = #'((volta #f)) \break
  f1:6 fis:dim c:7+ c:7 \break
  f:6 \/fis2:m5-7 b:9- \/e:m7 es:dim7   d1:m7 \break
-  \w d2:7+ e4:m7 es:dim c1/e \w d2:7+ b4:7 bes:7 a1:7 \break
+  \wa d2:7+ e4:m7 es:dim c1/e \w d2:7+ b4:7 bes:7 a1:7 \break
   d:7 g:7 \/c2:6 es:7 \/d:m7 g:7
  
   \bar ".." }

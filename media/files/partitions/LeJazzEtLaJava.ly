@@ -1,5 +1,5 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -22,7 +22,7 @@
 }
 
 title = #"Le Jazz et la Java"
-composer = #"J. Datin & Claude Nougaro"
+composer = #"J. Datin and Claude Nougaro"
 meter = #"(Med. Jazz Waltz)"
 kwtempo = #"Medium"
 kwstyle = #"Jazz Waltz"
@@ -143,7 +143,7 @@ verse = \lyricmode {
   Gaz en -- tre le jazz et la ja -- va
 
   Cha -- que jour un peu plus y'a le jazz qui s'ins -- talle
-  A -- lors la rage au coeur la ja -- va fait la malle
+  A -- lors la rage au coeur la ja -- va s'fait la malle
   Ses p'tit's fesses en ba -- taille sous sa ju -- pe fen -- due
   Elle é -- cra -- se sa gau -- loise et s'en va dans la rue
 }
@@ -294,3 +294,8 @@ verseD = \lyricmode {
         >> 
       >>
 } } }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

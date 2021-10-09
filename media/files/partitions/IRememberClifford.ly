@@ -1,5 +1,5 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -58,7 +58,7 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  asplayed = #"Art Farmer & Benny Golson" % doit être commentée si vide
+  asplayed = #"Art Farmer and Benny Golson" % doit être commentée si vide
   url = #"https://www.youtube.com/watch?v=R9FqeQXRT-Y"
   arranger = \markup \on-the-fly #played?
   \with-url #url
@@ -290,3 +290,8 @@ es es4.~ 8 e as ces | bes1 \fermata \bar ".."
         >> 
       >>
 } } }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

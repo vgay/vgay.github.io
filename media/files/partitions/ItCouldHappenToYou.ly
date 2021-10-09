@@ -1,5 +1,5 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -21,7 +21,7 @@
 }
 
 title = #"It Could Happen To You"
-composer = #"J. Van Heusen & J. Burke"
+composer = #"J. Van Heusen and J. Burke"
 meter = #"(Med. Swing)"
 kwtempo = #"Medium"
 kwstyle = #"Swing"
@@ -396,3 +396,8 @@ It could hap -- pen to you
         \transpose c a \grille
       >>
 } } }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

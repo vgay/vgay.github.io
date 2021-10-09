@@ -1,5 +1,5 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -22,7 +22,7 @@
 }
 
 title = #"Have You Met Miss Jones ?"
-composer = #"Lorenz Hart & Richard Rogers"
+composer = #"Lorenz Hart and Richard Rogers"
 meter = #"(Med. Swing)"
 kwtempo = #"Medium"
 kwstyle = #"Swing"
@@ -376,3 +376,8 @@ marques = \relative c' {
         \transpose c a \grille
       >>
 } } }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

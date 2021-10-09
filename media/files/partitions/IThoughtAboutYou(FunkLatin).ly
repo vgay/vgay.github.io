@@ -1,5 +1,5 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -21,7 +21,7 @@
 }
 
 title = #"I Thought About You"
-composer = #"J. Van Heusen"
+composer = #"J. Van Heusen and J. Mercer"
 meter = #"(Med. Funk/Latin)"
 kwtempo = #"Medium"
 kwstyle = #"Funk/Latin"
@@ -63,7 +63,7 @@ realBookTitle = \markup {
     \with-url #url
     \with-color #blue \underline
     \concat { "(as played by " \fromproperty #'header:asplayed ")" }
-  meter = \markup { \small  { \tiny \raise #0.4 \note #"4" #1"= 80" }}
+  meter = \markup { \small  { \tiny \raise #0.4 \note {4} #1"= 80" }}
   tagline = ##f
 }
 
@@ -143,7 +143,7 @@ voltaOnCue= \markup \small  { \text \italic { On Cue } }
 
 theNotes =  \relative c''' {
   \clef "treble" \key es \major \time 4/4
-  \compressFullBarRests
+  \compressEmptyMeasures
   \override MultiMeasureRest #'expand-limit = #1
   \Intro
   R1*2 _\markup "(bs. & dr.)"
@@ -203,7 +203,7 @@ theNotes =  \relative c''' {
   }
   \break
   \repeat volta 2 {
-    \mark \markup { \with-color #red  \musicglyph #"scripts.varcoda" " " \bold \box "Tenor Solo"}
+    \mark \markup { \with-color #red  \musicglyph "scripts.varcoda" " " \bold \box "Tenor Solo"}
     <d es f f'>1_\markup "(synth.)" |
   }
   \alternative {
@@ -286,7 +286,7 @@ Basse =  \relative c {
       c,8. _\markup \with-color #red \fontsize #2 \bold "D.S. al Coda" c'16~ c bes g f es8. 16 es'8 es,16 es'
     }
   }
-  \break \mark \markup { \with-color #red  \musicglyph #"scripts.varcoda" " " \bold \box "Tenor Solo"}
+  \break \mark \markup { \with-color #red  \musicglyph "scripts.varcoda" " " \bold \box "Tenor Solo"}
   \repeat volta 2 { c,8. 16~ 8 g'16 bes r bes8-. g16 bes8 c16 g }
     \alternative {
     {
@@ -307,7 +307,7 @@ Basse =  \relative c {
     #(set-paper-size "tablette")
     page-count = #2
   }
-  \header { meter = \markup { \small  { \tiny \raise #0.4 \note #"4" #1"= 80" } \with-color #red "   partition sur 2 pages"} }
+  \header { meter = \markup { \small  { \tiny \raise #0.4 \note {4} #1"= 80" } \with-color #red "   partition sur 2 pages"} }
   #(define output-suffix "CTab")
   \bookpart {
     \score {
@@ -327,7 +327,7 @@ Basse =  \relative c {
     #(set-paper-size "tablette")
     page-count = #2
   }
-  \header { meter = \markup { \small  { \tiny \raise #0.4 \note #"4" #1"= 80" } \with-color #red "   partition sur 2 pages"} }
+  \header { meter = \markup { \small  { \tiny \raise #0.4 \note {4} #1"= 80" } \with-color #red "   partition sur 2 pages"} }
   #(define output-suffix "BbTab") 
   \bookpart {
     \score {
@@ -347,7 +347,7 @@ Basse =  \relative c {
     #(set-paper-size "tablette")
     page-count = #2
   }
-  \header { meter = \markup { \small  { \tiny \raise #0.4 \note #"4" #1"= 80" } \with-color #red "   partition sur 2 pages"} }
+  \header { meter = \markup { \small  { \tiny \raise #0.4 \note {4} #1"= 80" } \with-color #red "   partition sur 2 pages"} }
   #(define output-suffix "EbTab")
   \bookpart {
     \score {
@@ -439,3 +439,8 @@ Basse =  \relative c {
           \transpose c a \theNotes
       >> >>
 } } }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

@@ -1,5 +1,5 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -22,7 +22,7 @@
 }
 
 title = #"Laura"
-composer = #"D. Raskin & J. Mercer"
+composer = #"D. Raskin and J. Mercer"
 meter = #"(Mod. Ballad)"
 kwtempo = #"Mod. Slow"
 kwstyle = #"Ballad"
@@ -390,3 +390,8 @@ That was Lau -- ra but she's on -- ly a dream __
         \transpose c a \grille
       >>
 } } }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

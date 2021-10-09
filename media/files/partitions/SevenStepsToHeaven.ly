@@ -1,5 +1,5 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -22,7 +22,7 @@
 }
 
 title = #"Seven Steps To Heaven"
-composer = #"Miles Davis & V. Feldman"
+composer = #"Miles Davis and V. Feldman"
 meter = #"(Up Tempo Swing)"
 kwtempo = #"Fast"
 kwstyle = #"Swing"
@@ -170,10 +170,10 @@ grille = \chordmode {
   \bar ".." }
 
 marques = \relative c' { 
-  s1 ^\markup \bold \box \fontsize #7 "Intro / Interlude" s1*7 
-  s1 ^\markup \bold \box \fontsize #7 A s1*7 
-  s1 ^\markup \bold \box \fontsize #7 B s1*7 
-  s1 ^\markup \bold \box \fontsize #7 A
+  s1 ^\markup \bold \box \fontsize #5 "Intro / Interlude" s1*7 
+  s1 ^\markup \bold \box \fontsize #5 A s1*7 
+  s1 ^\markup \bold \box \fontsize #5 B s1*7 
+  s1 ^\markup \bold \box \fontsize #5 A
 }
 
 
@@ -201,7 +201,7 @@ marques = \relative c' {
           \harmonies
         }
         \new Staff \with { instrumentName = \CleSol } <<
-          \new Voice \with { \consists "Pitch_squash_engraver" } \partcombine \theNotes \VoiceTwo
+          \new Voice \with { \consists "Pitch_squash_engraver" } \partCombine \theNotes \VoiceTwo
       >> >>
 } } }
 
@@ -229,7 +229,7 @@ marques = \relative c' {
           \transpose c d \harmonies
         } 
         \new Staff \with { instrumentName = \Bb  } <<
-          \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c d { \partcombine \theNotes \VoiceTwo } 
+          \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c d { \partCombine \theNotes \VoiceTwo } 
       >> >>
 } } }
 
@@ -257,7 +257,7 @@ marques = \relative c' {
           \transpose c a \harmonies
         }
         \new Staff \with { instrumentName = \Eb } <<
-          \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c a { \partcombine \theNotes \VoiceTwo } 
+          \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c a { \partCombine \theNotes \VoiceTwo } 
       >> >>
 } } }
 
@@ -286,7 +286,7 @@ marques = \relative c' {
         }
         \new Staff \with { instrumentName = \CleSol } 
         <<
-          \new Voice \with { \consists "Pitch_squash_engraver" } \partcombine \theNotes \VoiceTwo
+          \new Voice \with { \consists "Pitch_squash_engraver" } \partCombine \theNotes \VoiceTwo
       >> >>
       %   }   
       %   \markup \pad-markup #2 " "
@@ -349,7 +349,7 @@ marques = \relative c' {
           \transpose c d \harmonies
         } 
         \new Staff \with { instrumentName = \Bb } <<
-          \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c d { \partcombine \theNotes \VoiceTwo } 
+          \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c d { \partCombine \theNotes \VoiceTwo } 
       >> >>
       %   }   
       %   \markup \pad-markup #2 " "
@@ -412,7 +412,7 @@ marques = \relative c' {
           \transpose c a \harmonies
         }
         \new Staff \with { instrumentName = \Eb } <<
-          \new Voice  \transpose c a { \partcombine \theNotes \VoiceTwo } 
+          \new Voice  \transpose c a { \partCombine \theNotes \VoiceTwo } 
       >> >>
       %   }   
       %   \markup \pad-markup #2 " "
@@ -450,3 +450,8 @@ marques = \relative c' {
         \transpose c a \grille
       >>
 } } }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

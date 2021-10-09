@@ -1,5 +1,5 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -57,7 +57,7 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  asplayed = #"Stan Getz & Kenny Barron" % doit être commentée si vide
+  asplayed = #"Stan Getz and Kenny Barron" % doit être commentée si vide
   url = #"https://www.youtube.com/watch?v=4R-CFl9TB7c"
   arranger = \markup \on-the-fly #played?
     \with-url #url
@@ -374,3 +374,8 @@ marques = \relative c' {
         \transpose c a \grille
       >>
 } } }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

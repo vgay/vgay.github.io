@@ -1,5 +1,5 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 17)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -58,7 +58,7 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  asplayed = #"Thelonious Monk & John Coltrane" % doit être commentée si vide
+  asplayed = #"Thelonious Monk and John Coltrane" % doit être commentée si vide
   url = #"https://www.youtube.com/watch?v=6liAgg4SN88"
   arranger = \markup \on-the-fly #played?
   \with-url #url
@@ -224,7 +224,7 @@ marques = \relative c' {
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }  
-          \transpose c a \theNotes
+          \transpose c a, \theNotes
         >> 
       >>
     } %\form
@@ -263,39 +263,7 @@ marques = \relative c' {
       >>
     } %\form
     %}  \bookpart {
-    \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }    
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \transpose c d \grille
-      >>
-} } }
+ } }
 
 \book {
   \paper {
@@ -309,41 +277,14 @@ marques = \relative c' {
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice  
-          \transpose c a \theNotes
+          \transpose c a, \theNotes
         >> 
       >>
     } %\form
     %}  \bookpart {
-    \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }    
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \transpose c a \grille
-      >>
-} } }
+ } }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

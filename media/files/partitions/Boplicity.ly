@@ -20,7 +20,7 @@
 }
 
 title = #"Boplicity"
-composer = #"Miles Davis & Gil Evans"
+composer = #"Miles Davis and Gil Evans"
 meter = #"(Med. Bop)"
 kwtempo = #"Medium"
 kwstyle = #"Bop"

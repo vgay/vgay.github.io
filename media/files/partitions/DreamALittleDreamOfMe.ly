@@ -1,5 +1,5 @@
 
-\version "2.22.0"
+\version "2.22.1"
 #(set-global-staff-size 18)
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -22,7 +22,7 @@
 }
 
 title = #"Dream a Little Dream of Me"
-composer = #"W. Schwandt / F Andrée"
+composer = #"W Schwandt and F Andre"
 meter = #"(Med. Swing)"
 kwtempo = #"Medium"
 kwstyle = #"Swing"
