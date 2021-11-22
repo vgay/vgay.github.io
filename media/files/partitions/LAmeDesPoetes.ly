@@ -1,6 +1,7 @@
 
 \version "2.22.0"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -58,8 +59,8 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  % asplayed = #"" % doit être commentée si vide
-  url = #""
+  asplayed = #"Barney Wilen" % doit être commentée si vide
+  url = #"https://www.youtube.com/watch?v=acvKQDJHvws"
   arranger = \markup \on-the-fly #played?
   \with-url #url
   \with-color #blue \underline
@@ -105,19 +106,37 @@ form = \markup  \fill-line {
 
 harmonies = \chordmode {
   \set chordChanges = ##t
-
+  s4 bes2.:7+ f:7sus4 bes:7+ bes:6/f
+  g:m7 d:m7 es:7+ g:7+/b c:m7 c:m7/g 
+  f:7 c:m7 f:7 c:m7 bes2.:7+ f:7sus4 bes:7+ bes:6/f bes:6/f
+  f:m7 bes:7 f:m7 bes:7
+  es:7+ f:m7 g:m7 f:m7 
+  g:m7 bes:m6 g:m7 g:m7/d f:7 f:7/c 
+  a:m5-7 f:7/a
+  bes2.:7+ f:7sus4 bes:7+ bes:6/f
+  g:m7 d:m7 es:7+ g:7+/b c:m7 c:m7/g 
+  f:7 c:m7 f:7 c:m7 bes2.:7+ f:7sus4 bes:7+ bes:6/f
 }
 
 
 theNotes =  \relative c' {
-  \clef "treble" \key a \major \time 3/4
-  \partial 4  r4 | R2.*7 r2 a4 \bar "||" \break
-  2 b4 | 2 cis4 | 2 e4 | 2 fis4 | 2 cis'4 | 2 gis4 | fis2 b4 | fis2.~ | 2.~ | 2 r4 \break
-  b2 gis4 | fis2. |  b2 gis4 | fis2 | r4 e fis | gis2.~| gis2.~ | 4 r a,
-
-
-
-}
+  \clef "treble" \key bes \major \time 3/4
+  \compressMMRests {
+    \override MultiMeasureRest.expand-limit = #3
+    \partial 4  bes4 
+    \repeat volta 2 { \A
+                      2 c4 | 2 d4 | 2 f4 | 2 g4 | 
+                      2 d'4 | 2.  | a4 g c | g2.~ | 2.~ | 2 r4 \break \bar "||"
+                      c2 a4 | g2. |  c2 a4 | g4 r f8 g | a2.~| a2.~| a2.~ | }
+    \alternative {
+      { 4 r bes, } { a'\repeatTie r2  } }
+    \break \bar "||" \B
+    bes4 f g | as2 f4 | bes4 f g | as2. | g4 c bes | g2 es4 | g2 c4 | 2 d4 | \break
+    d2.~ | 2.~ | 4 c bes | bes a bes | c2.~ | c | \comp #5 bes,4 \break \bar "||" \A
+    2 c4 | 2 d4 | 2 f4 | 2 g4 | 
+    2 d'4 | 2 a4 | g2 c4 | g2.~ | 2.~ | 2 r4 \break
+    c2 a4 | g2. |  c2 a4 | g4 r f8 g | a2.~| a2.~| a2.~ |4 r2 \bar "|."
+} }
 
 chordsRhythm = \relative c''' {
   \override Rest #'staff-position = #7
@@ -130,16 +149,26 @@ Basse = \relative c {
 }
 
 grille = \chordmode {
-  \bar "[|:"
- 
-  \bar ".." }
-
-marques = \relative c' { 
-  s1 ^\markup \bold \box \fontsize #7 A s1*7 
-  s1 ^\markup \bold \box \fontsize #7 B s1*7 
-  s1 ^\markup \bold \box \fontsize #7 A
+  \bar "[|:" bes1:7+ f:7sus4 bes1:7+ bes:6/f \break
+  g:m7 d:m7 es:7+ g:7+/b \break
+  c:m7 c:m7/g f:7 c:m7 \break
+  f:7 c:m7 bes:7+ f:7sus4 \break
+  bes:7+ bes:6/f 
+  \bar ":|]" \stopStaff s1 \bar "" s1 \bar "" \break
+  \startStaff f:m7 bes:7 f:m7 bes:7 \break
+  es:7+ f:m7 g:m7 f:m7 \break
+  g:m7 bes:6 g:m7 g:m7/d \break
+  f:7 f:7/c a:m5-7 f:7/a \bar "||" \break
+  bes1:7+ f:7sus4 bes1:7+ bes:6/f \break
+  g:m7 d:m7 es:7+ g:7+/b \break
+  c:m7 c:m7/g \bar ".." \stopStaff s1 \bar "" s1 \bar "" \break
 }
 
+marques = \relative c' { 
+  s1 ^\markup \bold \box \fontsize #7 A s1*19 
+  s1 ^\markup \bold \box \fontsize #7 B s1*15 
+  s1 ^\markup \bold \box \fontsize #7 A
+}
 
 \book {
   \paper {
@@ -215,7 +244,7 @@ marques = \relative c' {
         >> 
       >>
     } %\form
-    %}  \bookpart {
+  }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -266,7 +295,7 @@ marques = \relative c' {
         >> 
       >>
     } %\form
-    %}  \bookpart {
+  }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -317,7 +346,7 @@ marques = \relative c' {
         >> 
       >>
     } %\form
-    %}  \bookpart {
+  }  \bookpart {
     \score {
       \layout {
         indent = 0

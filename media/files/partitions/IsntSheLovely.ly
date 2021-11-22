@@ -1,6 +1,7 @@
 
 \version "2.22.0"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -94,35 +95,35 @@ realBookTitle = \markup {
 
 harmonies = \chordmode {
   \set chordChanges = ##f
-  s2 c1:m7 f:7 bes:7sus4 es:7+ c1:m7 f:7 bes:7sus4 es:7+
-  as:7+ g:9- c:m7 f:7 bes:7sus4 s es:7+ 
-  \startParenthesis \parenthesize d2:m \endParenthesis \parenthesize g:9-
-  es
+  s2 cis1:m7 fis:7 b:7sus4 e:7+ cis1:m7 fis:7 b:7sus4 e:7+
+  a:7+ gis:9- cis:m7 fis:7 b:7sus4 s e:7+ 
+  \startParenthesis \parenthesize dis2:m \endParenthesis \parenthesize gis:9-
+  e
 }
 
 
 theNotes =  \relative c'' {
-  \clef "treble" \key es \major \time 4/4
-  \partial 2 \tuplet 3/2 { g4 as g } \bar "||"
-f2 es | r \tuplet 3/2 { g4 as g } |
-f2 es | bes2 \tuplet 3/2 { g'4 as g } \break
-f2 es | r \tuplet 3/2 { g4 as g } |
-f2 es4. bes8~ | bes2 \tuplet 3/2 { g'4 as bes~ } | \break
-bes4. g8 as4 bes8 as~ | as2~ \tuplet 3/2 { as4 g g } |
-g8 f es f~ f4 es8 c~ | c4. bes8 \tuplet 3/2 { g'4 as g } \break
-f2 es | c bes | \toCoda
-es r | r  \tuplet 3/2 { \startParenthesis \parenthesize g4 as \endParenthesis \parenthesize g } 
+  \clef "treble" \key e \major \time 4/4
+  \partial 2 \tuplet 3/2 { gis4 a gis } \bar "||"
+fis2 e | r \tuplet 3/2 { gis4 a gis } |
+fis2 e4 cis8 b8~ | b2 \tuplet 3/2 { gis'4 a gis } \break
+fis2 e | r \tuplet 3/2 { gis4 a gis } |
+fis2 e4 cis8 b8~ | b2 \tuplet 3/2 { gis'4 a b~ } | \break
+b4. gis8 a4 b8 a~ | a2~ \tuplet 3/2 { a4 gis gis } |
+gis8 fis e fis~ fis4 e8 cis~ | cis4. b8 \tuplet 3/2 { gis'4 a gis } \break
+fis2 e | cis b | \toCoda
+e r | r  \tuplet 3/2 { \startParenthesis \parenthesize gis4 a \endParenthesis \parenthesize gis } 
 \bar "|." \break
 	\mark \markup \with-color #(x11-color 'red) {  \bold \larger \center-column {\pad-markup #2 " "  \pad-markup #0 \musicglyph "scripts.varcoda"} }
-es4~ \tuplet 3/2 { es8 bes c } \tuplet 3/2 { es f g } \tuplet 3/2 { bes c es->~ } | es4 es-^ r2
+e4~ \tuplet 3/2 { e8 b cis } \tuplet 3/2 { e fis gis } \tuplet 3/2 { b cis e->~ } | e4 e-^ r2
   \bar ".."
 }
 
 grille = \chordmode {
-   c1:m7 f:7 bes:7sus es:7+ \break
-   c1:m7 f:7 bes:7sus es:7+ \break
-   as:7+ g:9- c:m7 f:7 \break
-   \repeat percent 2 bes:7sus es:7+ \/ d2:m g:9- 
+   cis1:m7 fis:7 b:7sus e:7+ \break
+   cis1:m7 fis:7 b:7sus e:7+ \break
+   a:7+ gis:9- cis:m7 fis:7 \break
+   \repeat percent 2 b:7sus e:7+ \/ dis2:m gis:9- 
   \bar ".." }
 
 marques = \relative c' { 

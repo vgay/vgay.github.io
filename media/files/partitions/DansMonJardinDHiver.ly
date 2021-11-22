@@ -1,6 +1,7 @@
 
-\version "2.19.80"
+\version "2.22.1"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -92,7 +93,7 @@ realBookTitle = \markup {
 
 harmonies = \chordmode {
   \set chordChanges = ##t
- s2. e1:m5-7 a:9- d:m7 d:m7 
+  s2. e1:m5-7 a:9- d:m7 d:m7 
   e1:m5-7 a:9- d:m7 d:m7 d:m7
   g:m7 c:9 f:7+ f:7+ e:m5-7 a:9- d:m7 d:m7
   g:m7 c:9 f:7+ f:7+ e:m5-7 a:9- d:m7 d:m7
@@ -135,8 +136,8 @@ theNotes =  \relative c' {
   bes'4. a8 d,2 ~ | % 24
   d2. r4 | % 25
   r4 f8 g8 a4. f8  \break \bar  "||-[|:"
-    \A    
-    \repeat volta 2 { 
+  \A    
+  \repeat volta 2 { 
     g8 bes4 e,8 ~ e2 | % 2
     r4 e8 f g4.  e8 | % 3
     f8 a4 d,8 ~ d2 | % 4
@@ -155,7 +156,7 @@ grille = \chordmode {
   e1:m5-7 a:9- \repeat percent 2 d:m7 \break
   e1:m5-7 a:9- \repeat percent 2 d:m7 \break \bar ":|][|:"
   g:m7 c:9 \repeat percent 2 f:7+ \break
-e1:m5-7 a:9- \repeat percent 2 d:m7
+  e1:m5-7 a:9- \repeat percent 2 d:m7
   \bar ":|]" }
 
 marques = \relative c' { 
@@ -165,49 +166,49 @@ marques = \relative c' {
 
 verse = \lyricmode {
   Je vou -- drais du so -- leil vert
-Des den -- telles et des théi -- ères
-Des pho -- tos de bord de mer
-Dans mon jar -- din d'hi -- ver
+  Des den -- telles et des théi -- ères
+  Des pho -- tos de bord de mer
+  Dans mon jar -- din d'hi -- ver
 
-Je voud -- rais de
+  Je voud -- rais de
 
-\repeat unfold 3 { \skip 1 }
-fleur 
-Sous la pluie de no -- vembre
-Mes mains qui courent
-Je n'en peux plus de t'at -- tendre
-Les an -- nées passent
-Qu'il est loin l'â -- ge tendre
-Nul ne peut nous en -- tendre
+  \repeat unfold 3 { \skip 1 }
+  fleur 
+  Sous la pluie de no -- vembre
+  Mes mains qui courent
+  Je n'en peux plus de t'at -- tendre
+  Les an -- nées passent
+  Qu'il est loin l'â -- ge tendre
+  Nul ne peut nous en -- tendre
 
-Je vou -- drais du Fred As -- taire
-Re -- voir un La -- té -- co -- ère
-Je vou -- drais tou -- jours te plaire
-Dans mon jar -- din d'hi -- ver
-% 
-Je veux dé -- jeu
-% Comme au long des golfes clairs
-% T'embrasser les yeux ouverts
-% Dans mon jardin d'hiver
+  Je vou -- drais du Fred As -- taire
+  Re -- voir un La -- té -- co -- ère
+  Je vou -- drais tou -- jours te plaire
+  Dans mon jar -- din d'hi -- ver
+  % 
+  Je veux dé -- jeu
+  % Comme au long des golfes clairs
+  % T'embrasser les yeux ouverts
+  % Dans mon jardin d'hiver
 }
 
 verseB = \lyricmode {
   \repeat unfold 4 { \skip 1 }
- la lu -- mière
-Comme en Nou -- velle An -- gle -- terre
-Je veux chan -- ger "d'at" -- mos __ phère
-Dans mon jar -- din d'hi -- ver
-\repeat unfold 4 { \skip 1 }
-Ta robe à 
-\repeat unfold 38 { \skip 1 }
+  la lu -- mière
+  Comme en Nou -- velle An -- gle -- terre
+  Je veux chan -- ger "d'at" -- mos __ phère
+  Dans mon jar -- din d'hi -- ver
+  \repeat unfold 4 { \skip 1 }
+  Ta robe à 
+  \repeat unfold 38 { \skip 1 }
 
 
 
 
-ner par terre
-Comme au long des gol -- fes clairs
-T'em -- bras -- ser les yeux ou -- verts
-Dans mon jar -- din d'hi -- ver
+  ner par terre
+  Comme au long des gol -- fes clairs
+  T'em -- bras -- ser les yeux ou -- verts
+  Dans mon jar -- din d'hi -- ver
 }
 
 \book {
@@ -224,7 +225,7 @@ Dans mon jar -- din d'hi -- ver
           \harmonies
         }
         \new Staff \with { instrumentName = \CleSol \consists "Merge_rests_engraver" } <<
-            \new Voice \with { \consists "Pitch_squash_engraver" } \theNotes
+          \new Voice \with { \consists "Pitch_squash_engraver" } \theNotes
       >> >>
 } } }
 
@@ -242,7 +243,7 @@ Dans mon jar -- din d'hi -- ver
           \transpose c d \harmonies
         } 
         \new Staff \with { instrumentName = \Bb \consists "Merge_rests_engraver" } <<
-            \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c d \theNotes
+          \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c d \theNotes
       >> >>
 } } }
 
@@ -260,7 +261,7 @@ Dans mon jar -- din d'hi -- ver
           \transpose c a \harmonies
         }
         \new Staff \with { instrumentName = \Eb \consists "Merge_rests_engraver" } <<
-            \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c a \theNotes
+          \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c a \theNotes
       >> >>
 } } }
 
@@ -331,10 +332,13 @@ Dans mon jar -- din d'hi -- ver
           \transpose c d \harmonies
         } 
         \new Staff \with { instrumentName = \Bb \consists "Merge_rests_engraver" } <<
-            \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c d \theNotes
+          \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c d \theNotes
+          \addlyrics \verse
+          \addlyrics \verseB
+
       >> >>
 
-  }
+    }
     \markup \pad-markup #2 " "
     \score {
       \layout {
@@ -382,10 +386,13 @@ Dans mon jar -- din d'hi -- ver
           \transpose c a \harmonies
         }
         \new Staff \with { instrumentName = \Eb \consists "Merge_rests_engraver" } <<
-            \new Voice  \transpose c a \theNotes
+          \new Voice  \transpose c a \theNotes
+          \addlyrics \verse
+          \addlyrics \verseB
+
       >> >>
-  }   
-  \markup \pad-markup #2 " "
+    }   
+    \markup \pad-markup #2 " "
     \score {
       \layout {
         indent = 0
@@ -417,3 +424,8 @@ Dans mon jar -- din d'hi -- ver
         \transpose c a \grille
       >>
 } } }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

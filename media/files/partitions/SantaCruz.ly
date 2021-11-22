@@ -143,16 +143,58 @@ ossatureDir =  \relative c {
   s1*4 \pageBreak 
   s1*4 \break 
   s1*4 \pageBreak \bar "||"
-  \mark #3 s1*4 \break s1*3 \toCoda s1 \pageBreak
+  \mark #3 s1*4 \break s1*3 
+  \tweak self-alignment-X #RIGHT
+  \mark \markup  { \page-link #13 { \with-color #(x11-color 'red) "To Coda" } }
+  
+  s1 \pageBreak
   \D s1*4 \break s1*4 \pageBreak \bar "|."
   \once \override Score.RehearsalMark #'direction = #DOWN
   \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
-  \mark \markup \with-color #red "To Solos theb D.S. al Coda"
+  \mark \markup { \page-link #14 { \with-color #red "To Solos theb D.S. al Coda" } }
+}
+
+ossatureDirTab =  \relative c {
+  \set Score.markFormatter = #format-mark-box-letters
+  \time 4/4 
+  \mark \markup { \box { Intro } } 
+  s1*4  \pageBreak 
+  s1*4 \pageBreak 
+  s1*4  \pageBreak 
+  s1*4  \pageBreak \mark #1
+  s1*4 \pageBreak 
+  s1*4 \pageBreak 
+  s1*4 \pageBreak 
+  s1*4 \pageBreak 
+  s1*4 \pageBreak 
+  s1*4 \pageBreak 
+  s1*4 \pageBreak 
+  s1*4 \pageBreak
+  \mark \markup \bold { \box { B } \with-color #red \musicglyph "scripts.varsegno"  }   
+  s1*4 \pageBreak
+  s1*4 \pageBreak 
+  s1*4 \pageBreak 
+  s1*4 \pageBreak 
+  s1*4 \pageBreak 
+  s1*4 \pageBreak \bar "||"
+  \mark #3 s1*4 \pageBreak s1*3 
+  \tweak self-alignment-X #RIGHT
+  \mark \markup  { \page-link #24 { \with-color #(x11-color 'red) "To Coda" } }
+  s1 \pageBreak
+  \D s1*4 \pageBreak s1*4 \pageBreak \bar "|."
+  \once \override Score.RehearsalMark #'direction = #DOWN
+  \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+   \mark \markup { \page-link #26 { \with-color #red "To Solos theb D.S. al Coda" } }
 }
 
 ossatureDirCoda =  \relative c {
   \Coda
   s1*3 \once \override Score.RehearsalMark.break-visibility = #end-of-line-visible \mark \markup 6Xs \break
+  s1*3 \bar ".."
+}
+ossatureDirCodaTab =  \relative c {
+  \Coda
+  s1*3 \once \override Score.RehearsalMark.break-visibility = #end-of-line-visible \mark \markup 6Xs \pageBreak
   s1*3 \bar ".."
 }
 
@@ -320,7 +362,37 @@ ChorusII = \relative c {
   \repeat volta 2 { \comp #8 } 
   \once \override Score.RehearsalMark #'direction = #DOWN
   \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
-  \mark \markup \with-color #red "D.S. al Coda"
+  \mark \markup { \with-color #red "D.S. al Coda" }
+}
+
+ChorusIIDir = \relative c {
+  \override Staff.Clef.stencil = ##f
+  \override Staff.TimeSignature.stencil = ##f
+  \showStartRepeatBar \bar "[|:"
+  \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
+  \mark \markup "Cha Cha"
+  \repeat volta 2 { \comp #8 } 
+  \mark \markup 4x
+  \repeat volta 2 { \comp #8 }
+  \repeat volta 2 { \comp #8 } 
+  \once \override Score.RehearsalMark #'direction = #DOWN
+  \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+  \mark \markup { \page-link #8 { \with-color #red "D.S. al Coda" } }
+}
+
+ChorusIIDirTab = \relative c {
+  \override Staff.Clef.stencil = ##f
+  \override Staff.TimeSignature.stencil = ##f
+  \showStartRepeatBar \bar "[|:"
+  \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
+  \mark \markup "Cha Cha"
+  \repeat volta 2 { \comp #8 } 
+  \mark \markup 4x
+  \repeat volta 2 { \comp #8 }
+  \repeat volta 2 { \comp #8 } 
+  \once \override Score.RehearsalMark #'direction = #DOWN
+  \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+  \mark \markup { \page-link #14 { \with-color #red "D.S. al Coda" } }
 }
 
 
@@ -1274,7 +1346,7 @@ CodaTombone = \relative c'' {
 }
 
 
-%%%%%%%%%% C - A4 %%%%%%%%%%%
+%%%%%%%%%% Conducteur - A4 %%%%%%%%%%%
 
 
 \book {
@@ -1283,7 +1355,7 @@ CodaTombone = \relative c'' {
     first-page-number =#0
     print-page-number = ##t
   }
-  #(define output-suffix "Ca4")
+  #(define output-suffix "Da4")
   \bookpart {
     \paper {
       print-first-page-number = ##f
@@ -1291,32 +1363,32 @@ CodaTombone = \relative c'' {
     \markup {
       \column {      
         \vspace #5
-        \fill-line { \fontsize #9 "Cambios" }
+        \fill-line { \fontsize #9 "Santa Cruz" }
         \fill-line { "Music for Little Big Band" }
         \vspace #2
         \fontsize #4 {
           \fill-line { \circle \bold \concat {" " \musicglyph "clefs.G_change" " "} }
-          \fill-line { "C version" } 
+          \fill-line { "Conductor" } 
         }
         \vspace #2      
         \fontsize #4 {
-          \page-link #2 \line  {  \hspace #10 \underline { Full Score \fontsize #-2 "(Instruments tone)"} }
+         \page-link #2 \line  {  \hspace #10 \underline { Full Score \fontsize #-2 "(conductor)"} }
           \vspace #0.3
-          \page-link #15 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax, c version)" } }
+          \line  {  \hspace #15 Horn I \fontsize #-2 "(Alto Sax)" }
           \vspace #0.3
-          \page-link #17 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax, c version)" } }
+          \line  {  \hspace #15 Horn II \fontsize #-2 "(Tenor Sax)" }
           \vspace #0.3
-          \page-link #19 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax, c version)" } }
+          \line  {  \hspace #15 Horn III \fontsize #-2 "(Baryton Sax)" }
           \vspace #0.3
-          \page-link #21 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet 1, c version)" } }
+          \line  {  \hspace #15 Horn IV \fontsize #-2 "(Trumpet 1)" }
           \vspace #0.3
-          \page-link #23 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet 2, c version)" } }
+          \line  {  \hspace #15 Horn V \fontsize #-2 "(Trumpet 2)" }
           \vspace #0.3
-          \page-link #25 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 "(Trombone)" } }
+          \line  {  \hspace #15 Horn VI \fontsize #-2 "(Trombone)" }
           \vspace #0.3
-          \page-link #27 \line  {  \hspace #10 \underline { Piano \fontsize #-2 "(or Guitare)" } }
+          \line  {  \hspace #15 Piano \fontsize #-2 "(or Guitare)" }
           \vspace #0.3
-          \page-link #29 \line  {  \hspace #10 \underline { Bass } }
+          \line  {  \hspace #15  Bass }
         }
         \vspace #3
         \override #'(line-width . 120)
@@ -1327,7 +1399,7 @@ CodaTombone = \relative c'' {
   \bookpart {
     \paper { 
       %page-count = #12  
-      oddFooterMarkup = \markup \small { \fill-line { \line { "Santa Cruz (Barry Olsen) - C version - Full Score" } } }
+      oddFooterMarkup = \markup \small { \fill-line { \line { "Santa Cruz (Barry Olsen) - Full Score" } } }
     }
     \score {
       <<
@@ -1360,7 +1432,7 @@ CodaTombone = \relative c'' {
           << \new Voice = "Mel" { \GuitareDir } >> 
           \new ChordNames \with { \override VerticalAxisGroup.staff-affinity = #CENTER }
           { \harmoniesDir }
-          \new Staff \with { instrumentName = "Basse" 
+          \new Staff \with { instrumentName = "Bass" 
                              shortInstrumentName = "Bass" midiInstrument = "fretless bass"} 
           << \new Voice = "Mel" { \BasseDir } >> 
         >>
@@ -1413,10 +1485,62 @@ CodaTombone = \relative c'' {
     \score {
       <<
         \new ChordNames { \GrilleII } 
-        \new Staff \with { instrumentName = "Solo 2" } \ChorusII
+        \new Staff \with { instrumentName = "Solo 2" } \ChorusIIDir
       >>
       \layout { indent = 0 }
-  } }
+    }
+  }
+}
+
+
+
+%%%%%%%%%% C - A4 %%%%%%%%%%%
+
+
+\book {
+  \paper {
+    #(set-paper-size "a4")
+    first-page-number =#0
+    print-page-number = ##t
+  }
+  #(define output-suffix "Ca4")
+  \bookpart {
+    \paper {
+      print-first-page-number = ##f
+    }   
+    \markup {
+      \column {      
+        \vspace #5
+        \fill-line { \fontsize #9 "Santa Cruz" }
+        \fill-line { "Music for Little Big Band" }
+        \vspace #2
+        \fill-line \fontsize #8 { \circle \bold \concat {C \raise #-1 K} }
+        \vspace #1
+        \fontsize #4 \fill-line { "C version" } 
+         \vspace #2      
+        \fontsize #4 {
+           \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax)" } }
+          \vspace #0.3
+          \page-link #4 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax)" } }
+          \vspace #0.3
+          \page-link #6 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax)" } }
+          \vspace #0.3
+          \page-link #8 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet 1)" } }
+          \vspace #0.3
+          \page-link #10 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet 2)" } }
+          \vspace #0.3
+          \page-link #12 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 "(Trombone)" } }
+          \vspace #0.3
+          \page-link #14 \line  {  \hspace #10 \underline { Piano \fontsize #-2 "(or Guitare)" } }
+          \vspace #0.3
+          \page-link #16 \line  {  \hspace #10 \underline { Bass } }
+        }
+        \vspace #3
+        \override #'(line-width . 120)
+        \fontsize #2 \fill-line { " " "Lilypond sources embeded in pdf file" }
+      }
+    }
+  } 
 
   \bookpart {
     \header { meter = \markup \pad-around #4 \circle \fontsize #2 { \pad-around #1 \bold \concat {C \raise #-1 K} } }
@@ -1735,6 +1859,10 @@ CodaTombone = \relative c'' {
   } 
 } 
 
+
+
+
+
 % %------------Bb A4 ---------------
 
 
@@ -1752,26 +1880,25 @@ CodaTombone = \relative c'' {
     \markup {
       \column {      
         \vspace #5
-        \fill-line { \fontsize #9 "Cambios" }
+        \fill-line { \fontsize #9 "Santa Cruz" }
         \fill-line { "Music for Little Big Band" }
         \vspace #2
-        \fontsize #4 {
-          \fill-line { \circle \bold \concat {" " B  \flat " "} }
-          \fill-line { \concat {B \small \flat " Version"} } 
-        }
+        \fill-line \fontsize #6 { \circle \bold \concat {" " B  \flat " "} }
+        \vspace #1
+        \fill-line \fontsize #4 { \concat {B \small \flat " Version"} } 
         \vspace #2      
         \fontsize #4 {
-          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 \concat { "(Alto Sax, B"\flat" transposed version)" }  } }
+          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax)" }  }
           \vspace #0.3
           \page-link #4 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax)" } }
           \vspace #0.3
-          \page-link #6 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 \concat { "(Baryton Sax, E"\flat" transposed version)" }  } }
+          \page-link #6 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax)" }  } 
           \vspace #0.3
           \page-link #8 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet I)" } }
           \vspace #0.3
           \page-link #10 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet II)" } }
           \vspace #0.3
-          \page-link #12 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 \concat { "(Trombone, B"\flat" transposed version)" }  } }
+          \page-link #12 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 "(Trombone)" }  }
           \vspace #0.3
           \page-link #14 \line  {  \hspace #10 \underline { Wind Bass } }
         }
@@ -2072,26 +2199,25 @@ CodaTombone = \relative c'' {
     \markup {
       \column {      
         \vspace #5
-        \fill-line { \fontsize #9 "Cambios" }
+        \fill-line { \fontsize #9 "Santa Cruz" }
         \fill-line { "Music for Little Big Band" }
         \vspace #2
-        \fontsize #4 {
-          \fill-line { \circle \bold \concat {" " E  \flat " "} }
-          \fill-line { \concat {E \small \flat " Version"} } 
-        }
+        \fill-line \fontsize #6 { \circle \bold \concat {" " E  \flat " "} }
+        \vspace #1
+        \fill-line \fontsize #4 { \concat {E \small \flat " Version"} } 
         \vspace #2      
         \fontsize #4 {
           \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax)" } }
           \vspace #0.3
-          \page-link #4 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 \concat { "(Tenor Sax, E"\flat" transposed version)" } } }
+          \page-link #4 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax)" } }
           \vspace #0.3
           \page-link #6 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax)" } }
           \vspace #0.3
-          \page-link #8 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 \concat { "(Trumpet I, E"\flat" transposed version)" } } }
+          \page-link #8 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet I)" } }
           \vspace #0.3
-          \page-link #10 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 \concat { "(Trumpet II, E"\flat" transposed version)" } } }
+          \page-link #10 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet II)" } }
           \vspace #0.3
-          \page-link #12 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 \concat { "(Trombone, E"\flat" transposed version)" } } }
+          \page-link #12 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 "(Trombone)" } }
           \vspace #0.3
           \page-link #14 \line  {  \hspace #10 \underline { Wind Bass } }
         }
@@ -2395,24 +2521,23 @@ CodaTombone = \relative c'' {
     \markup {
       \column {      
         \vspace #5
-        \fill-line { \fontsize #9 "Cambios" }
+        \fill-line { \fontsize #9 "Santa Cruz" }
         \fill-line { "Music for Little Big Band" }
         \vspace #2
+        \fill-line \fontsize #8 { \circle \bold \concat {C \raise #-1 K} }
+        \vspace #1
+        \fontsize #4 \fill-line { "C version" } 
+         \vspace #2      
         \fontsize #4 {
-          \fill-line { \circle \bold \concat {" " \musicglyph "clefs.G_change" " "} }
-          \fill-line { "C version" } 
-        }
-        \vspace #2      
-        \fontsize #4 {
-          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax, c version)" } }
+          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax)" } }
           \vspace #0.3
-          \page-link #5 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax, c version)" } }
+          \page-link #5 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax)" } }
           \vspace #0.3
-          \page-link #8 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax, c version)" } }
+          \page-link #8 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax)" } }
           \vspace #0.3
-          \page-link #11 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet 1, c version)" } }
+          \page-link #11 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet 1)" } }
           \vspace #0.3
-          \page-link #14 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet 2, c version)" } }
+          \page-link #14 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet 2)" } }
           \vspace #0.3
           \page-link #17 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 "(Trombone)" } }
           \vspace #0.3
@@ -2738,26 +2863,25 @@ CodaTombone = \relative c'' {
     \markup {
       \column {      
         \vspace #5
-        \fill-line { \fontsize #9 "Cambios" }
+        \fill-line { \fontsize #9 "Santa Cruz" }
         \fill-line { "Music for Little Big Band" }
         \vspace #2
-        \fontsize #4 {
-          \fill-line { \circle \bold \concat {" " B  \flat " "} }
-          \fill-line { \concat {B \small \flat " Version"} } 
-        }
+        \fill-line \fontsize #6 { \circle \bold \concat {" " B  \flat " "} }
+        \vspace #1
+        \fill-line \fontsize #4 { \concat {B \small \flat " Version"} } 
         \vspace #2      
         \fontsize #4 {
-          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 \concat { "(Alto Sax, B"\flat" transposed version)" }  } }
+          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax)" } }
           \vspace #0.3
           \page-link #5 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax)" } }
           \vspace #0.3
-          \page-link #8 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 \concat { "(Baryton Sax, E"\flat" transposed version)" }  } }
+          \page-link #8 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax)" } }
           \vspace #0.3
           \page-link #11 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet I)" } }
           \vspace #0.3
           \page-link #14 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet II)" } }
           \vspace #0.3
-          \page-link #17 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 \concat { "(Trombone, B"\flat" transposed version)" }  } }
+          \page-link #17 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 "(Trombone)" } }
           \vspace #0.3
           \page-link #20 \line  {  \hspace #10 \underline { Wind Bass } }
         }
@@ -3037,26 +3161,25 @@ CodaTombone = \relative c'' {
     \markup {
       \column {      
         \vspace #5
-        \fill-line { \fontsize #9 "Cambios" }
+        \fill-line { \fontsize #9 "Santa Cruz" }
         \fill-line { "Music for Little Big Band" }
         \vspace #2
-        \fontsize #4 {
-          \fill-line { \circle \bold \concat {" " E  \flat " "} }
-          \fill-line { \concat {E \small \flat " Version"} } 
-        }
+        \fill-line \fontsize #6 { \circle \bold \concat {" " E  \flat " "} }
+        \vspace #1
+        \fill-line \fontsize #4 { \concat {E \small \flat " Version"} } 
         \vspace #2      
         \fontsize #4 {
           \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax)" } }
           \vspace #0.3
-          \page-link #5 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 \concat { "(Tenor Sax, E"\flat" transposed version)" } } }
+          \page-link #5 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax)" } }
           \vspace #0.3
           \page-link #8 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax)" } }
           \vspace #0.3
-          \page-link #11 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 \concat { "(Trumpet I, E"\flat" transposed version)" } } }
+          \page-link #11 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet I)" } }
           \vspace #0.3
-          \page-link #14 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 \concat { "(Trumpet II, E"\flat" transposed version)" } } }
+          \page-link #14 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet II)" } }
           \vspace #0.3
-          \page-link #17 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 \concat { "(Trombone, E"\flat" transposed version)" } } }
+          \page-link #17 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 "(Trombonen)" } }
           \vspace #0.3
           \page-link #20 \line  {  \hspace #10 \underline { Wind Bass } }
         }
@@ -3319,4 +3442,146 @@ CodaTombone = \relative c'' {
       \layout { indent = 0 }
     }
   } 
+} 
+
+
+%%%%%%%%%% Conducteur - A4 %%%%%%%%%%%
+
+
+\book {
+  \paper {
+    #(set-paper-size "tablette")
+    first-page-number =#0
+    print-page-number = ##t
+  }
+  #(define output-suffix "DTab")
+  \bookpart {
+    \paper {
+      print-first-page-number = ##f
+    }   
+    \markup {
+      \column {      
+        \vspace #3
+        \fill-line { \fontsize #9 "Santa Cruz" }
+        \fill-line { "Music for Little Big Band" }
+        \vspace #1
+        \fontsize #4 {
+          \fill-line { \circle \bold \concat {" " \musicglyph "clefs.G_change" " "} }
+          \fill-line { "Conductor" } 
+        }
+        \vspace #2      
+        \fontsize #4 {
+         \page-link #2 \line  {  \hspace #10 \underline { Full Score \fontsize #-2 "(conductor)"} }
+          \vspace #0.3
+          \line  {  \hspace #15 Horn I \fontsize #-2 "(Alto Sax)" }
+          \vspace #0.3
+          \line  {  \hspace #15 Horn II \fontsize #-2 "(Tenor Sax)" }
+          \vspace #0.3
+          \line  {  \hspace #15 Horn III \fontsize #-2 "(Baryton Sax)" }
+          \vspace #0.3
+          \line  {  \hspace #15 Horn IV \fontsize #-2 "(Trumpet 1)" }
+          \vspace #0.3
+          \line  {  \hspace #15 Horn V \fontsize #-2 "(Trumpet 2)" }
+          \vspace #0.3
+          \line  {  \hspace #15 Horn VI \fontsize #-2 "(Trombone)" }
+          \vspace #0.3
+          \line  {  \hspace #15 Piano \fontsize #-2 "(or Guitare)" }
+          \vspace #0.3
+          \line  {  \hspace #15  Bass }
+        }
+        \vspace #1
+        \override #'(line-width . 120)
+        \fontsize #2 \fill-line { " " "Lilypond sources embeded in pdf file" }
+      }
+    }
+  } 
+  \bookpart {
+    \score {
+      <<
+        \new StaffGroup << 
+          \new Staff \with { instrumentName = \markup { \center-column { "Horn 1" \line { "(A.Sax)" } } } 
+                             shortInstrumentName = "A.Sx" midiInstrument = "alto sax" } 
+          << \new Voice = "Mel" { \transpose c a, \alto }
+             \new Voice = "ctrl" { \ossatureDirTab } >> 
+          \new Staff \with { instrumentName = \markup { \center-column { "Horn 2" \line { "(T.Sax)" } } } 
+                             shortInstrumentName = "T.Sx" midiInstrument = "tenor sax"} 
+          << \new Voice = "Mel" { \transpose c d \tenor } >> 
+          \new Staff \with { instrumentName = \markup { \center-column { "Horn 3" \line { "(B.Sax)" } } } 
+                             shortInstrumentName = "B.Sx" midiInstrument = "baritone sax"} 
+          << \new Voice = "Mel" { \transpose c a \baryton } >>   
+        >>     
+        \new StaffGroup << 
+          \new Staff \with { instrumentName = \markup { \center-column { "Horn 4" \line { "(Tpt.1)" } } } 
+                             shortInstrumentName = "Tpt.1" midiInstrument = "trumpet"} 
+          << \new Voice = "Mel" { \transpose c d \trpI } >> 
+          \new Staff \with { instrumentName = \markup { \center-column { "Horn 5" \line { "(Tpt.2)" } } }  
+                             shortInstrumentName = "Tpt.  2"  midiInstrument = "trumpet"} 
+          << \new Voice = "Mel" { \transpose c d \trpII } >> 
+          \new Staff \with { instrumentName = \markup { \center-column { "Horn 6" \line { "(Tbn.)" } } }  
+                             shortInstrumentName = "Tbn."  midiInstrument = "trombone"} 
+          << \new Voice = "Mel" { \clef "bass" \trombone } >>   
+        >>     
+        \new StaffGroup << 
+          \new Staff \with { instrumentName = \markup { \center-column { "Piano" \line { "or Guit." } } } 
+                             shortInstrumentName = "Pno" midiInstrument = "grand piano"} 
+          << \new Voice = "Mel" { \GuitareDir } >> 
+          \new ChordNames \with { \override VerticalAxisGroup.staff-affinity = #CENTER }
+          { \harmoniesDir }
+          \new Staff \with { instrumentName = "Basse" 
+                             shortInstrumentName = "Bass" midiInstrument = "fretless bass"} 
+          << \new Voice = "Mel" { \BasseDir } >> 
+        >>
+      >>
+      \layout {
+        \context { 
+          \Score
+          \revert KeySignature #'break-visibility
+          \revert Clef #'break-visibility
+        } 
+      }
+    } 
+    \score {
+      <<       
+        \new StaffGroup << 
+          \new Staff \with { instrumentName = "A.Sx" shortInstrumentName = "A.Sx" } 
+          << \new Voice = "Mel" { \transpose c a, \CodaAlto }
+             \new Voice = "ctrl" { \ossatureDirCodaTab } >> 
+          \new Staff \with { instrumentName = "T.Sx" shortInstrumentName = "T.Sx" } 
+          << \new Voice = "Mel" { \transpose c d \CodaTenor } >> 
+          \new Staff \with { instrumentName = "B.Sx" shortInstrumentName = "B.Sx" } 
+          << \new Voice = "Mel" { \transpose c a \CodaBaryton } >>   
+        >>            
+        \new StaffGroup << 
+          \new Staff \with { instrumentName = "Tpt1" shortInstrumentName = "Tpt.1" } 
+          << \new Voice = "Mel" { \transpose c d \CodaTrpI } >> 
+          \new Staff \with { instrumentName = "Tpt2" shortInstrumentName = "Tpt.2" } 
+          << \new Voice = "Mel" { \transpose c d \CodaTrpII } >> 
+          \new Staff \with { instrumentName = "Tbn." shortInstrumentName = "Tbn." } 
+          << \new Voice = "Mel" { \CodaTombone } >>   
+        >>     
+        \new StaffGroup << 
+          \new Staff \with { instrumentName = "Pno" shortInstrumentName = "Pno" } 
+          << \new Voice = "Mel" { \CodaGuitareDir }>> 
+          \new ChordNames \with { \override VerticalAxisGroup.staff-affinity = #CENTER }
+          { \harmoniesDirCoda }
+          \new Staff \with { instrumentName = "Bass" shortInstrumentName = "Bass" } 
+          << \new Voice = "Mel" { \CodaBasseDir } >> 
+        >>
+      >>
+      \layout { indent = 0 }
+    }
+    \score {
+      <<
+        \new ChordNames { \Grille } 
+        \new Staff \with { instrumentName = "Solo 1" } \Chorus
+      >>
+      \layout { indent = 0 }
+    } 
+    \score {
+      <<
+        \new ChordNames { \GrilleII } 
+        \new Staff \with { instrumentName = "Solo 2" } \ChorusIIDirTab
+      >>
+      \layout { indent = 0 }
+  } }
 } 

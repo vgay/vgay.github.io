@@ -93,10 +93,6 @@ realBookTitle = \markup {
   }
 }
 
-form = \markup  \fill-line {
-  \column {  }
-  \column { \line { \with-color #red \fontsize #2 "After Solos D.S. al Coda" } }
-}
 
 Ossature = \relative c' {
   \Intro
@@ -114,7 +110,7 @@ Ossature = \relative c' {
   s1*4 \break \bar ".." 
   \once \override Score.RehearsalMark #'direction = #DOWN
   \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
-  \once \override Score.RehearsalMark.extra-offset = #'(0 . 8 )
+  \once \override Score.RehearsalMark.extra-offset = #'(-2 . 8 )
   \once \override Score.RehearsalMark.baseline-skip = #11
   \override Score.RehearsalMark.break-visibility = #begin-of-line-invisible
   \mark \markup \with-color #red  \right-column { "fine"  "The 2 last bars are played 3x at last theme" }
@@ -135,7 +131,7 @@ OssatureTab = \relative c' {
   s1*4 \break \bar ".." 
   \once \override Score.RehearsalMark #'direction = #DOWN
   \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
-  \once \override Score.RehearsalMark.extra-offset = #'(0 . 8 )
+  \once \override Score.RehearsalMark.extra-offset = #'(-2 . 8 )
   \once \override Score.RehearsalMark.baseline-skip = #11
   \override Score.RehearsalMark.break-visibility = #begin-of-line-invisible
   \mark \markup \with-color #red  \right-column { "fine"  "The 2 last bars are played 3x at last theme" }
@@ -607,6 +603,33 @@ montunoPiano = \relative c'' {
     \mark \markup \with-color #red "After solos D.S. al fine"
   } 
 }
+
+montunoPianoDir = \relative c'' {
+  \showStartRepeatBar \bar "[|:"
+  \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
+  \mark \markup "Open percussion solo over montuno"
+  \repeat volta 2 {
+    <g g'>4 <bes d> r8 <f f'> r <g g'> | r <c es>4 <g g'> <c es> <a a'>8 |
+    <g g'>4 <bes d> r8 <f f'> r <g g'> | r <c es>4 <g g'> <c es> <a a'>8 |
+    \once \override Score.RehearsalMark #'direction = #DOWN
+    \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+    \mark \markup { \page-link #5 { \with-color #red "After solos D.S. al fine" } }
+  } 
+}
+
+montunoPianoDirTab = \relative c'' {
+  \showStartRepeatBar \bar "[|:"
+  \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
+  \mark \markup "Open percussion solo over montuno"
+  \repeat volta 2 {
+    <g g'>4 <bes d> r8 <f f'> r <g g'> | r <c es>4 <g g'> <c es> <a a'>8 |
+    <g g'>4 <bes d> r8 <f f'> r <g g'> | r <c es>4 <g g'> <c es> <a a'>8 |
+    \once \override Score.RehearsalMark #'direction = #DOWN
+    \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+    \mark \markup { \page-link #8 { \with-color #red "After solos D.S. al fine" } }
+  } 
+}
+
 montunoBasse = \relative c' {
   bes4. \repeatTie g8~ g4 c~ | c4. f,8~ f4 bes~ |
   bes4. g8~ g4 c~ | c4. f,8~ f4 bes \laissezVibrer
@@ -617,14 +640,14 @@ montunoChords = \chordmode {
 }
 
 
-% Version C format A4
+% conducteur format A4
 \book {
   \paper {
     #(set-paper-size "a4")
     first-page-number =#0
     print-page-number = ##t
   }
-  #(define output-suffix "Ca4")
+  #(define output-suffix "Da4")
   \bookpart {
     \paper {
       print-first-page-number = ##f
@@ -637,29 +660,28 @@ montunoChords = \chordmode {
         \vspace #2
         \fontsize #4 {
           \fill-line { \circle \bold \concat {" " \musicglyph "clefs.G_change" " "} }
-          \fill-line { "C version" } 
         }
         \vspace #2      
         \fontsize #4 {
-          \page-link #2 \line  {  \hspace #10 \underline { Full Score \fontsize #-2 "(Instruments tone)"} }
+          \page-link #2 \line  {  \hspace #10 \underline { Full Score \fontsize #-2 "(conductor)"} }
           \vspace #0.3
-          \page-link #8 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax, c version)" } }
+          \line  {  \hspace #15 Horn I \fontsize #-2 "(Alto Sax)" }
           \vspace #0.3
-          \page-link #10 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax, c version)" } }
+          \line  {  \hspace #15 Horn II \fontsize #-2 "(Tenor Sax)" }
           \vspace #0.3
-          \page-link #12 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax, c version)" } }
+          \line  {  \hspace #15 Horn III \fontsize #-2 "(Baryton Sax)" }
           \vspace #0.3
-          \page-link #14 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet 1, c version)" } }
+          \line  {  \hspace #15 Horn IV \fontsize #-2 "(Trumpet 1)" }
           \vspace #0.3
-          \page-link #16 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet 2, c version)" } }
+          \line  {  \hspace #15 Horn V \fontsize #-2 "(Trumpet 2)" }
           \vspace #0.3
-          \page-link #18 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 "(Trombone)" } }
+          \line  {  \hspace #15 Horn VI \fontsize #-2 "(Trombone)" }
           \vspace #0.3
-          \page-link #20 \line  {  \hspace #10 \underline { Piano \fontsize #-2 "(or Guitare, concert key)" } }
+          \line  {  \hspace #15 Piano \fontsize #-2 "(or Guitare)" }
           \vspace #0.3
-          \page-link #22 \line  {  \hspace #10 \underline { Bass } }
+          \line  {  \hspace #15  Bass }
         }
-        \vspace #3
+        \vspace #2
         \override #'(line-width . 120)
         \fontsize #2 \fill-line { " " "Lilypond sources embeded in pdf file" }
       }
@@ -667,7 +689,7 @@ montunoChords = \chordmode {
   } 
   \bookpart {
     \paper { 
-      oddFooterMarkup = \markup \small { \fill-line { \line { "Cambios (David Torres) - C version - Full Score" } } }
+      oddFooterMarkup = \markup \small { \fill-line { \line { "Cambios (David Torres) - Full Score" } } }
     }
     \score {
       <<
@@ -731,28 +753,28 @@ montunoChords = \chordmode {
           >>
         >>
         \new StaffGroup <<
-        \new Staff
-        <<
-          \set Staff.instrumentName = \markup { \center-column { "Piano" \line { "or Guit." } } }
-          \set Staff.shortInstrumentName = "Pno."
+          \new Staff
+          <<
+            \set Staff.instrumentName = \markup { \center-column { "Piano" \line { "or Guit." } } }
+            \set Staff.shortInstrumentName = "Pno."
  
-          \context Staff <<
-            \context Voice = "Piano" { \Piano }
-          >> 
-        >>
+            \context Staff <<
+              \context Voice = "Piano" { \Piano }
+            >> 
+          >>
  
-        \new ChordNames = "Accords" { \Accords}
+          \new ChordNames = "Accords" { \Accords}
 
-        \new Staff
-        <<
-          \set Staff.instrumentName = "Bass"
-          \set Staff.shortInstrumentName = "Bass"
+          \new Staff
+          <<
+            \set Staff.instrumentName = "Bass"
+            \set Staff.shortInstrumentName = "Bass"
 
-          \context Staff <<
-            \context Voice = "Basse" { \clef "bass" \Basse }
+            \context Staff <<
+              \context Voice = "Basse" { \clef "bass" \Basse }
+            >>
           >>
         >>
-      >>
       >>
       \layout {}
     }
@@ -787,6 +809,54 @@ montunoChords = \chordmode {
       \layout { indent = 0 }
     }
   }
+}
+
+% Version C format A4
+\book {
+  \paper {
+    #(set-paper-size "a4")
+    first-page-number =#0
+    print-page-number = ##t
+  }
+  #(define output-suffix "Ca4")
+  \bookpart {
+    \paper {
+      print-first-page-number = ##f
+    }   
+    \markup {
+      \column {      
+        \vspace #5
+        \fill-line { \fontsize #9 "Cambios" }
+        \fill-line { "Music for Little Big Band" }
+        \vspace #2
+        \fill-line \fontsize #8 { \circle \bold \concat {C \raise #-1 K} }
+        \vspace #1
+        \fontsize #4 \fill-line { "C version" } 
+        \vspace #2      
+        \fontsize #4 {
+          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax)" } }
+          \vspace #0.3
+          \page-link #4 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax)" } }
+          \vspace #0.3
+          \page-link #6 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax)" } }
+          \vspace #0.3
+          \page-link #8 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet 1)" } }
+          \vspace #0.3
+          \page-link #10 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet 2)" } }
+          \vspace #0.3
+          \page-link #12 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 "(Trombone)" } }
+          \vspace #0.3
+          \page-link #14 \line  {  \hspace #10 \underline { Piano \fontsize #-2 "(or Guitare)" } }
+          \vspace #0.3
+          \page-link #16 \line  {  \hspace #10 \underline { Bass } }
+        }
+        \vspace #3
+        \override #'(line-width . 120)
+        \fontsize #2 \fill-line { " " "Lilypond sources embeded in pdf file" }
+      }
+    }
+  } 
+  
   \bookpart {
     \header { meter = \markup \pad-around #4 \circle \fontsize #2 { \pad-around #1 \bold \concat {C \raise #-1 K} } }
     \paper { 
@@ -1183,23 +1253,22 @@ montunoChords = \chordmode {
         \fill-line { \fontsize #9 "Cambios" }
         \fill-line { "Music for Little Big Band" }
         \vspace #2
-        \fontsize #4 {
-          \fill-line { \circle \bold \concat {" " B  \flat " "} }
-          \fill-line { \concat {B \small \flat " Version"} } 
-        }
+        \fill-line \fontsize #6 { \circle \bold \concat {" " B  \flat " "} }
+        \vspace #1
+        \fill-line \fontsize #4 { \concat {B \small \flat " Version"} } 
         \vspace #2      
         \fontsize #4 {
-          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 \concat { "(Alto Sax, B"\flat" transposed version)" } } }
+          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax)" } }
           \vspace #0.3
           \page-link #4 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax)" } }
           \vspace #0.3
-          \page-link #6 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 \concat { "(Baryton Sax, B"\flat" transposed version)" } } }
+          \page-link #6 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax)" } }
           \vspace #0.3
           \page-link #8 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet 1)" } }
           \vspace #0.3
           \page-link #10 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet 2)" } }
           \vspace #0.3
-          \page-link #12 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 \concat { "(Trombone, B"\flat" transposed version)" } } }
+          \page-link #12 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 "(Trombone)" } } 
           \vspace #0.3
           \page-link #14 \line  {  \hspace #10 \underline "Wind Bass" }
         }
@@ -1560,23 +1629,22 @@ montunoChords = \chordmode {
         \fill-line { \fontsize #9 "Cambios" }
         \fill-line { "Music for Little Big Band" }
         \vspace #2
-        \fontsize #4 {
-          \fill-line { \circle \bold \concat {" " E  \flat " "} }
-          \fill-line { \concat {E \small \flat " Version"} } 
-        }
+        \fill-line \fontsize #6 { \circle \bold \concat {" " E  \flat " "} }
+        \vspace #1
+        \fill-line \fontsize #4 { \concat {E \small \flat " Version"} } 
         \vspace #2      
         \fontsize #4 {
           \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax)" } }
           \vspace #0.3
-          \page-link #4 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 \concat { "(Tenor Sax, E"\flat" transposed version)" } } }
+          \page-link #4 \line  {  \hspace #10 \underline { Horn II \fontsize #-2"(Tenor Sax)" } }
           \vspace #0.3
           \page-link #6 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax)" } }
           \vspace #0.3
-          \page-link #8 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 \concat { "(Trumpet 1, E"\flat" transposed version)" } } }
+          \page-link #8 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet 1)" } }
           \vspace #0.3
-          \page-link #10 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 \concat { "(Trumpet 2, E"\flat" transposed version)" } } }
+          \page-link #10 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet 2)" } }
           \vspace #0.3
-          \page-link #12 \line  {  \hspace #10 \underline{  Horn VI \fontsize #-2 \concat { "(Trombone, E"\flat" transposed version)" } } }
+          \page-link #12 \line  {  \hspace #10 \underline{  Horn VI \fontsize #-2 "(Trombone)" } }
           \vspace #0.3
           \page-link #14 \line  {  \hspace #10 \underline "Wind Bass" }
         }
@@ -1933,27 +2001,26 @@ montunoChords = \chordmode {
     }   
     \markup {
       \column {      
-        \vspace #5
+        \vspace #3
         \fill-line { \fontsize #9 "Cambios" }
         \fill-line { "Music for Little Big Band" }
         \vspace #2
-        \fontsize #4 {
-          \fill-line { \circle \bold \concat {" " B  \flat " "} }
-          \fill-line { \concat {B \small \flat " Version"} } 
-        }
+        \fill-line \fontsize #6 { \circle \bold \concat {" " B  \flat " "} }
+        \vspace #1
+        \fill-line \fontsize #4 { \concat {B \small \flat " Version"} } 
         \vspace #2      
         \fontsize #4 {
-          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 \concat { "(Alto Sax, B"\flat" transposed version)" } } }
+          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax)" } }
           \vspace #0.3
           \page-link #6 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax)" } }
           \vspace #0.3
-          \page-link #10 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 \concat { "(Baryton Sax, B"\flat" transposed version)" } } }
+          \page-link #10 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax)" } }
           \vspace #0.3
           \page-link #14 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet 1)" } }
           \vspace #0.3
           \page-link #18 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet 2)" } }
           \vspace #0.3
-          \page-link #22 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 \concat { "(Trombone, B"\flat" transposed version)" } } }
+          \page-link #22 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 "(Trombone)" } }
           \vspace #0.3
           \page-link #26 \line  {  \hspace #10 \underline "Wind Bass" }
         }
@@ -2296,27 +2363,26 @@ montunoChords = \chordmode {
     }   
     \markup {
       \column {      
-        \vspace #5
+        \vspace #3
         \fill-line { \fontsize #9 "Cambios" }
         \fill-line { "Music for Little Big Band" }
         \vspace #2
-        \fontsize #4 {
-          \fill-line { \circle \bold \concat {" " E  \flat " "} }
-          \fill-line { \concat {E \small \flat " Version"} } 
-        }
+        \fill-line \fontsize #6 { \circle \bold \concat {" " E  \flat " "} }
+        \vspace #1
+        \fill-line \fontsize #4 { \concat {E \small \flat " Version"} } 
         \vspace #2      
         \fontsize #4 {
           \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax)" } }
           \vspace #0.3
-          \page-link #6 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 \concat { "(Tenor Sax, E"\flat" transposed version)" } } }
+          \page-link #6 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax)" } }
           \vspace #0.3
           \page-link #10 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax)" } }
           \vspace #0.3
-          \page-link #14 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 \concat { "(Trumpet 1, E"\flat" transposed version)" } } }
+          \page-link #14 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet 1)" } }
           \vspace #0.3
-          \page-link #18 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 \concat { "(Trumpet 2, E"\flat" transposed version)" } } }
+          \page-link #18 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet 2)" } }
           \vspace #0.3
-          \page-link #22 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 \concat { "(Trombone, E"\flat" transposed version)" } } }
+          \page-link #22 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 "(Trombonen)" } }
           \vspace #0.3
           \page-link #26 \line  {  \hspace #10 \underline "Wind Bass" }
         }
@@ -2664,10 +2730,9 @@ montunoChords = \chordmode {
         \fill-line { \fontsize #9 "Cambios" }
         \fill-line { "Music for Little Big Band" }
         \vspace #2
-        \fontsize #4 {
-          \fill-line { \circle \bold \concat {" " \musicglyph "clefs.G_change" " "} }
-          \fill-line { "C version" } 
-        }
+        \fill-line \fontsize #8 { \circle \bold \concat {C \raise #-1 K} }
+        \vspace #1
+        \fontsize #4 \fill-line { "C version" } 
         \vspace #1      
         \fontsize #4 {
           \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax)" } }
@@ -3038,6 +3103,174 @@ montunoChords = \chordmode {
         >>
       >>
     }
+    \score {
+      <<
+        \new PianoStaff
+        << 
+          \new Staff \with { instrumentName = "Pno" }
+          << \montunoPiano >>
+          \new ChordNames = "Accords" { \montunoChords}
+          \new Staff \with { instrumentName = "Bass" }
+          << \clef "bass" \montunoBasse >>
+        >>
+      >>
+      \layout { indent = 0 }
+    }
+  }
+}
+
+% conducteur format A5
+\book {
+  \paper {
+    #(set-paper-size "tablette")
+    first-page-number =#0
+    print-page-number = ##t
+  }
+  #(define output-suffix "DTab")
+  \bookpart {
+    \paper {
+      print-first-page-number = ##f
+    }   
+    \markup {
+      \column {      
+        \vspace #3
+        \fill-line { \fontsize #9 "Cambios" }
+        \fill-line { "Music for Little Big Band" }
+        \vspace #1
+        \fontsize #4 {
+          \fill-line { \circle \bold \concat {" " \musicglyph "clefs.G_change" " "} }
+        }
+        \vspace #1      
+        \fontsize #4 {
+          \page-link #2 \line  {  \hspace #10 \underline { Full Score \fontsize #-2 "(conductor)"} }
+          \vspace #0.3
+          \line  {  \hspace #15 Horn I \fontsize #-2 "(Alto Sax)" }
+          \vspace #0.3
+          \line  {  \hspace #15 Horn II \fontsize #-2 "(Tenor Sax)" }
+          \vspace #0.3
+          \line  {  \hspace #15 Horn III \fontsize #-2 "(Baryton Sax)" }
+          \vspace #0.3
+          \line  {  \hspace #15 Horn IV \fontsize #-2 "(Trumpet 1)" }
+          \vspace #0.3
+          \line  {  \hspace #15 Horn V \fontsize #-2 "(Trumpet 2)" }
+          \vspace #0.3
+          \line  {  \hspace #15 Horn VI \fontsize #-2 "(Trombone)" }
+          \vspace #0.3
+          \line  {  \hspace #15 Piano \fontsize #-2 "(or Guitare)" }
+          \vspace #0.3
+          \line  {  \hspace #15  Bass }
+        }
+        \vspace #1
+        \override #'(line-width . 120)
+        \fontsize #2 \fill-line { " " "Lilypond sources embeded in pdf file" }
+      }
+    }
+  } 
+  \bookpart {
+    \score {
+      <<
+        \new StaffGroup <<
+          \new Staff
+          <<
+            \set Staff.instrumentName = \markup { \center-column { "Horn 1" \line { "(A.Sax)" } } }
+            \set Staff.shortInstrumentName = "A.Sx"
+
+            \context Staff <<
+              \new Voice = "Alto" { \transpose c a \Alto }
+              \new Voice = "Ossature" \Ossature
+            >>
+          >>
+          \new Staff
+          <<
+            \set Staff.instrumentName = \markup { \center-column { "Horn 2" \line { "(T.Sax)" } } }
+            \set Staff.shortInstrumentName = "T.Sx"
+
+            \context Staff <<
+              \context Voice = "Tenor" { \transpose c d' \Tenor }
+            >>
+          >>
+          \new Staff
+          <<
+            \set Staff.instrumentName = \markup { \center-column { "Horn 3" \line { "(B.Sax)" } } }
+            \set Staff.shortInstrumentName = "B.Sx"
+
+            \context Staff <<
+              \context Voice = "Baryton" { \transpose c a' \Baryton }
+            >>
+          >>
+        >>
+        \new StaffGroup <<
+          \new Staff
+          <<
+            \set Staff.instrumentName = \markup { \center-column { "Horn 4" \line { "(Tpt.1)" } } }
+            \set Staff.shortInstrumentName = "Tp.1"
+
+            \context Staff <<
+              \context Voice = "TrompetteI" { \transpose c d \TrompetteI }
+            >>
+          >>
+          \new Staff
+          <<
+            \set Staff.instrumentName = \markup { \center-column { "Horn 5" \line { "(Tpt.2)" } } }
+            \set Staff.shortInstrumentName = "Tp.2"
+
+            \context Staff <<
+              \context Voice = "Trompette 2" { \transpose c d \TrompetteII }
+            >>
+          >>
+          \new Staff
+          <<
+            \set Staff.instrumentName = \markup { \center-column { "Horn 6" \line { "(Tbn.)" } } }
+            \set Staff.shortInstrumentName = "Tbn."
+
+            \context Staff <<
+              \context Voice = "Trombone" { \clef "bass" \Trombone }
+            >>
+          >>
+        >>
+        \new StaffGroup <<
+          \new Staff
+          <<
+            \set Staff.instrumentName = \markup { \center-column { "Piano" \line { "or Guit." } } }
+            \set Staff.shortInstrumentName = "Pno."
+ 
+            \context Staff <<
+              \context Voice = "Piano" { \Piano }
+            >> 
+          >>
+ 
+          \new ChordNames = "Accords" { \Accords}
+
+          \new Staff
+          <<
+            \set Staff.instrumentName = "Bass"
+            \set Staff.shortInstrumentName = "Bass"
+
+            \context Staff <<
+              \context Voice = "Basse" { \clef "bass" \Basse }
+            >>
+          >>
+        >>
+      >>
+      \layout {}
+    }
+    
+    
+    \score {
+      <<
+        \new ChordNames = "Accords" { \grille}
+        \new Staff \with { instrumentName = "Solos" }
+        << \comp # 104 >>
+        \new PianoStaff \with { instrumentName = \markup { \center-column { "Background" \line { "last x" } } } }
+        << 
+          \new Staff 
+          << \backgroudI >>
+          \new Staff
+          << \transpose c c' \backgroudII >>
+        >>
+      >>
+    }
+  
     \score {
       <<
         \new PianoStaff

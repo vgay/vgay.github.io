@@ -1,6 +1,7 @@
 
 \version "2.22.1"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -125,7 +126,7 @@ theNotes =  \relative c'' {
   } \break \bar "||" \B
   d'4. c8~ 2 | r8 c c d d c c g | d'1 | r8 bes bes c c bes bes f | \break
   c'4. bes8~ 2 | r8 f g a a2 | r8 f g a a2 | r8  c d e e4 \tuplet 3/2 { d8 a g } \break \bar "||"
-  \A a4. 8~ 2 | r8 g a d d a4 e16 d | e1 | r8 d d a' a4 \tuplet 3/2 { g8 g d } \break
+  \A a4. 8~ 2 | r8 g a c c a4 e16 d | e1 | r8 d d a' a4 \tuplet 3/2 { g8 g d } \break
   a'4. 8~ 2 | r8 d, d a' a g g d | a'1~| a \bar ".."
   }
 

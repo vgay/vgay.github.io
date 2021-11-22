@@ -1,6 +1,7 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -147,10 +148,26 @@ theNotes =  \relative c' {
     \A
     a,2 c | d8 c a dis~ dis2 | r8 e4 a,8 d4 a8 d | r8 c4 a8 b4 e }
   
-  b1 \fermata _\markup "(Dernier Thème)"
+  b1 \fermata _\markup "(Last X)"
   \bar ".."
 }
 
+theNotesII =  \relative c' {
+  \clef "treble" \key c \major \time 4/4
+  \Intro
+  R1 *6  | e'8 c4 d8 b4 r8 f | bes8 gis4 a8~ 4 r |  \break % 8
+  \A \repeat volta 2 {
+    a2 g | fis4. 8~ 2 | r8 e4 fis8~ 2| r8 e4 gis8~ 2 | \bar "||" \break% 12
+    a2 g | fis4. 8~ 2 | r8 e4 fis8~ 2| r8 e4 gis8~ 2 |  \bar "||"  \break % 16
+    \B
+    f4. 8~ 8 d e f~ | 2~ 8 4 8~ | 2~ 8 8 e dis  | e4-^ e g bes | \break % 20 
+    cis2. r8 cis8| 8 4. 8 4. | 8 4. 8 4. | a8 4. b2  \bar "||"  \break 
+    \A
+    a2 g | fis4. 8~ 2 | r8 e4 fis8~ 2| r8 e4 gis8~ 2 | }
+  
+  gis1 \fermata _\markup "(Last X)"
+  \bar ".."
+}
 
 
 
@@ -168,7 +185,7 @@ marques = \relative c' {
   s1 ^\markup \bold \box \fontsize #7 A s1*7 
   s1 ^\markup \bold \box \fontsize #7 B s1*7 
   s1 ^\markup \bold \box \fontsize #7 A s1*3
-  s2 s2 ^\markup { \musicglyph #"scripts.ufermata" }
+  s2 s2 ^\markup { \musicglyph "scripts.ufermata" }
 }
 
 
@@ -260,7 +277,7 @@ Basse = \relative c {
     \A
     a' e a g | d fis dis fis | e dis d cis | c4 b e b | }
   
-  a1 \fermata _\markup "(Dernier Thème)"
+  a1 \fermata _\markup "(Last X)"
   \bar ".."
 }
 RightH = \relative c' {
@@ -285,7 +302,7 @@ RightH = \relative c' {
   <gis d'>4 <gis d'>8 <fis c'>~ <fis c'>4 <fis c'> | <e c'>4 <e c'>8 <d gis>~ <d gis>4 <d gis> | \break \bar ":|]" % 28
   \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
   \once \override Score.RehearsalMark #'direction = #DOWN
-  \mark \markup "(Dernier thème)"
+  \mark \markup "(Last X)"
   <c e gis>1 \fermata \bar "|."
   
 }
@@ -312,14 +329,14 @@ LeftH = \relative c {
   <e a>1
 }
 
-Guitare =  \relative c'' {
+Guitare =  \relative c' {
   %\set Staff.instrumentName = " "
   \Intro
   r8  e8  <a b>4 r8  e8  <a c>4 | r8  fis8  <a d>4 r8  fis8  <a dis>4 | % 5
-  R1 | r4  <e g b>4 r4  <e gis b>4 | 
+  R1 | R | 
   r8  e8  <a b>4 r8  e8  <a c>4 | r8  fis8  <a d>4 r8  fis8  <a dis>4 | % 9
   R1*2 \break \A \bar "[|:"
-  e,8  a8  c8  e8  e,8 a8  c8  fis8 | fis,8  a8  c8  <a dis>8 ~ <a dis>8  <a dis>4 r8 | 
+  e8  a8  c8  e8  e,8 a8  c8  fis8 | fis,8  a8  c8  <a dis>8 ~ <a dis>8  <a dis>4 r8 | 
   <d, gis b e>4  <d gis b e>8  <d a' c fis>4 <d a' c fis>8 r4 | % 14
   <e g c e>4  <e g c e>8  <d gis b e>4 <d gis b e>8 r4 | \break
   e8  a8  c8  e8  e,8 a8  c8  fis8 | fis,8  a8  c8  <a dis>8 ~ <a dis>8  <a dis>4 r8 |
@@ -337,40 +354,8 @@ Guitare =  \relative c'' {
   \break \bar ":|]"
   \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
   \once \override Score.RehearsalMark #'direction = #DOWN
-  \mark \markup "(Dernier thème)"
+  \mark \markup "(Last X)"
   <a e' gis c fis>1 \fermata \bar ".."
-}
-
-Tab =  \relative c' {
-  \clef "tab" \stopStaff \override Staff.StaffSymbol.line-count = #6
-  \startStaff 
-  r8  e8 \3  <a b>4 \2 \1 r8  e8 \3 <a c>4 \2 \1 | % 4
-  r8  fis8 \3  <a d>4 \2 \1 r8  fis8 \3 <a dis>4 \2 \1 | % 5
-  R1 | % 6
-  r4  <e g b>4 \3 \2 \1 r4  <e gis b>4 \3 \2 \1 | % 7
-  r8  e8 \3  <a b>4 \2 \1 r8  e8 \3 <a c>4 \2 \1 | % 8
-  r8  fis8 \3  <a d>4 \2 \1 r8  fis8 \3  <a dis>4 \2 \1 | % 9
-  R1*2 
-  e,8 \4  a8 \3  c8 \2  e8 \1 e,8 \4  a8 \3  c8 \2  fis8 \1 | % 12
-  fis,8 \4  a8 \3  c8 \2  <a dis>8 ~ \3 \2  <a dis>8 \3 \2  <a dis>4 \3 \2 r8 | % 13
-  <d, gis b e>4 \4 \3 \2 \1  <d gis b e>8 \4 \3 \2 \1  <d a' c fis>4 \4 \3 \2 \1  <d a' c fis>8 \4 \3 \2 \1 r4 | % 14
-  <e g c e>4 \4 \3 \2 \1  <e g c e>8 \4 \3 \2 \1 <d gis b e>4 \4 \3 \2 \1  <d gis b e>8 \4 \3 \2 \1 r4 | % 15
-  e8 \4  a8 \3  c8 \2  e8 \1 e,8 \4  a8 \3  c8 \2  fis8 \1 | % 16
-  fis,8 \4  a8 \3  c8 \2  <a dis>8 ~ \3 \2  <a dis>8 \3 \2  <a dis>4 \3 \2 r8 | % 17
-  <d, gis b e>4 \4 \3 \2 \1  <d gis b e>8 \4 \3 \2 \1  <d a' c fis>4 \4 \3 \2 \1  <d a' c fis>8 \4 \3 \2 \1 r4 | % 18
-  <e g c e>4 \4 \3 \2 \1  <e g c e>8 \4 \3 \2 \1 <d gis b e>8 ~ \4 ~ \3 ~ \2 ~ \1  <d gis b e>2 \4 \3 \2 \1 |
-  d8 \4  <a' c f>4 \3 \2 \1  d,8 \4 <a' c f>4 \3 \2 \1  <a c f>4 \3 \2 \1 |
-  d,8 \4  <a' c f>4 \3 \2 \1  d,8 \4 <a' c f>2 \3 \2 \1 | % 21
-  d,8 \4  <g b f'>4 \3 \2 \1  d8 \4 <g b f'>4 \3 \2 \1  <g b f'>4 \3 \2 \1 | % 22
-  <g, c e>4 \6 \5 \4  <c e g>4 \5 \4 \3 <e g b>4 \4 \3 \2  <g bes e>4 \4 \3 \2 | % 23
-  <e a cis g'>4 \4 \3 \2 \1  <e a cis g'>8 \4 \3 \2 \1  <e a cis g'>4 \4 \3 \2 \1  <e a cis g'>8 \4 \3 \2 \1 r4 | % 24
-  <d a' c f>8 \4 \3 \2 \1  <d a' c f>4. \4 \3 \2 \1 <d a' c f>8 \4 \3 \2 \1  <d a' c f>4. \4 \3 \2 \1 | % 25
-  <e a c g'>8 \4 \3 \2 \1  <e a c g'>4. \4 \3 \2 \1 <e a c g'>8 \4 \3 \2 \1  <e a c g'>4. \4 \3 \2 \1 | % 26
-  <f a c e>8 \4 \3 \2 \1  <f a c e>4. \4 \3 \2 \1 <e gis b>2 \4 \3 \2 e8 \4  a8 \3  c8 \2  e8 \1 e,8 \4  a8 \3  c8 \2  fis8 \1 | % 28
-  fis,8 \4  a8 \3  c8 \2  <a dis>8 ~ \3 \2  <a dis>8 \3 \2  <a dis>4 \3 \2 r8 | % 29
-  <d, gis b e>4 \4 \3 \2 \1  <d gis b e>8 \4 \3 \2 \1  <d a' c fis>4 \4 \3 \2 \1  <d a' c fis>8 \4 \3 \2 \1 r4 |
-  <e g c e>4 \4 \3 \2 \1  <e g c e>8 \4 \3 \2 \1 <d gis b e>8 ~ \4 ~ \3 ~ \2 ~ \1  <d gis b e>2 \4 \3 \2 \1 
-  <a e' gis c fis>1 \5 \4 \3 \2 \1 \bar "|."
 }
 
 
@@ -381,7 +366,7 @@ Tab =  \relative c' {
     page-count = #1
   }
   #(define output-suffix "CTab")
-  %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
+  \header { meter = \markup \with-color #red \bold "2nd voice next page" }
   \bookpart {
     \score {
       <<
@@ -392,7 +377,20 @@ Tab =  \relative c' {
         >> 
       >>
     } %\form
+}
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \harmonies }
+        \new Staff \with { instrumentName = \CleSol } <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" } 
+          \theNotesII
+        >> 
+      >>
+    } %\form
 } }
+
+
 
 \book {
   \paper {
@@ -400,7 +398,7 @@ Tab =  \relative c' {
     page-count = #1
   }
   #(define output-suffix "BbTab") 
-  %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
+  \header { meter = \markup \with-color #red \bold "2nd voice next page" }
   \bookpart {
     \score {
       <<
@@ -408,6 +406,17 @@ Tab =  \relative c' {
         \new Staff \with { instrumentName = \Bb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }  
           \transpose c d \theNotes
+        >> 
+      >>
+    } %\form
+} 
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \transpose c d \harmonies } 
+        \new Staff \with { instrumentName = \Bb } <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" }  
+          \transpose c d \theNotesII
         >> 
       >>
     } %\form
@@ -419,14 +428,25 @@ Tab =  \relative c' {
     page-count = #1
   }
   #(define output-suffix "EbTab")
-  %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
+  \header { meter = \markup \with-color #red \bold "2nd voice next page" }
   \bookpart {
     \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }  
-          \transpose c a \theNotes
+          \transpose c a, \theNotes
+        >> 
+      >>
+    } %\form
+}
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \transpose c d \harmonies } 
+        \new Staff \with { instrumentName = \Bb } <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" }  
+          \transpose c a, \theNotesII
         >> 
       >>
     } %\form
@@ -447,9 +467,10 @@ Tab =  \relative c' {
           %\new Voice \with { \consists "Pitch_squash_engraver" } 
           \theNotes
         >> 
+        \new Staff \theNotesII
       >>
     } %\form
-    %}  \bookpart {
+    }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -498,9 +519,10 @@ Tab =  \relative c' {
           % \new Voice \with { \consists "Pitch_squash_engraver" }  
           \transpose c d \theNotes
         >> 
+        \new Staff \transpose c d \theNotesII
       >>
     } %\form
-    %}  \bookpart {
+    }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -547,11 +569,12 @@ Tab =  \relative c' {
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice  
-          \transpose c a \theNotes
+          \transpose c a, \theNotes
         >> 
+        \new Staff \transpose c a, \theNotesII
       >>
     } %\form
-    %}  \bookpart {
+    }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -633,8 +656,40 @@ Tab =  \relative c' {
           \new Voice = "Mel" { \clef "bass" \Basse }
         >>
       >>
-    } %\structure 
-} }
+    }
+    \score {
+      \layout {
+        indent = 0
+        ragged-right = ##f
+        ragged-last = ##f
+        \context {
+          \Score
+          \remove "Volta_engraver"
+          \omit Clef % Cacher la clef
+          \omit TimeSignature % cacher la métrique
+          \omit BarNumber             
+          \override SpacingSpanner.strict-note-spacing = ##t
+          proportionalNotationDuration = #(ly:make-moment 1/16)
+        }
+      }
+      <<
+        \new Staff \with {
+          \remove "Staff_symbol_engraver"
+        }    
+        \marques
+        \new ChordNames \with {
+          \override ChordName.extra-offset = #'(10 . -1 )         
+          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
+          \override BarLine.bar-extent = #'(-5 . 5)
+          \consists "Bar_engraver"
+          \override StaffSymbol.line-positions = #'( -10 10 ) 
+          \consists "Staff_symbol_engraver"
+          \consists "Percent_repeat_engraver"
+          \consists "Volta_engraver"
+        }
+        \grille
+      >>
+} } }
 
 \book {
   
@@ -684,13 +739,14 @@ Tab =  \relative c' {
             \set Staff.instrumentName = "Guitare"
             \new Voice = "Mel" { \Guitare }
           >>
-          \new TabStaff \with {
-            stringTunings = #`( ,(ly:make-pitch 0 2 0)
-                                ,(ly:make-pitch -1 6 0) ,(ly:make-pitch -1 4 0)
-                                ,(ly:make-pitch -1 1 0) ,(ly:make-pitch -2 5 0)
-                                ,(ly:make-pitch -2 2 0) )
-          }
-          << \Tab >>
+          \new TabStaff \transpose c c, \Guitare
+          % \with {
+%             stringTunings = #`( ,(ly:make-pitch 0 2 0)
+%                                 ,(ly:make-pitch -1 6 0) ,(ly:make-pitch -1 4 0)
+%                                 ,(ly:make-pitch -1 1 0) ,(ly:make-pitch -2 5 0)
+%                                 ,(ly:make-pitch -2 2 0) )
+%           }
+%           << \Tab >>
         >>
       >>
       \layout{
@@ -698,3 +754,9 @@ Tab =  \relative c' {
       }
     } %\structure 
 } }
+
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}
