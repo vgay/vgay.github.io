@@ -16,7 +16,7 @@
         <meta property="og:title" content="Insérer un QR-Code dans un markup" /><meta property="og:site_name" content="MyRealBook" /><meta property="og:description" content="Sur la liste de discussion des utilisateurs francophones de Lilypond a été évoqué la possibilité mettre un QR-code avec une adresse web sur des partitions. En voilà une idée qu'elle est bonne. Et hop, exécution !I -  se documenterLa page de référence est ici : http://lilypond.org/doc/v2.22/Documentation/notation/graphicC'est assez sommaire et pour une fois non traduit en français. \epsfile axis (number) size (number) file-name (string)  Inline an EPS image. The image is scaled along axis to size.\markup {  \general-align #Y #DOWN {    \epsfile #X #20 #'context-example.eps'  }}" /><meta property="og:url" content="https://myrealbook.vintherine.org/inserer-un-qr-code-dans-une-partition.html" /><meta property="og:type" content="article" />
         <style>:root{--body-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--heading-font:var(--body-font);--logo-font:var(--body-font);--menu-font:var(--body-font)}</style>
         <link rel="stylesheet" href="https://myrealbook.vintherine.org/assets/css/style.css?v=489237eb5e2f09dd77c9332d52b3a5e5">       
-        <script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://myrealbook.vintherine.org/inserer-un-qr-code-dans-une-partition.html"},"headline":"Insérer un QR-Code dans un markup","datePublished":"2021-10-30T13:27","dateModified":"2021-10-30T17:51","description":"Sur la liste de discussion des utilisateurs francophones de Lilypond a été évoqué la possibilité mettre un QR-code avec une adresse web sur des partitions. En voilà une idée qu'elle est bonne. Et hop, exécution !I -  se documenterLa page de référence est ici : http://lilypond.org/doc/v2.22/Documentation/notation/graphicC'est assez sommaire et pour une fois non traduit en français. \\epsfile axis (number) size (number) file-name (string)  Inline an EPS image. The image is scaled along axis to size.\\markup {  \\general-align #Y #DOWN {    \\epsfile #X #20 #'context-example.eps'  }}","author":{"@type":"Person","name":"Vincent"},"publisher":{"@type":"Organization","name":"Vincent"}}</script>        
+        <script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://myrealbook.vintherine.org/inserer-un-qr-code-dans-une-partition.html"},"headline":"Insérer un QR-Code dans un markup","datePublished":"2021-10-30T13:27","dateModified":"2021-11-22T10:10","description":"Sur la liste de discussion des utilisateurs francophones de Lilypond a été évoqué la possibilité mettre un QR-code avec une adresse web sur des partitions. En voilà une idée qu'elle est bonne. Et hop, exécution !I -  se documenterLa page de référence est ici : http://lilypond.org/doc/v2.22/Documentation/notation/graphicC'est assez sommaire et pour une fois non traduit en français. \\epsfile axis (number) size (number) file-name (string)  Inline an EPS image. The image is scaled along axis to size.\\markup {  \\general-align #Y #DOWN {    \\epsfile #X #20 #'context-example.eps'  }}","author":{"@type":"Person","name":"Vincent"},"publisher":{"@type":"Organization","name":"Vincent"}}</script>        
         
         <link type="application/atom+xml" rel="alternate" href="https://myrealbook.vintherine.org/feed.xml"/>
 <link type="application/json" rel="alternate" href="https://myrealbook.vintherine.org/feed.json"/> 
@@ -114,7 +114,7 @@
             <div class="post__inner">
                <div class="post__entry">
                   <p>Sur la liste de discussion des utilisateurs francophones de Lilypond a été évoqué la possibilité mettre un QR-code avec une adresse web sur des partitions. En voilà une idée qu'elle est bonne. Et hop, exécution !</p>
-<h3>I -  se documenter</h3>
+<h5>I -  se documenter</h5>
 <p>La page de référence est ici : <a href="http://lilypond.org/doc/v2.22/Documentation/notation/graphic">http://lilypond.org/doc/v2.22/Documentation/notation/graphic</a></p>
 <p>C'est assez sommaire et pour une fois non traduit en français. </p>
 <pre><code>\epsfile <var>axis</var> (number) <var>size</var> (number) <var>file-name</var> (string)  </code></pre>
@@ -127,11 +127,11 @@
 </code></pre>
 
 <p>Bien, on sait au moins qu'il est nécessaire que l'image générée soit au format eps !</p>
-<h3>II - générer le QR-Code</h3>
+<h5>II - générer le QR-Code</h5>
 <p>Les applications permettant de générer du QR-code sont légions, sans compter les sites Internet  soit-disant gratuit. Sous Linux <a href="https://launchpad.net/qr-tools">Qtqr</a> est une interface graphique à <a href="https://fukuchi.org/works/qrencode/manual/index.html">qrencode</a> et <a href="http://zbar.sourceforge.net/">zbar</a>. Il est facile d'emploi mais souffre de faiblesse au niveau du format de sortie : png comme seule format de fichier, pas de couleur... Alors pourquoi ne pas utiliser la ligne de commande ? Bien sûr il faudra consulter la page man de qrencode. ou consulter <a href="https://www.linux-magazine.com/Online/Features/Generating-QR-Codes-in-Linux">cette page sur Linux-Magazine</a>. Voilà la commande avec les options qui conviennent pour MyRealBook :</p>
 <pre><code>qrencode -l Q -t EPS -o MyQR.eps https://myrealbook.vintherine.org</code></pre>
 <p>- l'option -l permet de gérer la tolérance aux erreurs (LMQH) qui est à Low par défaut <br>- l'option -t permet de choisir le type de fichier en sortie<br>- l'option -o indique le nom et l'extension du fichier de sortie</p>
-<h3>III - intégration dans Lilypond</h3>
+<h5>III - intégration dans Lilypond</h5>
 <p>Pour plus de facilité on mettra le fichier eps dans le même répertoire que le fichier lilypond. </p>
 <p>Le code :</p>
 <pre><code>\version "2.22.1"</code><br>\header {<br>  title = "Essai de QR-Code"<br>  composer = \markup { <br>    \center-column { <br>      Vincent <br>      { \epsfile #X #10 #"MyQR.eps" }<br>    } <br>  }<br>  tagline = ##f<br>}<br><code>\repeat unfold 8 c'</code></pre>

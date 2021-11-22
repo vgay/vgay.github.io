@@ -3,7 +3,7 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2021-11-22T10:07:30+01:00</updated>
+    <updated>2021-11-22T10:10:07+01:00</updated>
     <author>
         <name>Vincent</name>
     </author>
@@ -62,11 +62,11 @@
         <link href="https://myrealbook.vintherine.org/inserer-un-qr-code-dans-une-partition.html"/>
         <id>https://myrealbook.vintherine.org/inserer-un-qr-code-dans-une-partition.html</id>
 
-        <updated>2021-10-30T17:51:51+02:00</updated>
+        <updated>2021-11-22T10:10:07+01:00</updated>
             <summary>
                 <![CDATA[
                     <p>Sur la liste de discussion des utilisateurs francophones de Lilypond a été évoqué la possibilité mettre un QR-code avec une adresse web sur des partitions. En voilà une idée qu'elle est bonne. Et hop, exécution !</p>
-<h3>I -  se documenter</h3>
+<h5>I -  se documenter</h5>
 <p>La page de référence est ici : <a href="http://lilypond.org/doc/v2.22/Documentation/notation/graphic">http://lilypond.org/doc/v2.22/Documentation/notation/graphic</a></p>
 <p>C'est assez sommaire et pour une fois non traduit en français. </p>
 <pre><code>\epsfile <var>axis</var> (number) <var>size</var> (number) <var>file-name</var> (string)  </code></pre>
@@ -83,7 +83,7 @@
         <content type="html">
             <![CDATA[
                 <p>Sur la liste de discussion des utilisateurs francophones de Lilypond a été évoqué la possibilité mettre un QR-code avec une adresse web sur des partitions. En voilà une idée qu'elle est bonne. Et hop, exécution !</p>
-<h3>I -  se documenter</h3>
+<h5>I -  se documenter</h5>
 <p>La page de référence est ici : <a href="http://lilypond.org/doc/v2.22/Documentation/notation/graphic">http://lilypond.org/doc/v2.22/Documentation/notation/graphic</a></p>
 <p>C'est assez sommaire et pour une fois non traduit en français. </p>
 <pre><code>\epsfile <var>axis</var> (number) <var>size</var> (number) <var>file-name</var> (string)  </code></pre>
@@ -96,11 +96,11 @@
 </code></pre>
 
 <p>Bien, on sait au moins qu'il est nécessaire que l'image générée soit au format eps !</p>
-<h3>II - générer le QR-Code</h3>
+<h5>II - générer le QR-Code</h5>
 <p>Les applications permettant de générer du QR-code sont légions, sans compter les sites Internet  soit-disant gratuit. Sous Linux <a href="https://launchpad.net/qr-tools">Qtqr</a> est une interface graphique à <a href="https://fukuchi.org/works/qrencode/manual/index.html">qrencode</a> et <a href="http://zbar.sourceforge.net/">zbar</a>. Il est facile d'emploi mais souffre de faiblesse au niveau du format de sortie : png comme seule format de fichier, pas de couleur... Alors pourquoi ne pas utiliser la ligne de commande ? Bien sûr il faudra consulter la page man de qrencode. ou consulter <a href="https://www.linux-magazine.com/Online/Features/Generating-QR-Codes-in-Linux">cette page sur Linux-Magazine</a>. Voilà la commande avec les options qui conviennent pour MyRealBook :</p>
 <pre><code>qrencode -l Q -t EPS -o MyQR.eps https://myrealbook.vintherine.org</code></pre>
 <p>- l'option -l permet de gérer la tolérance aux erreurs (LMQH) qui est à Low par défaut <br>- l'option -t permet de choisir le type de fichier en sortie<br>- l'option -o indique le nom et l'extension du fichier de sortie</p>
-<h3>III - intégration dans Lilypond</h3>
+<h5>III - intégration dans Lilypond</h5>
 <p>Pour plus de facilité on mettra le fichier eps dans le même répertoire que le fichier lilypond. </p>
 <p>Le code :</p>
 <pre><code>\version "2.22.1"</code><br>\header {<br>  title = "Essai de QR-Code"<br>  composer = \markup { <br>    \center-column { <br>      Vincent <br>      { \epsfile #X #10 #"MyQR.eps" }<br>    } <br>  }<br>  tagline = ##f<br>}<br><code>\repeat unfold 8 c'</code></pre>
