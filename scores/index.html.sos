@@ -32,8 +32,6 @@
 <table id="users"class="tableau zebre avectri"><thead><tr><th>Titre</th><th>Compositeur</th><th>Tempo</th><th>Style</th><th>Comme joué par</th><th>Paroles</th></tr><thead><tbody>
 <tr><td><a href="213ChaCha.html">213 Cha Cha</a></td><td>David Torres</td><td>Medium</td><td>Salsa</td><td><a href="https:\/\/www.youtube.com\/watch?v=oguo-OmuSCU">Poncho Sanchez</a></td><td></td></tr>
 <tr><td><a href="500MilesHigh.html">500 Miles High</a></td><td>Chick Corea</td><td>Medium</td><td>Rock</td><td><a href="https:\/\/www.youtube.com\/watch?v=UD21FG2Nmcw">Chick Corea and Return to Forever</a></td><td>✓</td></tr>
-<tr><td><a href="500MilesHight.html">500 Miles High</a></td><td>Chick Corea
-pdfcomposer = #composer</td><td>Medium</td><td>Rock</td><td><a href="https:\/\/www.youtube.com\/watch?v=UD21FG2Nmcw">ChicK Corea and Return to Forever</a></td><td>✓</td></tr>
 <tr><td><a href="AChildIsBorn.html">A Child Is Born</a></td><td>Thad Jones</td><td>Slow</td><td>Waltz Ballad</td><td><a href="https:\/\/www.youtube.com\/watch?v=-M2ADUgffFE">Thad Jones</a></td><td></td></tr>
 <tr><td><a href="AdamsApple.html">Adam's Apple</a></td><td>Wayne Shorter</td><td>Medium</td><td>Latin Funk</td><td><a href="https:\/\/www.youtube.com\/watch?v=eYMfrrdwrdE">Wayne Shorter</a></td><td></td></tr>
 <tr><td><a href="AFelicidade.html">A Felicidade</a></td><td>Tom Jobim</td><td>Med. Up</td><td>Bossa</td><td><a href="https:\/\/www.youtube.com\/watch?v=gqhzemroh14">Tom Jobim</a></td><td>✓</td></tr>
@@ -242,7 +240,7 @@ pdfcomposer = #composer</td><td>Medium</td><td>Rock</td><td><a href="https:\/\/w
 <tr><td><a href="WoodynYou.html">Woody'n You</a></td><td>Dizzy Gillespie</td><td>Fast</td><td>Bop</td><td><a href="https:\/\/www.youtube.com\/watch?v=f7xXN9jMyzQ">Dizzy Gillespie</a></td><td></td></tr>
 <tr><td><a href="WorkSong.html">Work Song</a></td><td>Nat Adderley</td><td>Medium</td><td>Swing</td><td><a href="https:\/\/www.youtube.com\/watch?v=MmwsQ_dHrFM">Julian Canonball adderley</a></td><td></td></tr>
 <tr><td><a href="YardbirdSuite.html">Yardbird Suite</a></td><td>Charlie Parker</td><td>Fast</td><td>Bop</td><td><a href="https:\/\/www.youtube.com\/watch?v=HmroWIcCNUI">Charlie Parker</a></td><td></td></tr>
-<tr><td><a href="Yatra-Ta.html">Tatra-Ta</a></td><td>Tania Maria</td><td>Fast</td><td>Samba</td><td></td><td></td></tr>
+<tr><td><a href="Yatra-Ta.html">Yatra-Ta</a></td><td>Tania Maria</td><td>Fast</td><td>Samba</td><td></td><td></td></tr>
 <tr><td><a href="YoudBeSoNiceToComeHomeTo.html">You'd Be So Nice To Come Home To</a></td><td>Cole Porter</td><td>Medium</td><td>Swing</td><td></td><td>✓</td></tr>
 </tbody></table>
 <script type=text/javascript>new sortHTMLTable( 'users' );</script>
