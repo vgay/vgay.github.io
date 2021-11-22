@@ -32,6 +32,8 @@
 <table id="users"class="tableau zebre avectri"><thead><tr><th>Titre</th><th>Compositeur</th><th>Tempo</th><th>Style</th><th>Comme joué par</th><th>Paroles</th></tr><thead><tbody>
 <tr><td><a href="213ChaCha.html">213 Cha Cha</a></td><td>David Torres</td><td>Medium</td><td>Salsa</td><td><a href="https:\/\/www.youtube.com\/watch?v=oguo-OmuSCU">Poncho Sanchez</a></td><td></td></tr>
 <tr><td><a href="500MilesHigh.html">500 Miles High</a></td><td>Chick Corea</td><td>Medium</td><td>Rock</td><td><a href="https:\/\/www.youtube.com\/watch?v=UD21FG2Nmcw">Chick Corea and Return to Forever</a></td><td>✓</td></tr>
+<tr><td><a href="500MilesHight.html">500 Miles High</a></td><td>Chick Corea
+pdfcomposer = #composer</td><td>Medium</td><td>Rock</td><td><a href="https:\/\/www.youtube.com\/watch?v=UD21FG2Nmcw">ChicK Corea and Return to Forever</a></td><td>✓</td></tr>
 <tr><td><a href="AChildIsBorn.html">A Child Is Born</a></td><td>Thad Jones</td><td>Slow</td><td>Waltz Ballad</td><td><a href="https:\/\/www.youtube.com\/watch?v=-M2ADUgffFE">Thad Jones</a></td><td></td></tr>
 <tr><td><a href="AdamsApple.html">Adam's Apple</a></td><td>Wayne Shorter</td><td>Medium</td><td>Latin Funk</td><td><a href="https:\/\/www.youtube.com\/watch?v=eYMfrrdwrdE">Wayne Shorter</a></td><td></td></tr>
 <tr><td><a href="AFelicidade.html">A Felicidade</a></td><td>Tom Jobim</td><td>Med. Up</td><td>Bossa</td><td><a href="https:\/\/www.youtube.com\/watch?v=gqhzemroh14">Tom Jobim</a></td><td>✓</td></tr>
@@ -54,6 +56,7 @@
 <tr><td><a href="Armando'sRhumba.html">Armando'sRhumba</a></td><td>Chick Corea</td><td>Fast</td><td>Rhumba</td><td><a href="https:\/\/www.youtube.com\/watch?v=Diregu6eFzk">Chick Corea</a></td><td></td></tr>
 <tr><td><a href="AuBoisDeMonCoeur.html">Au bois de mon cœur</a></td><td>Georges Brassens</td><td>Medium</td><td>Swing</td><td></td><td>✓</td></tr>
 <tr><td><a href="BackAtTheChickenShack.html">Back at The Chicken Shack</a></td><td>Jimmy Smith</td><td>Medium</td><td>Blues</td><td><a href="https:\/\/www.youtube.com\/watch?v=SuMd8ldLqxo">Jimmy Smith</a></td><td></td></tr>
+<tr><td><a href="BagsGroove.html">Bag's Groove</a></td><td>Milt Jackson</td><td>Medium</td><td>Blues</td><td></td><td></td></tr>
 <tr><td><a href="Beatrice.html">Beatrice</a></td><td>Sam Rivers</td><td>Medium</td><td>Swing</td><td><a href="https:\/\/www.youtube.com\/watch?v=HxMIiTW59Co">Sam Rivers</a></td><td></td></tr>
 <tr><td><a href="BeautifulLove.html">Beautiful Love</a></td><td>Victor Young</td><td>Medium</td><td>Swing</td><td></td><td>✓</td></tr>
 <tr><td><a href="BeautyAndTheBest.html">Beauty And The Best</a></td><td>Wayne Shorter</td><td>Slow</td><td>Funk Ballad</td><td><a href="https:\/\/www.youtube.com\/watch?v=0PQKnjwlN6g">Wayne Shorter</a></td><td></td></tr>
@@ -125,24 +128,33 @@
 <tr><td><a href="IThoughtAboutYou(Standard).html">I Thought About You</a></td><td>J. Van Heusen and J. Mercer</td><td>Mod. Slow</td><td>Ballad</td><td></td><td>✓</td></tr>
 <tr><td><a href="Jalousie.html">Jalousie</a></td><td>Jacob Gade</td><td>Medium</td><td>Tango</td><td></td><td></td></tr>
 <tr><td><a href="Jeannine.html">Jeannine</a></td><td>Duke Pearson</td><td>Med. Up</td><td>Swing</td><td><a href="https:\/\/www.youtube.com\/watch?v=Bm1NxfevGro">Duke Pearson</a></td><td></td></tr>
+<tr><td><a href="JeSuisVenuTeDire.html">Je suis venu te dire que je m'en vais</a></td><td>Serge Gainsbourg</td><td>Slow</td><td>Ballad</td><td><a href="https:\/\/www.youtube.com\/watch?v=kym1SmkJIgA">Pierre-Alain Goualch</a></td><td></td></tr>
 <tr><td><a href="Jordu.html">Jordu</a></td><td>Duke Jordan</td><td>Medium</td><td>Swing</td><td><a href="">Clifford Brown</a></td><td></td></tr>
 <tr><td><a href="JustFriends.html">Just Friends</a></td><td>John Klenner</td><td>Medium</td><td>Swing</td><td><a href="https:\/\/www.youtube.com\/watch?v=88CqlgFAJ-k">Chet Baker</a></td><td>✓</td></tr>
 <tr><td><a href="JustOneOfThoseThings.html">Just One Of Those Things</a></td><td>Cole Porter</td><td>Fast</td><td>Swing</td><td></td><td>✓</td></tr>
 <tr><td><a href="KillerJoe.html">Killer Joe</a></td><td>Benny Golson</td><td>Med. Slow</td><td>Swing</td><td><a href="https:\/\/www.youtube.com\/watch?v=x5aC0G3JBKA">Benny Golson</a></td><td></td></tr>
-<tr><td><a href="LaFoule.html">La Foule</a></td><td>Ángel Cabral</td><td>Medium</td><td>Jazz Waltz</td><td></td><td></td></tr>
+<tr><td><a href="LaChansonDesVieuxAmants.html">La chanson des vieux amants</a></td><td>Jacques Brel</td><td>Slow</td><td>Tango</td><td></td><td></td></tr>
+<tr><td><a href="LaFoule.html">La Foule</a></td><td>Ángel Cabral</td><td>Medium</td><td>Valse</td><td></td><td>✓</td></tr>
 <tr><td><a href="LaJavanaise.html">La Javanaise</a></td><td>Serge Gainsbourg</td><td>Medium</td><td>Jazz Waltz</td><td></td><td>✓</td></tr>
+<tr><td><a href="LAmeDesPoetes.html">L'âme des poètes (Poet's Dream)</a></td><td>Charle Trenet</td><td>Moderate</td><td>Jazz Waltz</td><td><a href="https:\/\/www.youtube.com\/watch?v=acvKQDJHvws">Barney Wilen</a></td><td></td></tr>
 <tr><td><a href="Lament.html">Lament</a></td><td>JJ Jonshon</td><td>Slow</td><td>Ballad</td><td><a href="https:\/\/www.youtube.com\/watch?v=eek-qWg5LL0">JJ Jonshon</a></td><td></td></tr>
 <tr><td><a href="LaMer.html">La mer (Beyond The Sea)</a></td><td>Charles Trenet</td><td>Medium</td><td>Swing</td><td></td><td>✓</td></tr>
+<tr><td><a href="LaNonDemandeEnMariage.html">La non-demande en mariage</a></td><td>Georges Brassens</td><td>Medium</td><td>Swing</td><td></td><td>✓</td></tr>
+<tr><td><a href="LaSamba.html">La Samba</a></td><td>Ray Odiebo</td><td>Medium</td><td>Samba</td><td><a href="https:\/\/www.youtube.com\/watch?v=89NhDgIPgzE">Andy Narell</a></td><td></td></tr>
 <tr><td><a href="Laura.html">Laura</a></td><td>D. Raskin and J. Mercer</td><td>Mod. Slow</td><td>Ballad</td><td></td><td>✓</td></tr>
+<tr><td><a href="LEauALaBouche.html">L'eau à la bouche</a></td><td>Serge Gainsbourg</td><td>Fast</td><td>Samba</td><td></td><td>✓</td></tr>
 <tr><td><a href="LeJazzEtLaJava.html">Le Jazz et la Java</a></td><td>J. Datin and Claude Nougaro</td><td>Medium</td><td>Jazz Waltz</td><td></td><td>✓</td></tr>
+<tr><td><a href="LesPassantes.html">Les passantes</a></td><td>Georges Brassens</td><td>Medium</td><td>Ballad</td><td></td><td>✓</td></tr>
 <tr><td><a href="LonniesLament.html">Lonnie's Lament</a></td><td>John Coltrane</td><td>Mod. Slow</td><td>Ballad</td><td><a href="https:\/\/www.youtube.com\/watch?v=japCux4wals">John Coltrane</a></td><td></td></tr>
 <tr><td><a href="LoveForSale.html">Love For Sale</a></td><td>Cole Porter</td><td>Med. Up</td><td>Swing</td><td></td><td>✓</td></tr>
 <tr><td><a href="MaidenVoyage.html">Maiden Voyage</a></td><td>Herbie Hancock</td><td>Medium</td><td>Straight</td><td><a href="https:\/\/www.youtube.com\/watch?v=hwmRQ0PBtXU">Herbie Hancock</a></td><td></td></tr>
 <tr><td><a href="Manteca.html">Manteca</a></td><td>Dizzy Gillespie</td><td>Fast</td><td>Mambo 2-3</td><td></td><td></td></tr>
+<tr><td><a href="Meditation.html">Meditation</a></td><td>Antobio Carlos Jobim</td><td>Medium</td><td>Bossa</td><td><a href="https:\/\/www.youtube.com\/watch?v=HGLUgbxlsYA">Antobio Carlos Jobim</a></td><td></td></tr>
 <tr><td><a href="MemoriesOfTomorrow.html">Memories of Tomorrow</a></td><td>Keith Jarrett</td><td>Medium</td><td>Straight</td><td><a href="https:\/\/www.youtube.com\/watch?v=-CNpeJlxKGk">Keith Jarrett</a></td><td></td></tr>
 <tr><td><a href="MercyMercyMercy.html">Mercy, mercy, mercy</a></td><td>Joe Zawinul</td><td>Mod. Slow</td><td>Funky Rock</td><td><a href="https:\/\/www.youtube.com\/watch?v=s4rXEKtC8iY">Cannonball Aderley</a></td><td></td></tr>
 <tr><td><a href="Moanin.html">Moanin'</a></td><td>Bobby Timmons</td><td>Medium</td><td>Gospel</td><td></td><td></td></tr>
 <tr><td><a href="MomentsNotice.html">Moment's Notice</a></td><td>John Coltrane</td><td>Fast</td><td>Swing</td><td><a href="https:\/\/www.youtube.com\/watch?v=gocGlRuW1bw">John Coltrane</a></td><td></td></tr>
+<tr><td><a href="MyFavoriteThingsLatin.html">My Favorite Things (latin)</a></td><td>Richard Rogers</td><td>Medium</td><td>Latin</td><td></td><td>✓</td></tr>
 <tr><td><a href="MyFavoriteThings.html">My Favorite Things</a></td><td>O. Hammerstein II and R. Rogers</td><td>Med. Fast</td><td>Jazz Waltz</td><td></td><td></td></tr>
 <tr><td><a href="MyHeartBelongsToDaddy.html">My Heart Belongs To Daddy</a></td><td>Cole Porter</td><td>Medium</td><td>Swing</td><td></td><td>✓</td></tr>
 <tr><td><a href="MyOneAndOnlyLove.html">My One And Only Love</a></td><td>Guy Wood</td><td>Slow</td><td>Ballade</td><td></td><td>✓</td></tr>
@@ -193,6 +205,7 @@
 <tr><td><a href="StormyWeather.html">Stormy Weather</a></td><td>Harold Arlen</td><td>Mod. Slow</td><td>Ballad</td><td></td><td>✓</td></tr>
 <tr><td><a href="StrasbourgSaintDenis.html">Strasbourg - Saint Denis</a></td><td>Roy Hardgrove</td><td>Medium</td><td>Funk</td><td><a href="https:\/\/www.youtube.com\/watch?v=W3y0jCIP5wc">Roy Hargrove</a></td><td></td></tr>
 <tr><td><a href="StThomas.html">St. Thomas</a></td><td>Sonny Rollins</td><td>Medium</td><td>Latin</td><td><a href="https:\/\/www.youtube.com\/watch?v=UA2XIWZxMKM">Sonny Rollins</a></td><td></td></tr>
+<tr><td><a href="Sugar.html">Sugar</a></td><td>Stanley Turrentine</td><td>Medium</td><td>Swing</td><td><a href="https:\/\/www.youtube.com\/watch?v=oLaIrVB1av4">Stanley Turentine</a></td><td></td></tr>
 <tr><td><a href="Summertime.html">Summertime</a></td><td>George Gerswing</td><td>Medium</td><td>Swing</td><td></td><td>✓</td></tr>
 <tr><td><a href="SweetAndLovely.html">Sweet And Lovely</a></td><td>Gus Arnheim</td><td>Medium</td><td>Swing</td><td></td><td>✓</td></tr>
 <tr><td><a href="SweetSorrow.html">Sweet Sorrow</a></td><td>Joshua Redman</td><td>Slow</td><td>Ballad</td><td><a href="https:\/\/www.youtube.com\/watch?v=NgH6HxF2790">Joshua Redman</a></td><td></td></tr>
@@ -210,6 +223,7 @@
 <tr><td><a href="TinTinDeo.html">Tin Tin Deo</a></td><td>Walter 'Gil' Fuller</td><td>Medium</td><td>Afro-Swing</td><td><a href="https:\/\/www.youtube.com\/watch?v=LIo63Nt7XEc">Dizzy Gillespie</a></td><td></td></tr>
 <tr><td><a href="Triste.html">Triste</a></td><td>Tom Jobim</td><td>Medium</td><td>Bossa</td><td><a href="https:\/\/www.youtube.com\/watch?v=xWljdjvGbxQ">Elis Regina and Tom Jobim</a></td><td>✓</td></tr>
 <tr><td><a href="Turnaround.html">Turnaround</a></td><td>Ornette Coleman</td><td>Medium</td><td>Swing</td><td><a href="https:\/\/www.youtube.com\/watch?v=cXTfKmqZJEA">Joshua Redman</a></td><td></td></tr>
+<tr><td><a href="UnÉté42.html">Un été 42</a></td><td>Michel Legrand</td><td>Med. Slow</td><td>Ballad</td><td></td><td></td></tr>
 <tr><td><a href="Unit7.html">Unit Seven</a></td><td>Sam Jones</td><td>Med. Up</td><td>Swing</td><td><a href="https:\/\/www.youtube.com\/watch?v=jUN01HYwRX4">Wes Montgomery</a></td><td></td></tr>
 <tr><td><a href="ValseHot.html">Valse Hot</a></td><td>Sonny Rollins</td><td>Medium</td><td>Jazz Valse</td><td><a href="https:\/\/www.youtube.com\/watch?v=SIVtK2gXLpk">Sonny Rollins</a></td><td></td></tr>
 <tr><td><a href="Voyage.html">Voyage</a></td><td>Kenny Barron</td><td>Fast</td><td>Swing</td><td><a href="https:\/\/www.youtube.com\/watch?v=4R-CFl9TB7c">Stan Getz and Kenny Barron</a></td><td></td></tr>
@@ -228,6 +242,7 @@
 <tr><td><a href="WoodynYou.html">Woody'n You</a></td><td>Dizzy Gillespie</td><td>Fast</td><td>Bop</td><td><a href="https:\/\/www.youtube.com\/watch?v=f7xXN9jMyzQ">Dizzy Gillespie</a></td><td></td></tr>
 <tr><td><a href="WorkSong.html">Work Song</a></td><td>Nat Adderley</td><td>Medium</td><td>Swing</td><td><a href="https:\/\/www.youtube.com\/watch?v=MmwsQ_dHrFM">Julian Canonball adderley</a></td><td></td></tr>
 <tr><td><a href="YardbirdSuite.html">Yardbird Suite</a></td><td>Charlie Parker</td><td>Fast</td><td>Bop</td><td><a href="https:\/\/www.youtube.com\/watch?v=HmroWIcCNUI">Charlie Parker</a></td><td></td></tr>
+<tr><td><a href="Yatra-Ta.html">Tatra-Ta</a></td><td>Tania Maria</td><td>Fast</td><td>Samba</td><td></td><td></td></tr>
 <tr><td><a href="YoudBeSoNiceToComeHomeTo.html">You'd Be So Nice To Come Home To</a></td><td>Cole Porter</td><td>Medium</td><td>Swing</td><td></td><td>✓</td></tr>
 </tbody></table>
 <script type=text/javascript>new sortHTMLTable( 'users' );</script>

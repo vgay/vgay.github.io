@@ -1,6 +1,6 @@
 
 \version "2.22.1"
-#(set-global-staff-size 18)
+#(set-global-staff-size 17)
 \include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -78,8 +78,8 @@ realBookTitle = \markup {
     startRepeatType = #"[|:"
     endRepeatType = #":|]"
     doubleRepeatType = #":|][|:"
-    \override Clef #'break-visibility = #'#(#f #f #f)
-    \override KeySignature #'break-visibility = #'#(#f #f #f)
+    %\override Clef #'break-visibility = #'#(#f #f #f)
+    %\override KeySignature #'break-visibility = #'#(#f #f #f)
     \override SystemStartBar #'collapse-height = #1
     \override ParenthesesItem.font-size = #2
     \override MultiMeasureRest #'expand-limit = #2
@@ -94,9 +94,9 @@ realBookTitle = \markup {
     \override ParenthesesItem.font-size = #2
   }
   \context { \Score markFormatter = #format-mark-box-alphabet }
-  %   \context { \RemoveEmptyStaffContext 				% ne pas imprimer les lignes vides (autres que la première)
-  %              \override VerticalAxisGroup #'remove-first = ##t			% Concerne la première ligne
-  %   }
+  \context { \RemoveEmptyStaffContext 				% ne pas imprimer les lignes vides (autres que la première)
+             \override VerticalAxisGroup #'remove-first = ##t			% Concerne la première ligne
+  }
 }
 
 
@@ -112,7 +112,7 @@ harmonies = \chordmode {
   bes:7+ a:5+9- d:m7 g:5-7 g:m7 a:5+9- d:m7 g:5-7
   g:m7 a:5+9- d:m7 g:5-7 g:m7 a2..:5+9- es8:7+5- s1*2 r4. c8/d s1.
   a2..:5+9- es8:7+5- s1*4
-  d:m bes:7+ d:m bes1*3:7+ a4.:sus bes2:6.9 c1*2:sus g8:5-7 s1
+  d:m bes:7+ d:m bes1*3:7+ a4.:sus bes2:6.9 g1*2:sus g8:5-7 s1
   g4.:m7 a2:5+9- d8:9sus4 s1*2
   d1:9sus4 a4.:sus bes2:6.9 g8:sus d1.:9sus  s8 d:1.5.9
 }
@@ -120,8 +120,8 @@ harmonies = \chordmode {
 
 theNotes =  \relative c'' {
   \clef "treble" \key f \major \time 2/2
-  \showStartRepeatBar \bar "[|:" \mark #1
-  \repeat volta 2 { 
+  \showStartRepeatBar \bar "[|:" \mark #1 \oneVoice
+  \repeat volta 2 {
     d2~ 8 c r d~ | d2~ 8 c r a~ | a1~ | a2. r4 |
     d2~ 8 c r d~ | d2~ 8 f r e~ | e1~ | e2. r4 | \break
     d2~ 8 c r d~ | d2~ 8 c r a~ | a1~ | a2. r4 |
@@ -129,23 +129,23 @@ theNotes =  \relative c'' {
     \mark #2 f2~ 8 a r g8~ | 2~ 8 f e f8~ | 2~ 8 a r  g8~ | 2~ 8 f e f8~ | 
     2~ 8 a r bes8~ | 2~ 8 a g a8~ |  1~ | 2. r4 | \break 
     f2~ 8 a r g8~ | 2~ 8 f e f8~ | 2~ 8 a r  g8~ | 2~ 8 f e f8~ | 
-    2~ 8 a r bes8~  }
+    2~ 8 a r bes8~  \break }
   \alternative { 
     { 2~ 8 a g a8~ |  1~ | 2.. a,8 | d, a' d e r e4.~ | 1  \break }
-    { 2~ 8 a g a8~ | 1~ | 1~ | 1~ | 1  \bar "||" }
+    { bes'2~ \repeatTie 8 a g a8~ | 1~ | 1~ | 1~ | 1  \break  \bar "||" }
   }
   \mark #3
-  R1*3 | d,4-. f8 e r c r d8~ | 1~ | 1 | R |
+  R1*3 | d,4-. f8 e r c r d8~ \break | 1~ | 1 | R |
   d4-. f8 e r c r a8~ | \break 1~ | 1 | R |
-  d4-. f8 e r c r d8~ | 1~ | 1 | R |
-  d4-. d8 f r f r e~ \break \mark #4
+  d4-. f8 e r c r d8~ \break \noPageBreak | 1~ | 1 | R |
+  d4-. d8 f r f r e~ \break \noPageBreak \mark #4
   \repeat volta 2 { 
-    e1~ | 1~ | 2 r | d4-. d8 f r f r e~ | e1~ | 1~ }
+    e1~ | 1~ | 2 r | d4-. d8 f r f r e~ | e1~ | 1~  \noPageBreak }
   \alternative { 
     {e2 r | d4-. d8 f r f r e\laissezVibrer }
     { e1~ \repeatTie  }
   }
-  2 r8 d' r d | 
+  2 r8 d'-^ r d-^ | 
   \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
   \once \override Score.RehearsalMark #'direction = #DOWN
   \mark \markup \with-color #red "Fine"
@@ -153,14 +153,30 @@ theNotes =  \relative c'' {
 }
 
 
-chordsRhythm = \relative c''' {
-  \override Rest #'staff-position = #7
-  \improvisationOn \override NoteHead.no-ledgers = ##t 
+chordsRhythm = \relative c' {
+%   \override Rest #'staff-position = #7
+%   \improvisationOn \override NoteHead.no-ledgers = ##t 
+\clef "treble" \key f \major \time 2/2 
+  s1*39 | 
+  r4 ^\markup \small piano r8 <f a d> r <e g c> r4 | r2 <f a d>8 q <e g c>4-.| 
+  r4 r8 <f a d> r <e g c> r4 | r2 <f a d>8 q <e g c>4-.| 
+  r4 r8 <f a d> r <e g c> r4 | r2 <f a d>8 q <e g c>4-.| 
+  r4 r8 <f a d> r <e g c> r4 | r2 <f a d>8 q <e g c>4-.| r4 r8 <f a d> r <e g c> r4 | r2 <f a d>8 q <e g c>4-.| 
+  r4 r8 <f a d> r <e g c> r4 | r2 <f a d>8 q <e g c>4-.| r4 r8 <f a d> r <e g c> r4 | r2 <f a d>8 q <e g c>4-.| 
+  r4 r8 <f a d> r <e g c> r4 | R1
 }
 
-Basse = \relative c {
+Basse = \relative c' {
   \override Rest #'staff-position = #0
   \clef "bass" \key f \major \time 4/4
+  s1*29 | a4 r a8 g d es~ | es1~ | 2. r8 a, | d a' d d r8 d4.~ | d1
+  a4 r a8 g d es~ | es1~ | 1~ | 1~ | 2 r4 r8  a
+  d, a' d4-. r4 r8  a | d, a' d a r4 r8  a | d, a' d4-. r4 r8  a | d, a' d a r4 r8  f |
+  bes, f' bes4-. r4 r8  f | bes, f' bes f r4 r8  f | bes, f' bes4-. r4 r8  f | bes, f' bes f r4 r8  a |
+  d, a' d4-. r4 r8  a | d, a' d a r4 r8  a | d, a' d4-. r4 r8  a | d, a' d a r4 r8  f |
+  bes, f' bes4-. r4 r8  f | bes, f' bes f r4 r8  f | 
+  bes, f' bes4-. r4 r8  f | a4-. a8 bes r bes r g \laissezVibrer
+  
 }
 
 grille = \chordmode {
@@ -178,10 +194,10 @@ marques = \relative c' {
 \book {
   \paper {
     #(set-paper-size "tablette")
-    page-count = #1
+    %page-count = #2
   }
   #(define output-suffix "CTab")
-  %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
+  \header { meter = \markup \with-color #red \bold "partition sur 3 pages" }
   \bookpart {
     \score {
       <<
@@ -190,17 +206,19 @@ marques = \relative c' {
           %\new Voice \with { \consists "Pitch_squash_engraver" } 
           \theNotes
         >> 
+        \new Staff  \chordsRhythm
+        \new Staff  \Basse
       >>
-    } %\form
+    } \form
 } }
 
 \book {
   \paper {
     #(set-paper-size "tablette")
-    page-count = #1
+    %page-count = #2
   }
   #(define output-suffix "BbTab") 
-  %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
+  \header { meter = \markup \with-color #red \bold "partition sur 3 pages" }
   \bookpart {
     \score {
       <<
@@ -209,33 +227,37 @@ marques = \relative c' {
           %\new Voice \with { \consists "Pitch_squash_engraver" }  
           \transpose c d \theNotes
         >> 
+        \new Staff  \transpose c d \chordsRhythm
+        \new Staff  \transpose c d \Basse
       >>
-    } %\form
+    } \form
 } }
 
 \book {
   \paper {
     #(set-paper-size "tablette")
-    page-count = #1
+    %page-count = #2
   }
   #(define output-suffix "EbTab")
-  %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
+  \header { meter = \markup \with-color #red \bold "partition sur 3 pages" }
   \bookpart {
     \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }  
-          \transpose c a \theNotes
+          \transpose c a, \theNotes
         >> 
+        \new Staff  \transpose c a \chordsRhythm
+        \new Staff  \transpose c a, \Basse
       >>
-    } %\form
+    } \form
 } }
 
 \book {
   \paper {
     #(set-paper-size "a4")
-    page-count = #1
+    %page-count = #1
   }
   #(define output-suffix "Ca4")
   \bookpart {
@@ -245,49 +267,19 @@ marques = \relative c' {
         \new Staff \with { instrumentName = \CleSol } 
         <<
           %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          \theNotes
+          \theNotes \\ { s1*61 \break }
         >> 
+        \new Staff \chordsRhythm
+        \new Staff \Basse
       >>
     } \form
-    }  \bookpart {
-    \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }    
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \grille
-      >>
-} } }
+
+} }
 
 \book {
   \paper {
     #(set-paper-size "a4")
-    page-count = #1
+    %page-count = #1
   }
   #(define output-suffix "Bba4") 
   \bookpart {
@@ -296,49 +288,18 @@ marques = \relative c' {
         \new ChordNames { \transpose c d \harmonies } 
         \new Staff \with { instrumentName = \Bb  } <<
           % \new Voice \with { \consists "Pitch_squash_engraver" }  
-          \transpose c d \theNotes
+          \transpose c d \theNotes \\ { s1*61 \break }
         >> 
+        \new Staff  \transpose c d \chordsRhythm
+        \new Staff  \transpose c d \Basse
       >>
-    } %\form
-    %}  \bookpart {
-    \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }    
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \transpose c d \grille
-      >>
-} } }
+    } \form
+} }
 
 \book {
   \paper {
     #(set-paper-size "a4")
-    page-count = #1
+    %page-count = #1
   }
   #(define output-suffix "Eba4")
   \bookpart {
@@ -347,42 +308,11 @@ marques = \relative c' {
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice  
-          \transpose c a \theNotes
+          \transpose c a, \theNotes \\ { s1*61 \break }
         >> 
+        \new Staff \transpose c a \chordsRhythm
+        \new Staff \transpose c a, \Basse
       >>
-    } %\form
-    %}  \bookpart {
-    \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }    
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \transpose c a \grille
-      >>
-} } }
+    } \form
+ } }
 
