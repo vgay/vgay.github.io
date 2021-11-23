@@ -215,7 +215,7 @@ marques = \relative c' {
 \book {
   \paper {
     #(set-paper-size "tablette")
-    %page-count = #2
+    page-count = #3
   }
   #(define output-suffix "BbTab") 
   \header { meter = \markup \with-color #red \bold "partition sur 3 pages" }

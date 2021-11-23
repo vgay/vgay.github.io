@@ -1,6 +1,7 @@
 
-\version "2.20.00"
+\version "2.22.1"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -21,11 +22,11 @@
                             (padding . 5))
 }
 
-title = #"500 Miles High"
-composer = #"Chick Corea"
-meter = #"(Med. Rock)"
-kwtempo = #"Medium"
-kwstyle = #"Rock"
+title = #"Zebulon Dance"
+composer = #"Didier Lockwood"
+meter = #"(Folk)"
+kwtempo = #"Fast"
+kwstyle = #"Folk"
 
 realBookTitle = \markup {
   \score {
@@ -56,11 +57,10 @@ realBookTitle = \markup {
 \header {
   pdftitle = #title
   pdfauthor = #composer
-  pdfcomposer = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  asplayed = #"ChicK Corea and Return to Forever" % doit être commentée si vide
-  url = #"https://www.youtube.com/watch?v=UD21FG2Nmcw"
+  asplayed = #"Didier Lockwood" % doit être commentée si vide
+  url = #"https://www.youtube.com/watch?v=uCWn_V_mNT0"
   arranger = \markup \on-the-fly #played?
   \with-url #url
   \with-color #blue \underline
@@ -82,6 +82,7 @@ realBookTitle = \markup {
     \override KeySignature #'break-visibility = #'#(#f #f #f)
     \override SystemStartBar #'collapse-height = #1
     \override ParenthesesItem.font-size = #2
+    \override MultiMeasureRest #'expand-limit = #3
   }
   \context { 
     \Staff
@@ -92,6 +93,7 @@ realBookTitle = \markup {
     \ChordNames
     \override ParenthesesItem.font-size = #2
   }
+  \context { \Score markFormatter = #format-mark-box-alphabet }
   %   \context { \RemoveEmptyStaffContext 				% ne pas imprimer les lignes vides (autres que la première)
   %              \override VerticalAxisGroup #'remove-first = ##t			% Concerne la première ligne
   %   }
@@ -105,99 +107,162 @@ form = \markup  \fill-line {
 }
 
 harmonies = \chordmode {
-  \set chordChanges = ##t
-r8*5 c1*2:m7 b:9+
-e:m7 g:6.9 bes:7+ b1:m5-7 e:9+
-a1*2:m7 fis:m5-7 f:m7 c:m7 b:9+
-b1:9+ f1*2:m7/bes a:9+ es1*2:m7/as g:9+ ges1:7+11+
+  \set chordChanges = ##f
+  s4. a2:7+ e:7/b a1:7+/cis d:7+ a:7+ e:7 a:7+ d:7+ d:m6 a:7+ 
+  a2:7+ e4.:7/gis a8:7+ s2 b:m7/a a:7+ s a:7+ e4.:7/gis f1:7 g1:7 s8 
+  a2.:7+ a1/g s a/fis s4 f1:7 g:7 a:7+ s 
+  a2.:7+ a1/g s a/fis s4 f1:7 g:7 a:7+ s 
+  a2:7+ e:7/b a1:7+/cis d:7+ a:7+ e:7 a:7+ d:7+ d:m6 a:7+
+  a2:7+ e4.:7/gis f1:7 g1:7 a8
 }
 
 
-theNotes =  \relative c'' {
-  \override MultiMeasureRest #'staff-position = #0
-  \override Rest #'staff-position = #0
-  \clef "treble" \key c \major \time 4/4
-  \Intro \partial 8*5 g8 d'( e-.) as,-. d \bar "||" c1^~ | c2. r4 |
-  R1 | r2 r4 d \break
-  \A
-  \repeat volta 2 { 
-  b1 | r4 b,8 d  \tuplet 3/2 { a'4 fis d } |
-  e1 | r4 d'8 c \tuplet 3/2 { a4 f d } | \break
-  g1~ | 2~ 4. f8 |
-  f4 e8 g~ 2~ | 2 g4 e \bar "||" \break
-  \B d'1~ | 2~ 4. c8 |
-  c4 b8 d~ 2~ | 2~ \tuplet 3/2 { 4 c b } \break
-  bes4 as8 c~ 2 | r4 r8g8 d' e-. as,-. d | 
-  c1^~ | c2. r4 |
-  R1 | \Coda r2 r4 \parenthesize d \break   }
-  \Coda
-  r4 r8 g,8 d' e-. as,-. d | 
-  %\mark \markup {  \pad-markup #5 " "  }
-  c1^~ | c2. r4 | R1 | r4 r8g8 d' e-. as,-. d | \break
-  c1^~ | c2. r4 | R1 | r4 r8g8 d' e-. as,-. d |
-  c1 \fermata \bar ".."
-
+theNotes =  \relative c' {
+  \clef "treble" \key a \major \time 4/4
+  \partial 4. e8  a  cis \mark #1
+  \repeat volta 2
+  {
+    d8  e4  cis  b a8 ~ | % 3
+    a2 r4  a | % 4
+    fis'4  gis8  a  cis, d8 r  e ~ | % 5
+    e2 r4  e, | \break
+    e'8  d  cis  d  b'4  gis8  e | % 7
+    d4  cis  gis'8  a4 fis8 ~ | % 8
+    fis4. r8  fis8  gis  a f8 ~ | % 9
+    f2 r4  g | \break
+    e4  cis8  a  d e8 r  cis ~
+  }
+  \alternative {
+    {
+      cis4  a8  e  b' cis4  a8 ~ | % 12
+      a4  b,8  cis  a2 | % 13
+      r2 r8  e'  a  cis
+    }
+    {
+      cis4  a8  e  b' cis8 r  a, ~ | % 15
+      a2 r4.  b8 ~ | % 16
+      b2 r8  cis'  a4 \break \bar "||" \mark #2
+    }
+  }
+  b2  a4  a~ | % 18
+  2 r8  cis  a4 | % 19
+  b2  a4  a~ | 
+  2 r8  cis  a4 | % 21
+  b2  a8  cis  a4 | % 22
+  b2  a8  cis  a4 | % 23
+  b2  a4  a~ | % 24
+  2 r8  e'  cis4 |\break
+  d2  cis4  a'~ | % 26
+  2 r8  e  cis4 | % 27
+  d2  cis4  e,~ | % 28
+  2 r8  e'  cis4 | % 29
+  d2  cis8  e  cis4 |
+  d2  cis8  e  cis4 | % 31
+  d2  cis4  cis~ | % 32
+  2 r8  e,  a  cis | \break \mark #1
+  d8  e4  cis b a8 ~ | % 34
+  a2 r4  a | % 35
+  fis'4  gis8  a  cis, d8 r  e ~ | % 36
+  e2 r4  e, | \break
+  e'8  d  cis  d  b'4 gis8  e | % 38
+  d4  cis  gis'8  a4 fis8 ~ | % 39
+  fis4. r8  fis8  gis  a f8 ~ | 
+  f2 r4  g |\break
+  e4  cis8  a  d  e4
+  cis8 ~ | % 42
+  cis4  a8  e  b' cis8 r  a, ~ | % 15
+  a2 r4.  b8 ~ | % 16
+  b2 r4. a'8-^ \bar "|."
 }
 
-chordsRhythm = \relative c' {
-  \override Rest #'staff-position = #-7
+chordsRhythm = \relative c''' {
+  \override Rest #'staff-position = #7
   \improvisationOn \override NoteHead.no-ledgers = ##t 
-  \partial 8*5 s8*5  r4 r8 c~-> 2 | s1 | 4.-> 8-> r4 4->
-  s1*15 r4 r8 c~-> 2 | s1 | 4.-> 8-> r4 4->
-  s1*2 \mark \markup {  \pad-markup #5 " "  } r4 r8 c~-> 2 | s1 | 4.-> 8-> r4 4-> |
-  s1 r4 r8 c~-> 2 | s1 | 4.-> 8-> r4 4-> |
 }
 
 Basse = \relative c {
   \override Rest #'staff-position = #0
-  \clef "bass" \key f \major \time 4/4
+  \clef "bass" \key a \major \time 4/4
+  \partial 4. r4. \mark #1
+  \repeat volta 2 {
+    | % 2
+     a2  b | % 3
+    cis1 | % 4
+     d2  fis | % 5
+    e1 | 
+     b4.  cis8 \times 2/3 { d4  e2 } | % 7
+     a,2  cis4 r8  d ~ | % 8
+     d2 r4 r8  f, ~ | % 9
+     f2 r4  g'' | \break
+     e4  cis8  a  d 
+    e4  a,8 ~
+  }
+  \alternative {
+    {
+       a2  gis4.  a8 ~ | % 12
+       a4  b,8  cis  a2 | % 13
+      R1
+    }
+    {
+       a'2  gis,4.  f8 ~ | % 15
+       f2. r8  g ~ | % 16
+       g2 r
+    }
+  } \break \mark #2 \bar "||"
+   a2  a4  g ~ | % 18
+   g4  a' -. r2 | % 19
+   g,2  g4  fis ~ | 
+   fis4  a' r2 | % 21
+  f,1 | % 22
+  g1 | % 23
+   a4.  a8 ~  a4  a | % 24
+   b8  cis4  d  e  fis8 | \break
+   a,2  a4  g ~ | % 26
+   g2. r4 | % 27
+   g2  g4  fis ~ | % 28
+   fis2. r4 | % 29
+  f1 | 
+  g1 | % 31
+   a4.  a8 ~  a4  a | % 32
+   b8  cis4  d  e4. | \break \bar "||" \mark #1
+   a,2  b | % 34
+  cis1 | % 35
+   d2  fis | % 36
+  e1 |
+   b4.  cis8 \times 2/3 { d4  e2 } | % 38
+   a,2  cis4 r8  d ~ |\break
+   d2 r4 r8  f, ~ | 
+   f2 r4  g'' |
+   e4  cis8  a  d  e r
+   a,8 | % 42
+   a2  gis,4.  f8 ~ | % 43
+   f2 r4 r8  g ~ | % 44
+   g2 r4 r8  a -^ \bar "|."
 }
 
 grille = \chordmode {
   \bar "[|:"
- \repeat percent 2 e1:m7 \repeat percent 2 g:6.9 \break
- \repeat percent 2 bes:7+ b:m5-7 e:9+ \break \bar "||"
- \repeat percent 2 a:m7 \repeat percent 2 fis:m5-7 \break
- \repeat percent 2 f:m7 \repeat percent 2 c:m7 \break
- \repeat percent 2 bes:9+ \bar ":|]"
- \stopStaff s1 \bar "" s1 \bar ""
-   }
+ \/a2:7+ e:7/b a1:7+/cis d:7+ a:7+ \break
+ e:7 a:7+ d:7+ d:m6 \break
+ a:7+ \set Score.repeatCommands = #'((volta "1"))
+ \/a2:7+ e:7/gis \/a:7+ b:m7/a a1:7+ 
+ \set Score.repeatCommands = #'((volta #f) end-repeat) \break
+ \stopStaff s1 \startStaff 
+ \set Score.repeatCommands = #'((volta "2"))
+ \/a2:7+ e:7/gis f1:7 g:7 
+ \set Score.repeatCommands = #'((volta #f)) \bar "||-[|:" \break
+  \v a2.:7+ a4/g a1/g \v a2./g a4/fis a1/fis \break \bar ":|]"
+  \/a2:7+ e:7/b a1:7+/cis d:7+ a:7+ \break
+ e:7 a:7+ d:7+ d:m6 \break
+ a:7+  \/a2:7+ e:7/gis f1:7 g:7
+  \bar ".." }
 
 marques = \relative c' { 
-  s1 ^\markup \bold \box \fontsize #7 A s1*7 
-  s1 ^\markup \bold \box \fontsize #7 B s1*7 
+  s1 ^\markup \bold \box \fontsize #7 A s1*15 
+  s1 ^\markup \bold \box \fontsize #7 B s1*3 
+  s1 ^\markup \bold \box \fontsize #7 A
 }
 
-
-verseA = \lyricmode {
-  \repeat unfold 5 { \skip 1 }
-Some day you'll look in to her eyes
-Then there'll be no good -- byes
-And ye -- ster -- day will have gone
-You'll find your -- self in an -- o -- ther space
-five hun -- dred mi -- les high You'll
-}
-
-verseB = \lyricmode {
-  \repeat unfold 6 { \skip 1 }
- see just one look and you'll know
-She's so ten -- der and warm
-You'll re -- cog -- nize this is love
-You'll find your -- self on an -- o -- ther plane
-five hun -- dred mi -- les high Be 
-}
-
-verseC = \lyricmode {
-  \repeat unfold 6 { \skip 1 }
-sure that you love stays so free
-Then it ne -- ver can die
-Just re -- a -- lize this is truth
-A -- bove the skies you will al -- ways stay
-five hun -- dred mi -- les high  \skip 1
-five hun -- dred mi -- les high
-five hun -- dred mi -- les high
-five hun -- dred mi -- les high
-}
 
 \book {
   \paper {
@@ -221,10 +286,10 @@ five hun -- dred mi -- les high
 \book {
   \paper {
     #(set-paper-size "tablette")
-    page-count = #1
+    page-count = #2
   }
   #(define output-suffix "BbTab") 
-  %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
+  \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
       <<
@@ -250,7 +315,7 @@ five hun -- dred mi -- les high
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }  
-          \transpose c a, \theNotes
+          \transpose c a \theNotes
         >> 
       >>
     } %\form
@@ -269,12 +334,7 @@ five hun -- dred mi -- les high
         \new Staff \with { instrumentName = \CleSol } 
         <<
           %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          << { \theNotes } 
-             \addlyrics \verseA 
-             \addlyrics \verseB
-             \addlyrics \verseC
-             \\ { \chordsRhythm } >>
-         
+          \theNotes
         >> 
       >>
     } %\form
@@ -325,11 +385,7 @@ five hun -- dred mi -- les high
         \new ChordNames { \transpose c d \harmonies } 
         \new Staff \with { instrumentName = \Bb  } <<
           % \new Voice \with { \consists "Pitch_squash_engraver" }  
-          << { \transpose c d \theNotes } 
-             \addlyrics \verseA 
-             \addlyrics \verseB
-             \addlyrics \verseC
-             \\ { \chordsRhythm } >>
+          \transpose c d \theNotes
         >> 
       >>
     } %\form
@@ -380,11 +436,7 @@ five hun -- dred mi -- les high
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice  
-          << { \transpose c a, \theNotes } 
-             \addlyrics \verseA 
-             \addlyrics \verseB
-             \addlyrics \verseC
-             \\ { \chordsRhythm } >>
+          \transpose c a \theNotes
         >> 
       >>
     } %\form
@@ -422,3 +474,73 @@ five hun -- dred mi -- les high
         \transpose c a \grille
       >>
 } } }
+
+\book {
+  \paper {
+    #(set-paper-size "a4")
+    page-count = #1
+  }
+  #(define output-suffix "Bassa4")
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \harmonies }
+        \new Staff \with { instrumentName = \CleFa } 
+        <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" } 
+          \Basse
+        >> 
+      >>
+    } %\form
+    }  \bookpart {
+    \score {
+      \layout {
+        indent = 0
+        ragged-right = ##f
+        ragged-last = ##f
+        \context {
+          \Score
+          \remove "Volta_engraver"
+          \omit Clef % Cacher la clef
+          \omit TimeSignature % cacher la métrique
+          \omit BarNumber             
+          \override SpacingSpanner.strict-note-spacing = ##t
+          proportionalNotationDuration = #(ly:make-moment 1/16)
+        }
+      }
+      <<
+        \new Staff \with {
+          \remove "Staff_symbol_engraver"
+        }    
+        \marques
+        \new ChordNames \with {
+          \override ChordName.extra-offset = #'(10 . -1 )         
+          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
+          \override BarLine.bar-extent = #'(-5 . 5)
+          \consists "Bar_engraver"
+          \override StaffSymbol.line-positions = #'( -10 10 ) 
+          \consists "Staff_symbol_engraver"
+          \consists "Percent_repeat_engraver"
+          \consists "Volta_engraver"
+        }
+        \grille
+      >>
+} } }
+
+\book {
+  \paper {
+    #(set-paper-size "tablette")
+    page-count = #1
+  }
+  #(define output-suffix "BassTab")
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \harmonies }
+        \new Staff \with { instrumentName = \CleFa } 
+        <<
+          \Basse
+        >> 
+      >>
+} } }
+
