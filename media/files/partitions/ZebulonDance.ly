@@ -117,6 +117,64 @@ harmonies = \chordmode {
 }
 
 
+theNotesEb =  \relative c' {
+  \clef "treble" \key a \major \time 4/4
+  \partial 4. e8  a  cis \mark #1
+  \repeat volta 2
+  {
+    d8  e4  cis  b a8 ~ | % 3
+    a2 r4  a | % 4
+    fis'4  gis8  a  cis, d8 r  e ~ | % 5
+    e2 r4  e, | \break
+    e'8  d  cis  d  b'4  gis8  e | % 7
+    d4  cis  gis'8  a4 fis8 ~ | % 8
+    fis4. r8  fis8  gis  a f8 ~ | % 9
+    f2 r4  g | \break
+    e4  cis8  a  d e8 r  cis ~
+  }
+  \alternative {
+    {
+      cis4  a8  e  b' cis4  a8 ~ | % 12
+      a4  b8  cis  a2 | % 13
+      r2 r8  e  a  cis
+    }
+    {
+      cis4  a8  e  b' cis8 r  a ~ | % 15
+      a2 r4.  b8 ~ | % 16
+      b2 r8  cis  a4 \break \bar "||" \mark #2
+    }
+  }
+  b2  a4  a~ | % 18
+  2 r8  cis  a4 | % 19
+  b2  a4  a~ | 
+  2 r8  cis  a4 | % 21
+  b2  a8  cis  a4 | % 22
+  b2  a8  cis  a4 | % 23
+  b2  a4  a~ | % 24
+  2 r8  e'  cis4 |\break
+  d2  cis4  a'~ | % 26
+  2 r8  e  cis4 | % 27
+  d2  cis4  e,~ | % 28
+  2 r8  e'  cis4 | % 29
+  d2  cis8  e  cis4 |
+  d2  cis8  e  cis4 | % 31
+  d2  cis4  cis~ | % 32
+  2 r8  e,  a  cis | \break \mark #1
+  d8  e4  cis b a8 ~ | % 34
+  a2 r4  a | % 35
+  fis'4  gis8  a  cis, d8 r  e ~ | % 36
+  e2 r4  e, | \break
+  e'8  d  cis  d  b'4 gis8  e | % 38
+  d4  cis  gis'8  a4 fis8 ~ | % 39
+  fis4. r8  fis8  gis  a f8 ~ | 
+  f2 r4  g |\break
+  e4  cis8  a  d  e4
+  cis8 ~ | % 42
+  cis4  a8  e  b' cis8 r  a ~ | % 15
+  a2 r4.  b8 ~ | % 16
+  b2 r4. a'8-^ \bar "|."
+}
+
 theNotes =  \relative c' {
   \clef "treble" \key a \major \time 4/4
   \partial 4. e8  a  cis \mark #1
@@ -267,7 +325,7 @@ marques = \relative c' {
 \book {
   \paper {
     #(set-paper-size "tablette")
-    page-count = #1
+    %page-count = #1
   }
   #(define output-suffix "CTab")
   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
@@ -286,7 +344,7 @@ marques = \relative c' {
 \book {
   \paper {
     #(set-paper-size "tablette")
-    page-count = #2
+    %page-count = #2
   }
   #(define output-suffix "BbTab") 
   \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
@@ -305,7 +363,7 @@ marques = \relative c' {
 \book {
   \paper {
     #(set-paper-size "tablette")
-    page-count = #1
+    %page-count = #1
   }
   #(define output-suffix "EbTab")
   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
@@ -315,7 +373,7 @@ marques = \relative c' {
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }  
-          \transpose c a \theNotes
+          \transpose c a, \theNotesEb
         >> 
       >>
     } %\form
@@ -436,7 +494,7 @@ marques = \relative c' {
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice  
-          \transpose c a \theNotes
+          \transpose c a, \theNotesEb
         >> 
       >>
     } %\form
