@@ -3,12 +3,54 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2021-11-22T10:10:07+01:00</updated>
+    <updated>2021-12-04T12:14:33+01:00</updated>
     <author>
         <name>Vincent</name>
     </author>
     <id>https://myrealbook.vintherine.org</id>
 
+    <entry>
+        <title>Mesures composées</title>
+        <author>
+            <name>Vincent</name>
+        </author>
+        <link href="https://myrealbook.vintherine.org/mesures-composees.html"/>
+        <id>https://myrealbook.vintherine.org/mesures-composees.html</id>
+
+        <updated>2021-12-04T12:14:33+01:00</updated>
+            <summary>
+                <![CDATA[
+                    <p>J'ai travaillé récemment sur des morceaux à la métrique un peu inhabituelle : Her Song de Daniel Goyone, écrit en 13/8, et le très beau thème de Zem Audu, <a href="https://zemaudu.bandcamp.com/album/visions">Vision</a>, écrit en 11/8. Dans un cas comme dans l'autre il s'agit de mesures composées complexes :</p>
+<ul>
+<li>5/8+5/8+3/8 pour le premier</li>
+<li>4/8+4/8+3/8 pour le second</li>
+</ul>
+<p>Évidemment  il faudra indiquer aux musiciens la nature de cette composition et à Lilypond comment disposer les ligatures des croches.</p>
+<p>À peine évoquée cette question sur la liste de discussion Lilypond je reçoit une réponse sous la forme d'une fonction due  à l'inévitable Jean Abou Samra :</p>
+
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>J'ai travaillé récemment sur des morceaux à la métrique un peu inhabituelle : Her Song de Daniel Goyone, écrit en 13/8, et le très beau thème de Zem Audu, <a href="https://zemaudu.bandcamp.com/album/visions">Vision</a>, écrit en 11/8. Dans un cas comme dans l'autre il s'agit de mesures composées complexes :</p>
+<ul>
+<li>5/8+5/8+3/8 pour le premier</li>
+<li>4/8+4/8+3/8 pour le second</li>
+</ul>
+<p>Évidemment  il faudra indiquer aux musiciens la nature de cette composition et à Lilypond comment disposer les ligatures des croches.</p>
+<p>À peine évoquée cette question sur la liste de discussion Lilypond je reçoit une réponse sous la forme d'une fonction due  à l'inévitable Jean Abou Samra :</p>
+
+<pre><code>#(set-object-property! 'inter-time-signature-padding 'backend-type? number?)</code><br><code>#(set-object-property! 'angularity 'backend-type? number?)</code><br><br><code>twoCompoundMeters =</code><br><code>#(define-music-function (args args2) (pair? pair?)</code><br><code>   (let* ((mlen (calculate-compound-measure-length args))</code><br><code>          (beat (calculate-compound-base-beat args))</code><br><code>          (beatGrouping (calculate-compound-beat-grouping args))</code><br><code>          (timesig (cons (ly:moment-main-numerator mlen)</code><br><code>                         (ly:moment-main-denominator mlen))))</code><br><code>     #{</code><br><code>       \once \override Timing.TimeSignature.stencil =</code><br><code>       #(lambda (grob)</code><br><code>          (grob-interpret-markup grob</code><br><code>                                 (make-concat-markup</code><br><code>                                  (list</code><br><code>                                   (make-compound-meter-markup args)</code><br><code>                                   (make-hspace-markup</code><br><code>                                    (ly:grob-property grob 'inter-time-signature-padding 0))</code><br><code>                                   (make-parenthesize-markup</code><br><code>                                    (make-compound-meter-markup args2))))))</code><br><code>       \set Timing.timeSignatureFraction = #timesig</code><br><code>       \set Timing.baseMoment = #beat</code><br><code>       \set Timing.beatStructure = #beatGrouping</code><br><code>       \set Timing.beamExceptions = #'()</code><br><code>       \set Timing.measureLength = #mlen</code><br><code>     #}))</code><br><br><code>\layout {</code><br><code>  % Valeurs utiles à ajuster</code><br><code>  \override Staff.TimeSignature.inter-time-signature-padding = 1.3</code><br><code>  \override Staff.TimeSignature.thickness = 1</code><br><code>  \override Staff.TimeSignature.width = 0.25</code><br><code>  \override Staff.TimeSignature.angularity = 0</code><br><code>}</code></pre>
+<p>une fois collée cette fonction dans votre code (avant la musique) il suffira de remplacer par exemple :</p>
+<pre><code>\time 11/8</code></pre>
+<p>par</p>
+<pre><code>\twoCompoundMeters #'((4 8) (4 8) (3 8)) #'(11 8)</code></pre>
+<p>le résultat : </p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/20/Vision-2.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/20/responsive/Vision-2-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/20/responsive/Vision-2-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/20/responsive/Vision-2-md.png 768w"  alt="" width="879" height="201"></figure>
+<p> </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Liens dans la partitions</title>
         <author>
@@ -341,58 +383,6 @@
 <pre><code>\version "2.22.1"</code><br><br><code>#(define (scoop-stencil grob)</code><br><code>   (ly:stencil-add</code><br><code>    (ly:note-head::print grob)</code><br><code>    (grob-interpret-markup grob</code><br><code>                           (markup #:with-dimensions '(0 . 0) '(0 . 0)</code><br><code>                                   #:translate '(-0.2 . -0.5)</code><br><code>                                   #:path 0.25 '((moveto -0.2 0.5)</code><br><code>                                                 (curveto 0.2 2 -1.2 2.5 -1.7 2.5))))))</code><br><code>scoopH = \once \override NoteHead #'stencil = #scoop-stencil</code><br><br><code>#(define (scoop-stencil grob)</code><br><code>   (ly:stencil-add</code><br><code>    (ly:note-head::print grob)</code><br><code>    (grob-interpret-markup grob</code><br><code>                           (markup #:with-dimensions '(0 . 0) '(0 . 0)</code><br><code>                                   #:translate '(-0.2 . -0.5)</code><br><code>                                   #:path 0.25 '((moveto 0 0)</code><br><code>                                                 (curveto 0.2 -1 -1.2 -1.5 -1.7 -1.5))))))</code><br><code>scoopB = \once \override NoteHead #'stencil = #scoop-stencil</code><br><br><code>\relative c'' {</code><br><code>  \scoopH c2 \scoopB c2</code><br><code>}</code></pre>
 <figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/8/scoop-md.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/8/responsive/scoop-md-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/8/responsive/scoop-md-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/8/responsive/scoop-md-md.png 768w"  alt="Scoops" width="267" height="120"></figure><figure class="post__image"><img loading="lazy"  src="media/posts/8/scoop.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="media/posts/8/responsive/scoop-xs.png 300w ,media/posts/8/responsive/scoop-sm.png 480w ,media/posts/8/responsive/scoop-md.png 768w"  alt="" width="267" height="120"></figure>
 <p>Cette fonction est adaptée de <a href="https://lists.gnu.org/archive/html/lilypond-user/2014-01/msg01200.html">ce message</a> sur la liste lilypond-user. </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Répétitions avec fins alternatives</title>
-        <author>
-            <name>Vincent</name>
-        </author>
-        <link href="https://myrealbook.vintherine.org/repetitions-avec-fins-alternatives.html"/>
-        <id>https://myrealbook.vintherine.org/repetitions-avec-fins-alternatives.html</id>
-
-        <updated>2021-09-26T12:32:24+02:00</updated>
-            <summary>
-                <![CDATA[
-                    <p>Avec Lilypond les répétitions avec fins alternatives sont indiquées ordinairement de la manière suivante :</p>
-
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>Avec Lilypond les répétitions avec fins alternatives sont indiquées ordinairement de la manière suivante :</p>
-
-<pre><code>\repeat volta x {</code><br><code> ... musique ...</code><br><code> }</code><br><code>\alternative {</code><br><code> { ... alternative 1 }</code><br><code> { ... alternative 2 }</code><br><code> { ... alternative x }</code><br><code> }</code></pre>
-<p>Ce qui donnera par exemple quelque chose comme ceci :</p>
-<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/7/AlternatisesStandards.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/7/responsive/AlternatisesStandards-md.png 768w"  alt="" width="441" height="66"></figure>
-
-<p>Il arrive toutefois que l'on soit amené à contrôler manuellement les indications de reprises. Prenons pour exemple le standart de Jazz <em><strong>Jeannine</strong></em> de Duke Pearson. C'est une pièce de la forme A1 A2 B A1. Imaginons que nous souhaitions indiquer la répétition sous la forme </p>
-<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/7/JeanineAlternatives.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/7/responsive/JeanineAlternatives-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/7/responsive/JeanineAlternatives-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/7/responsive/JeanineAlternatives-md.png 768w"  alt="" width="1288" height="197"></figure>
-<p>avec barre de reprise en fin de B. Avec la formulation standard nous nous heurterions à la double difficulté suivante :</p>
-<ul>
-<li>l'ordre retenu par défaut serait [ 1 &amp; 2 ] [ 3     ]</li>
-<li>il ne serait pas possible de rajouter une indication textuelle. </li>
-</ul>
-<p><strong>[EDIT] Sur la <a href="https://lists.gnu.org/mailman/listinfo/lilypond-user-fr">mailing list des utilisateurs francophone de Lilypond</a> j'ai reçu de Jean Abou Samra une solution beaucoup plus simple et élégante que celle que j’utilisais jusqu'à présent. C'est cette nouvelle solution que je décris ci-dessous, l'ancienne étant pour archive à la fin de ce post. </strong></p>
-<p>Dans la version 2.22 il est possible de modifier le texte des alternatives avec la commande <code>\overrideProperty Score.VoltaBracket.text [\markup]</code>. <strong>Attention</strong> : dans les futures versions (c'est déjà vrai dans la version de développement 2.23) cette commande deviendra plus simplement <code>\once \override Score.VoltaBracket.text <strong>=</strong> [\markup]</code> (attention au signe =).</p>
-<p>Voici un exemple minimaliste :</p>
-<pre><code>\version "2.22.1"</code><br><br><code>voltaAdLib = \markup { 1. 2. 3… \italic \text "ad lib." }</code><br><code>voltaOnCue = \markup \small \with-color "red" \italic \text "On Cue"</code><br><br><code>\relative c'' {</code><br><code>  c4 c c c</code><br><code>  \repeat volta 2 {</code><br><code>    c4 c c c</code><br><code>  }</code><br><code>  \alternative {</code><br><code>    {</code><br><code>      \overrideProperty Score.VoltaBracket.text \voltaAdLib</code><br><code>      c4 c c c</code><br><code>    }</code><br><code>    {</code><br><code>      \overrideProperty Score.VoltaBracket.text \voltaOnCue</code><br><code>      c1</code><br><code>    }</code><br><code>  }</code><br><code>} </code></pre>
-<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/7/OnCue.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/7/responsive/OnCue-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/7/responsive/OnCue-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/7/responsive/OnCue-md.png 768w"  alt="" width="823" height="157"></figure>
-<p>Voici pour finir le code complet de <strong>Jeannine</strong> :  </p>
-<pre>\version "2.22.1"<br><br>\paper {<br>  indent = 0\mm<br>  markup-system-spacing = #'((basic-distance . 20)<br>                             (minimum-distance . 8)<br>                             (padding . 1))<br>}<br><br>\header {<br>  title = Jeannine<br>  composer = "Duke Pearson"<br>  poet = "Med. Up Swing"<br>  tagline = ##f<br>}<br><br>theChords = \chordmode {<br>  \set chordChanges = ##t<br>  as1*4:m7 as:m7 fis1:m7<br>  b1:7 e:7+ a:7 bes:m7 es:9+ as1:7+ es:9+<br>  as:7+ es2:m7 as:7<br>  des1:7+ g2:m5-7 c:7 f1*2:7+ f1:m7 bes:7 bes:m7 es:7<br>}<br><br>voltaOne = \markup { 1 \text { &amp; } 3 \text \fontsize #4 \with-color #red \italic { " (fine)" }}<br><br><br>theNotes = \relative c'' {<br>  \set Score.markFormatter = #format-mark-box-alphabet<br>  \clef "treble" \key as \major \time 4/4 \mark #1<br>  \repeat volta 2 {<br>    r8 es4-. r8 es4-. r | r8 es4-. r8 es4-. f-.<br>    ges--( f8 es ~ es2 ~ | es1) \break<br>    r8 es4-. r8 es4-. r | r8 es4-. r8 es4-. f-.<br>    ges-- f8 es ~ es2 ~ | es r8 c des as' ~ \break<br>    as4. e8-. r des4-. a8 | as'!4-- g8 ges-&gt; ~ ges as ges b-&gt; ~<br>    b2 ~ b8 bes b ges-&gt; ~ | ges2. e8 es~ \break |<br>    es4. es8 r2 | r8 bes( \times 2/3 { c des es } ges4 e8 es) ~ |<br>  }<br>  \alternative {<br>    {<br>      \overrideProperty Score.VoltaBracket.text \voltaOne<br>      es1 ~ | es1<br>    }<br>    {<br>      es2 \repeatTie \times 2/3 { es4 c es } f2 es<br>      \bar "||" \break \mark #2<br>      as,2 ~ as8( bes \times 2/3 { c des es } |<br>      f4-.) r8 g-&gt;~g( f g a-&gt;) ~<br>      a1 | r8 e4.-&gt; \times 2/3 { f4 g a } \break<br>      as?2 \times 2/3 { as4 g as } | bes2 f |<br>      bes1 ~ | bes2. r4 \bar ":|."<br>    }<br>  }<br>}<br><br>\score {<br>  &lt;&lt;<br>    \new ChordNames \theChords<br>    \new Staff \theNotes<br>  &gt;&gt;<br>}</pre>
-<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/7/jeannine.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/7/responsive/jeannine-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/7/responsive/jeannine-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/7/responsive/jeannine-md.png 768w"  alt="" width="1585" height="1090"></figure>
-<p>Voici donc comment je procédais avant le message de Jean : plutôt que d'utiliser la commande normale \repeat volta 2 j'utilisais des instructions explicites qui agissent sur la propriété Score.repeatCommands : </p>
-<ul>
-<li><code>\set Score.repeatCommands = #'(start-repeat)</code> imprime la barre de début de répétition (équivalent à \bar ".|:" ou à \bar "[|:")</li>
-<li><code>\set Score.repeatCommands = #'(end-repeat)</code> imprime la barre de fin de répétition (équivalent à \bar ";|." ou à \bar ":|]")</li>
-<li><code>\set Score.repeatCommands = #'((volta #f))</code> interrompt le crochet d'alternative. Si Lilypond ne trouve pas de fin d'alternative (volta #f ou accolade } de l'instruction ordinaire d'alternative) le crochet ne sera pas imprimé.</li>
-<li><code>\set Score.repeatCommands = #'((volta "1"))</code> indique le numéro de l'alternative. il peut être multiple, par ex. #'((volta "1, 2")) ou #'((volta "5, 34")). </li>
-<li>Il est possible de mixer plusieurs instructions en une seule commande. Par exemple  <code>\set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)</code> termine le crochet, ouvre le crochet de l'alternative suivante et imprime la barre de reprise.</li>
-<li>Pour intégrer des indications textuelles il faut préalablement définir celles-ci dans un markup puis les intégrer par la comande <code>\set Score.repeatCommands = #(list(list 'volta le_markup))</code>. Par exemple :</li>
-</ul>
-<pre><code>\version "2.22.1"</code><br><br><code>voltaAdLib = \markup { 1. 2. 3... \text \italic { ad lib. } }</code><br><code>voltaOnCue= \markup \small \with-color #(x11-color 'red) { \text \italic { On Cue } }</code><br><br><code>\relative c'' {</code><br><code> c4 c c c</code><br><code> \set Score.repeatCommands = #'(start-repeat)</code><br><code> c4 c c c </code><br><code> \set Score.repeatCommands = #(list(list 'volta voltaAdLib))</code><br><code> c4 c c c</code><br><code> \set Score.repeatCommands = #(list '(volta #f) (list 'volta voltaOnCue) 'end-repeat)</code><br><code> c1</code><br><code> \set Score.repeatCommands = #'((volta #f))</code><br><code>}</code></pre>
-<p> </p>
             ]]>
         </content>
     </entry>

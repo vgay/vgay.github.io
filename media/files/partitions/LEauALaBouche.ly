@@ -29,6 +29,8 @@
                             (padding . 5))
 }
 
+voltaII = \markup { 2.3.}
+
 title = #"L'eau à la bouche"
 composer = #"Serge Gainsbourg"
 meter = #"(Samba)"
@@ -161,8 +163,14 @@ theNotes =  \relative c'' {
     \mark \markup \with-color #red \center-column { "To Coda" \smaller "2nd X" }
   }
   \alternative { 
-    { bes,2.  c4 ~ | c1 } { bes2( c2)| bes1 }
-  } \break \bar "||" \mark #2
+    { bes,2.  c4 ~ | c1 } 
+    { \overrideProperty Score.VoltaBracket.text \voltaII
+      bes2( c2)| bes1 }
+  } \break \bar "||" 
+  \mark-y-dir #`( (,left . ,DOWN) (,right . ,UP) )
+  \doubleMark
+  \markup \with-color #red fine
+  \markup \bold \box B
   f'8  bes4  a  g  f8 ~ | % 24
   f4  f2  es4 | % 25
   f1 ~ | % 26
@@ -183,10 +191,10 @@ theNotes =  \relative c'' {
   a1 | % 36
   r4  e  es  e | % 37
   a2  g | % 38
-  f2  es \bar "|." \break
+  f2  es \bar ":|]" \break
   \mark-y-dir #`( (,left . ,DOWN) (,right . ,UP) )
   \doubleMark 
-  \markup \with-color #red "D.S. al Coda"
+  \markup \with-color #red "To Fine"
   \markup \with-color #red \bold \larger \musicglyph "scripts.varcoda"
 
   bes1 | c | | bes~ | bes~ | bes2 r | \break R1*6 \bar ".."

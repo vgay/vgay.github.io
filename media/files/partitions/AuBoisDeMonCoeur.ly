@@ -272,8 +272,8 @@ Basse = \relative c {
     a4 e a g | d fis dis fis | e e d d | c c b e |  \break \bar "||" % 12
     a e a g | d fis dis fis | e dis d cis | c4 b gis e' | \break \bar "||" % 16
     \B
-    d a d c | a b d f | g f d b | c c e g | \break % 20
-    a g e cis | d f a c | a g e c | f4 c e b | \break \bar "||" % 24
+    d e f a | d c a as | g f d b | c c e g | \break % 20
+    a g e cis | d e f a | a g e c | f4 c e b | \break \bar "||" % 24
     \A
     a' e a g | d fis dis fis | e dis d cis | c4 b e b | }
   
@@ -756,7 +756,25 @@ Guitare =  \relative c' {
 } }
 
 
-%{
-convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
-Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
-%}
+\book {
+  \paper {
+    #(set-paper-size "tablette")
+    page-count = #1
+  }
+  \bookpart {
+    #(define output-suffix "BassTab")
+    \score {
+      <<
+        \new ChordNames {
+          \set chordChanges = ##f
+          \harmonies
+        }
+        \new Staff 
+        <<
+          \set Staff.instrumentName = "Basse"
+          \new Voice = "Mel" { \clef "bass" \Basse }
+        >>
+      >>
+
+} } }
+

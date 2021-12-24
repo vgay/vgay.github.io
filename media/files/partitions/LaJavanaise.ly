@@ -1,6 +1,7 @@
 
 \version "2.19.80"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -101,17 +102,17 @@ form = \markup  \fill-line {
 
 harmonies = \chordmode {
   \set chordChanges = ##t
-  s8 g2.:6 e:m7 a:m7 d:7 a:m7 d:7 g:6 g:6
-  d:m7 g:7 c:6 s a:m6 b:7 e:m e:m
-  c:6 g:dim g:6 e:7 a:7 a:7 d:7 d:5+7
-  d:7 g:7+
+  s8 g2.:6/b bes:dim7 a:m7 d:13 a:m7 d:7 g:7+ g:6
+  d:m6 g:7 c:7+9 c:6 a:7 b:7 c:6 e:m7
+  c:6 cis:dim g:6/d e:7 a:7 a:7 d:7 d:5+7
+  d:7 g:6
 }
 
 
 theNotes =  \relative c'' {
   \clef "treble" \key g \major \time 3/4
   \partial 8
-g8 \bar "[|:" a8 g a g a g | a2 r8 g | fis a4. r4 | r2 r8 a8 | 
+g8 \bar "[|:" a8 g a g a g | a2 r8 g | fis a4. r4 | r2 r8 a8 | \break
 b a b a b a | b2 r8 a | g b4. r4 | r2. | \break
 b | d2 ~ d8 e | d2. | c |
 b4 cis e | dis b a | a2. | g | \break
@@ -126,7 +127,7 @@ A -- vant d'av -- oir eu vent de vous mon a -- mour
 Ne vous dé -- plai -- se
 En dan -- sant la Ja -- va -- nai -- se
 Nous nous ai -- mions
-Le temps d'un -- e cha -- nson \skip 1 chan -- son.
+Le temps d'un -- e chan -- son \skip 1 chan -- son.
 }
 verseB = \lyricmode {
  À votre a -- vis qu'a -- vons -- nous vu de l'a -- mour?
@@ -143,13 +144,14 @@ Mais c'est vous qui l'a -- vez vou -- lu mon a -- mour
 
 grille = \chordmode {
   \bar "[|:"
- g1:6 e:m7 a:m7 d:7 \break
- a:m7 d:7 \repeat percent 2 g:6 \break
- d:m7 g:7 \repeat percent 2 c:6 \break
- a:m6 b:7 \repeat percent 2 e:m \break
- c:6 g:dim g:6 e:7 \break
- a:7 \Coda a:7 d:7 d:5+7 \break
- \Coda d:7 \repeat percent 2 g:7+
+ g1:6/b bes:dim7 a:m7 d:13 \break
+ a:m7 d:7 g:7+ g:6 \break
+ d:m7 g:7 c:7+9 c:6 \break
+ a:7 b:7 c:6 e:m7 \break
+ c:6 cis:dim g:6/d e:7 \break
+ a:7 \Coda a:7 d:7 d:5+7 \break \bar "|."
+ \stopStaff s \startStaff
+ \Coda d:7 \repeat percent 2 g:6
   \bar ".." }
 
 marques = \relative c' { 
@@ -234,7 +236,8 @@ marques = \relative c' {
           \addlyrics \verseD
         >> 
       >>
-    } %\form
+    } 
+  }   \bookpart {
     \score {
       \layout {
         indent = 0
@@ -289,6 +292,7 @@ marques = \relative c' {
         >> 
       >>
     } %\form
+  }   \bookpart {
     \score {
       \layout {
         indent = 0
@@ -343,6 +347,7 @@ marques = \relative c' {
         >> 
       >>
     } %\form
+  }   \bookpart {
     \score {
       \layout {
         indent = 0

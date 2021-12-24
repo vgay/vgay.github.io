@@ -107,14 +107,14 @@ form = \markup  \fill-line {
 harmonies = \chordmode {
   \set chordChanges = ##t
   s4 bes2.:7+ f:7sus4 bes:7+ bes:6/f
-  g:m7 d:m7 es:7+ g:7+/b c:m7 c:m7/g 
+  g:m7 d:m7 c:m7 g:7+/b c:m7 c:m7/g 
   f:7 c:m7 f:7 c:m7 bes2.:7+ f:7sus4 bes:7+ bes:6/f bes:6/f
   f:m7 bes:7 f:m7 bes:7
   es:7+ f:m7 g:m7 f:m7 
   g:m7 bes:m6 g:m7 g:m7/d f:7 f:7/c 
   a:m5-7 f:7/a
   bes2.:7+ f:7sus4 bes:7+ bes:6/f
-  g:m7 d:m7 es:7+ g:7+/b c:m7 c:m7/g 
+  g:m7 d:m7 c:m7 g:7+/b c:m7 c:m7/g 
   f:7 c:m7 f:7 c:m7 bes2.:7+ f:7sus4 bes:7+ bes:6/f
 }
 

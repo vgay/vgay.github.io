@@ -1,6 +1,7 @@
 
 \version "2.19.80"
-#(set-global-staff-size 18)
+#(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -15,7 +16,7 @@
   %%set to ##t if your score is less than one page:
   ragged-last-bottom = ##t
   ragged-bottom = ##f
-  ragged-last = ##t
+  ragged-last = ##f
   markup-system-spacing = #'((basic-distance . 23)
                              (minimum-distance . 8)
                              (padding . 1))
@@ -101,11 +102,11 @@ realBookTitle = \markup {
 harmonies = \chordmode {
   \set chordChanges = ##f
   e2:m7 a:7 f:m7 bes:7 es1:7+ as2:m7 des:7
-  d:m7 g:7 es:m7 as:7 des1:7+ d2:m5-7 g:9-
-  c1:m7 bes2:m7 es:7 as1:7+ des:7 
-  g2:m7 c:9+ as:m7 des:7 ges1:7+ f2:m7 bes:7
-  g2:m7 c:9+ f:m7 bes:7 es1:6/bes f:m7/bes g:m7/bes f:m7/bes 
-  es2:6/bes f:m7/bes g:m7/bes f:m7/bes es1*2:6 s es1:9+
+  d:m7 g:7 es:m7 as:7 des1:7+ d2:m7 g:7
+  c1:m7 bes2:m7 es:7 as1:7+ as2:m7 des:7 
+  g2:m7 c:7 as:m7 des:7 ges1:6 f2:m7 bes:7
+  g2:m7 c:7 f:m7 bes:7 es1:6/bes f:m7/bes g:m7/bes f:m7/bes 
+  es2:6/bes f:m7/bes g:m7/bes f:m7/bes es1*2:6 
 }
 
 
@@ -126,32 +127,24 @@ theNotes =  \relative c'' {
   }
   es2 f4. es8 ~ | es1 | f | \break
   g | f |
-  es2 f | g f | 
-  \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
-  \mark \markup  \with-color #red { "To Coda" \musicglyph "scripts.varcoda" }
-  \break 
-  es4 r r2 | R1 \bar "|." \stopStaff s1 \bar "" s \startStaff 
- \mark \markup \with-color #red  \bold  {\musicglyph "scripts.varcoda"}
-  ges1 \fermata
-  \bar "|."
+  es2 f | g f |  
+  es4 r r2 | R1 \bar ".." 
 }
 
 grille = \chordmode {
   \bar "[|:"
  \/e2:m7 a:7 \/f:m7 bes:7 \startStaff es1:7+ \/as2:m7 des:7 \break
- \/d:m7 g:7 \/es:m7 as:7 \startStaff des1:7+ \/d2:m5-7 g:9- \break
- \startStaff c1:m7 \/bes2:m7 es:7 \startStaff as1:7+ des:7 \break
+ \/d:m7 g:7 \/es:m7 as:7 \startStaff des1:7+ \/d2:m7 g:7 \break
+ \startStaff c1:m7 \/bes2:m7 es:7 \startStaff as1:7+ \/as2:m7 des:7 \break
  \set Score.repeatCommands = #'((volta "1"))
- \/g2:m7 c:9+ \set Score.repeatCommands = #'((volta #f))
- \/as:m7 des:7 \startStaff ges1:7+ \/f2:m7 bes:7 \break
+ \/g2:m7 c:7 \set Score.repeatCommands = #'((volta #f))
+ \/as:m7 des:7 \startStaff ges1:6 \/f2:m7 bes:7 \break
  \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
- \/g2:m7 c:9+ \set Score.repeatCommands = #'((volta #f))
+ \/g2:m7 c:7 \set Score.repeatCommands = #'((volta #f))
  \/f:m7 bes:7 \startStaff es1:6/bes f:m7/bes \break 
- g:m7/bes f:m7/bes \/es2:6/bes f:m7/bes \/g:m7/bes f:m7/bes
- \break \Coda \startStaff 
- \repeat percent 2 es1:6 \stopStaff  s \startStaff 
- \Coda es:9+
-  \bar ".." }
+ g:m7/bes f:m7/bes \/es2:6/bes f:m7/bes \/g:m7/bes f:m7/bes \break 
+ \repeat percent 2 es1:6 \bar ".." \stopStaff  s \bar "" s \bar "" 
+  }
 
 marques = \relative c' { 
   s1 % ^\markup \bold \box \fontsize #7 A s1*7 

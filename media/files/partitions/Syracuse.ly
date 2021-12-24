@@ -20,6 +20,8 @@
   score-system-spacing = #'((basic-distance . 23)
                             (minimum-distance . 20)
                             (padding . 5))
+ 
+
 }
 
 title = #"Syracuse"
@@ -106,29 +108,33 @@ form = \markup  \fill-line {
 
 harmonies = \chordmode {
   \set chordChanges = ##t
-s1 g1:m9 cis2:dim7 c:6 f:7+ c:9sus4 f:6 bes4:7+ g:m7/d 
-g2:m9 d:m7 c2:7 g4:7 fis:9- f2:7+ g4:m5-7 c:9- f8:6 r s2.f2:7+ es:7+/bes
-c2:m9 c:7sus4 c:m9 d:m7 bes:7+ es:m/bes bes:7+ des:7+/as 
-bes:m9 c:7/e g1:m9 a:9- f8:7+ r s2.
-g1:m9 cis2:dim7 c:6 f:7+ c:9sus4 f:6 bes4:7+ g:m7/d 
-g2:m9 d:m7 c2:7 g4:7 fis:9-  f2:7+ c:9- f1:6
+  r4 \parenthesize c2.:6 d1:m7 g1:7 c:6 d:m7 g:9 d2:m7 g:9 c1:6 
+  g1:m7 g:9 g2:m7 c:9 f1:6
+  es1:m7 bes:9 a2:m7 d:6.9 as:9- g:9
+  c1:6 d1:m7 g1:7 c:6 d:m7 g:9 d2:m7 g:9 c1:6
 }
 
 
 theNotes =  \relative c'' {
-  \clef "treble" \key f \major \time 4/4
-  r8 c d e e4 \tuplet 3/2 { d8 a g } |
-  \repeat volta 2 { \A
-    a4. 8~ 2 | r8 g a c c a4 e16 d | e1 | r8 d d a' a4 \tuplet 3/2 { g8 g d } \break
-    a'4. 8~ 2 | r8 d, d a' a g g d | a'1 }
-  \alternative { 
-    { r8 c d e e4 \tuplet 3/2 { d8 a g } } { r8 c c d d c c g }
-  } \break \bar "||" \B
-  d'4. c8~ 2 | r8 c c d d c c g | d'1 | r8 bes bes c c bes bes f | \break
-  c'4. bes8~ 2 | r8 f g a a2 | r8 f g a a2 | r8  c d e e4 \tuplet 3/2 { d8 a g } \break \bar "||"
-  \A a4. 8~ 2 | r8 g a c c a4 e16 d | e1 | r8 d d a' a4 \tuplet 3/2 { g8 g d } \break
-  a'4. 8~ 2 | r8 d, d a' a g g d | a'1~| a \bar ".."
+  \clef "treble" \key c \major \time 4/4
+  \set Score.markFormatter = #format-mark-box-alphabet
+  \repeat volta 2 { 
+    \mark #1
+    r8 c d e e4 \tuplet 3/2 { d8 a g } | a4. 8~ 2 | 
+    r8 g a c c a4 e16 d | e1 | \break
+    r8 d d a' a4 \tuplet 3/2 { g8 g d } | a'4. 8~ 2 | 
+    r8 d, d a' a g g d | a'1
   }
+  \mark #2  
+  \break r8 c c d d c c g | d'4. c8~ 2 | 
+  r8 c c d d c c g | d'1 | \break
+  r8 bes bes c c bes bes f | c'4. bes8~ 2 | 
+  r8 f g a a2 | r8 f g a a2 | \break \bar "||" \mark #1
+  r8  c d e e4 \tuplet 3/2 { d8 a g } | a4. 8~ 2 | 
+  r8 g a c c a4 e16 d | e1 | \break
+  r8 d d a' a4 \tuplet 3/2 { g8 g d } 
+  a'4. 8~ 2 | r8 d, d a' a g g d | a'1 \bar ".."
+}
 
 
 chordsRhythm = \relative c''' {
@@ -142,52 +148,44 @@ Basse = \relative c {
 }
 
 grille = \chordmode {
-  \bar "[|:" g1:m9 \/cis2:dim7 c:6 \/f:7+ c:9sus4 \w f:6 bes4:7+ g:m7/d \break
-  \/g2:m9 d:m7 \w c2:7 g4:7 fis:9- \w f2:7+ g4:m5-7 c:9- 
-  \set Score.repeatCommands = #'((volta "1")) f1:6 
-  \set Score.repeatCommands = #'((volta #f)'end-repeat) \break
-  \stopStaff s1 \bar "" s1 \bar "" s1 \startStaff 
-    \set Score.repeatCommands = #'((volta "2")) \/f2:7+ es:7+/bes \bar "||"
-  \set Score.repeatCommands = #'((volta #f)) \break
-  \/c2:m9 c:7sus4 \/c:m9 d:m7 \/bes:7+ es:m7+/bes \/bes:7+ des:7+/as \break
-  \/bes:m9 c:7/e g1:m9 a:9- f:7+ \break \bar "||"
-  g1:m9 \/cis2:dim7 c:6 \/f:7+ c:9sus4 \w f:6 bes4:7+ g:m7/d \break
-   \/g2:m9 d:m7 \w c2:7 g4:7 fis:9- \/f2:7+ c:9- f1:6 \bar ".."
-
- 
+  \bar "[|:" c1:6 d:m7 g:7 c:6 \break
+  d:m7 g:9 \/d2:m7 g:9 c1:6 \bar ":|]" \break
+  g:m7 c:9 \/g2:m7 c:9 f1:6 \break
+  es:m7 bes:9 \/a2:m7 d:6.9/a \/as:9- g:9 \break
+  c1:6 d:m7 g:7 c:6 \break
+  d:m7 g:9 \/d2:m7 g:9 c1:6 
   \bar ".." }
 
 marques = \relative c' { 
-   s1 ^\markup \bold \box \fontsize #7 A s1*11 
-   s1 ^\markup \bold \box \fontsize #7 B s1*7 
-   s1 ^\markup \bold \box \fontsize #7 A
+  s1 ^\markup \bold \box \fontsize #5 A s1*7 
+  s1 ^\markup \bold \box \fontsize #5 B s1*7 
+  s1 ^\markup \bold \box \fontsize #5 A
 }
 
 verse = \lyricmode {
-J’ai -- me -- rais tant voir Sy -- ra -- cu -- se
-L’î -- le de Pâ -- ques__et Kai -- rou -- an
-Et les grands ois -- eaux qui s’a -- mu -- sent
-A glis -- ser l’ai -- le sous le vent
+  J’ai -- me -- rais tant voir Sy -- ra -- cu -- se
+  L’î -- le de Pâ -- ques__et Kai -- rou -- an
+  Et les grands ois -- eaux qui s’a -- mu -- sent
+  A glis -- ser l’ai -- le sous le vent
 
-Voir les jar -- dins de Ba -- by
+  
 
-Voir le pa -- ys du ma -- tin cal -- me
-Al -- ler pê -- cher au cor -- mo -- ran
-Et m’e -- ni -- vrer de vin de pal -- me
-En é -- cou -- tant chan -- ter le vent
+  Voir le pa -- ys du ma -- tin cal -- me
+  Al -- ler pê -- cher au cor -- mo -- ran
+  Et m’e -- ni -- vrer de vin de pal -- me
+  En é -- cou -- tant chan -- ter le vent
 
-A -- vant que ma jeu -- nes -- se s’u -- se
-Et que mes prin -- temps soient par -- tis
-J’ai -- me -- rais tant voir Sy -- ra -- cu -- se
-Pour m’en sou -- ve -- nir à Pa -- ris 
+  A -- vant que ma jeu -- nes -- se s’u -- se
+  Et que mes prin -- temps soient par -- tis
+  J’ai -- me -- rais tant voir Sy -- ra -- cu -- se
+  Pour m’en sou -- ve -- nir à Pa -- ris 
 }
 
 verseB = \lyricmode {
-  \repeat unfold 7 { \skip 1 }
-lo -- ne
-Et le pa -- lais du grand La -- ma
-Rê -- ver des a -- mants de Vé -- ro -- ne
-Au som -- met du Fu -- ji Ya -- ma
+  Voir les jar -- dins de Ba -- by lo -- ne
+  Et le pa -- lais du grand La -- ma
+  Rê -- ver des a -- mants de Vé -- ro -- ne
+  Au som -- met du Fu -- ji Ya -- ma
 }
 
 
@@ -262,12 +260,12 @@ Au som -- met du Fu -- ji Ya -- ma
         <<
           %\new Voice \with { \consists "Pitch_squash_engraver" } 
           \theNotes
-        \addlyrics \verse
-        \addlyrics \verseB
+          \addlyrics \verse
+          \addlyrics \verseB
         >> 
       >>
     } %\form
-    }  \bookpart {
+  }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -315,12 +313,12 @@ Au som -- met du Fu -- ji Ya -- ma
         \new Staff \with { instrumentName = \Bb  } <<
           % \new Voice \with { \consists "Pitch_squash_engraver" }  
           \transpose c d \theNotes
-        \addlyrics \verse
-        \addlyrics \verseB
+          \addlyrics \verse
+          \addlyrics \verseB
         >> 
       >>
     } %\form
-    }  \bookpart {
+  }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -368,12 +366,12 @@ Au som -- met du Fu -- ji Ya -- ma
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice  
           \transpose c a \theNotes
-        \addlyrics \verse
-        \addlyrics \verseB
+          \addlyrics \verse
+          \addlyrics \verseB
         >> 
       >>
     } %\form
-    }  \bookpart {
+  }  \bookpart {
     \score {
       \layout {
         indent = 0
