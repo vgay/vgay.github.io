@@ -1,5 +1,6 @@
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -21,7 +22,7 @@ title = #"Ces petits riens"
 composer = #"Serge Gainsbourg"
 meter = #"(Med. Latin - Swing)"
 kwtempo = #"Medium"
-kwstyle = #"Latin-Swing"
+kwstyle = #"Latin / Swing"
 
 realBookTitle = \markup {
   \score {

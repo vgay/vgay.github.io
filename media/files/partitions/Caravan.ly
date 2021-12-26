@@ -1,5 +1,4 @@
-
-\version "2.22.0"
+\version "2.22.1"
 #(set-global-staff-size 18)
 \include "double-mark.ly"
 \include "AdditionalFunctions.ly"
@@ -26,7 +25,7 @@ title = #"Caravan"
 composer = #"Duke Ellington and Juan Tizol"
 meter = #"(Latin Swing)"
 kwtempo = #"Medium"
-kwstyle = #"Latin Swing"
+kwstyle = #"Latin / Swing"
 
 realBookTitle = \markup {
   \score {

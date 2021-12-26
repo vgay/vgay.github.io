@@ -2,7 +2,7 @@
 	"Title": "213 Cha Cha",
 	"Composer": "David Torres",
 	"Tempo": "Medium",
-	"Style": "Salsa",
+	"Style": "Cha Cha",
 	"AsPlayedBy": "Poncho Sanchez",
 	"Lyrics": "No"
 },
@@ -18,7 +18,7 @@
 	"Title": "A Child Is Born",
 	"Composer": "Thad Jones",
 	"Tempo": "Slow",
-	"Style": "Waltz Ballad",
+	"Style": "Jazz Waltz",
 	"AsPlayedBy": "Thad Jones",
 	"Lyrics": "No"
 },
@@ -353,7 +353,7 @@
 	"Title": "Caravan",
 	"Composer": "Duke Ellington and Juan Tizol",
 	"Tempo": "Medium",
-	"Style": "Latin Swing",
+	"Style": "Latin / Swing",
 	"Lyrics": "No"
 },
 {
@@ -367,7 +367,7 @@
 	"Title": "Ces petits riens",
 	"Composer": "Serge Gainsbourg",
 	"Tempo": "Medium",
-	"Style": "Latin-Swing",
+	"Style": "Latin / Swing",
 	"Lyrics": "Yes"
 },
 {
@@ -496,7 +496,7 @@
 	"Title": "Eighty-One",
 	"Composer": "Ron Carter",
 	"Tempo": "Medium",
-	"Style": "Latin/Rock",
+	"Style": "Latin Rock",
 	"AsPlayedBy": "Miles Davis",
 	"Lyrics": "No"
 },
@@ -878,7 +878,7 @@
 	"Title": "Manteca",
 	"Composer": "Dizzy Gillespie",
 	"Tempo": "Fast",
-	"Style": "Mambo 2-3",
+	"Style": "Mambo",
 	"Lyrics": "No"
 },
 {
@@ -1386,7 +1386,7 @@
 	"Title": "The Night Has a Thousand Eyes",
 	"Composer": "B. Bernier and J. Brainin",
 	"Tempo": "Med. Up",
-	"Style": "Latin Swing",
+	"Style": "Latin / Swing",
 	"AsPlayedBy": "John Coltrane",
 	"Lyrics": "Yes"
 },

@@ -1,6 +1,7 @@
 
 \version "2.22.1"
 #(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -25,9 +26,9 @@
 
 title = #"213 Cha Cha"
 composer = #"David Torres"
-meter = #"(Med. Salsa)"
+meter = #"(Med. Cha Cha)"
 kwtempo = #"Medium"
-kwstyle = #"Salsa"
+kwstyle = #"Cha Cha"
 
 realBookTitle = \markup {
   \score {

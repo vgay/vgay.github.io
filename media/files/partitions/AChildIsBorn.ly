@@ -1,6 +1,7 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -23,9 +24,9 @@
 
 title = #"A Child Is Born"
 composer = #"Thad Jones"
-meter = #"(Waltz Ballad)"
+meter = #"(Slow Jazz Waltz)"
 kwtempo = #"Slow"
-kwstyle = #"Waltz Ballad"
+kwstyle = #"Jazz Waltz"
 
 realBookTitle = \markup {
   \score {
@@ -107,7 +108,7 @@ harmonies = \chordmode {
   g:m7 d:5+7 g:m7 d:5+7
   g:m7 c:9 f:7sus4 f:13
   bes:7+ es:m6/bes bes:7+ es:m6/bes
-  bes:7+9 d:5+7.9-11+ es:7+ as2:9 c4:m5-7
+  bes:7+9 d:8 es:7+ as2:9 c4:m5-7
   bes2./f ges:6.11+ g:m7 c:9 c:m7/f f:7
   bes2.:7+ es:m6/bes bes:7+ es:m6/bes bes:7+
 }
@@ -123,9 +124,9 @@ theNotes =  \relative c' {
   d,2. | f4 bes d | f2. | es2 ges,4  \break
   f2. | es4 f bes | d,2. | e4 g c 
   d2. | f, \bar "|." \break
- \doubleMark
- \markup \with-color #red \musicglyph "scripts.varcoda"
- \markup \with-color #red \musicglyph "scripts.varcoda"
+  \doubleMark
+  \markup \with-color #red \musicglyph "scripts.varcoda"
+  \markup \with-color #red \musicglyph "scripts.varcoda"
   d2. | es4 f bes | d,2. | es4 f bes | d2. \fermata
   \bar ".."
 }
@@ -141,9 +142,20 @@ Basse = \relative c {
 }
 
 grille = \chordmode {
-  \bar "[|:"
- 
-  \bar ".." }
+  bes1:7+ es:m6/bes bes1:7+ es:m6/bes \break
+  bes1:7+9 es:m/bes a:m5-7 d:9+ \break
+  g:m7 d:5+7 g:m7 d:5+7 \break
+  g:m9 c:9 f:7sus4 f:13
+  bes1:7+ es:m6/bes bes1:7+ es:m6/bes \break
+  bes:7+9 d:8 es:7+ \/as2:9 c:m5-7 \break
+  bes1/f ges:6.11+ g:m7 c:9 \break
+  c:m7/f f:7 \Coda \bar "|." 
+  \stopStaff
+  s \bar "" s \bar "" \break \startStaff
+  \Coda bes:7+  es:m6/bes bes1:7+ es:m6/bes \break
+  bes:7+   \bar ".."
+  \stopStaff s \bar "" s \bar "" s \bar "" 
+}
 
 marques = \relative c' { 
 }
@@ -223,7 +235,7 @@ marques = \relative c' {
         >> 
       >>
     } %\form
-    %}  \bookpart {
+    }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -274,7 +286,7 @@ marques = \relative c' {
         >> 
       >>
     } %\form
-    %}  \bookpart {
+    }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -325,7 +337,7 @@ marques = \relative c' {
         >> 
       >>
     } %\form
-    %}  \bookpart {
+    }  \bookpart {
     \score {
       \layout {
         indent = 0

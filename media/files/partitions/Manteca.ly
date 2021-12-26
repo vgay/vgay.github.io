@@ -1,6 +1,6 @@
-
-\version "2.19.80"
+\version "2.22.1"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -25,7 +25,7 @@ title = #"Manteca"
 composer = #"Dizzy Gillespie"
 meter = #"(Mambo 2-3)"
 kwtempo = #"Fast"
-kwstyle = #"Mambo 2-3"
+kwstyle = #"Mambo"
 
 realBookTitle = \markup {
   \score {
@@ -125,7 +125,7 @@ codaH = \chordmode {
 
 theNotes =  \relative c' {
   \clef "treble" \key es \major \time 4/4
-  \compressFullBarRests
+  \compressEmptyMeasures
   \override MultiMeasureRest #'expand-limit = #3
   \showStartRepeatBar \bar "[|:" \Intro
   \repeat volta 2 { R1*4 } \break
@@ -134,24 +134,24 @@ theNotes =  \relative c' {
   bes4 bes' r8 bes,4 bes'8 | r4. bes,8 r bes'4. \break 
   \repeat volta 2 {
     \AetS
-    \repeat unfold 2 { f,4 a a8 bes4 bes8 ~ | bes a f bes r a4.} \break
-    f4 a a8 bes4 bes8 ~ | bes a f bes r a4 bes8-> ~ | bes a f bes-> ~  bes a f bes-> ~ | bes a f bes r a4.->
+    \repeat unfold 2 { f,4 as as8 bes4 bes8 ~ | bes as f bes r as4.} \break
+    f4 as as8 bes4 bes8 ~ | bes as f bes r as4 bes8-> ~ | bes as f bes-> ~  bes as f bes-> ~ | bes as f bes r as4.->
   }
   \break \doubleMark
   \markup \bold \with-color #red { "To Coda" \raise #1 \musicglyph "scripts.varcoda" } 
   \markup \bold \box \fontsize #2 B
-  bes1 ~ | bes2 a4 ges | f1 ~ | f2. es4 
+  bes1 ~ | bes2 as4 ges | f1 ~ | f2. es4 
   e f g as | a bes c des 
-  << { es1 ~ | es2. es,4 } \\ { r2 es'8 c bes as | g es e f ~ f4 es4} >> 
+  << { es1 ~ | es2 \tuplet 3/2 { r4 g, as } } \\ { r4. es'8~ es des c bes | as f fis g2 } >> 
   \break
   es'1 ~ | es8 e4 d8 des4 ces4 
   bes2 ~ bes8 ges as a ~ | a2 ~ a8 f ges as ~ 
-  as1 ~ | as8 a bes bes' ~ bes4 as8 ges ~
+  as1 ~ | as8 a bes bes' ~ bes4 as!8 ges ~
   ges1 R1 \break \bar "||"
   \C
-  \repeat unfold 2 { f,4 a a8 bes4 bes8 ~ | bes a f bes r a4.} \break
-  f4 a a8 bes4 bes8 ~ | bes a f bes r a4 bes8-> ~ | 
-  bes a f bes-> ~  bes a f bes-> ~ | bes a f bes r a4.-> \break
+  \repeat unfold 2 { f,4 as as8 bes4 bes8 ~ | bes as f bes r as4.} \break
+  f4 as as8 bes4 bes8 ~ | bes as f bes r as4 bes8-> ~ | 
+  bes as f bes-> ~  bes as f bes-> ~ | bes as f bes r as4.-> \break
   \D
   \repeat volta 2 { bes,4 bes' r8 bes,4 bes'8 | r4. bes,8 r bes'4. }
   \mark \markup "4X"

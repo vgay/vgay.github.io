@@ -1,6 +1,6 @@
-
-\version "2.19.80"
+\version "2.22.1"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -22,9 +22,9 @@
 
 title = #"Eighty-One"
 composer = #"Ron Carter"
-meter = #"(Med. Latin/Rock)"
+meter = #"(Med. Latin Rock)"
 kwtempo = #"Medium"
-kwstyle = #"Latin/Rock"
+kwstyle = #"Latin Rock"
 
 realBookTitle = \markup {
   \score {

@@ -1,6 +1,6 @@
-
-\version "2.22.0"
+\version "2.22.1"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -25,7 +25,7 @@ title = #"The Night Has a Thousand Eyes"
 composer = #"B. Bernier and J. Brainin"
 meter = #"(Up Latin Swing)"
 kwtempo = #"(Med. Up"
-kwstyle = #"Latin Swing"
+kwstyle = #"Latin / Swing"
 
 realBookTitle = \markup {
   \score {
@@ -110,13 +110,13 @@ harmonies = \chordmode {
 }
 
 
-theNotes =  \relative c'' {
+theNotes =  \relative c' {
   \clef "treble" \key g \major \time 4/4 
   \override Score.RehearsalMark #'self-alignment-X = #LEFT
   \mark \markup \bold \fontsize #2 { \box Latin " " \box A  } 
   \partial 4 d4 \repeat volta 2 {
     a'1 ~ | a2 fis4 d8 e8 ~ | e1 ~ | e2 r8 b'4 g8 | 
-    a4. a8 a8 a4 a8 ~ | a8 a4. fis4 d8 e8 ~ | e4. c8 b8 a4 d8 |d2. d4 \bar "||" \break 
+    a4. a8 a8 a4 a8 ~ | a8 a4. fis4 d8 e8 ~ | e4. c8 b8 a4 d8~ |d2. d4 \bar "||" \break 
     \Swing 1~ | 4 c8 b8 c8 d4 b8 ~ | b1 ~ | b2 a'4 g4 | 
     \Latin d4. d8 ~ d4 d4 ~ | d8 e8 fis8 d8 c8 fis4 g8 ~ | g1 }
   \alternative { { r2 r4 d4 } { r2 r4 g4} } \bar "||" \break 
@@ -255,7 +255,7 @@ verseB = \lyricmode {
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }  
-          \transpose c a, \theNotes
+          \transpose c a \theNotes
         >> 
       >>
     } %\form
@@ -376,7 +376,7 @@ verseB = \lyricmode {
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice  
-          \transpose c a, \theNotes
+          \transpose c a \theNotes
         >> 
       >>
     } %\form
