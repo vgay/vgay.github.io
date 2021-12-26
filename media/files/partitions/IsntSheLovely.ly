@@ -21,7 +21,7 @@ title = #"Isn't She Lovely"
 composer = #"Stevie Wonder"
 meter = #"(Med. Shuffle Rock)"
 kwtempo = #"Medium"
-kwstyle = #"Shuffle Rock"
+kwstyle = #"Rock"
 
 realBookTitle = \markup {
   \score {

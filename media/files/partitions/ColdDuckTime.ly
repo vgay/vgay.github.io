@@ -27,7 +27,7 @@ title = #"Cold Duck Time"
 composer = #"Eddie Harris"
 meter = #"(Med. Rock/Gospel)"
 kwtempo = #"Medium"
-kwstyle = #"Rock/Gospel"
+kwstyle = #"Rock / Gospel"
 
 realBookTitle = \markup {
   \score {

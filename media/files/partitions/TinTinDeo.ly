@@ -1,5 +1,6 @@
-\version "2.22.0"
+\version "2.22.1"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -23,7 +24,7 @@ title = #"Tin Tin Deo"
 composer = #"Walter 'Gil' Fuller"
 meter = #"(Med. Afro-Swing)"
 kwtempo = #"Medium"
-kwstyle = #"Afro-Swing"
+kwstyle = #"Afro Swing"
 
 realBookTitle = \markup {
   \score {

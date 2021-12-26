@@ -42,7 +42,7 @@
 	"Title": "Afro Blue",
 	"Composer": "Mongo Santamaria",
 	"Tempo": "Medium",
-	"Style": "Afro-Jazz Waltz",
+	"Style": "Afro Jazz Waltz",
 	"AsPlayedBy": "John Coltrane",
 	"Lyrics": "No"
 },
@@ -205,7 +205,7 @@
 	"Title": "Beauty And The Best",
 	"Composer": "Wayne Shorter",
 	"Tempo": "Slow",
-	"Style": "Funk Ballad",
+	"Style": "Funky Ballad",
 	"AsPlayedBy": "Wayne Shorter",
 	"Lyrics": "No"
 },
@@ -410,7 +410,7 @@
 	"Title": "Cold Duck Time",
 	"Composer": "Eddie Harris",
 	"Tempo": "Medium",
-	"Style": "Rock/Gospel",
+	"Style": "Rock / Gospel",
 	"AsPlayedBy": "Eddie Harris",
 	"Lyrics": "No"
 },
@@ -555,7 +555,7 @@
 	"Title": "Freedom Jazz Dance",
 	"Composer": "Eddie Harris",
 	"Tempo": "Fast",
-	"Style": "Funk/Rock",
+	"Style": "Funky Rock",
 	"AsPlayedBy": "Eddie Harris",
 	"Lyrics": "No"
 },
@@ -676,7 +676,7 @@
 	"Title": "Isn't She Lovely",
 	"Composer": "Stevie Wonder",
 	"Tempo": "Medium",
-	"Style": "Shuffle Rock",
+	"Style": "Rock",
 	"AsPlayedBy": "Stevie Wonder",
 	"Lyrics": "Yes"
 },
@@ -699,7 +699,7 @@
 	"Title": "I Thought About You",
 	"Composer": "J. Van Heusen and J. Mercer",
 	"Tempo": "Medium",
-	"Style": "Funk/Latin",
+	"Style": "Latin Funk",
 	"AsPlayedBy": "Bob Berg",
 	"Lyrics": "No"
 },
@@ -1432,7 +1432,7 @@
 	"Title": "Tin Tin Deo",
 	"Composer": "Walter 'Gil' Fuller",
 	"Tempo": "Medium",
-	"Style": "Afro-Swing",
+	"Style": "Afro Swing",
 	"AsPlayedBy": "Dizzy Gillespie",
 	"Lyrics": "No"
 },

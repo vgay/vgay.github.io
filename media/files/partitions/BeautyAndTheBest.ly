@@ -1,6 +1,6 @@
-
-\version "2.19.80"
-#(set-global-staff-size 18)
+\version "2.22.1"
+#(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -23,9 +23,9 @@
 
 title = #"Beauty And The Best"
 composer = #"Wayne Shorter"
-meter = #"(Funk Ballad)"
+meter = #"(Funky Ballad)"
 kwtempo = #"Slow"
-kwstyle = #"Funk Ballad"
+kwstyle = #"Funky Ballad"
 
 realBookTitle = \markup {
   \score {
@@ -150,7 +150,7 @@ theNotes =  \relative c' {
 theNotesTab =  \relative c' {
   \clef "treble" \key f \major \time 4/4
   \new Voice \with { \consists "Pitch_squash_engraver" }  {
-  \compressFullBarRests
+  \compressEmptyMeasures
   \override MultiMeasureRest.expand-limit = #2
   R1*4
   \Segno \repeat volta 2 { 

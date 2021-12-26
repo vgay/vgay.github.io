@@ -1,6 +1,6 @@
-
-\version "2.19.80"
+\version "2.22.1"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -22,9 +22,9 @@
 
 title = #"Freedom Jazz Dance"
 composer = #"Eddie Harris"
-meter = #"(Fast Funk/Rock)"
+meter = #"(Fast Funky Rock)"
 kwtempo = #"Fast"
-kwstyle = #"Funk/Rock"
+kwstyle = #"Funky Rock"
 
 realBookTitle = \markup {
   \score {
@@ -120,9 +120,9 @@ theNotes =  \relative c' {
       as es bes' es cis fis, b e | d g, c f, bes ces ges des |
       c f bes f es as des f | \tuplet 3/2 { g f des } bes as bes4-. r | \break
       \stemDown
-      r2 \startParenthesis \parenthesize bes8 bes r4 | bes4. bes8 r4 des' | 
+      r2 \startParenthesis \parenthesize bes,8 bes r4 | bes4. bes8 r4 des' | 
       r2 bes,8 bes r4 |
-      bes4. \endParenthesis \parenthesize  bes8 r4 \startParenthesis \parenthesize f8  \endParenthesis \parenthesize bes
+      bes4. \endParenthesis \parenthesize  bes8 r4 \startParenthesis \parenthesize f'8  \endParenthesis \parenthesize bes
    }
 }
 
