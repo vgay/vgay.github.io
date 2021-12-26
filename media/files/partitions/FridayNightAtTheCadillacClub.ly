@@ -1,6 +1,6 @@
-
-\version "2.19.80"
-#(set-global-staff-size 18)
+\version "2.22.0"
+#(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -25,7 +25,7 @@ title = #"Friday Night At The Cadillac Club"
 composer = #"Bob Berg"
 meter = #"(Med. Up Shuffle)"
 kwtempo = #"Med. Up"
-kwstyle = #"Shuffle"
+kwstyle = #"Swing"
 
 realBookTitle = \markup {
   \score {
@@ -163,12 +163,12 @@ truc = ^\markup
     )
 
 grille = \chordmode {
-  c1:13 \/bes2:13sus4 bes:13 \/c:13sus4 c:13 \wn des2:13sus4 des4:13 c:13sus4 \break
-  c1:13 \/bes2:13sus4 bes:13 \/c:13sus4 c:13 \wn ges2:13sus4 ges4:13 f:13sus4 \break
-  f1:13 \/es2:13sus4 es:13 \/d:13sus4 d:13 \wn des2:13sus4 des4:13 c:13sus4 \break
+  c1:13 \/bes2:13sus4 bes:13 \/c:13sus4 c:13 \wa des2:13sus4 des4:13 c:13sus4 \break
+  c1:13 \/bes2:13sus4 bes:13 \/c:13sus4 c:13 \wa ges2:13sus4 ges4:13 f:13sus4 \break
+  f1:13 \/es2:13sus4 es:13 \/d:13sus4 d:13 \wa des2:13sus4 des4:13 c:13sus4 \break
   c1:13 \/bes2:13sus4 bes:13 \/bes:13sus4 bes:13 a1:5+7.9-11+ \break
   \repeat percent 2 f:7+/g as1:5+7+ \/as2:5+7+ g:5+7.9-11+  \break
-  c1:13 \/bes2:13sus4 bes:13 \/es2:13sus4 es:13 \wn des2:13sus4 des4:13 c:13sus4 
+  c1:13 \/bes2:13sus4 bes:13 \/es2:13sus4 es:13 \wa des2:13sus4 des4:13 c:13sus4 
   \bar ".." }
 
 marques = \relative c' { 
