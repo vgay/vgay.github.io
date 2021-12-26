@@ -1,6 +1,7 @@
 
 \version "2.22.0"
 #(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -22,7 +23,7 @@
 }
 
 title = #"Corcovado"
-composer = #"Tom Joabim"
+composer = #"Tom Jobim"
 meter = #"(Med. Bossa)"
 kwtempo = #"Medium"
 kwstyle = #"Bossa"

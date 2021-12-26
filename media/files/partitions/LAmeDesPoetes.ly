@@ -23,9 +23,9 @@
 }
 
 title = #"L'âme des poètes (Poet's Dream)"
-composer = #"Charle Trenet"
+composer = #"Charles Trenet"
 meter = #"(Jazz Waltz)"
-kwtempo = #"Moderate"
+kwtempo = #"Medium"
 kwstyle = #"Jazz Waltz"
 
 realBookTitle = \markup {

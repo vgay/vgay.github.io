@@ -1,6 +1,7 @@
 
 \version "2.22.0"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -22,7 +23,7 @@
 }
 
 title = #"Caravan"
-composer = #"D. Ellington and J. Tizol"
+composer = #"Duke Ellington and Juan Tizol"
 meter = #"(Latin Swing)"
 kwtempo = #"Medium"
 kwstyle = #"Latin Swing"

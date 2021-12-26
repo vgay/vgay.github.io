@@ -1,6 +1,7 @@
 
-\version "2.19.80"
-#(set-global-staff-size 18)
+\version "2.22.0"
+#(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -57,6 +58,12 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
+  asplayed = #"Wes Montgomery" % doit être commentée si vide
+  url = #"https://www.youtube.com/watch?v=AFkQ0By8N1g"
+  arranger = \markup \on-the-fly #played?
+  \with-url #url
+  \with-color #blue \underline
+  \concat { "(as played by " \fromproperty #'header:asplayed ")" }
   tagline = ##f
 }
 
@@ -96,7 +103,7 @@ harmonies = \chordmode {
   f2.:m bes:7 f:m bes:7 f2.:m bes:7 f:m c:9+ 
   bes:7 f:m f:m
   bes:m7 es:7 as:7+ des:7
-  ges:7 b:7+ g:m5-7 c:5+7.9-11+
+  ges:7 b:7+ g:m5-7 c:8
   f2.:m bes:7 f:m bes:7 f2.:m bes:7 f:m c:9+ 
   bes:7 f:m f:m
 }
@@ -145,7 +152,7 @@ grille = \chordmode {
   f1:m bes:7 f:m bes:7 \break
   f:m bes:7 \/ des2:7 c:7 \startStaff f1:m \bar ":|]" \break
   bes:m7 es:7 as:7+ des:7 \break
-  ges:7 b:7+ g:m5-7 c:5+7.9-11+ \break
+  ges:7 b:7+ g:m5-7 c:8 \break
   f1:m bes:7 f:m bes:7 \break
   f:m bes:7 des:7 c:9+ \break
   f1:m bes:7 f:m bes:7 \break

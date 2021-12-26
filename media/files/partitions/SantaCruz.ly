@@ -1,6 +1,7 @@
 
 \version "2.22.1"
 #(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -59,7 +60,7 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  asplayed = #"Ray Barretto (3 horns)" % doit être commentée si vide
+  asplayed = #"Ray Barretto" % doit être commentée si vide
   url = #"https://www.youtube.com/watch?v=9o4uKKWqvnY"
   arranger = \markup \on-the-fly #played?
   \with-url #url

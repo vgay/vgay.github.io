@@ -1,6 +1,7 @@
 
-\version "2.19.80"
+\version "2.22.1"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -23,8 +24,8 @@
 
 title = #"Killer Joe"
 composer = #"Benny Golson"
-meter = #"(Med. Slow Swing)"
-kwtempo = #"Med. Slow"
+meter = #"(Mod. Slow Swing)"
+kwtempo = #"Mod. Slow"
 kwstyle = #"Swing"
 
 realBookTitle = \markup {

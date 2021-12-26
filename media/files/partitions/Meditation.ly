@@ -23,7 +23,7 @@
 }
 
 title = #"Meditation"
-composer = #"Antobio Carlos Jobim"
+composer = #"Tom Jobim"
 meter = #"(Med. Bossa)"
 kwtempo = #"Medium"
 kwstyle = #"Bossa"
@@ -59,7 +59,7 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  asplayed = #"Antobio Carlos Jobim" % doit être commentée si vide
+  asplayed = #"Tom Jobim" % doit être commentée si vide
   url = #"https://www.youtube.com/watch?v=HGLUgbxlsYA"
   arranger = \markup \on-the-fly #played?
   \with-url #url

@@ -1,6 +1,6 @@
-
-\version "2.22.0"
+\version "2.22.1"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -19,13 +19,17 @@
   score-system-spacing = #'((basic-distance . 23)
                             (minimum-distance . 20)
                             (padding . 5))
+    system-system-spacing = #'((basic-distance . 18)
+                            (minimum-distance . 15)
+                            (padding . 3))
+
 }
 
 title = #"Solveigs Lied"
 composer = #"Edvard Grieg"
-meter = #"(Ballade)"
+meter = #"(Ballad)"
 kwtempo = #"Slow"
-kwstyle = #"Ballade"
+kwstyle = #"Ballad"
 
 realBookTitle = \markup {
   \score {
@@ -138,7 +142,7 @@ Basse = \relative c {
 
 grille = \chordmode {
   \bar "[|:"
- \w a2:m b4:m5-7 e:9- \/a2:m c:6 \y b4:m5-7 e:9- a2:m a1:m \bar ":|]" \break
+ \wa a2:m b4:m5-7 e:9- \/a2:m c:6 \y b4:m5-7 e:9- a2:m a1:m \bar ":|]" \break
  \x d4:dim7 e:7 c:6 e:m11 \x b:7 d:dim7 a:7 c:dim7 \y d:7 d:m7 e2:9- 
  \stopStaff s1 \bar "" \break \startStaff
  \x d4:dim7 e:7 c:6 e:m11 \x b:7 d:dim7 a:7 c:dim7 

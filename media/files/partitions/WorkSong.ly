@@ -1,12 +1,13 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
 \include "lilyjazz.ily"
 
-CleSol= \markup { \circle \fontsize #-2 \bold \concat {" " \musicglyph #"clefs.G_change" " "} "    " }
+CleSol= \markup { \circle \fontsize #-2 \bold \concat {" " \musicglyph "clefs.G_change" " "} "    " }
 
 \paper {
   indent = 0\mm
@@ -58,7 +59,7 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  asplayed = #"Julian Canonball adderley" % doit être commentée si vide
+  asplayed = #"Canonball Adderley" % doit être commentée si vide
   url = #"https://www.youtube.com/watch?v=MmwsQ_dHrFM"
   arranger = \markup \on-the-fly #played?
   \with-url #url

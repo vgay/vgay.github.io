@@ -1,6 +1,7 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -23,9 +24,9 @@
 
 title = #"Sidewinder"
 composer = #"Lee Morgan"
-meter = #"(Med. Soul / Funky)"
-kwtempo = #"Soul / Funky"
-kwstyle = #"Medium"
+meter = #"(Med. Soul)"
+kwtempo = #"Medium"
+kwstyle = #"Soul"
 
 realBookTitle = \markup {
   \score {

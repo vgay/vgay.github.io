@@ -1,6 +1,7 @@
 
-\version "2.19.80"
+\version "2.22.1"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -23,7 +24,7 @@
 title = #"After You've Gone"
 composer = #"Turner Layton"
 meter = #"(Med. Up Swing)"
-kwtempo = #"Medium Up"
+kwtempo = #"Med. Up"
 kwstyle = #"Swing"
 
 

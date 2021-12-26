@@ -1,6 +1,7 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -58,7 +59,7 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  asplayed = #"Cannonball Aderley" % doit être commentée si vide
+  asplayed = #"Cannonball Adderley" % doit être commentée si vide
   url = #"https://www.youtube.com/watch?v=s4rXEKtC8iY"
   arranger = \markup \on-the-fly #played?
     \with-url #url

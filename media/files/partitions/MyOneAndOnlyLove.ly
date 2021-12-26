@@ -1,6 +1,6 @@
-
-\version "2.20.00"
-#(set-global-staff-size 18)
+\version "2.22.1"
+#(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -23,9 +23,9 @@
 
 title = #"My One And Only Love"
 composer = #"Guy Wood"
-meter = #"(Mod. Ballade)"
+meter = #"(Mod. Ballad)"
 kwtempo = #"Slow"
-kwstyle = #"Ballade"
+kwstyle = #"Ballad"
 
 realBookTitle = \markup {
   \score {

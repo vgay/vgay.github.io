@@ -1,6 +1,7 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -24,7 +25,7 @@
 title = #"Till There Was You"
 composer = #"Meredith Wilson"
 meter = #"(Ballad)"
-kwtempo = #"Mod Slow"
+kwtempo = #"Mod. Slow"
 kwstyle = #"Ballad"
 
 realBookTitle = \markup {

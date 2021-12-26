@@ -24,9 +24,9 @@
 
 title = #"Vision"
 composer = #"Zem Audu"
-meter = #"(Med. World)"
+meter = #"(Med. Straight)"
 kwtempo = #"Medium"
-kwstyle = #"World"
+kwstyle = #"Straight"
 
 realBookTitle = \markup {
   \score {

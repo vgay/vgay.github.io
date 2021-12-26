@@ -1,6 +1,6 @@
-
-\version "2.22.0"
-#(set-global-staff-size 18)
+\version "2.22.1"
+#(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -24,7 +24,7 @@ title = #"Airegin"
 composer = #"Sonny Rollins"
 meter = #"(Med. Up Be-Bop)"
 kwtempo = #"Med. Up"
-kwstyle = #"Be-Bop"
+kwstyle = #"Bop"
 
 realBookTitle = \markup {
   \score {

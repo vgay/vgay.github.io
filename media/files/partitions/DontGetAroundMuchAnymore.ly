@@ -1,6 +1,7 @@
 
-\version "2.19.80"
+\version "2.22.0"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -23,7 +24,7 @@
 
 
 title = #"Don't Get Around Much Anymore"
-composer = #"D. Ellington and B. Russel"
+composer = #"Duke Ellington"
 meter = #"(Med. Swing)"
 kwtempo = #"Medium"
 kwstyle = #"Swing"

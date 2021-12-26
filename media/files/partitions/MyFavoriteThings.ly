@@ -1,6 +1,7 @@
 
 \version "2.22.0"
-#(set-global-staff-size 18)
+#(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -24,7 +25,7 @@
 title = #"My Favorite Things"
 composer = #"O. Hammerstein II and R. Rogers"
 meter = #"(Jazz Waltz)"
-kwtempo = #"Med. Fast"
+kwtempo = #"Medium"
 kwstyle = #"Jazz Waltz"
 
 realBookTitle = \markup {
