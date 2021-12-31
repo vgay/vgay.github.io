@@ -1,6 +1,7 @@
 
 \version "2.22.00"
 #(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -20,6 +21,7 @@
                             (padding . 5))
 }
 
+combo = ##t
 title = #"The Color of You"
 composer = #"Salvadore Poe"
 meter = #"(Med. Bossa)"

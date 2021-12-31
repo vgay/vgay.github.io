@@ -24,6 +24,7 @@
                             (padding . 5))
 }
 
+combo = ##t
 title = #"213 Cha Cha"
 composer = #"David Torres"
 meter = #"(Med. Cha Cha)"

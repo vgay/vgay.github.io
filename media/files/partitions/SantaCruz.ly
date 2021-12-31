@@ -22,6 +22,7 @@
   print-first-page-number = ##t
 }
 
+combo = ##t
 title = #"Santa Cruz"
 composer = #"Barry Olsen"
 meter = #"(Med. Cha Cha)"

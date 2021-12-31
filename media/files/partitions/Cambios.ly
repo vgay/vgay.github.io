@@ -1,5 +1,6 @@
 \version "2.22.1"
 #(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -20,6 +21,7 @@
   print-first-page-number = ##t
 }
 
+combo = ##t
 title = #"Cambios"
 composer = #"David Torres"
 meter = #"(Med. Salsa)"

@@ -1,6 +1,7 @@
 
 \version "2.22.0"
 #(set-global-staff-size 16)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -21,6 +22,7 @@
                             (padding . 2))
 }
 
+combo = ##t
 title = #"Pussy Cat Dues"
 composer = #"Charles Mingus"
 meter = #"(Med. Swing)"

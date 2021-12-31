@@ -22,6 +22,7 @@
                              (padding . 1))
 }
 
+combo = ##t
 title = #"Blue Train"
 composer = #"John Coltrane"
 meter = #"(Med. Swing)"

@@ -10,6 +10,20 @@
     },
     "items": [
         {
+            "id": "https://myrealbook.vintherine.org/myrealbook-les-partitions.html",
+            "url": "https://myrealbook.vintherine.org/myrealbook-les-partitions.html",
+            "title": "MyRealBook : les partitions",
+            "summary": "Tout d'abord un petit rappel : MyRealBook est un site statique. Cela&hellip;",
+            "content_html": "<p>Tout d'abord un petit rappel : MyRealBook est un site statique. Cela présente de nombreux avantages (rapidité, sobriété...) mais le revers de la médaille est l'impossibilité de proposer des pages personnalisées. Ce qui constitue indéniablement une limitation en matière de navigation et de recherche (*). Pour tenter d'y remédier voici plusieurs moyens d’accéder aux centaines de partitions que contient ce site.</p>\n<p>(*) Il vous est toujours possible d'utiliser le module de recherche de votre navigateur au sein d'une même page.</p>\n<h4><a href=\"scores/index.html\">Le tableau dynamique à tri multicritère (🔗)</a></h4>\n<p>C'est sans doute la manière la plus <span class=\"tlf_csyntagme\"><i>efficiente</i> de trouver ce que l'on recherche : il est possible de trier par titres (par défaut), par compositeurs, par styles, par tempi, par interprètes et / ou par présences ou non des paroles. Plusieurs tri successifs sont possibles.</span></p>\n<p class=\"msg msg--highlight \">Mode d'emploi : Les flèches dans les en-têtes de colonnes permettent d'activer / désactiver le tri du tableau. Un chiffre est ajouté à droite du titre pour indiquer l'ordre du tri, une flèche rouge indique la direction du tri.</p>\n<p>Principal défaut de ce tableau : il n'est pas \"<em>Responsive design</em>\", c'est à dire qu'il ne se redimensionne pas en fonction des tailles d'écran. Il n'est donc pas adapté à un ordiphone.</p>\n<h4><a href=\"scores/ByAlpha.html\">Par ordre alphabétique des titres (🔗)</a></h4>\n<p>Affiche le titre  et le compositeur</p>\n<h4><a href=\"scores/ByComposers.html\">Par ordre des compositeurs (🔗)</a></h4>\n<p>Affiche le compositeur et le titre</p>\n<h4><a href=\"scores/ByStyles.html\">Par styles (swing, bop, salsa etc.) (🔗)</a></h4>\n<p>Affiche le style et le titre</p>\n<h4><a href=\"scores/ByTempi.html\">Par tempi (slow, medium, fast etc.) (🔗)</a></h4>\n<p>Affiche le tempo et le titre</p>\n<h4><a href=\"scores/Combos.html\">Partitions pour combos ou petits big bands (🔗)</a></h4>\n<p>(3 instruments mélodiques ou plus)</p>\n<h4><a href=\"scores/Lyrics.html\">Partitions contenant des paroles (🔗)</a></h4>\n<p>Pour orchestres avec chanteuse ou chanteur</p>",
+            "author": {
+                "name": "Vincent"
+            },
+            "tags": [
+            ],
+            "date_published": "2021-12-29T12:07:01+01:00",
+            "date_modified": "2021-12-29T16:49:39+01:00"
+        },
+        {
             "id": "https://myrealbook.vintherine.org/un-peu-de-couleur.html",
             "url": "https://myrealbook.vintherine.org/un-peu-de-couleur.html",
             "title": "Un peu de couleur",
@@ -134,20 +148,6 @@
             ],
             "date_published": "2021-09-18T19:50:37+02:00",
             "date_modified": "2021-09-20T18:42:48+02:00"
-        },
-        {
-            "id": "https://myrealbook.vintherine.org/a-propos-des-logiciels-deditions-utilises.html",
-            "url": "https://myrealbook.vintherine.org/a-propos-des-logiciels-deditions-utilises.html",
-            "title": "À propos des logiciels d&#x27;éditions utilisés",
-            "summary": "Propos liminaires tous les logiciels évoqués ci-dessous sont des logiciels libres au&hellip;",
-            "content_html": "<h3>Propos liminaires</h3>\n<p>tous les logiciels évoqués ci-dessous sont des logiciels libres au sens de la Free Software Foundation. Voir <a href=\"https://www.fsf.org/\">ici</a> ou <a href=\"https://fr.wikipedia.org/wiki/Logiciel_libre\">là</a>. </p>\n<h3 id=\"toc_lilypond\">Lilypond</h3>\n<p>Bien loin des clicodromes standards, <a href=\"http://lilypond.org/index.fr.html\" target=\"_blank\" rel=\"noopener noreferrer\">Lilypond</a> est un langage descriptif permettant de produire un fichier source qui sera ensuite compilé. Il faut donc apprendre une syntaxe et de nombreuses règles… qui sont susceptibles d'évoluer d'une version à l'autre.</p>\n<p>Pour faire court, l'intérêt principal que je trouve à Lilypond, c'est de pouvoir faire exactement ce que je veux avec une qualité de sortie irréprochable.  Comme par exemple ceci :</p>\n<figure class=\"post__image\" ><img loading=\"lazy\" src=\"https://myrealbook.vintherine.org/media/posts/6/5f47fa692c1c4928bc7ef664202204a5.png\" sizes=\"(max-width: 48em) 100vw, 100vw\" srcset=\"https://myrealbook.vintherine.org/media/posts/6/responsive/5f47fa692c1c4928bc7ef664202204a5-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/6/responsive/5f47fa692c1c4928bc7ef664202204a5-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/6/responsive/5f47fa692c1c4928bc7ef664202204a5-md.png 768w\"  alt=\"\" width=\"1523\" height=\"426\">\n<figcaption >Breakfast Wine (Randy Aldcroft)</figcaption>\n</figure>\n<p>ou ceci :</p>\n<figure class=\"post__image\"><img loading=\"lazy\"  src=\"https://myrealbook.vintherine.org//media/posts/6/1f9ff908e3cd4be0a0d2079238bf8f0b-4.png\" sizes=\"(max-width: 48em) 100vw, 100vw\" srcset=\"https://myrealbook.vintherine.org//media/posts/6/responsive/1f9ff908e3cd4be0a0d2079238bf8f0b-4-xs.png 300w ,https://myrealbook.vintherine.org//media/posts/6/responsive/1f9ff908e3cd4be0a0d2079238bf8f0b-4-sm.png 480w ,https://myrealbook.vintherine.org//media/posts/6/responsive/1f9ff908e3cd4be0a0d2079238bf8f0b-4-md.png 768w\"  alt=\"\" width=\"1517\" height=\"588\"></figure>\n<h3 id=\"toc_frescobaldi\">Frescobaldi</h3>\n<p>Pour utiliser Lilypond il suffit, a priori, d'un éditeur de texte, d'un terminal et d'une visionneuse poscript/pdf pour voir le résultat. Optionnellement, un lecteur midi car Lilypond sait aussi produire du midi. Par bonheur il exite un logiciel qui permet de faire tout ceci dans la même fenêtre, <a href=\"http://frescobaldi.org/\">Frescobaldi</a>.</p>\n<p>C'est un éditeur de texte dédié à LilyPond, avec coloration syntaxique, visionneuse PDF et lecteur midi intégrés. La fonction « point and click » permet de rapidement retrouver la correspondance entre le PDF et le code, et ce dans les deux sens. Quelques palettes d'outils permettent un accès rapide à des symboles dont on aurait oublié la syntaxe et on peut afficher la documentation Lilypond à partir d'un emplacement local ou d'une URL. Les différents panneaux qui le composent peuvent être ancrés à la fenêtre principale ou détachés, ce qui est bien pratique quand on a un double écran. Il ne fait pas le café, c'est à mes yeux son seul défaut. </p>\n<h3 id=\"toc_lilyjazz\">LilyJazz et autres fichiers inclus</h3>\n<p>Coté look and file j'ai trouvé amusant d'imiter le style Real Book grace au projet <a href=\"https://github.com/OpenLilyPondFonts/lilyjazz\" target=\"_blank\" rel=\"noopener noreferrer\">LilyJazz</a>. Il vous faudra copier les polices dans le répertoire fonts de Lilypond et ce à chaque changement de version (oui, c'est pénible) et indiquer à Frescobaldi ou trouver les feuilles de style ( Menu Édition -&gt; Préférences -&gt; Préférences de Lilypond -&gt; Emplacement d'inclusion Lilypond). Comme j'ai personnalisé ces fichiers et en ai rajouté quelques autres j'ai tout mis dans <a href=\"https://myrealbook.vintherine.org/media/files/Inclusions.zip\">un zip disponible ici</a>. Libre à vous de ne pas les utiliser mais il vous faudra nettoyer le code avant compilation ou subir des messages d'erreur.</p>\n<h3>Musescore</h3>\n<p>Pour dégrossir une partition, un arrangement ou pour composer j'utilise <a href=\"https://musescore.org/fr\">Musescore</a> qui est un logiciel d'édition de partitions WISIWIG puissant et facile à utiliser. Il est possible d'importer ou exporter au format MusixXML ce qui permet de faire le lien avec Lilypond.</p>",
-            "author": {
-                "name": "Vincent"
-            },
-            "tags": [
-            ],
-            "date_published": "2021-09-18T19:28:16+02:00",
-            "date_modified": "2021-09-22T14:30:25+02:00"
         }
     ]
 }
