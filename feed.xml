@@ -3,12 +3,65 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2021-12-29T16:49:39+01:00</updated>
+    <updated>2022-01-04T11:12:10+01:00</updated>
     <author>
         <name>Vincent</name>
     </author>
     <id>https://myrealbook.vintherine.org</id>
 
+    <entry>
+        <title>Lilypond et la pagination</title>
+        <author>
+            <name>Vincent</name>
+        </author>
+        <link href="https://myrealbook.vintherine.org/lilypond-et-la-pagination.html"/>
+        <id>https://myrealbook.vintherine.org/lilypond-et-la-pagination.html</id>
+
+        <updated>2022-01-04T11:12:10+01:00</updated>
+            <summary>
+                <![CDATA[
+                    <p>À priori Lilypond permet de gérer finement la plupart des problèmes de pagination grâce à des variables dans les blocs <samp>\paper {}</samp></p>
+<ul>
+<li>afficher les numéros de pages (<samp>print-page-number = ##t</samp>, oui par défaut) ou non (<samp>##f</samp>)</li>
+<li>afficher le numéro de la première page (<samp>print-first page-number = ##f</samp>, non par défaut)</li>
+<li>afficher les numéros en chiffres arabes (<samp>page-number-type = 'arabic</samp>,  par défaut),  romains minuscules ( <samp>'roman-lower</samp>) ou romains majuscules ( <samp>'roman-upper</samp>)</li>
+<li>Changer le numéro de la première page avec <samp>first-page-number</samp>. La valeur par défaut est de <samp>#1</samp>.</li>
+</ul>
+
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>À priori Lilypond permet de gérer finement la plupart des problèmes de pagination grâce à des variables dans les blocs <samp>\paper {}</samp></p>
+<ul>
+<li>afficher les numéros de pages (<samp>print-page-number = ##t</samp>, oui par défaut) ou non (<samp>##f</samp>)</li>
+<li>afficher le numéro de la première page (<samp>print-first page-number = ##f</samp>, non par défaut)</li>
+<li>afficher les numéros en chiffres arabes (<samp>page-number-type = 'arabic</samp>,  par défaut),  romains minuscules ( <samp>'roman-lower</samp>) ou romains majuscules ( <samp>'roman-upper</samp>)</li>
+<li>Changer le numéro de la première page avec <samp>first-page-number</samp>. La valeur par défaut est de <samp>#1</samp>.</li>
+</ul>
+
+<p>Une chose pourtant fait défaut malgré des demandes répétées depuis de longues années : ce paramétrage ne fonctionne qu'au niveau du bloc <samp>\book</samp> et reste sans effet au niveau du bloc <samp>\bookpart</samp>. Voici au moins deux exemples pour lesquels cette limitation pose problème :</p>
+<ul>
+<li>Au début d'un ouvrage une préface ou une table des matière sera couramment numérotée en chiffres romains, la suite recommençant à 1 en chiffres arabes.</li>
+<li>Pour des partitions pour orchestre on aimerait que directeur et parties soient regroupées dans un même ouvrage mais que la numérotation de chaque partie débute à 1.</li>
+</ul>
+<p>Il existe heureusement une solution de contournement que l'on doit initialement à Thomas Morley (voir <a href="https://www.mail-archive.com/lilypond-user@gnu.org/msg115188.html">cette page des archives de la liste anglophone des utilisateurs de Lilypond</a>) et récemment corrigée par Valentin Petzel sur la même liste.</p>
+<p>Une remarque concernant l'exemple fourni avec le code repose sur la version 2.19 de Lilypond qu'il faut mettre à jour avec convert-ly (modifications de <samp>\tocItem</samp>  qui nécessite un <samp>\markup</samp>)</p>
+<p>Pour utiliser cette solution copiez tout d'abord dans votre code la fonction ci-dessous (à la fin de cet article) ou collez-la dans un fichier à inclure et insérez un bloc <samp>\paper {}</samp> à l'intérieur  des <samp>\bookpart</samp> avec les variables suivantes :</p>
+<ul>
+<li><samp>oddHeaderMarkup = \oddMarkup #'arabic</samp></li>
+<li><samp>evenHeaderMarkup = \evenMarkup #'arabic</samp></li>
+</ul>
+<p>arabic peut être remplacé par roman-lower ou roman-upper</p>
+<p>La variable <samp>print-first page-number</samp> est maintenant par défaut à <samp>##t</samp> mais peut être modifiée dans ce même bloc</p>
+<p>Un exemple :</p>
+<pre><code>\version "2.22.1"</code><br><code>\include "BookPartPagesNumber.ly"</code><br><br><code>musique = \relative c'' { \repeat unfold 2 { d1 \pageBreak } }</code><br><br><code>\book {</code><br><code>  \bookpart {</code><br><code>    \paper {</code><br><code>      oddHeaderMarkup = \oddMarkup #'roman-lower</code><br><code>      evenHeaderMarkup = \evenMarkup #'roman-lower</code><br><code>    }</code><br><code>    \score {</code><br><code>      \musique</code><br><code>    }</code><br><code>  }</code><br><code>  \bookpart {</code><br><code>    \paper {</code><br><code>      print-first-page-number = ##f</code><br><code>      oddHeaderMarkup = \oddMarkup #'arabic</code><br><code>      evenHeaderMarkup = \evenMarkup #'arabic</code><br><code>    }</code><br><code>    \score {</code><br><code>      \musique</code><br><code>    }</code><br><code>        \score {</code><br><code>      \musique</code><br><code>    }</code><br><code>  }</code><br><code>}</code></pre>
+<p>La fonction BookPartPagesNumber</p>
+<pre>\<code>version "2.22.1"</code><br><br><code>#(define part-first-pages '(0))</code><br><br><code>#(define (part-first-page? layout props)</code><br><code>  (= (chain-assoc-get 'page:page-number props -1)</code><br><code>     (ly:output-def-lookup layout 'first-page-number)))</code><br><br><code>#(define (reset-part-first-page layout props arg)</code><br><code>"Returns page-number-string, starting every bookpart with page-number 0.</code><br><code>Relying on the extern defined `part-first-pages'.</code><br><code>"</code><br><code>  (set! props (prepend-alist-chain 'part-first-page '(0) props))</code><br><br><code>  (let* ((real-page-number (chain-assoc-get 'page:page-number props -1))</code><br><code>         (parts-page-number (- real-page-number (car part-first-pages))))</code><br><br><code>    (if (part-first-page? layout props)</code><br><code>        (set! part-first-pages (cons (1- real-page-number) part-first-pages)))</code><br><br><code>    (set! props</code><br><code>      (cons</code><br><code>        (list</code><br><code>          (cons 'page:page-number-string (number-&gt;string parts-page-number))</code><br><code>          (cons 'page:page-number parts-page-number))</code><br><code>        props))</code><br><code>    (interpret-markup layout props arg)))</code><br><br><code>#(define ((print-part-first-page-as-one number-type) layout props arg)</code><br><br><code>  (set! props</code><br><code>    (cons</code><br><code>      (list</code><br><code>        (cons 'page:page-number-string</code><br><code>              (let ((page-number</code><br><code>                     (chain-assoc-get 'page:page-number props -1)))</code><br><code>                ;(if (&lt;= page-number 0) ""</code><br><code>                (cond ((and (eq? number-type 'roman-lower) (&gt; page-number 0))</code><br><code>                       (fancy-format #f "~(~@r~)" page-number))</code><br><code>                      ((and (eq? number-type 'roman-upper) (&gt; page-number 0))</code><br><code>                       (fancy-format #f "~@r" page-number))</code><br><code>                          ((eq? number-type 'arabic)</code><br><code>                           (number-&gt;string page-number))</code><br><code>                          (else (number-&gt;string page-number)))));)</code><br><code>        (cons 'page:page-number</code><br><code>              (chain-assoc-get 'page:page-number props -1)))</code><br><code>      props))</code><br><code>  (interpret-markup layout props arg))</code><br><br><code>\paper {</code><br><code>  print-first-page-number = ##t</code><br><code>  oddMarkup =</code><br><code>  #(define-scheme-function (number-type)(symbol?)</code><br><code>    #{</code><br><code>      \markup</code><br><code>        \column {</code><br><code>          \fill-line {</code><br><code>            " "</code><br><code>            \on-the-fly #not-part-first-page \fromproperty #'header:instrument</code><br><code>              %% use in this order:</code><br><code>              \on-the-fly #reset-part-first-page</code><br><code>              \on-the-fly #(print-part-first-page-as-one number-type)</code><br><code>              \on-the-fly #print-page-number-check-first</code><br><code>              \fromproperty #'page:page-number-string</code><br><code>          }</code><br><code>        }</code><br><code>    #})</code><br><br><code>  evenMarkup =</code><br><code>  #(define-scheme-function (number-type)(symbol?)</code><br><code>    #{</code><br><code>      \markup</code><br><code>        \column {</code><br><code>          \fill-line {</code><br><code>              %% use in this order:</code><br><code>              \on-the-fly #reset-part-first-page</code><br><code>              \on-the-fly #(print-part-first-page-as-one number-type)</code><br><code>              \on-the-fly #print-page-number-check-first</code><br><code>              \fromproperty #'page:page-number-string</code><br><code>            \on-the-fly #not-part-first-page \fromproperty #'header:instrument</code><br><code>            " "</code><br><code>          }</code><br><code>        }</code><br><code>    #})</code><br><code>}</code></pre>
+<p> </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>MyRealBook : les partitions</title>
         <author>
@@ -359,28 +412,6 @@
 <p>Quand on pense aux systèmes de gestion de contenu web on pense d'abord à des gros projets tels Wordpress, Dotclear, Drupal... tous basés sur php et une base de donnée. Pourtant faire un site web statique est une idée qui refait son chemin aujourd'hui : plus rapide, plus économique, plus écologique, moins sujet aux bugs et au piratage... Et même s'ils sont moins connus que les géants évoqués ci-dessus existent d’excellents générateurs de sites statiques tels <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://gohugo.io/">Hugo</a>, <a href="https://blog.getpelican.com/">Pelican</a>... Après en avoir testé quelques-uns j'ai choisi <a href="https://getpublii.com/">Publii</a> qui m'a semblé être le plus facile à prendre en main grâce à son interface graphique. Et bien sûr il gère parfaitement les mises à jour sur Github ou Gitlab.</p>
 <p>Les pages relatives aux partitions sont générés et mises à jour automatiquement par un petit script bash à base de grep et de sed, qui extrait des données des fichiers Lilypond puis les colle dans une page modèle réalisé avec Publii. </p>
 <p> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>À propos de moi (et comment me contacter)</title>
-        <author>
-            <name>Vincent</name>
-        </author>
-        <link href="https://myrealbook.vintherine.org/a-propos-de-moi-et-comment-me-contacter.html"/>
-        <id>https://myrealbook.vintherine.org/a-propos-de-moi-et-comment-me-contacter.html</id>
-
-        <updated>2021-09-20T18:42:48+02:00</updated>
-            <summary>
-                <![CDATA[
-                    Je m'appelle Vincent Gay, je suis un musicien amateur (saxophone, clarinette, guitare&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>Je m'appelle Vincent Gay, je suis un musicien amateur (saxophone, clarinette, guitare basse...) et j'habite un petit village de montagne dans le sud de l'<a href="https://fr.wikipedia.org/wiki/Is%C3%A8re_(d%C3%A9partement)">Isère</a> (France) tout près du <a href="https://fr.wikipedia.org/wiki/Parc_national_des_%C3%89crins">parc national des Écrins</a>. </p>
-<p>Pour me contacter à propos de ce site ou des partitions qu'il contient vous pouvez m'écrire à myrealbook à vintherine point org</p>
-<p>S'il s'agit de questions questions concernant Lilypond je suis également contributeur occasionnel sur la <a href="https://lists.gnu.org/mailman/listinfo/lilypond-user-fr">liste des utilisateurs francophones de Lilypond</a>.</p>
             ]]>
         </content>
     </entry>

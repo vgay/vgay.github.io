@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Lilypond et la pagination - MyRealBook </title>
+        
+        <meta name="robots" content="noindex,nofollow" />
+        <meta name="generator" content="Publii Open-Source CMS for Static Site" />
+        
+        
+        <link rel="alternate" type="application/atom+xml" href="https://myrealbook.vintherine.org/feed.xml" />
+<link rel="alternate" type="application/json" href="https://myrealbook.vintherine.org/feed.json" />
+
+        <meta property="og:title" content="Lilypond et la pagination" /><meta property="og:site_name" content="MyRealBook" /><meta property="og:description" content="À priori Lilypond permet de gérer finement la plupart des problèmes de pagination grâce à des variables dans les blocs \paper {}afficher les numéros de pages (print-page-number = ##t, oui par défaut) ou non (##f)afficher le numéro de la première page (print-first page-number = ##f, non par défaut)afficher les numéros en chiffres arabes (page-number-type = 'arabic,  par défaut),  romains minuscules ( 'roman-lower) ou romains majuscules ( 'roman-upper)Changer le numéro de la première page avec first-page-number. La valeur par défaut est de #1." /><meta property="og:url" content="https://myrealbook.vintherine.org/lilypond-et-la-pagination.html" /><meta property="og:type" content="article" />
+        <style>:root{--body-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--heading-font:var(--body-font);--logo-font:var(--body-font);--menu-font:var(--body-font)}</style>
+        <link rel="stylesheet" href="https://myrealbook.vintherine.org/assets/css/style.css?v=489237eb5e2f09dd77c9332d52b3a5e5">       
+        <script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://myrealbook.vintherine.org/lilypond-et-la-pagination.html"},"headline":"Lilypond et la pagination","datePublished":"2022-01-03T12:01","dateModified":"2022-01-04T11:12","description":"À priori Lilypond permet de gérer finement la plupart des problèmes de pagination grâce à des variables dans les blocs \\paper {}afficher les numéros de pages (print-page-number = ##t, oui par défaut) ou non (##f)afficher le numéro de la première page (print-first page-number = ##f, non par défaut)afficher les numéros en chiffres arabes (page-number-type = 'arabic,  par défaut),  romains minuscules ( 'roman-lower) ou romains majuscules ( 'roman-upper)Changer le numéro de la première page avec first-page-number. La valeur par défaut est de #1.","author":{"@type":"Person","name":"Vincent"},"publisher":{"@type":"Organization","name":"Vincent"}}</script>        
+        
+        <link type="application/atom+xml" rel="alternate" href="https://myrealbook.vintherine.org/feed.xml"/>
+<link type="application/json" rel="alternate" href="https://myrealbook.vintherine.org/feed.json"/> 
+    </head>
+    <body>
+        <header class="header" id="js-header">
+
+   <a href="https://myrealbook.vintherine.org/" class="logo">
+         MyRealBook
+   </a>
+
+      <nav class="navbar js-navbar">
+         <button class="navbar__toggle js-toggle" aria-label="Menu">
+            <span class="navbar__toggle-box">
+               <span class="navbar__toggle-inner">Menu</span>
+            </span>
+         </button>
+         <ul class="navbar__menu">
+                  <li>
+                  <a
+                     href="https://myrealbook.vintherine.org/index.html"
+                        target="_self"
+         >
+                     Blog
+                  </a>
+         
+            </li>
+                  <li>
+                  <a
+                     href="https://myrealbook.vintherine.org/myrealbook-les-partitions.html"
+                        target="_self"
+         >
+                     Partitions
+                  </a>
+         
+            </li>
+                  <li>
+                  <a
+                     href="https://myrealbook.vintherine.org/about.html"
+                        target="_self"
+         >
+                     À propos
+                  </a>
+         
+            </li>
+                  <li>
+                  <a
+                     href="https://myrealbook.vintherine.org/feed.xml"
+                        target="_self"
+         >
+                     Flux RSS
+                  </a>
+         
+            </li>
+         </ul>      </nav>
+
+      <div class="search">
+          <div class="search__overlay js-search-overlay">
+            <form action="https://myrealbook.vintherine.org/search.html" class="search__form">
+               <input
+                  class="search__input js-search-input"
+                  type="search"
+                  name="q"
+                  aria-label="Search input" 
+                  placeholder="search..."
+                  autofocus="autofocus"/>
+               <button class="search__submit">Search</button>
+            </form>
+         </div>
+         <button
+            class="search__btn js-search-btn"
+            aria-label="Search">
+            <svg role="presentation" focusable="false" height="18" width="18">
+               <use xlink:href="https://myrealbook.vintherine.org/assets/svg/svg-map.svg#search"/>
+            </svg>
+         </button>
+      </div>
+
+</header>
+<main>
+   <div class="wrapper">
+         <article class="post">
+            <header class="post__header">
+               <h1 class="post__title">
+                  Lilypond et la pagination
+               </h1>
+                  <div class="post__meta">
+                        <div class="post__author">By
+                              <a href="https://myrealbook.vintherine.org/authors/vincent/" class="invert" rel="author" title="Vincent">Vincent</a>
+                        </div>
+
+                  </div>
+            </header>
+
+            <div class="post__inner">
+               <div class="post__entry">
+                  <p>À priori Lilypond permet de gérer finement la plupart des problèmes de pagination grâce à des variables dans les blocs <samp>\paper {}</samp></p>
+<ul>
+<li>afficher les numéros de pages (<samp>print-page-number = ##t</samp>, oui par défaut) ou non (<samp>##f</samp>)</li>
+<li>afficher le numéro de la première page (<samp>print-first page-number = ##f</samp>, non par défaut)</li>
+<li>afficher les numéros en chiffres arabes (<samp>page-number-type = 'arabic</samp>,  par défaut),  romains minuscules ( <samp>'roman-lower</samp>) ou romains majuscules ( <samp>'roman-upper</samp>)</li>
+<li>Changer le numéro de la première page avec <samp>first-page-number</samp>. La valeur par défaut est de <samp>#1</samp>.</li>
+</ul>
+
+<p>Une chose pourtant fait défaut malgré des demandes répétées depuis de longues années : ce paramétrage ne fonctionne qu'au niveau du bloc <samp>\book</samp> et reste sans effet au niveau du bloc <samp>\bookpart</samp>. Voici au moins deux exemples pour lesquels cette limitation pose problème :</p>
+<ul>
+<li>Au début d'un ouvrage une préface ou une table des matière sera couramment numérotée en chiffres romains, la suite recommençant à 1 en chiffres arabes.</li>
+<li>Pour des partitions pour orchestre on aimerait que directeur et parties soient regroupées dans un même ouvrage mais que la numérotation de chaque partie débute à 1.</li>
+</ul>
+<p>Il existe heureusement une solution de contournement que l'on doit initialement à Thomas Morley (voir <a href="https://www.mail-archive.com/lilypond-user@gnu.org/msg115188.html">cette page des archives de la liste anglophone des utilisateurs de Lilypond</a>) et récemment corrigée par Valentin Petzel sur la même liste.</p>
+<p>Une remarque concernant l'exemple fourni avec le code repose sur la version 2.19 de Lilypond qu'il faut mettre à jour avec convert-ly (modifications de <samp>\tocItem</samp>  qui nécessite un <samp>\markup</samp>)</p>
+<p>Pour utiliser cette solution copiez tout d'abord dans votre code la fonction ci-dessous (à la fin de cet article) ou collez-la dans un fichier à inclure et insérez un bloc <samp>\paper {}</samp> à l'intérieur  des <samp>\bookpart</samp> avec les variables suivantes :</p>
+<ul>
+<li><samp>oddHeaderMarkup = \oddMarkup #'arabic</samp></li>
+<li><samp>evenHeaderMarkup = \evenMarkup #'arabic</samp></li>
+</ul>
+<p>arabic peut être remplacé par roman-lower ou roman-upper</p>
+<p>La variable <samp>print-first page-number</samp> est maintenant par défaut à <samp>##t</samp> mais peut être modifiée dans ce même bloc</p>
+<p>Un exemple :</p>
+<pre><code>\version "2.22.1"</code><br><code>\include "BookPartPagesNumber.ly"</code><br><br><code>musique = \relative c'' { \repeat unfold 2 { d1 \pageBreak } }</code><br><br><code>\book {</code><br><code>  \bookpart {</code><br><code>    \paper {</code><br><code>      oddHeaderMarkup = \oddMarkup #'roman-lower</code><br><code>      evenHeaderMarkup = \evenMarkup #'roman-lower</code><br><code>    }</code><br><code>    \score {</code><br><code>      \musique</code><br><code>    }</code><br><code>  }</code><br><code>  \bookpart {</code><br><code>    \paper {</code><br><code>      print-first-page-number = ##f</code><br><code>      oddHeaderMarkup = \oddMarkup #'arabic</code><br><code>      evenHeaderMarkup = \evenMarkup #'arabic</code><br><code>    }</code><br><code>    \score {</code><br><code>      \musique</code><br><code>    }</code><br><code>        \score {</code><br><code>      \musique</code><br><code>    }</code><br><code>  }</code><br><code>}</code></pre>
+<p>La fonction BookPartPagesNumber</p>
+<pre>\<code>version "2.22.1"</code><br><br><code>#(define part-first-pages '(0))</code><br><br><code>#(define (part-first-page? layout props)</code><br><code>  (= (chain-assoc-get 'page:page-number props -1)</code><br><code>     (ly:output-def-lookup layout 'first-page-number)))</code><br><br><code>#(define (reset-part-first-page layout props arg)</code><br><code>"Returns page-number-string, starting every bookpart with page-number 0.</code><br><code>Relying on the extern defined `part-first-pages'.</code><br><code>"</code><br><code>  (set! props (prepend-alist-chain 'part-first-page '(0) props))</code><br><br><code>  (let* ((real-page-number (chain-assoc-get 'page:page-number props -1))</code><br><code>         (parts-page-number (- real-page-number (car part-first-pages))))</code><br><br><code>    (if (part-first-page? layout props)</code><br><code>        (set! part-first-pages (cons (1- real-page-number) part-first-pages)))</code><br><br><code>    (set! props</code><br><code>      (cons</code><br><code>        (list</code><br><code>          (cons 'page:page-number-string (number-&gt;string parts-page-number))</code><br><code>          (cons 'page:page-number parts-page-number))</code><br><code>        props))</code><br><code>    (interpret-markup layout props arg)))</code><br><br><code>#(define ((print-part-first-page-as-one number-type) layout props arg)</code><br><br><code>  (set! props</code><br><code>    (cons</code><br><code>      (list</code><br><code>        (cons 'page:page-number-string</code><br><code>              (let ((page-number</code><br><code>                     (chain-assoc-get 'page:page-number props -1)))</code><br><code>                ;(if (&lt;= page-number 0) ""</code><br><code>                (cond ((and (eq? number-type 'roman-lower) (&gt; page-number 0))</code><br><code>                       (fancy-format #f "~(~@r~)" page-number))</code><br><code>                      ((and (eq? number-type 'roman-upper) (&gt; page-number 0))</code><br><code>                       (fancy-format #f "~@r" page-number))</code><br><code>                          ((eq? number-type 'arabic)</code><br><code>                           (number-&gt;string page-number))</code><br><code>                          (else (number-&gt;string page-number)))));)</code><br><code>        (cons 'page:page-number</code><br><code>              (chain-assoc-get 'page:page-number props -1)))</code><br><code>      props))</code><br><code>  (interpret-markup layout props arg))</code><br><br><code>\paper {</code><br><code>  print-first-page-number = ##t</code><br><code>  oddMarkup =</code><br><code>  #(define-scheme-function (number-type)(symbol?)</code><br><code>    #{</code><br><code>      \markup</code><br><code>        \column {</code><br><code>          \fill-line {</code><br><code>            " "</code><br><code>            \on-the-fly #not-part-first-page \fromproperty #'header:instrument</code><br><code>              %% use in this order:</code><br><code>              \on-the-fly #reset-part-first-page</code><br><code>              \on-the-fly #(print-part-first-page-as-one number-type)</code><br><code>              \on-the-fly #print-page-number-check-first</code><br><code>              \fromproperty #'page:page-number-string</code><br><code>          }</code><br><code>        }</code><br><code>    #})</code><br><br><code>  evenMarkup =</code><br><code>  #(define-scheme-function (number-type)(symbol?)</code><br><code>    #{</code><br><code>      \markup</code><br><code>        \column {</code><br><code>          \fill-line {</code><br><code>              %% use in this order:</code><br><code>              \on-the-fly #reset-part-first-page</code><br><code>              \on-the-fly #(print-part-first-page-as-one number-type)</code><br><code>              \on-the-fly #print-page-number-check-first</code><br><code>              \fromproperty #'page:page-number-string</code><br><code>            \on-the-fly #not-part-first-page \fromproperty #'header:instrument</code><br><code>            " "</code><br><code>          }</code><br><code>        }</code><br><code>    #})</code><br><code>}</code></pre>
+<p> </p>
+               </div>
+                  <footer>
+
+
+                        <div class="post__tags-share">
+
+                        </div>
+
+
+                  </footer>
+            </div>
+         </article>
+
+
+
+   </div>
+
+</main>
+<footer class="footer">
+      <div class="footer__copyright">
+         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />Tous les textes, images et codes sources Lilypond contenus dans ce site sont mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licence Creative Commons Attribution -  Partage dans les Mêmes Conditions 4.0 International</a>.
+      </div>
+</footer>
+<script>
+   window.publiiThemeMenuConfig = {    
+      mobileMenuMode: 'sidebar',
+      animationSpeed: 300,
+      submenuWidth: 'auto',
+      doubleClickTime: 500,
+      mobileMenuExpandableSubmenus: true, 
+      relatedContainerForOverlayMenuSelector: '.navbar',
+   };
+</script>
+<script defer src="https://myrealbook.vintherine.org/assets/js/scripts.min.js?v=8b3e67b51e8c7a7d51b33f4a94ae4287"></script>
+   <script>        
+      var images = document.querySelectorAll('img[loading]');
+
+      for (var i = 0; i < images.length; i++) {
+         if (images[i].complete) {
+               images[i].classList.add('is-loaded');
+         } else {
+               images[i].addEventListener('load', function () {
+                  this.classList.add('is-loaded');
+               }, false);
+         }
+      }
+   </script>
+
+
+</body>
+</html>
