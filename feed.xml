@@ -3,12 +3,51 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2022-01-04T11:12:10+01:00</updated>
+    <updated>2022-01-10T17:42:48+01:00</updated>
     <author>
         <name>Vincent</name>
     </author>
     <id>https://myrealbook.vintherine.org</id>
 
+    <entry>
+        <title>Fragments alternatifs : utilisation des tags</title>
+        <author>
+            <name>Vincent</name>
+        </author>
+        <link href="https://myrealbook.vintherine.org/fragments-alternatifs-utilisation-des-tags.html"/>
+        <id>https://myrealbook.vintherine.org/fragments-alternatifs-utilisation-des-tags.html</id>
+
+        <updated>2022-01-10T17:42:48+01:00</updated>
+            <summary>
+                <![CDATA[
+                    <p>Dans les répertoires de MyRealBook vous trouverez  des partitions écrites pour instruments en Do, en Si♭ et en Mi♭. Du fait de leur faible tessiture (2,5 octaves) les saxophones me servent de référence pour les instruments transposés.</p>
+<p>Les fichiers sources sont d'abord écrits pour instruments en Do, les notes des différentes portées stockées dans des variables,  puis transposées. C'est en principe très simple : \transpose c d  \maMusique pour instruments en Si♭, \transpose c a  (ou a,) pour instruments en Mi♭. Mais il arrive parfois que l'<a href="https://fr.wikipedia.org/wiki/Ambitus">ambitus</a> du morceau soit tel que la partition  transposée soit injouable. </p>
+<p>Voici par exemple la première partie de  <em>Zebulon Dance</em> de Didier Lockwood écrit originellement pour violon :</p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/24/ZebulonDance-CTab.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/24/responsive/ZebulonDance-CTab-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/24/responsive/ZebulonDance-CTab-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/24/responsive/ZebulonDance-CTab-md.png 768w"  alt="Zebulon Dance" width="870" height="284"></figure>
+
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>Dans les répertoires de MyRealBook vous trouverez  des partitions écrites pour instruments en Do, en Si♭ et en Mi♭. Du fait de leur faible tessiture (2,5 octaves) les saxophones me servent de référence pour les instruments transposés.</p>
+<p>Les fichiers sources sont d'abord écrits pour instruments en Do, les notes des différentes portées stockées dans des variables,  puis transposées. C'est en principe très simple : \transpose c d  \maMusique pour instruments en Si♭, \transpose c a  (ou a,) pour instruments en Mi♭. Mais il arrive parfois que l'<a href="https://fr.wikipedia.org/wiki/Ambitus">ambitus</a> du morceau soit tel que la partition  transposée soit injouable. </p>
+<p>Voici par exemple la première partie de  <em>Zebulon Dance</em> de Didier Lockwood écrit originellement pour violon :</p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/24/ZebulonDance-CTab.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/24/responsive/ZebulonDance-CTab-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/24/responsive/ZebulonDance-CTab-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/24/responsive/ZebulonDance-CTab-md.png 768w"  alt="Zebulon Dance" width="870" height="284"></figure>
+
+<p>L'ambitus couvre un peu de deux octaves, du La3 au Si5. <span style="color: var(--text-editor-body-color); font-family: var(--font-base); font-size: inherit; font-weight: var(--font-weight-normal);">L'ambitus transposé pour un instrument en Si♭ (Si4 - Do♯6) sera compatible avec un saxophone soprano ou joué une octave en dessous par un saxophone ténor.</span></p>
+<p>Tentons maintenant de transposer pour un saxophone alto :</p>
+<ol>
+<li>avec \transpose c a l'ambitus sera Fa♯3 - Sol♯5 : trop bas 😣</li>
+<li>avec \transpose c a' l'ambitus sera Fa♯4 - Sol♯6 : trop haut 😣</li>
+</ol>
+<p>La solution la plus évidente est de monter d'une octave les seules notes posant problème (entourées de rouge ci-dessus). Pour éviter la solution "<em>bestiale</em>" consistant à dupliquer toute la portée pour ne changer que 7 notes on peut isoler les fragments alternatifs en utilisant des balises (tags). <a href="https://lilypond.org/doc/v2.22/Documentation/notation/different-editions-from-one-source#using-tags">La documentation est ici</a>. </p>
+<p>Cette solution est d'autant plus facile dans notre cas qu'il suffit de changer l’octave des fragments en question dans la commande \relative. Exemple de code pour les 3  mesures de la 1ère alternative</p>
+<pre>maMusique = \relative c''<br>{<br>  \key a \major cis4  a8  e  b' cis4  a8 ~ | a4  <br>  &lt;&lt; <br>    \tag violon \relative b { b8  cis  a2  } <br>    \tag alto \relative b' { b8  cis  a2  }<br>  &gt;&gt;<br>  r2 r8  e  a  cis \bar ":|."<br>}<br><br>&lt;&lt;  \new Staff \with { instrumentName = "violon" } \keepWithTag violon \maMusique<br>    \new Staff \with { instrumentName = "alto sax" } \keepWithTag alto \transpose c a, \maMusique <br>&gt;&gt;</pre>
+<p>Le résultat :</p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/24/LilyBalises.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/24/responsive/LilyBalises-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/24/responsive/LilyBalises-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/24/responsive/LilyBalises-md.png 768w"  alt="Lily balise" width="540" height="143"></figure>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Lilypond et la pagination</title>
         <author>
@@ -384,34 +423,6 @@
 <p>puis y faire appel au début de la musique.  Notez que cette fonction est incluse dans le fichier jazzextras.ily du projet <a href="https://github.com/OpenLilyPondFonts/lilyjazz">lilyjazz</a>. Si vous avez installé ce dernier il suffit d'y faire référence par <code>\include "jazzextras.ily"</code></p>
 <p>Le code complet (supprimez la ligne <code>\include "lilyjazz.ily"</code> si lilyjazz n'est pas installé)</p>
 <pre><code>\version "2.22.1"</code><br><code>\include "lilyjazz.ily"</code><br><code>%\include "jazzextras.ily"</code><br><br><code>showStartRepeatBar = {</code><br><code>  \once \override Score.BreakAlignment.break-align-orders =</code><br><code>        #(make-vector 3 '(instrument-name</code><br><code>                          left-edge</code><br><code>                          ambitus</code><br><code>                          breathing-sign</code><br><code>                          clef</code><br><code>                          key-signature</code><br><code>                          time-signature</code><br><code>                          staff-bar</code><br><code>                          custos))</code><br><code>      \once \override Staff.TimeSignature.space-alist =</code><br><code>        #'((first-note . (fixed-space . 2.0))</code><br><code>           (right-edge . (extra-space . 0.5))</code><br><code>           ;; free up some space between time signature</code><br><code>           ;; and repeat bar line</code><br><code>           (staff-bar . (extra-space . 1)))</code><br><code>}</code><br><br><code>\layout {</code><br><code>  \context {</code><br><code>    \Score</code><br><code>    %% Changing the defaults from engraver-init.ly</code><br><code>    startRepeatType = #"[|:"</code><br><code>    endRepeatType = #":|]"</code><br><code>    doubleRepeatType = #":|][|:"</code><br><code>  }</code><br><code>}</code><br><code>\defineBarLine "||-[|:" #'("||" "[|:" "[|:") </code><br><br><code>\relative c'{</code><br><code>  \showStartRepeatBar \bar "[|:"  </code><br><code>\repeat volta 2 { </code><br><code>\repeat unfold 2 c1 }</code><br><code>  </code><br><code>\repeat volta 2 { </code><br><code>\repeat unfold 2 c }</code><br><code>  \alternative {</code><br><code>    { c }</code><br><code>    {</code><br><code>      c</code><br><code>    }</code><br><code>  }</code><br><code>  \bar "||-[|:" \break</code><br><code>  \repeat volta 2 { </code><br><code>\repeat unfold 2 c1 }</code><br><code>\repeat unfold 2 c1  </code><br><code>  \bar "|."</code><br><code>}</code></pre>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>À propos du blog (avertissement, hébergement, outils)</title>
-        <author>
-            <name>Vincent</name>
-        </author>
-        <link href="https://myrealbook.vintherine.org/a-propos-du-blog-avertissement-outils-hebergement.html"/>
-        <id>https://myrealbook.vintherine.org/a-propos-du-blog-avertissement-outils-hebergement.html</id>
-
-        <updated>2021-09-22T18:10:49+02:00</updated>
-            <summary>
-                <![CDATA[
-                    Avertissement Ce blog est essentiellement le reflet de mon activé en matière&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <h3>Avertissement</h3>
-<p>Ce blog est essentiellement le reflet de mon activé en matière d'édition de partitions de jazz avec Lilypond pour laquelle je note quelques trucs et astuces. C'est donc tout à la fois un pense-bête personnel et un lieu de partage de mes maigres compétences. À ce titre j'attire l'attention du lecteur sur le fait que ce site ne peut en aucun cas remplacer la <a href="https://lilypond.org/manuals.fr.html">documentation officielle de Lilypond</a>. En complément je lui recommande chaudement de s'inscrire à la <a href="https://lists.gnu.org/mailman/listinfo/lilypond-user-fr">mailing list des utilisateurs francophone de Lilypond</a>  où il pourra correspondre avec de nombreux interlocuteurs compétents et d'une extraordinaire disponibilité. </p>
-<h3>Hébergement</h3>
-<p>Ce site est hébergé sur <a href="https://github.com/">Github</a>, qui est un service web collaboratif d'hébergement et de gestion de développement de logiciels, utilisant le logiciel de gestion de versions <a href="https://git-scm.com/">Git</a>. Même s'il est surtout connu pour ses hébergements de projets de logiciels libre il permet également, sous certaines conditions, d'héberger des sites web statiques : <a href="https://pages.github.com/">voir ici</a>. </p>
-<p>À noter que depuis l'acquisition de Github par Microsoft en 2018 deux cas de fermetures de compte liés à des problèmes de DRM (Youtube-dl, Widevine) ont provoqués un certain trouble dans la communauté des libristes. Dans ce contexte utiliser Github pour partager des partitions peut ne pas être une solution très indiquée. Peut-être devrais-je migrer sur <a href="https://docs.gitlab.com/ee/user/project/pages/">Gitlab</a> ? En attendant je me suis contenté de demander aux moteurs de recherche de ne pas l'indexer (NoIndex NoFollow) ce qui en restreint la diffusion au seul bouche à oreilles.</p>
-<h3>Outils</h3>
-<p>Quand on pense aux systèmes de gestion de contenu web on pense d'abord à des gros projets tels Wordpress, Dotclear, Drupal... tous basés sur php et une base de donnée. Pourtant faire un site web statique est une idée qui refait son chemin aujourd'hui : plus rapide, plus économique, plus écologique, moins sujet aux bugs et au piratage... Et même s'ils sont moins connus que les géants évoqués ci-dessus existent d’excellents générateurs de sites statiques tels <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://gohugo.io/">Hugo</a>, <a href="https://blog.getpelican.com/">Pelican</a>... Après en avoir testé quelques-uns j'ai choisi <a href="https://getpublii.com/">Publii</a> qui m'a semblé être le plus facile à prendre en main grâce à son interface graphique. Et bien sûr il gère parfaitement les mises à jour sur Github ou Gitlab.</p>
-<p>Les pages relatives aux partitions sont générés et mises à jour automatiquement par un petit script bash à base de grep et de sed, qui extrait des données des fichiers Lilypond puis les colle dans une page modèle réalisé avec Publii. </p>
-<p> </p>
             ]]>
         </content>
     </entry>
