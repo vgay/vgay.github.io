@@ -3,7 +3,7 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2022-01-10T17:42:48+01:00</updated>
+    <updated>2022-01-19T12:36:48+01:00</updated>
     <author>
         <name>Vincent</name>
     </author>
@@ -109,7 +109,7 @@
         <link href="https://myrealbook.vintherine.org/myrealbook-les-partitions.html"/>
         <id>https://myrealbook.vintherine.org/myrealbook-les-partitions.html</id>
 
-        <updated>2021-12-29T16:49:39+01:00</updated>
+        <updated>2022-01-19T12:36:48+01:00</updated>
             <summary>
                 <![CDATA[
                     Tout d'abord un petit rappel : MyRealBook est un site statique. Cela&hellip;
@@ -132,9 +132,11 @@
 <h4><a href="scores/ByTempi.html">Par tempi (slow, medium, fast etc.) (🔗)</a></h4>
 <p>Affiche le tempo et le titre</p>
 <h4><a href="scores/Combos.html">Partitions pour combos ou petits big bands (🔗)</a></h4>
-<p>(3 instruments mélodiques ou plus)</p>
+<p>3 instruments mélodiques ou plus</p>
 <h4><a href="scores/Lyrics.html">Partitions contenant des paroles (🔗)</a></h4>
 <p>Pour orchestres avec chanteuse ou chanteur</p>
+<h4><a href="https://github.com/vgay/vgay.github.io">Cloner GitHub (🔗)</a></h4>
+<p>Ce site est sur GitHub, clonez-le avec toutes ses partitions ou téléchargez le .zip (cliquez sur le bouton vert "Code" puis sur le lien "Download ZIP")</p>
             ]]>
         </content>
     </entry>
