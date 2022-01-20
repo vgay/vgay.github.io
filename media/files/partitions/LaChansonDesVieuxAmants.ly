@@ -1,6 +1,6 @@
 
 \version "2.22.1"
-#(set-global-staff-size 18)
+#(set-global-staff-size 17)
 \include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -140,12 +140,13 @@ chordsRhythm = \relative c' {
   \repeat percent 2 { <b e g c e>2. r4 } | \repeat percent 2 { <b dis a' c fis>2. r4 } |
   \repeat percent 2 { <b e g c e>2. r4 } | <b dis a' c fis>1 | R
   b8 dis fis a b2 | <fis b>4. <fis dis'>8~ q2
-  r8 g b fis~ fis e4. | g4 fis8 <fis b>~ q2
+  r8 g b fis~ fis e4. | g4 fis8 <fis b>~ q2 \break
   e8 b' c a b2 | r8 <a c>4. <fis b>2 | r8 g b fis~ fis e4. | <g b e>2. r4 |
   <d g b g'>2 <e b'>4 <d g> | <d a' b fis'>2~ q8 <a' c e>4. |
   <a, e' g c e>2 <b dis a' c fis> | d8 fis b <d g>8~ q2 | <dis, a' b fis'>1
   <b e g c e>2 \tuplet 3/2 { e'4 b g } | <e g b g'>2 e8 fis4 g8 |
-  g4 e8 <fis a c>8~ 2 | r8 <b, dis a' c fis>8~ 4 <fis' b dis a'>2 | <e a c g'>4. q8~ 2
+  g4 e8 <fis a c>8~ 2 | r8 <b, dis a' c fis>8~ 4 <fis' b dis a'>2 | \break
+  <e a c g'>4. q8~ 2
   <g b e>4. <fis b dis a'>8~ q2 | <bes, d g d' f>2 <fis' b dis a'> | <b,! dis a' c fis>4-^r r2
   <b e g c e>1 \fermata
 
@@ -173,9 +174,9 @@ Basse = \relative c {
 
 grille = \chordmode {
   \repeat percent 2 e:m6- \repeat percent 2 b1:9-/dis  \break
-  \repeat percent 2 e:m6-  b1:9-/dis r1 \break \bar "||-[|:"
+  \repeat percent 2 e:m6-  b1:9-/dis r1 \break \bar "||"
   \repeat percent 2 b1:9-/dis \repeat percent 2 e:m6- \break
-  \repeat percent 2 b1:9-/dis e:m6- e:m \bar ":|][|:"
+  \repeat percent 2 b1:9-/dis e:m6- e:m \bar  "||-[|:"
    g \/b2:m7/fis f:7+ \/a:m7/e b:7/dis \set Score.repeatCommands = #'((volta "1")) g1/b
     \set Score.repeatCommands = #'((volta #f) end-repeat) \break
     \stopStaff s \bar ""  s \bar "" s \startStaff \set Score.repeatCommands = #'((volta "2"))
@@ -250,9 +251,10 @@ marques = \relative c' {
 \book {
   \paper {
     #(set-paper-size "tablette")
+    page-count = #2
   }
   #(define output-suffix "RSTab")
-  \header { meter = \markup \with-color #red \bold "partition sur 3 pages" }
+  \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
       <<
@@ -260,10 +262,10 @@ marques = \relative c' {
         \new StaffGroup \with { instrumentName = "Guit." }
         <<
           \new Staff \chordsRhythm
-          \new TabStaff \transpose c c, \chordsRhythm
-        >>
+          %\new TabStaff \transpose c c, \chordsRhythm
+
         \new Staff \with { instrumentName = "bass" } \Basse
-      >>
+      >> >>
     }
 } }
 
@@ -434,10 +436,10 @@ marques = \relative c' {
         \new StaffGroup \with { instrumentName = "Guit." }
         <<
           \new Staff \chordsRhythm
-          \new TabStaff \transpose c c, \chordsRhythm
-        >>
+          %\new TabStaff \transpose c c, \chordsRhythm
+
         \new Staff \with { instrumentName = "bass" } \Basse
-      >>
+      >> >>
     } %\form
     }  \bookpart {
     \score {
