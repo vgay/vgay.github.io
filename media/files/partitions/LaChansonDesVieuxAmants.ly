@@ -137,17 +137,26 @@ theNotes =  \relative c'' {
 }
 
 chordsRhythm = \relative c' {
+  \key e \minor \time 4/4 \oneVoice
   \repeat percent 2 { <b e g c e>2. r4 } | \repeat percent 2 { <b dis a' c fis>2. r4 } |
-  \repeat percent 2 { <b e g c e>2. r4 } | <b dis a' c fis>1 | R
+  \repeat percent 2 { <b e g c e>2. r4 } | <b dis a' c fis>1 | R \break \bar "    --"
+  \mark #1
   b8 dis fis a b2 | <fis b>4. <fis dis'>8~ q2
-  r8 g b fis~ fis e4. | g4 fis8 <fis b>~ q2 \break
-  e8 b' c a b2 | r8 <a c>4. <fis b>2 | r8 g b fis~ fis e4. | <g b e>2. r4 |
-  <d g b g'>2 <e b'>4 <d g> | <d a' b fis'>2~ q8 <a' c e>4. |
-  <a, e' g c e>2 <b dis a' c fis> | d8 fis b <d g>8~ q2 | <dis, a' b fis'>1
+  r8 g b fis~ fis e4. | g4 fis8 <fis b>~ q2
+  dis8 b' c a b2 | r8 <a c>4. <fis b>2 | r8 g b fis~ fis e4. | <g b e>2. r4 |
+  \break \mark #2 \bar "||-[|:"
+  \repeat volta 2 {
+    <d g b g'>2 <e b'>4 <d g> | <d a' b fis'>2~ q8 <a' c e>4. |
+    <a, e' g c e>2 <b dis a' c fis>  }
+  \alternative {
+    { d8 fis b <d g>8~ q2 } { <dis, a' b fis'>1 }
+  } \break \mark #3 \bar "||"
   <b e g c e>2 \tuplet 3/2 { e'4 b g } | <e g b g'>2 e8 fis4 g8 |
-  g4 e8 <fis a c>8~ 2 | r8 <b, dis a' c fis>8~ 4 <fis' b dis a'>2 | \break
+  g4 e8 <fis a c>8~ 2 | r8 <b, dis a' c fis>8~ 4 <fis' b dis a'>2 |
   <e a c g'>4. q8~ 2
-  <g b e>4. <fis b dis a'>8~ q2 | <bes, d g d' f>2 <fis' b dis a'> | <b,! dis a' c fis>4-^r r2
+  <g b e>4. <fis b dis a'>8~ q2 | <bes, d g d' f>2 <fis' b dis a'> |
+  \toCoda
+  <b,! dis a' c fis>4-^r r2 \break \bar "|." \Coda
   <b e g c e>1 \fermata
 
 }
@@ -156,7 +165,7 @@ Basse = \relative c {
   \clef "bass" \key e \minor \time 4/4
   \mark \markup \bold \box Intro
   \repeat percent 2 { e4. c b4 } \repeat percent 2 { dis4. c b4 }
-  \repeat percent 2 { e4. c b4 } dis1 R \break
+  \repeat percent 2 { e4. c b4 } dis1 R \break \bar "||"
   \mark #1
   \repeat percent 2 { dis4. c b4 } \repeat percent 2 { e4. c b4 }
   \repeat percent 2 { dis4. c b4 } | e4. c b4 | e4. b e4 \bar "||-[|:" \break
@@ -177,14 +186,14 @@ grille = \chordmode {
   \repeat percent 2 e:m6-  b1:9-/dis r1 \break \bar "||"
   \repeat percent 2 b1:9-/dis \repeat percent 2 e:m6- \break
   \repeat percent 2 b1:9-/dis e:m6- e:m \bar  "||-[|:"
-   g \/b2:m7/fis f:7+ \/a:m7/e b:7/dis \set Score.repeatCommands = #'((volta "1")) g1/b
-    \set Score.repeatCommands = #'((volta #f) end-repeat) \break
-    \stopStaff s \bar ""  s \bar "" s \startStaff \set Score.repeatCommands = #'((volta "2"))
-    b:7/fis \set Score.repeatCommands = #'((volta #f)) \bar "||" \break
-    \repeat percent 2 e:m6 fis:m7 b:9-/fis \break
-    a:m7/c \/cis2:m5-7 b:7 \/bes:6 b:7 \Coda b1:9-/dis \break \bar "|."
-    \Coda e:m7+9 \bar ".." \stopStaff s \bar ""  s \bar "" s \bar ""
- }
+  g \/b2:m7/fis f:7+ \/a:m7/e b:7/dis \set Score.repeatCommands = #'((volta "1")) g1/b
+  \set Score.repeatCommands = #'((volta #f) end-repeat) \break
+  \stopStaff s \bar ""  s \bar "" s \startStaff \set Score.repeatCommands = #'((volta "2"))
+  b:7/fis \set Score.repeatCommands = #'((volta #f)) \bar "||" \break
+  \repeat percent 2 e:m6 fis:m7 b:9-/fis \break
+  a:m7/c \/cis2:m5-7 b:7 \/bes:6 b:7 \Coda b1:9-/dis \break \bar "|."
+  \Coda e:m7+9 \bar ".." \stopStaff s \bar ""  s \bar "" s \bar ""
+}
 
 marques = \relative c' {
   s1 ^\markup \bold \box \fontsize #5 Intro s1*7
@@ -197,7 +206,7 @@ marques = \relative c' {
 \book {
   \paper {
     #(set-paper-size "tablette")
-   }
+  }
   #(define output-suffix "CTab")
   \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
@@ -251,10 +260,10 @@ marques = \relative c' {
 \book {
   \paper {
     #(set-paper-size "tablette")
-    page-count = #2
+    %page-count = #1
   }
-  #(define output-suffix "RSTab")
-  \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
+  #(define output-suffix "GuitarTab")
+  %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
       <<
@@ -263,8 +272,6 @@ marques = \relative c' {
         <<
           \new Staff \chordsRhythm
           %\new TabStaff \transpose c c, \chordsRhythm
-
-        \new Staff \with { instrumentName = "bass" } \Basse
       >> >>
     }
 } }
@@ -286,7 +293,7 @@ marques = \relative c' {
         >>
       >>
     } %\form
-    }  \bookpart {
+  }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -337,7 +344,7 @@ marques = \relative c' {
         >>
       >>
     } %\form
-    }  \bookpart {
+  }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -388,7 +395,7 @@ marques = \relative c' {
         >>
       >>
     } %\form
-    }  \bookpart {
+  }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -428,18 +435,100 @@ marques = \relative c' {
     #(set-paper-size "a4")
     page-count = #1
   }
-  #(define output-suffix "RSa4")
+  #(define output-suffix "Guitara4")
+  \bookpart {
+ \header { meter = \markup \pad-around # 1 \with-color #red \bold "Score with tablatures page 3" }
+    \score {
+      <<
+        \new ChordNames { \harmonies }
+        \new StaffGroup \with { instrumentName = "Guit." }
+        <<
+          \new Staff << \chordsRhythm \\ { s1*12 \break  s1*13 \break } >>
+          %\new TabStaff \transpose c c, \chordsRhythm
+
+      >> >>
+    } %\form
+  }  \bookpart {
+    \score {
+      \layout {
+        indent = 0
+        ragged-right = ##f
+        ragged-last = ##f
+        \context {
+          \Score
+          \remove "Volta_engraver"
+          \omit Clef % Cacher la clef
+          \omit TimeSignature % cacher la métrique
+          \omit BarNumber
+          \override SpacingSpanner.strict-note-spacing = ##t
+          proportionalNotationDuration = #(ly:make-moment 1/16)
+        }
+      }
+      <<
+        \new Staff \with {
+          \remove "Staff_symbol_engraver"
+        }
+        \marques
+        \new ChordNames \with {
+          \override ChordName.extra-offset = #'(10 . -1 )
+          \override ParenthesesItem.extra-offset = #'(10 . -1 )
+          \override BarLine.bar-extent = #'(-5 . 5)
+          \consists "Bar_engraver"
+          \override StaffSymbol.line-positions = #'( -10 10 )
+          \consists "Staff_symbol_engraver"
+          \consists "Percent_repeat_engraver"
+          \consists "Volta_engraver"
+        }
+        \grille
+      >>
+  }}
   \bookpart {
     \score {
       <<
         \new ChordNames { \harmonies }
         \new StaffGroup \with { instrumentName = "Guit." }
         <<
-          \new Staff \chordsRhythm
-          %\new TabStaff \transpose c c, \chordsRhythm
+          \new Staff << \chordsRhythm \\ { s1*12 \break  s1*13 \break } >>
+          \new TabStaff \transpose c c, \chordsRhythm
 
-        \new Staff \with { instrumentName = "bass" } \Basse
       >> >>
+} } }
+
+\book {
+  \paper {
+    #(set-paper-size "tablette")
+    %page-count = #1
+  }
+  #(define output-suffix "BassTab")
+  %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \harmonies }
+        \new Staff \with { instrumentName = \CleFa } <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
+          \Basse
+        >>
+      >>
+    } %\form
+} }
+
+\book {
+  \paper {
+    #(set-paper-size "a4")
+    %page-count = #1
+  }
+  #(define output-suffix "Bassa4")
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \harmonies }
+        \new Staff \with { instrumentName = \CleFa }
+        <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
+          \Basse
+        >>
+      >>
     } %\form
     }  \bookpart {
     \score {

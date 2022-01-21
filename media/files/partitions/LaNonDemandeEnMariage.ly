@@ -64,10 +64,7 @@ realBookTitle = \markup {
   title = \realBookTitle
   % asplayed = #"" % doit être commentée si vide
   url = #""
-  arranger = \markup \on-the-fly #played?
-  \with-url #url
-  \with-color #blue \underline
-  \concat { "(as played by " \fromproperty #'header:asplayed ")" }
+  arranger = "arr. Vincent Gay"
   tagline = ##f
 }
 
@@ -85,6 +82,7 @@ realBookTitle = \markup {
     \override KeySignature #'break-visibility = #'#(#f #f #f)
     \override SystemStartBar #'collapse-height = #1
     \override ParenthesesItem.font-size = #2
+    \override MultiMeasureRest #'expand-limit = #3
   }
   \context {
     \Staff
@@ -144,25 +142,33 @@ chordsRhythm = \relative c'' {
   \key d \major
   %\improvisationOn \override NoteHead.no-ledgers = ##t
   \mark \markup \bold \box Intro
-  R1*4 \mark #1
+  R1*4 \mark #1 \break \bar "||-[|:"
+  \repeat volta 2 {
   <g b e'>2 <g b dis'> <g b d'>2 <g b cis'>
-  <d' fis b> <d fis bes> <d fis a> <d fis gis>
-  <ais cis fis> <ais cis f> <ais cis e> <ais es'>
-  \repeat unfold 6 <fis a d> \repeat unfold 2 <fis a dis>
+  <d' fis b> <d fis bes> <d fis a> <d fis gis> \break
+  <ais cis fis> <ais cis f> <ais cis e> <ais es'> }
+  \alternative {
+  { \repeat unfold 4 <fis a d> }
+  { \repeat unfold 2 <fis a d> \repeat unfold 2 <fis a dis> }
+  } \break \bar "||"
   \mark #2 <b d g>2. q4 <e, a cis g'>4. q8~ q2
   <d a' cis fis>2. q4
-  <ais' cis e>2 r8 <ais e' g>4.
+  <ais' cis e>2 r8 <ais e' g>4.\break
   <b d fis>2. q4
   <ais cis e>4. <ais e' g>8 q2
-  <b d fis>4. q8 q2 | <b d fis>4. q8 q2
-  <b d fis>1 R R
+  <b d fis>4. q8 q2 | \toCoda
+  <b d fis>4. q8 q2
+  \break \Coda \bar "|."
+  <b d fis>1 R R \bar ".."
 
 }
 
 Basse = \relative c' {
   %\override Rest #'staff-position = #0
   \clef "bass" \key d \major \time 4/4
+  \mark \markup \bold \box Intro
   \repeat unfold 3 { b4. 8 4. r8 } | b4. 8 8 a g fis \break \bar "||-[|:"
+  \mark #1
   \repeat volta 2 {
     \repeat unfold 2 { e4. 8 4. r8 }
     \repeat unfold 2 { b'4. 8 4. r8 } \break
@@ -170,7 +176,7 @@ Basse = \relative c' {
   \alternative {
     { b4. 8 4. r8  | b4. 8 8 a g fis }
     { \repeat unfold 2 { b4. 8 4. r8 } }
-  } \break \bar "||"
+  } \break \bar "||" \mark #2
   e,4. b'8~ 4 g | a4. e8~ 4 cis | d4. a'8~ 4 d, | fis4. cis8~ 4 fis | \break
   b,4. fis'8~ 4 d | fis4. cis8~ 4 fis |
   b4. 8 4. r8  \toCoda | b4. 8 8 a g fis \break
@@ -437,8 +443,9 @@ verseB = \lyricmode {
     #(set-paper-size "a4")
     page-count = #1
   }
-  #(define output-suffix "RSa4")
+  #(define output-suffix "Guitara4")
   \bookpart {
+ \header { meter = \markup \pad-around # 1 \with-color #red \bold "Score with tablatures page 3" }
     \score {
       <<
         \new ChordNames { \harmonies }
@@ -449,8 +456,6 @@ verseB = \lyricmode {
             \chordsRhythm
           >>
           %\new TabStaff \transpose c c, \chordsRhythm
-
-          \new Staff \with { instrumentName = "Bass" } \Basse
       >> >>
     } %\form
   }  \bookpart {
@@ -486,6 +491,19 @@ verseB = \lyricmode {
         }
         \grille
       >>
+  } }
+    \bookpart {
+    \score {
+      <<
+        \new ChordNames { \harmonies }
+        \new StaffGroup <<
+          \new Staff \with { instrumentName = Guitare }
+          <<
+            %\new Voice \with { \consists "Pitch_squash_engraver" }
+            \chordsRhythm
+          >>
+          \new TabStaff \transpose c c, \chordsRhythm
+      >> >>
 } } }
 
 \book {
@@ -578,7 +596,7 @@ verseB = \lyricmode {
     #(set-paper-size "tablette")
     %page-count = #1
   }
-  #(define output-suffix "RSTab")
+  #(define output-suffix "GuitarTab")
   \bookpart {
     \score {
       <<
@@ -590,7 +608,76 @@ verseB = \lyricmode {
             \chordsRhythm
           >>
           %\new TabStaff \transpose c c, \chordsRhythm
+       >> >>
+} } }
 
-          \new Staff \with { instrumentName = "Bass" } \Basse
-      >> >>
+\book {
+  \paper {
+    #(set-paper-size "tablette")
+   page-count = #1
+  }
+  #(define output-suffix "BassTab")
+  %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \harmonies }
+        \new Staff \with { instrumentName = \CleFa } <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
+          \Basse
+        >>
+      >>
+    } %\form
+} }
+
+\book {
+  \paper {
+    #(set-paper-size "a4")
+    page-count = #1
+  }
+  #(define output-suffix "Bassa4")
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \harmonies }
+        \new Staff \with { instrumentName = \CleFa }
+        <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
+          \Basse
+        >>
+      >>
+    } %\form
+    %}  \bookpart {
+    \score {
+      \layout {
+        indent = 0
+        ragged-right = ##f
+        ragged-last = ##f
+        \context {
+          \Score
+          \remove "Volta_engraver"
+          \omit Clef % Cacher la clef
+          \omit TimeSignature % cacher la métrique
+          \omit BarNumber
+          \override SpacingSpanner.strict-note-spacing = ##t
+          proportionalNotationDuration = #(ly:make-moment 1/16)
+        }
+      }
+      <<
+        \new Staff \with {
+          \remove "Staff_symbol_engraver"
+        }
+        \marques
+        \new ChordNames \with {
+          \override ChordName.extra-offset = #'(10 . -1 )
+          \override ParenthesesItem.extra-offset = #'(10 . -1 )
+          \override BarLine.bar-extent = #'(-5 . 5)
+          \consists "Bar_engraver"
+          \override StaffSymbol.line-positions = #'( -10 10 )
+          \consists "Staff_symbol_engraver"
+          \consists "Percent_repeat_engraver"
+          \consists "Volta_engraver"
+        }
+        \grille
+      >>
 } } }

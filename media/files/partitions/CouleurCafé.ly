@@ -186,16 +186,24 @@ Tenor =  \relative c' {
 
 chordsRhythm = \relative c' {
   \clef "treble_8" \key f \major \time 2/2
-  R1*4
+  R1*4 \break \noPageBreak
   \improvisationOn
-  b2.. 8~ | 2. 4  | b2.. 8~ | 1
+      \doubleMark
+  \markup 4X
+  \markup \bold \box A
+
+  \repeat volta 2 { b2.. 8~ | 2. 4  | b2.. 8~ | 1  } \break \noPageBreak
   \improvisationOff
+    \doubleMark
+  \markup 4X
+  \markup \bold \box B
+
    g'4  c8 bes r a4
  g8 | % 34
  r8 c4 e,8 r f4 g8 | % 35
  f4 bes8 f r d4
  bes8 | % 36
- r8 bes'4 d,8 r f4 g8 | \break
+ r8 bes'4 d,8 r f4 g8 | \break \noPageBreak
  e4 a8 g r e4
  c8 | % 38
  r8 e4 c8 r e4 g8 | % 39
@@ -634,6 +642,36 @@ marques = \relative c' {
           \WoodBlock
       >> >>
 }}}
+\book {
+  \paper {
+    #(set-paper-size "tablette")
+    ragged-bottom = ##t
+    ragged-last = ##t
+    page-count = #2
+  }
+  \header { meter = \CleSol }
+  #(define output-suffix "GuitarTab")
+  \bookpart {
+    \score {
+      <<
+        \new StaffGroup <<
+          \new ChordNames { \harmoniesR }
+          \new FretBoards
+          \with {
+            \RemoveEmptyStaves
+            \override VerticalAxisGroup #'remove-first = ##t
+          }
+          \Frets
+          \new Staff \with { instrumentName = Guitar } \chordsRhythm
+          \new DrumStaff \with{
+            drumStyleTable = #percussion-style
+            \override StaffSymbol.line-count = #1
+            instrumentName = WoodBlock
+          }
+          \WoodBlock
+      >> >>
+}}}
+
 
 \book {
   \paper {
@@ -644,6 +682,60 @@ marques = \relative c' {
   \header { meter = \CleSol }
   #(define output-suffix "Guitara4")
   \bookpart {
+ \header { meter = \markup \pad-around # 1 \with-color #red \bold "Score with tablatures page 3" }
+    \score {
+      <<
+        \new StaffGroup <<
+          \new ChordNames { \harmoniesR }
+          \new FretBoards
+          \with {
+            \RemoveEmptyStaves
+            \override VerticalAxisGroup #'remove-first = ##t
+          }
+          \Frets
+          \new Staff \with { instrumentName = Guitar } \chordsRhythm
+          \new DrumStaff \with{
+            drumStyleTable = #percussion-style
+            \override StaffSymbol.line-count = #1
+            instrumentName = WoodBlock
+          }
+          \WoodBlock
+      >> >>
+    }
+        \score {
+      \layout {
+        indent = 0
+        ragged-right = ##f
+        ragged-last = ##f
+        \context {
+          \Score
+          \remove "Volta_engraver"
+          \omit Clef % Cacher la clef
+          \omit TimeSignature % cacher la métrique
+          \omit BarNumber
+          \override SpacingSpanner.strict-note-spacing = ##t
+          proportionalNotationDuration = #(ly:make-moment 1/16)
+        }
+      }
+      <<
+        \new Staff \with {
+          \remove "Staff_symbol_engraver"
+        }
+        \marques
+        \new ChordNames \with {
+          \override ChordName.extra-offset = #'(10 . -1 )
+          \override ParenthesesItem.extra-offset = #'(10 . -1 )
+          \override BarLine.bar-extent = #'(-5 . 5)
+          \consists "Bar_engraver"
+          \override StaffSymbol.line-positions = #'( -10 10 )
+          \consists "Staff_symbol_engraver"
+          \consists "Percent_repeat_engraver"
+          \consists "Volta_engraver"
+        }
+        \grille
+      >>
+  }}
+   \bookpart {
     \score {
       <<
         \new StaffGroup <<
@@ -663,4 +755,75 @@ marques = \relative c' {
           }
           \WoodBlock
       >> >>
+} } }
+
+\book {
+  \paper {
+    #(set-paper-size "tablette")
+    %page-count = #1
+  }
+  #(define output-suffix "BassTab")
+  %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \harmoniesR }
+        \new Staff \with { instrumentName = \CleFa } <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
+          \Basse
+        >>
+      >>
+    } %\form
+} }
+
+\book {
+  \paper {
+    #(set-paper-size "a4")
+    %page-count = #1
+  }
+  #(define output-suffix "Bassa4")
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \harmoniesR }
+        \new Staff \with { instrumentName = \CleFa }
+        <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
+          \Basse
+        >>
+      >>
+    } %\form
+    %}  \bookpart {
+    \score {
+      \layout {
+        indent = 0
+        ragged-right = ##f
+        ragged-last = ##f
+        \context {
+          \Score
+          \remove "Volta_engraver"
+          \omit Clef % Cacher la clef
+          \omit TimeSignature % cacher la métrique
+          \omit BarNumber
+          \override SpacingSpanner.strict-note-spacing = ##t
+          proportionalNotationDuration = #(ly:make-moment 1/16)
+        }
+      }
+      <<
+        \new Staff \with {
+          \remove "Staff_symbol_engraver"
+        }
+        \marques
+        \new ChordNames \with {
+          \override ChordName.extra-offset = #'(10 . -1 )
+          \override ParenthesesItem.extra-offset = #'(10 . -1 )
+          \override BarLine.bar-extent = #'(-5 . 5)
+          \consists "Bar_engraver"
+          \override StaffSymbol.line-positions = #'( -10 10 )
+          \consists "Staff_symbol_engraver"
+          \consists "Percent_repeat_engraver"
+          \consists "Volta_engraver"
+        }
+        \grille
+      >>
 } } }
