@@ -3,12 +3,51 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2022-01-19T12:36:48+01:00</updated>
+    <updated>2022-01-23T08:44:34+01:00</updated>
     <author>
         <name>Vincent</name>
     </author>
     <id>https://myrealbook.vintherine.org</id>
 
+    <entry>
+        <title>Le principe de la moindre altération</title>
+        <author>
+            <name>Vincent</name>
+        </author>
+        <link href="https://myrealbook.vintherine.org/le-principe-de-la-moindre-alteration.html"/>
+        <id>https://myrealbook.vintherine.org/le-principe-de-la-moindre-alteration.html</id>
+
+        <updated>2022-01-23T08:44:34+01:00</updated>
+            <summary>
+                <![CDATA[
+                    <p>Une particularité de Lilypond est de pouvoir stocker des fragments musicaux dans des variables et de pouvoir les réutiliser où bon nous semble et comme bon nous semble. En les transposant notamment. Mais par défaut le résultat n'est pas toujours lisible !</p>
+<p>Pour les notes il suffit  souvent d'un peu d'astuce. Par exemple si l'on veut transposer un La♯ d'une tierce mineure en dessous (transposer une partie de violon pour un saxophone alto) cela nous donnera un Fa<span class="wdg-select-all-ok">𝄪 mais si on le transpose d'une seconde augmentée (1 ton ½ également) cela nous donnera un Sol. Voici ce que donne ce principe appliqué à la gamme de Si majeur (code ci-dessous)</span></p>
+<figure class="post__image" ><img loading="lazy" src="https://myrealbook.vintherine.org/media/posts/26/document-3.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/26/responsive/document-3-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/26/responsive/document-3-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/26/responsive/document-3-md.png 768w"  alt="" width="570" height="300">
+<figcaption >Transposition pour saxophones</figcaption>
+</figure>
+<p> </p>
+
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>Une particularité de Lilypond est de pouvoir stocker des fragments musicaux dans des variables et de pouvoir les réutiliser où bon nous semble et comme bon nous semble. En les transposant notamment. Mais par défaut le résultat n'est pas toujours lisible !</p>
+<p>Pour les notes il suffit  souvent d'un peu d'astuce. Par exemple si l'on veut transposer un La♯ d'une tierce mineure en dessous (transposer une partie de violon pour un saxophone alto) cela nous donnera un Fa<span class="wdg-select-all-ok">𝄪 mais si on le transpose d'une seconde augmentée (1 ton ½ également) cela nous donnera un Sol. Voici ce que donne ce principe appliqué à la gamme de Si majeur (code ci-dessous)</span></p>
+<figure class="post__image" ><img loading="lazy" src="https://myrealbook.vintherine.org/media/posts/26/document-3.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/26/responsive/document-3-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/26/responsive/document-3-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/26/responsive/document-3-md.png 768w"  alt="" width="570" height="300">
+<figcaption >Transposition pour saxophones</figcaption>
+</figure>
+<p> </p>
+
+<pre>\version "2.22.1"<br><br>theNotes = \relative c' { <br>  \key b \major<br>  b4 cis dis e fis gis ais b~ | 1 }<br><br>\layout {<br>  indent = 5\cm<br>}<br><br>\score {<br>  &lt;&lt;<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { "Instruments"<br>                         \line { "en Do" } } } }<br>    \theNotes<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { \line { "Instrument en Si" \smaller \flat }<br>                         \line { "\\transpose c d (1 ton)" } } } }<br>    \transpose c d \theNotes<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { \line { "Instrument en Si" \smaller \flat }<br>                         \line { "\\transpose c eses (1 ton)" } } } }<br>    \transpose c eses \theNotes<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { \line { "Instrument en Mi" \smaller \flat }<br>                         \line { "\\transpose c a (4 tons  ½)" } } } }<br>    \transpose c a \theNotes<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { \line { "Instrument en Mi" \smaller \flat }<br>                         \line { "\\transpose c beses (4 tons  ½)" } } } }<br>    \transpose c beses \theNotes<br>  &gt;&gt;<br>}</pre>
+<p>Pour les accords le même problème se pose mais est un petit peu plus compliqué à résoudre en utilisant la propriété chordRootNamer (voir code ci-dessous et <a href="https://lilypond.org/doc/v2.23/Documentation/notation/displaying-chords.fr.html">cette page de documentation</a>) . Ici ce n'est plus l'intervalle de transposition qui varie mais directement la base de l'accord via un double procédé enharmonique. Merci encore Jean.</p>
+<figure class="post__image" ><img loading="lazy" src="https://myrealbook.vintherine.org/media/posts/26/document-4.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/26/responsive/document-4-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/26/responsive/document-4-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/26/responsive/document-4-md.png 768w"  alt="" width="583" height="303">
+<figcaption >Fm7 c'est plus intuitif que E♯m7 n'est-ce-pas ?</figcaption>
+</figure>
+<p> </p>
+<pre>\version "2.22.1"<br><br>#(use-modules (ice-9 match))<br><br>#(define enharmonization<br>   #((0 . 0) ; C♮<br>             (0 . 1/2) ; D♭ → C ♯<br>             (1 . 0) ; D♮<br>             (2 . -1/2) ; D♯ → E♭<br>             (2 . 0) ; E♮<br>             (3 . 0) ; F♮<br>             (3 . -1/2) ; G♭ → F♯<br>             (4 . 0) ; G♮<br>             #f ; G♯/A♭<br>             (5 . 0) ; A♮<br>             (6 . -1/2) ; A♯ → B♭<br>             (6 . 0) ; B♮<br>             ))<br><br>#(define (enharmonize pitch)<br>   (let* ((semitones (ly:pitch-semitones pitch))<br>          (normalized-semitones (modulo semitones 12))<br>          (eventual-octave (* 1/12 (- semitones normalized-semitones))))<br>     (match (vector-ref enharmonization normalized-semitones)<br>            ((best-name . best-alteration)<br>             (ly:make-pitch eventual-octave best-name best-alteration))<br>            (#f<br>             ;; G♯/A♭<br>             (if (positive? (ly:pitch-alteration pitch))<br>                 (ly:make-pitch eventual-octave 4 1/2)<br>                 (ly:make-pitch eventual-octave 5 -1/2))))))<br><br>%% Tests<br>#(for-each<br>  (match-lambda<br>   ((input output)<br>    (let ((processed (enharmonize input)))<br>      (if (not (equal? output (enharmonize input)))<br>          (ly:error "~s -&gt; ~s: bad output, expected ~s" input processed output)))))<br>  `((,#{ c #} ,#{ c #})<br>    (,#{ cis #} ,#{ cis #})<br>    (,#{ des #} ,#{ cis #})<br>    (,#{ des'' #} ,#{ cis'' #})<br>    (,#{ bisis #} ,#{ cis' #})<br>    (,#{ eeses #} ,#{ d #})<br>    (,#{ gis,, #} ,#{ gis,, #})<br>    (,#{ aes,, #} ,#{ aes,, #})<br>    (,#{ fisis,, #} ,#{ g,, #})))<br><br>\layout {<br>  indent = 4\cm<br>}<br><br>theNotes = { \repeat unfold 6 { R1 } }<br>theChords = \chordmode { gis1:m7 cis:7 fis:7+ g:m7 c:7 f:7+}<br><br>\score {<br>  &lt;&lt;<br>    \new ChordNames \theChords<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { "Instruments"<br>                         \line { "en Do" } } } }<br>    \theNotes<br>  &gt;&gt;<br>}<br><br>\score {<br>  &lt;&lt;<br>    \new ChordNames \transpose c a \theChords<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { \concat { "Pour inst. en Mi" \smaller \flat}<br>                         \line { "sans enharmonisation" } } } }<br>  \theNotes<br>  &gt;&gt;<br>} <br><br>\score {<br>  &lt;&lt;<br>    \new ChordNames \transpose c a \theChords<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { \concat { "Pour inst. en Mi" \smaller \flat}<br>                         \line { "avec enharmonisation" } } } } <br>    \theNotes<br>  &gt;&gt;<br>  \layout {<br>    \context {<br>      \ChordNames<br>      chordRootNamer =<br>      #(lambda (pitch lowercase)<br>         (note-name-&gt;markup (enharmonize pitch)<br>                            lowercase))<br>    }<br>  }<br>} </pre>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Fragments alternatifs : utilisation des tags</title>
         <author>
@@ -386,45 +425,6 @@
 <p>Il est possible grâce à une fonction supplémentaire d'indiquer la durée au milieu de la portée dégageant ainsi l'espace au dessus de celle-ci. Cette manière de faire, utilisée notamment  dans les real books, peut rendre plus lisibles d'éventuels textes au dessus du silence.  Cette  fonction due à Robin Bannister est décrite <a title="https://lsr.di.unimi.it/LSR/Item?id=753">ici</a>. Elle est également incluse dans le fichier  jazzextras.ily du projet <a href="https://github.com/OpenLilyPondFonts/lilyjazz">lilyjazz</a>.</p>
 <pre><code>\version "2.22.1"</code><br><br><code>\paper { </code><br><code>  indent = #0 </code><br><code>  ragged-last = ##f</code><br><code>}</code><br><br><code>#(define (white-under grob) (grob-interpret-markup grob </code><br><code>                                                   (markup #:vcenter #:whiteout #:pad-x 1 (ly:grob-property grob 'text))))</code><br><br><code>inlineMMRN = {</code><br><code>  \once \override MultiMeasureRest.layer = #-2</code><br><code>  \once \override MultiMeasureRestNumber.layer = #-1</code><br><code>  \once \override MultiMeasureRestNumber.Y-offset = #0</code><br><code>  \once \override MultiMeasureRestNumber.stencil = #white-under</code><br><code>}</code><br><br><br><code>{ </code><br><code>  \compressMMRests { </code><br><code>    \override MultiMeasureRest #'expand-limit = #3</code><br><code>    \repeat volta 2 {</code><br><code>      s1*0_\markup \pad-around #0.5 { \italic { affichage standard } }</code><br><code>      R1*30^\markup { [SOLOS] } }</code><br><code>    \repeat volta 2 {</code><br><code>      s1*0_\markup \pad-around #0.5 { \italic { avec inlineMMRN } }</code><br><code>      \inlineMMRN R1*30^\markup { [SOLOS] } }</code><br><code>  }</code><br><code>}</code></pre>
 <figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/14/document.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/14/responsive/document-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/14/responsive/document-md.png 768w"  alt="InlineMMRN" width="1167" height="171"></figure>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Barres de reprises style Realbook</title>
-        <author>
-            <name>Vincent</name>
-        </author>
-        <link href="https://myrealbook.vintherine.org/barres-de-reprises-style-realbook.html"/>
-        <id>https://myrealbook.vintherine.org/barres-de-reprises-style-realbook.html</id>
-
-        <updated>2021-09-26T11:33:54+02:00</updated>
-            <summary>
-                <![CDATA[
-                    <p>Deux points distinguent la manière dont sont présentées les reprises dans les realbooks par rapport au traitement par défaut de Lilypond :</p>
-<ol>
-<li>les barres de reprises sont imprimées avec des crochets</li>
-<li>Une barre de reprise est imprimé même au début de la partition</li>
-</ol>
-<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/13/Reprises.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/13/responsive/Reprises-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/13/responsive/Reprises-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/13/responsive/Reprises-md.png 768w"  alt="" width="1350" height="312"></figure>
-
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>Deux points distinguent la manière dont sont présentées les reprises dans les realbooks par rapport au traitement par défaut de Lilypond :</p>
-<ol>
-<li>les barres de reprises sont imprimées avec des crochets</li>
-<li>Une barre de reprise est imprimé même au début de la partition</li>
-</ol>
-<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/13/Reprises.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/13/responsive/Reprises-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/13/responsive/Reprises-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/13/responsive/Reprises-md.png 768w"  alt="" width="1350" height="312"></figure>
-
-<p>Pour le premier point il faut changer dans le contexte score les valeurs par défaut. Il faut également créer la combinaison double barre / saut de ligne / début de reprise pour remplacer le <code>".|:-||"</code> par défaut </p>
-<pre><code>\layout {</code><br><code>  \context {</code><br><code>    \Score</code><br><code>    %% Changing the defaults from engraver-init.ly</code><br><code>    startRepeatType = #"[|:"</code><br><code>    endRepeatType = #":|]"</code><br><code>    doubleRepeatType = #":|][|:"</code><br><code>  }</code><br><code>}</code><br><code>\defineBarLine "||-[|:" #'("||" "[|:" "[|:") </code></pre>
-<p>Pour le deuxième point c'est un peu plus compliqué : il faudra d'abord coller la fonction suivante :</p>
-<pre><code>showStartRepeatBar = {</code><br><code>  \once \override Score.BreakAlignment.break-align-orders =</code><br><code>        #(make-vector 3 '(instrument-name</code><br><code>                          left-edge</code><br><code>                          ambitus</code><br><code>                          breathing-sign</code><br><code>                          clef</code><br><code>                          key-signature</code><br><code>                          time-signature</code><br><code>                          staff-bar</code><br><code>                          custos))</code><br><code>      \once \override Staff.TimeSignature.space-alist =</code><br><code>        #'((first-note . (fixed-space . 2.0))</code><br><code>           (right-edge . (extra-space . 0.5))</code><br><code>           ;; free up some space between time signature</code><br><code>           ;; and repeat bar line</code><br><code>           (staff-bar . (extra-space . 1)))</code><br><code>}</code></pre>
-<p>puis y faire appel au début de la musique.  Notez que cette fonction est incluse dans le fichier jazzextras.ily du projet <a href="https://github.com/OpenLilyPondFonts/lilyjazz">lilyjazz</a>. Si vous avez installé ce dernier il suffit d'y faire référence par <code>\include "jazzextras.ily"</code></p>
-<p>Le code complet (supprimez la ligne <code>\include "lilyjazz.ily"</code> si lilyjazz n'est pas installé)</p>
-<pre><code>\version "2.22.1"</code><br><code>\include "lilyjazz.ily"</code><br><code>%\include "jazzextras.ily"</code><br><br><code>showStartRepeatBar = {</code><br><code>  \once \override Score.BreakAlignment.break-align-orders =</code><br><code>        #(make-vector 3 '(instrument-name</code><br><code>                          left-edge</code><br><code>                          ambitus</code><br><code>                          breathing-sign</code><br><code>                          clef</code><br><code>                          key-signature</code><br><code>                          time-signature</code><br><code>                          staff-bar</code><br><code>                          custos))</code><br><code>      \once \override Staff.TimeSignature.space-alist =</code><br><code>        #'((first-note . (fixed-space . 2.0))</code><br><code>           (right-edge . (extra-space . 0.5))</code><br><code>           ;; free up some space between time signature</code><br><code>           ;; and repeat bar line</code><br><code>           (staff-bar . (extra-space . 1)))</code><br><code>}</code><br><br><code>\layout {</code><br><code>  \context {</code><br><code>    \Score</code><br><code>    %% Changing the defaults from engraver-init.ly</code><br><code>    startRepeatType = #"[|:"</code><br><code>    endRepeatType = #":|]"</code><br><code>    doubleRepeatType = #":|][|:"</code><br><code>  }</code><br><code>}</code><br><code>\defineBarLine "||-[|:" #'("||" "[|:" "[|:") </code><br><br><code>\relative c'{</code><br><code>  \showStartRepeatBar \bar "[|:"  </code><br><code>\repeat volta 2 { </code><br><code>\repeat unfold 2 c1 }</code><br><code>  </code><br><code>\repeat volta 2 { </code><br><code>\repeat unfold 2 c }</code><br><code>  \alternative {</code><br><code>    { c }</code><br><code>    {</code><br><code>      c</code><br><code>    }</code><br><code>  }</code><br><code>  \bar "||-[|:" \break</code><br><code>  \repeat volta 2 { </code><br><code>\repeat unfold 2 c1 }</code><br><code>\repeat unfold 2 c1  </code><br><code>  \bar "|."</code><br><code>}</code></pre>
             ]]>
         </content>
     </entry>

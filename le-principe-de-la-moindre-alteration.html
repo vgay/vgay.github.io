@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Le principe de la moindre altération - MyRealBook </title>
+        
+        <meta name="robots" content="noindex,nofollow" />
+        <meta name="generator" content="Publii Open-Source CMS for Static Site" />
+        
+        
+        <link rel="alternate" type="application/atom+xml" href="https://myrealbook.vintherine.org/feed.xml" />
+<link rel="alternate" type="application/json" href="https://myrealbook.vintherine.org/feed.json" />
+
+        <meta property="og:title" content="Le principe de la moindre altération" /><meta property="og:site_name" content="MyRealBook" /><meta property="og:description" content="Une particularité de Lilypond est de pouvoir stocker des fragments musicaux dans des variables et de pouvoir les réutiliser où bon nous semble et comme bon nous semble. En les transposant notamment. Mais par défaut le résultat n'est pas toujours lisible !Pour les notes il suffit  souvent d'un peu d'astuce. Par exemple si l'on veut transposer un La♯ d'une tierce mineure en dessous (transposer une partie de violon pour un saxophone alto) cela nous donnera un Fa𝄪 mais si on le transpose d'une seconde augmentée (1 ton ½ également) cela nous donnera un Sol. Voici ce que donne ce principe appliqué à la gamme de Si majeur (code ci-dessous)Transposition pour saxophones " /><meta property="og:url" content="https://myrealbook.vintherine.org/le-principe-de-la-moindre-alteration.html" /><meta property="og:type" content="article" />
+        <style>:root{--body-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--heading-font:var(--body-font);--logo-font:var(--body-font);--menu-font:var(--body-font)}</style>
+        <link rel="stylesheet" href="https://myrealbook.vintherine.org/assets/css/style.css?v=489237eb5e2f09dd77c9332d52b3a5e5">       
+        <script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://myrealbook.vintherine.org/le-principe-de-la-moindre-alteration.html"},"headline":"Le principe de la moindre altération","datePublished":"2022-01-22T22:27","dateModified":"2022-01-23T08:44","description":"Une particularité de Lilypond est de pouvoir stocker des fragments musicaux dans des variables et de pouvoir les réutiliser où bon nous semble et comme bon nous semble. En les transposant notamment. Mais par défaut le résultat n'est pas toujours lisible !Pour les notes il suffit  souvent d'un peu d'astuce. Par exemple si l'on veut transposer un La♯ d'une tierce mineure en dessous (transposer une partie de violon pour un saxophone alto) cela nous donnera un Fa𝄪 mais si on le transpose d'une seconde augmentée (1 ton ½ également) cela nous donnera un Sol. Voici ce que donne ce principe appliqué à la gamme de Si majeur (code ci-dessous)Transposition pour saxophones ","author":{"@type":"Person","name":"Vincent"},"publisher":{"@type":"Organization","name":"Vincent"}}</script>        
+        
+        <link type="application/atom+xml" rel="alternate" href="https://myrealbook.vintherine.org/feed.xml"/>
+<link type="application/json" rel="alternate" href="https://myrealbook.vintherine.org/feed.json"/> 
+    </head>
+    <body>
+        <header class="header" id="js-header">
+
+   <a href="https://myrealbook.vintherine.org/" class="logo">
+         MyRealBook
+   </a>
+
+      <nav class="navbar js-navbar">
+         <button class="navbar__toggle js-toggle" aria-label="Menu">
+            <span class="navbar__toggle-box">
+               <span class="navbar__toggle-inner">Menu</span>
+            </span>
+         </button>
+         <ul class="navbar__menu">
+                  <li>
+                  <a
+                     href="https://myrealbook.vintherine.org/index.html"
+                        target="_self"
+         >
+                     Blog
+                  </a>
+         
+            </li>
+                  <li>
+                  <a
+                     href="https://myrealbook.vintherine.org/myrealbook-les-partitions.html"
+                        target="_self"
+         >
+                     Partitions
+                  </a>
+         
+            </li>
+                  <li>
+                  <a
+                     href="https://myrealbook.vintherine.org/about.html"
+                        target="_self"
+         >
+                     À propos
+                  </a>
+         
+            </li>
+                  <li>
+                  <a
+                     href="https://myrealbook.vintherine.org/feed.xml"
+                        target="_self"
+         >
+                     Flux RSS
+                  </a>
+         
+            </li>
+         </ul>      </nav>
+
+      <div class="search">
+          <div class="search__overlay js-search-overlay">
+            <form action="https://myrealbook.vintherine.org/search.html" class="search__form">
+               <input
+                  class="search__input js-search-input"
+                  type="search"
+                  name="q"
+                  aria-label="Search input" 
+                  placeholder="search..."
+                  autofocus="autofocus"/>
+               <button class="search__submit">Search</button>
+            </form>
+         </div>
+         <button
+            class="search__btn js-search-btn"
+            aria-label="Search">
+            <svg role="presentation" focusable="false" height="18" width="18">
+               <use xlink:href="https://myrealbook.vintherine.org/assets/svg/svg-map.svg#search"/>
+            </svg>
+         </button>
+      </div>
+
+</header>
+<main>
+   <div class="wrapper">
+         <article class="post">
+            <header class="post__header">
+               <h1 class="post__title">
+                  Le principe de la moindre altération
+               </h1>
+                  <div class="post__meta">
+                        <div class="post__author">By
+                              <a href="https://myrealbook.vintherine.org/authors/vincent/" class="invert" rel="author" title="Vincent">Vincent</a>
+                        </div>
+
+                  </div>
+            </header>
+
+            <div class="post__inner">
+               <div class="post__entry">
+                  <p>Une particularité de Lilypond est de pouvoir stocker des fragments musicaux dans des variables et de pouvoir les réutiliser où bon nous semble et comme bon nous semble. En les transposant notamment. Mais par défaut le résultat n'est pas toujours lisible !</p>
+<p>Pour les notes il suffit  souvent d'un peu d'astuce. Par exemple si l'on veut transposer un La♯ d'une tierce mineure en dessous (transposer une partie de violon pour un saxophone alto) cela nous donnera un Fa<span class="wdg-select-all-ok">𝄪 mais si on le transpose d'une seconde augmentée (1 ton ½ également) cela nous donnera un Sol. Voici ce que donne ce principe appliqué à la gamme de Si majeur (code ci-dessous)</span></p>
+<figure class="post__image" ><img loading="lazy" src="https://myrealbook.vintherine.org/media/posts/26/document-3.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/26/responsive/document-3-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/26/responsive/document-3-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/26/responsive/document-3-md.png 768w"  alt="" width="570" height="300">
+<figcaption >Transposition pour saxophones</figcaption>
+</figure>
+<p> </p>
+
+<pre>\version "2.22.1"<br><br>theNotes = \relative c' { <br>  \key b \major<br>  b4 cis dis e fis gis ais b~ | 1 }<br><br>\layout {<br>  indent = 5\cm<br>}<br><br>\score {<br>  &lt;&lt;<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { "Instruments"<br>                         \line { "en Do" } } } }<br>    \theNotes<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { \line { "Instrument en Si" \smaller \flat }<br>                         \line { "\\transpose c d (1 ton)" } } } }<br>    \transpose c d \theNotes<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { \line { "Instrument en Si" \smaller \flat }<br>                         \line { "\\transpose c eses (1 ton)" } } } }<br>    \transpose c eses \theNotes<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { \line { "Instrument en Mi" \smaller \flat }<br>                         \line { "\\transpose c a (4 tons  ½)" } } } }<br>    \transpose c a \theNotes<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { \line { "Instrument en Mi" \smaller \flat }<br>                         \line { "\\transpose c beses (4 tons  ½)" } } } }<br>    \transpose c beses \theNotes<br>  &gt;&gt;<br>}</pre>
+<p>Pour les accords le même problème se pose mais est un petit peu plus compliqué à résoudre en utilisant la propriété chordRootNamer (voir code ci-dessous et <a href="https://lilypond.org/doc/v2.23/Documentation/notation/displaying-chords.fr.html">cette page de documentation</a>) . Ici ce n'est plus l'intervalle de transposition qui varie mais directement la base de l'accord via un double procédé enharmonique. Merci encore Jean.</p>
+<figure class="post__image" ><img loading="lazy" src="https://myrealbook.vintherine.org/media/posts/26/document-4.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/26/responsive/document-4-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/26/responsive/document-4-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/26/responsive/document-4-md.png 768w"  alt="" width="583" height="303">
+<figcaption >Fm7 c'est plus intuitif que E♯m7 n'est-ce-pas ?</figcaption>
+</figure>
+<p> </p>
+<pre>\version "2.22.1"<br><br>#(use-modules (ice-9 match))<br><br>#(define enharmonization<br>   #((0 . 0) ; C♮<br>             (0 . 1/2) ; D♭ → C ♯<br>             (1 . 0) ; D♮<br>             (2 . -1/2) ; D♯ → E♭<br>             (2 . 0) ; E♮<br>             (3 . 0) ; F♮<br>             (3 . -1/2) ; G♭ → F♯<br>             (4 . 0) ; G♮<br>             #f ; G♯/A♭<br>             (5 . 0) ; A♮<br>             (6 . -1/2) ; A♯ → B♭<br>             (6 . 0) ; B♮<br>             ))<br><br>#(define (enharmonize pitch)<br>   (let* ((semitones (ly:pitch-semitones pitch))<br>          (normalized-semitones (modulo semitones 12))<br>          (eventual-octave (* 1/12 (- semitones normalized-semitones))))<br>     (match (vector-ref enharmonization normalized-semitones)<br>            ((best-name . best-alteration)<br>             (ly:make-pitch eventual-octave best-name best-alteration))<br>            (#f<br>             ;; G♯/A♭<br>             (if (positive? (ly:pitch-alteration pitch))<br>                 (ly:make-pitch eventual-octave 4 1/2)<br>                 (ly:make-pitch eventual-octave 5 -1/2))))))<br><br>%% Tests<br>#(for-each<br>  (match-lambda<br>   ((input output)<br>    (let ((processed (enharmonize input)))<br>      (if (not (equal? output (enharmonize input)))<br>          (ly:error "~s -&gt; ~s: bad output, expected ~s" input processed output)))))<br>  `((,#{ c #} ,#{ c #})<br>    (,#{ cis #} ,#{ cis #})<br>    (,#{ des #} ,#{ cis #})<br>    (,#{ des'' #} ,#{ cis'' #})<br>    (,#{ bisis #} ,#{ cis' #})<br>    (,#{ eeses #} ,#{ d #})<br>    (,#{ gis,, #} ,#{ gis,, #})<br>    (,#{ aes,, #} ,#{ aes,, #})<br>    (,#{ fisis,, #} ,#{ g,, #})))<br><br>\layout {<br>  indent = 4\cm<br>}<br><br>theNotes = { \repeat unfold 6 { R1 } }<br>theChords = \chordmode { gis1:m7 cis:7 fis:7+ g:m7 c:7 f:7+}<br><br>\score {<br>  &lt;&lt;<br>    \new ChordNames \theChords<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { "Instruments"<br>                         \line { "en Do" } } } }<br>    \theNotes<br>  &gt;&gt;<br>}<br><br>\score {<br>  &lt;&lt;<br>    \new ChordNames \transpose c a \theChords<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { \concat { "Pour inst. en Mi" \smaller \flat}<br>                         \line { "sans enharmonisation" } } } }<br>  \theNotes<br>  &gt;&gt;<br>} <br><br>\score {<br>  &lt;&lt;<br>    \new ChordNames \transpose c a \theChords<br>    \new Staff \with { <br>      instrumentName = \markup {<br>        \center-column { \concat { "Pour inst. en Mi" \smaller \flat}<br>                         \line { "avec enharmonisation" } } } } <br>    \theNotes<br>  &gt;&gt;<br>  \layout {<br>    \context {<br>      \ChordNames<br>      chordRootNamer =<br>      #(lambda (pitch lowercase)<br>         (note-name-&gt;markup (enharmonize pitch)<br>                            lowercase))<br>    }<br>  }<br>} </pre>
+               </div>
+                  <footer>
+
+
+                        <div class="post__tags-share">
+
+                        </div>
+
+
+                  </footer>
+            </div>
+         </article>
+
+
+
+   </div>
+
+</main>
+<footer class="footer">
+      <div class="footer__copyright">
+         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />Tous les textes, images et codes sources Lilypond contenus dans ce site sont mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licence Creative Commons Attribution -  Partage dans les Mêmes Conditions 4.0 International</a>.
+      </div>
+</footer>
+<script>
+   window.publiiThemeMenuConfig = {    
+      mobileMenuMode: 'sidebar',
+      animationSpeed: 300,
+      submenuWidth: 'auto',
+      doubleClickTime: 500,
+      mobileMenuExpandableSubmenus: true, 
+      relatedContainerForOverlayMenuSelector: '.navbar',
+   };
+</script>
+<script defer src="https://myrealbook.vintherine.org/assets/js/scripts.min.js?v=8b3e67b51e8c7a7d51b33f4a94ae4287"></script>
+   <script>        
+      var images = document.querySelectorAll('img[loading]');
+
+      for (var i = 0; i < images.length; i++) {
+         if (images[i].complete) {
+               images[i].classList.add('is-loaded');
+         } else {
+               images[i].addEventListener('load', function () {
+                  this.classList.add('is-loaded');
+               }, false);
+         }
+      }
+   </script>
+
+
+</body>
+</html>

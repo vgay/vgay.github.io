@@ -1,4 +1,3 @@
-
 \version "2.22.1"
 #(set-global-staff-size 18)
 \include "double-mark.ly"
@@ -20,15 +19,13 @@
   score-system-spacing = #'((basic-distance . 23)
                             (minimum-distance . 20)
                             (padding . 5))
-
-
 }
 
-title = #"Syracuse"
-composer = #"Henri Salvador"
-meter = #"(Ballad)"
-kwtempo = #"Slow"
-kwstyle = #"Ballad"
+title = #"Once I Loved"
+composer = #"Tom Jobim"
+meter = #"(Mod.Slow Bossa)"
+kwtempo = #"Mod. Slow"
+kwstyle = #"Bossa"
 
 realBookTitle = \markup {
   \score {
@@ -61,7 +58,7 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  % asplayed = #"" % doit être commentée si vide
+  %asplayed = #"" % doit être commentée si vide
   url = #""
   arranger = \markup \on-the-fly #played?
   \with-url #url
@@ -84,6 +81,10 @@ realBookTitle = \markup {
     \override KeySignature #'break-visibility = #'#(#f #f #f)
     \override SystemStartBar #'collapse-height = #1
     \override ParenthesesItem.font-size = #2
+    \override MultiMeasureRest #'expand-limit = #3
+    %     \override NonMusicalPaperColumn #'line-break-permission = ##f
+    %     \override NonMusicalPaperColumn #'page-break-permission = ##f
+    % à remplacer par \autoLineBreaksOff et \autoBreaksOff
   }
   \context {
     \Staff
@@ -94,12 +95,13 @@ realBookTitle = \markup {
     \ChordNames
     \override ParenthesesItem.font-size = #2
   }
+  \context { \Score markFormatter = #format-mark-box-alphabet }
   %   \context { \RemoveEmptyStaffContext 				% ne pas imprimer les lignes vides (autres que la première)
   %              \override VerticalAxisGroup #'remove-first = ##t			% Concerne la première ligne
   %   }
 }
 
-
+\defineBarLine "||-[|:" #'("||" "[|:" "[|:")
 
 form = \markup  \fill-line {
   \column {  }
@@ -107,92 +109,100 @@ form = \markup  \fill-line {
 }
 
 harmonies = \chordmode {
-  \set chordChanges = ##t
-  r4 \parenthesize c2.:6 d1:m7 g1:7 c:6 d:m7 g:9 d2:m7 g:9 c1:6
-  g1:m7 c:9 g2:m7 c:9 f1:6
-  es1:m7 bes:9 a2:m7 d:7 g1:9
-  c1:6 d1:m7 g1:7 c:6 d:m7 g:9 d2:m7 g:9 c1:6
+  \set chordChanges = ##f
+  g1:m7 c:9.5+ f:7+ ges:dim7 g:m7 as:dim7 a:m7 s
+  f:m7 bes:9.5+ es:7+ s e:m5-7 a:7 d:7+ d:7 d:7+ g:7
+  c:7+ f:7 bes:7+ s b:dim7 bes:m6 d:7/a as:5-7
+  g:7 g2:m7 \parenthesize a:5+7 d1:m \parenthesize d:7
 }
+
 
 
 theNotes =  \relative c'' {
-  \clef "treble" \key c \major \time 4/4
-  \set Score.markFormatter = #format-mark-box-alphabet
+  \clef "treble" \key f \major \time 4/4
+  % \partial 8
+  \showStartRepeatBar \bar "[|:" \mark #1
+  \oneVoice
   \repeat volta 2 {
-    \mark #1
-    r8 c d e e4 \tuplet 3/2 { d8 a g } | a4. 8~ 2 |
-    r8 g a c c a4 e16 d | e1 | \break
-    r8 d d a' a4 \tuplet 3/2 { g8 g d } | a'4. 8~ 2 |
-    r8 d, d a' a g g d | a'1
+    d1~ | 2~ 8 c4 a8~ | 1~ | 2 \tuplet 3/2 { r4 bes c } \break
+    \tuplet 3/2 { d d d } \tuplet 3/2 { d d d } | 2 \tuplet 3/2 { f4 e d } |
+    \tuplet 3/2 { e c a~ } 2~ | 2. r4 \break
+    c1~ | 2~ 8 bes4 g8~ | 1~ | 2 \tuplet 3/2 { r4 g a } \break
+    \tuplet 3/2 { bes bes a } \tuplet 3/2 { c c bes } | a2 \tuplet 3/2 { g4 bes a }
   }
-  \mark #2
-  \break r8 c c d d c c g | d'4. c8~ 2 |
-  r8 c c d d c c g | d'1 | \break
-  r8 bes bes c c bes bes f | c'4. bes8~ 2 |
-  r8 f g a a2 | r8 f g a a2 | \break \bar "||" \mark #1
-  r8  c d e e4 \tuplet 3/2 { d8 a g } | a4. 8~ 2 |
-  r8 g a c c a4 e16 d | e1 | \break
-  r8 d d a' a4 \tuplet 3/2 { g8 g d }
-  a'4. 8~ 2 | r8 d, d a' a g g d | a'1 \bar ".."
+  \alternative {
+    { g8 fis4 8~ 2~ |  2. r4 } { g8 fis4 a8~ 2 | g8 fis4 as8~ 8 g4 e8~ }
+  } \break \mark #2
+  e1 | g2~ 8 f4 d8~ | 1~ | 2 \tuplet 3/2 { r4 d es }
+  \tuplet 3/2 { f f e~ } \tuplet 3/2 { e g ges } | f2~ 8 4 des8 |
+  e4 d8 8~ 2~ | 2  \tuplet 3/2 { r4 d e } |
+  \tuplet 3/2 { f f e~ } \tuplet 3/2 { e g ges } | f2~ 8 4 des8 |
+  e4 d8 8~ 2~ | 2. r4
+  \bar ".."
 }
 
-
-chordsRhythm = \relative c''' {
+chordsRhythm = \relative c' {
   \override Rest #'staff-position = #7
   \improvisationOn \override NoteHead.no-ledgers = ##t
+  % \partial 8
+  % \showStartRepeatBar \bar "[|:"
+
+
 }
 
-Basse = \relative c {
-  \override Rest #'staff-position = #0
+Basse = \relative c' {
   \clef "bass" \key f \major \time 4/4
+  % \partial 8
+  % \showStartRepeatBar \bar "[|:"
+
+  \bar ".."
 }
 
 grille = \chordmode {
-  \bar "[|:" c1:6 d:m7 g:7 c:6 \break
-  d:m7 g:9 \/d2:m7 g:9 c1:6 \bar ":|]" \break
-  g:m7 c:9 \/g2:m7 c:9 f1:6 \break
-  es:m7 bes:9 \/a2:m7 d:7 g1:9 \break
-  c1:6 d:m7 g:7 c:6 \break
-  d:m7 g:9 \/d2:m7 g:9 c1:6
+  \bar "[|:" g1:m7 c:9.5+ f:7+ ges:dim7 \break
+  g:m7 as:dim7 \repeat percent 2 { a:m7 } \break
+  f:m7 bes:9.5+ \repeat percent 2 { es:7+ } \break
+  e:m5-7  a:7 d:7+ \set Score.repeatCommands = #'((volta "1.") ) d:7
+  \set Score.repeatCommands = #'((volta #f) end-repeat) \break
+  \stopStaff s \bar "" s \bar "" s \startStaff  \set Score.repeatCommands = #'((volta "2.") ) g:7
+  \set Score.repeatCommands = #'((volta #f)) \break \bar "||"
+  c:7+ f:7 \repeat percent 2 { bes:7+ } \break
+  b:dim7 bes:m6 d:7/a as:5-7 \break
+  g:7 \/g2:m7 a:5+7 d1:m \parenthesize d:7
+
   \bar ".." }
 
 marques = \relative c' {
-  s1 ^\markup \bold \box \fontsize #5 A s1*7
-  s1 ^\markup \bold \box \fontsize #5 B s1*7
-  s1 ^\markup \bold \box \fontsize #5 A
+  s1 ^\markup \bold \box \fontsize #5 A s1*19
+  s1 ^\markup \bold \box \fontsize #5 B
 }
 
 verse = \lyricmode {
-  J’ai -- me -- rais tant voir Sy -- ra -- cu -- se __
-  L’î -- le de Pâ -- ques__et Kai -- rou -- an
-  Et les grands ois -- eaux qui s’a -- mu -- sent __
-  A glis -- ser l’ai -- le sous le vent
-
-
-
-  Voir le pa -- ys du ma -- tin cal -- me __
-  Al -- ler pê -- cher au cor -- mo -- ran
-  Et m’e -- ni -- vrer de vin de pal -- me __
-  En é -- cou -- tant chan -- ter le vent
-
-  A -- vant que ma jeu -- nes -- se s’u -- se __
-  Et que mes prin -- temps soient par -- tis
-  J’ai -- me -- rais tant voir Sy -- ra -- cu -- se __
-  Pour m’en sou -- ve -- nir à Pa -- ris
+Once __ I loved __
+And I gave so much love to this love
+You were the world to me __
+Once __ I cried __ at the thought
+I was foo -- lish and proud
+And let you say good -- bye __ \repeat unfold 8 { \markup \null }
+Make __  you stay
+Be -- cause love is the sad -- dest thing
+When it goes a -- way __
+Be -- cause Love is the sad -- dest thing
+When it goes a -- way __
 }
-
 verseB = \lyricmode {
-  Voir les jar -- dins de Ba -- by lo -- ne __
-  Et le pa -- lais du grand La -- ma
-  Rê -- ver des a -- mants de Vé -- ro -- ne __
-  Au som -- met du Fu -- ji Ya -- ma
+Then __ one day __
+from my in -- fi -- nite sad -- ness
+You came and brought me love a -- gain __
+Now __ I know, __  that no mat -- ter, what -- ev -- er be -- falls
+I'll ne -- ver \repeat unfold 3 { \skip 1 } let you go
+I will hold you close __
 }
-
 
 \book {
   \paper {
     #(set-paper-size "tablette")
-    page-count = #1
+    %page-count = #1
   }
   #(define output-suffix "CTab")
   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
@@ -202,7 +212,7 @@ verseB = \lyricmode {
         \new ChordNames { \harmonies }
         \new Staff \with { instrumentName = \CleSol } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }
-          \theNotes
+          \theNotes \\ { s1*24 \break }
         >>
       >>
     } %\form
@@ -211,7 +221,7 @@ verseB = \lyricmode {
 \book {
   \paper {
     #(set-paper-size "tablette")
-    page-count = #1
+    %page-count = #1
   }
   #(define output-suffix "BbTab")
   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
@@ -221,7 +231,7 @@ verseB = \lyricmode {
         \new ChordNames { \transpose c d \harmonies }
         \new Staff \with { instrumentName = \Bb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }
-          \transpose c d \theNotes
+          \transpose c d \theNotes \\ { s1*24 \break }
         >>
       >>
     } %\form
@@ -230,7 +240,7 @@ verseB = \lyricmode {
 \book {
   \paper {
     #(set-paper-size "tablette")
-    page-count = #1
+    %page-count = #1
   }
   #(define output-suffix "EbTab")
   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
@@ -240,7 +250,7 @@ verseB = \lyricmode {
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }
-          \transpose c a \theNotes
+          \transpose c a, \theNotes \\ { s1*24 \break }
         >>
       >>
     } %\form
@@ -249,7 +259,7 @@ verseB = \lyricmode {
 \book {
   \paper {
     #(set-paper-size "a4")
-    page-count = #1
+    %page-count = #1
   }
   #(define output-suffix "Ca4")
   \bookpart {
@@ -262,6 +272,8 @@ verseB = \lyricmode {
           \theNotes
           \addlyrics \verse
           \addlyrics \verseB
+          \\ { s1*22 \break s1*4 \break }
+
         >>
       >>
     } %\form
@@ -303,7 +315,7 @@ verseB = \lyricmode {
 \book {
   \paper {
     #(set-paper-size "a4")
-    page-count = #1
+    %page-count = #1
   }
   #(define output-suffix "Bba4")
   \bookpart {
@@ -312,13 +324,11 @@ verseB = \lyricmode {
         \new ChordNames { \transpose c d \harmonies }
         \new Staff \with { instrumentName = \Bb  } <<
           % \new Voice \with { \consists "Pitch_squash_engraver" }
-          \transpose c d \theNotes
-          \addlyrics \verse
-          \addlyrics \verseB
+          \transpose c d \theNotes \\ { s1*22 \break s1*4 \break }
         >>
       >>
     } %\form
-  }  \bookpart {
+    }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -356,7 +366,7 @@ verseB = \lyricmode {
 \book {
   \paper {
     #(set-paper-size "a4")
-    page-count = #1
+    %page-count = #1
   }
   #(define output-suffix "Eba4")
   \bookpart {
@@ -365,13 +375,11 @@ verseB = \lyricmode {
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice
-          \transpose c a \theNotes
-          \addlyrics \verse
-          \addlyrics \verseB
+          \transpose c a, \theNotes \\ { s1*22 \break s1*4 \break }
         >>
       >>
     } %\form
-  }  \bookpart {
+    }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -406,3 +414,161 @@ verseB = \lyricmode {
       >>
 } } }
 
+% \book {
+%   \paper {
+%     #(set-paper-size "tablette")
+%     %page-count = #1
+%   }
+%   #(define output-suffix "BassTab")
+%   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
+%   \bookpart {
+%     \score {
+%       <<
+%         \new ChordNames { \harmonies }
+%         \new Staff \with { instrumentName = \CleFa } <<
+%           %\new Voice \with { \consists "Pitch_squash_engraver" }
+%           \Basse
+%         >>
+%       >>
+%     } %\form
+% } }
+%
+% \book {
+%   \paper {
+%     #(set-paper-size "a4")
+%     %page-count = #1
+%   }
+%   #(define output-suffix "Bassa4")
+%   \bookpart {
+%     \score {
+%       <<
+%         \new ChordNames { \harmonies }
+%         \new Staff \with { instrumentName = \CleFa }
+%         <<
+%           %\new Voice \with { \consists "Pitch_squash_engraver" }
+%           \Basse
+%         >>
+%       >>
+%     } %\form
+%     %}  \bookpart {
+%     \score {
+%       \layout {
+%         indent = 0
+%         ragged-right = ##f
+%         ragged-last = ##f
+%         \context {
+%           \Score
+%           \remove "Volta_engraver"
+%           \omit Clef % Cacher la clef
+%           \omit TimeSignature % cacher la métrique
+%           \omit BarNumber
+%           \override SpacingSpanner.strict-note-spacing = ##t
+%           proportionalNotationDuration = #(ly:make-moment 1/16)
+%         }
+%       }
+%       <<
+%         \new Staff \with {
+%           \remove "Staff_symbol_engraver"
+%         }
+%         \marques
+%         \new ChordNames \with {
+%           \override ChordName.extra-offset = #'(10 . -1 )
+%           \override ParenthesesItem.extra-offset = #'(10 . -1 )
+%           \override BarLine.bar-extent = #'(-5 . 5)
+%           \consists "Bar_engraver"
+%           \override StaffSymbol.line-positions = #'( -10 10 )
+%           \consists "Staff_symbol_engraver"
+%           \consists "Percent_repeat_engraver"
+%           \consists "Volta_engraver"
+%         }
+%         \grille
+%       >>
+% } } }
+
+% \book {
+%   %\paper { %page-count = #1
+%	#(set-paper-size "a4")}
+%   \header {meter = \markup \pad-around #1 \circle \bold \fontsize #-3 \concat {" " \musicglyph #"clefs.G" " "} }
+%   \bookpart {
+%     #(define output-suffix "RSa4")
+%     \score {
+%       <<
+%         \new ChordNames {
+%           \set chordChanges = ##f
+%           \Accords
+%         }
+%         \new Staff
+%         <<
+%           \set Staff.instrumentName = "Piano"
+%           \new Voice = "Mel" { \chordsRhythm }
+%         >>
+%         \new Staff
+%         <<
+%           \set Staff.instrumentName = "Basse"
+%           \new Voice = "Mel" { \clef "bass_8" \Basse }
+%           \new Voice = "Ctrl" { \ossature }
+%         >>
+%       >>
+%
+%     } %\form
+%     %}  \bookpart {
+%     \score {
+%       \layout {
+%         indent = 0
+%         ragged-right = ##f
+%         ragged-last = ##f
+%         \context {
+%           \Score
+%           \remove "Volta_engraver"
+%           \omit Clef % Cacher la clef
+%           \omit TimeSignature % cacher la métrique
+%           \omit BarNumber
+%           \override SpacingSpanner.strict-note-spacing = ##t
+%           proportionalNotationDuration = #(ly:make-moment 1/16)
+%         }
+%       }
+%       <<
+%         \new Staff \with {
+%           \remove "Staff_symbol_engraver"
+%         }
+%         \marques
+%         \new ChordNames \with {
+%           \override ChordName.extra-offset = #'(10 . -1 )
+%           \override ParenthesesItem.extra-offset = #'(10 . -1 )
+%           \override BarLine.bar-extent = #'(-5 . 5)
+%           \consists "Bar_engraver"
+%           \override StaffSymbol.line-positions = #'( -10 10 )
+%           \consists "Staff_symbol_engraver"
+%           \consists "Percent_repeat_engraver"
+%           \consists "Volta_engraver"
+%         }
+%         \transpose c a \grille
+%       >>
+% } } }
+
+% \book {
+%   %\paper { %page-count = #2
+%	#(set-paper-size "tablette")}
+%   \header {meter = \markup \pad-around #1 \circle \bold \fontsize #-3 \concat {" " \musicglyph #"clefs.G" " "} }
+%   \bookpart {
+%     #(define output-suffix "RSTab")
+%     \score {
+%       <<
+%         \new ChordNames {
+%           \set chordChanges = ##f
+%           \Accords
+%         }
+%         \new Staff
+%         <<
+%           \set Staff.instrumentName = "Piano"
+%           \new Voice = "Mel" { \chordsRhythm }
+%         >>
+%         \new Staff
+%         <<
+%           \set Staff.instrumentName = "Basse"
+%           \new Voice = "Mel" { \clef "bass_8" \Basse }
+%           \new Voice = "Ctrl" { \ossature }
+%         >>
+%       >>
+%
+% } } }
