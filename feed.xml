@@ -3,7 +3,7 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2022-01-23T08:44:34+01:00</updated>
+    <updated>2022-01-23T15:45:16+01:00</updated>
     <author>
         <name>Vincent</name>
     </author>
@@ -17,7 +17,7 @@
         <link href="https://myrealbook.vintherine.org/le-principe-de-la-moindre-alteration.html"/>
         <id>https://myrealbook.vintherine.org/le-principe-de-la-moindre-alteration.html</id>
 
-        <updated>2022-01-23T08:44:34+01:00</updated>
+        <updated>2022-01-23T15:45:16+01:00</updated>
             <summary>
                 <![CDATA[
                     <p>Une particularité de Lilypond est de pouvoir stocker des fragments musicaux dans des variables et de pouvoir les réutiliser où bon nous semble et comme bon nous semble. En les transposant notamment. Mais par défaut le résultat n'est pas toujours lisible !</p>
