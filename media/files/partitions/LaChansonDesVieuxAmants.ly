@@ -106,8 +106,8 @@ harmonies = \chordmode {
   \set chordChanges = ##t
   e1:m6- s b:9-/dis s e1:m6 s b:9-/dis r1
   b:9-/dis s e1:m6- s b:9-/dis s e1:m6 e:m
-  g1 b2:m7/fis f:7+ a:m7/e b:7/dis g1/b b:7/fis
-  e:m6- s fis:m7 b:9-/fis a:m7/c cis2:m5-7 b:7
+  g1 b2:m7/fis f:7+ a:m7/e b:7/dis g1/d b:7/fis
+  e:m6- s fis:m7 b:9-/fis c:6 cis2:m5-7 b:7
   bes:6 b:7 b1:9-/dis e:m7+9
 }
 
@@ -176,8 +176,8 @@ Basse = \relative c {
   \alternative {
     { d g,8 b4 d8 } { fis1 }
   } \break \bar "||"\mark #3
-  e'4. b4. g4 | e2 4 4 | a4. g e4 | fis2 dis4 fis | c4. e8~ 2 |
-  cis4. b8~ 2 | bes2 b \toCoda | dis4-^ r4 r2 \break \bar "|."
+  e'4. b4. g4 | e2 4 4 | a4. g e4 | fis2 dis4 fis | c4. g'8~ 2 |
+  cis,4. b8~ 2 | bes2 b \toCoda | dis4-^ r4 r2 \break \bar "|."
   \Coda e1 \fermata \bar ".."
 }
 
@@ -186,12 +186,12 @@ grille = \chordmode {
   \repeat percent 2 e:m6-  b1:9-/dis r1 \break \bar "||"
   \repeat percent 2 b1:9-/dis \repeat percent 2 e:m6- \break
   \repeat percent 2 b1:9-/dis e:m6- e:m \bar  "||-[|:"
-  g \/b2:m7/fis f:7+ \/a:m7/e b:7/dis \set Score.repeatCommands = #'((volta "1")) g1/b
+  g \/b2:m7/fis f:7+ \/a:m7/e b:7/dis \set Score.repeatCommands = #'((volta "1")) g1/d
   \set Score.repeatCommands = #'((volta #f) end-repeat) \break
   \stopStaff s \bar ""  s \bar "" s \startStaff \set Score.repeatCommands = #'((volta "2"))
   b:7/fis \set Score.repeatCommands = #'((volta #f)) \bar "||" \break
   \repeat percent 2 e:m6 fis:m7 b:9-/fis \break
-  a:m7/c \/cis2:m5-7 b:7 \/bes:6 b:7 \Coda b1:9-/dis \break \bar "|."
+  c:6 \/cis2:m5-7 b:7 \/bes:6 b:7 \Coda b1:9-/dis \break \bar "|."
   \Coda e:m7+9 \bar ".." \stopStaff s \bar ""  s \bar "" s \bar ""
 }
 
