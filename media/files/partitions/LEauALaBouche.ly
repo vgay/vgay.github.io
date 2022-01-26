@@ -122,7 +122,7 @@ harmonies = \chordmode {
   g:m7 s s s
   c:m7 f:7 bes:7+ g:m7
   c:m7 f:7 es:6 f:7 es2:6 f:7 bes1:7+
-  bes1:7+ f:7/c bes1:7+ c2:m7 f:9
+  bes1:7+ f:7/c bes1:7+/d c2:m7 f:9
   g1:m7 a:m5-7 bes1:7+ g:m7
   f:7 s bes:7+ s a:7 s f2:7 es:6.9 d:m7 c:m7
 
@@ -299,7 +299,7 @@ grille = \chordmode {
    \Coda
   \/es2:6 f:7 bes1:7+  \set Score.repeatCommands = #'((volta #f)) \break
   \bar "||"
-  bes:7+ f:7/c bes:7+/f \/c2:m7 f:9 \break
+  bes:7+ f:7/c bes:7+/d \/c2:m7 f:9 \break
   g1:m7 a:m5-7 bes:7+ g:m7 \break
   \repeat percent 2 f:7 \repeat percent 2 bes:7+ \break
   \repeat percent 2 a:7 \/f2:7 es:6.9 \/d:m7 c:m7 \bar "||-[|:"
