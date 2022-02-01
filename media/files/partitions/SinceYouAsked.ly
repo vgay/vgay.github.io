@@ -16,15 +16,15 @@
   markup-system-spacing = #'((basic-distance . 23)
                              (minimum-distance . 8)
                              (padding . 1))
-  score-system-spacing = #'((basic-distance . 16)
-                            (minimum-distance . 10)
-                            (padding . 0))
+  score-system-spacing = #'((basic-distance . 23)
+                            (minimum-distance . 20)
+                            (padding . 5))
 }
 
-title = #"Georgia on my Mind"
-composer = #"Hoagy Carmichael"
-meter = #"(Ballad)"
-kwtempo = #"Mod. Slow"
+title = #"Since You Asked"
+composer = #"John Scofield"
+meter = #"(Med. Swing Ballad)"
+kwtempo = #"Medium"
 kwstyle = #"Ballad"
 
 realBookTitle = \markup {
@@ -58,8 +58,8 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  %asplayed = #"" % doit être commentée si vide
-  url = #""
+  asplayed = #"John Scofield" % doit être commentée si vide
+  url = #"https://www.youtube.com/watch?v=frleuvis3a0"
   arranger = \markup \on-the-fly #played?
   \with-url #url
   \with-color #blue \underline
@@ -110,84 +110,81 @@ form = \markup  \fill-line {
 
 harmonies = \chordmode {
   \set chordChanges = ##f
-  f1:7+ e2:m5-7 a:9- d:m d:m7/c g/b bes4:m7 es:7
-  a2:m7 d:7 g:m7 c:7 a:m7 d:7 g:m7 c:5+7 g:m7 c:7 f1:6 e2:m5-7 a:9-
-  d:m a:9- d:m bes:7 d:m a:9- d:m g:7/b
-  d:m a:9- d:m b4:m5-7 e:7 a2:m7 d:7 g:m7 c:5+7
-  f1:7+ e2:m5-7 a:9- d:m7 d:m/c g/b bes4:m7 es:7
-  a2:m7 d:7 g:m7 c:7 f1:6 \startParenthesis \parenthesize g2:m7 \endParenthesis \parenthesize c:7
-
+c2:m7 a:8 d:8 g:8 c:m7 es:m7 d2:m5-7 des:7+11+
+c:m7 f:m7 bes:7 a:8 as:7+ d:7+ bes:7sus4 c:m7
+f:8 e:7sus4 ces:7+ des:7 d:7+ e:7sus4 f:m7 bes4:7sus4 g:9-/b
+c2:m7 a:8 d:8 g:8 c:m7 es:m7 d2:m5-7 des:7+11+
+c:m7 f:m7 bes:7 a:8 as:7+ d:7+ bes:7sus4 c:m7
+r1
 }
 
 
 theNotes =  \relative c'' {
-  \clef "treble" \key f \major \time 4/4
-  \showStartRepeatBar \bar "[|:" \mark #1
-  \repeat volta 2 { a8 c~ c2. | a8 g~ g2. | r4 a d a | g2. f8 g | \break a4 c e d | }
-  \alternative {
-    { bes8 d~ d4 a g | c1 | \startParenthesis \parenthesize d8 d d d \endParenthesis \parenthesize gis,2 }
-    { bes4 d, a' a | }
-  }
-  f1~ | f2 r
-  \bar "||" \break
-  \mark #2
-  d8 f4 g8~ g4 a | f8 d4 f8~ f2 | d8 f4 g8~ g4 a | c8 a4 b8~ b2 |  \break
-  d,8 f4 g8~ g4 a | c8 d4 e8~ e4. d8 | c4 a c c | a2 g \bar "||" \break
-  \mark #1 a8 c~ c2. | a8 g~ g2. | r4 a d a | g2. f8 g | \break
-  a4 c e d |  bes4 d, a' a |  f1~ | f2 r \bar "|."
-
+  \clef "treble" \key es \major \time 4/4
+  % \partial 8
+  \showStartRepeatBar \bar "[|:"
+  \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
+  \mark \markup { \box "A " " (Bass in 2 fell for head, walks for solos)" }
+  \repeat volta 2 {
+    r4 \tuplet 3/2 { g8 f es } \tuplet 3/2 { c g r } es'4 |
+    r4 << { \tuplet 3/2 { es8 f as~ } \tuplet 3/2 { as bes4 } \tuplet 3/2 { bes8 as4 } } \\
+          { \tuplet 3/2 { s8 s des,~ } \tuplet 3/2 { des es4 } \tuplet 3/2 { es8 f4 } } >> |
+    r4 \tuplet 3/2 { g8 f es } \tuplet 3/2 { bes' c r } as4~ |
+    as as \tuplet 3/2 { g8 f es } c4 \break
+    r4 \tuplet 3/2 { es8 d c } bes'2 |  r4 d \tuplet 3/2 { c8 bes g } \tuplet 3/2 { f es4 } |
+    r4 g8 es \acciaccatura ges8 f16 es c8 4 | r2 \acciaccatura ges'8 f16 es c8 4 } \break \mark #2
+  r4 des' \tuplet 3/2 { ces8 as ges } as4 |
+  r \tuplet 3/2 { ges8 as ces~ } \tuplet 3/2 { ces des4 } \tuplet 3/2 { des8 ces des~ } |
+  des4 des \tuplet 3/2 { ces8 as ges } as4~ |
+  as \tuplet 3/2 { as8 g! f } <c! es>4 <b f'> \bar "||" \break \mark #1
+  r4 \tuplet 3/2 { g'8 f es } \tuplet 3/2 { c g r } es'4 |
+  r4 << { \tuplet 3/2 { es8 f as~ } \tuplet 3/2 { as bes4 } \tuplet 3/2 { bes8 as4 } } \\
+        { \tuplet 3/2 { s8 s des,~ } \tuplet 3/2 { des es4 } \tuplet 3/2 { es8 f4 } } >> |
+  r4 \tuplet 3/2 { g8 f es } \tuplet 3/2 { bes' c r } as4~ |
+  as as \tuplet 3/2 { g8 f es } c4 \break
+  r4 \tuplet 3/2 { es8 d c } bes'2 |  r4 d \tuplet 3/2 { c8 bes g } \tuplet 3/2 { f es4 } |
+  r4 g8 es \acciaccatura ges8 f16 es c8 4 | r2 \acciaccatura ges'8 f16 es c8 4
+  \bar "|." \break
+  \doubleMark
+  \markup { \with-color #red { "To Coda" \raise #1 \musicglyph "scripts.varcoda" } }
+   \markup { \with-color #red { \musicglyph "scripts.varcoda" } }
+   \override Staff.Clef #'break-visibility = #'#(#f #f #t)
+   c4 r r \tuplet 3/2 { bes8 c es } | g4 as  << { \tuplet 3/2 { ges8 f4~ } f } \\ { s4 \tuplet 3/2 { bes,8 a4 } } >>
+   \tuplet 3/2 { ges'8 f4 } \tuplet 3/2 { es8 c es~ } es es4 c8~ | 1 \fermata
+   \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+   \mark \markup { \right-column { "Solos on form AABA" "After solos D.C. al Coda" \pad-around #3 " " } }
   \bar ".."
 }
 
-
-verse = \lyricmode {
-  Geor -- gia, Geor -- gia
-  The whole day through
-  Just an old sweet song
-  Keeps Geor -- gia on my mind
-  \repeat unfold 10 { \skip 1 }
-
-
-  Oth -- er arms reach out to me
-  Oth -- er eyes smile ten -- der -- ly
-  Still in peace -- ful dreams I see __
-  The road leads back to you
-
-  %I said
-  Oh Geor -- gia, Geor -- gia
-  No peace I find
-  Just an old sweet song
-  Keeps Geor -- gia on my mind __
-
+chordsRhythm = \relative c' {
+  \override Rest #'staff-position = #7
+  \improvisationOn \override NoteHead.no-ledgers = ##t
+  % \partial 8
+  % \showStartRepeatBar \bar "[|:"
 
 
 }
 
-verseB = \lyricmode {
-  %I said
-  Geor -- gia, Geor -- gia
-  A song of you
-  Comes as sweet and clear
-  As \repeat unfold 10 { \skip 1 } moon -- light through the pines __
+Basse = \relative c {
+  \clef "bass" \key es \major \time 4/4
+  % \partial 8
+  % \showStartRepeatBar \bar "[|:"
+  s1*20 \override Staff.Clef #'break-visibility = #'#(#f #f #t)
+\repeat unfold 8 { c4 } | \tuplet 3/2 { bes8 c4 } \tuplet 3/2 { cis8 d es~ } es as,4 c8~ | 1 \fermata
+  \bar ".."
 }
-
 
 grille = \chordmode {
-  \bar "[|:" f1:7+ \/e2:m5-7 a:9- \/d:m d:m7/c \w g/b bes4:m7 es:7 \break
-  \/a2:m7 d:7 \set Score.repeatCommands = #'((volta "1.") ) \/g:m7 c:7 \/a:m7 d:7 \s g:m7 c:7
-  \break \set Score.repeatCommands = #'((volta #f) end-repeat)
-  \stopStaff s1 \startStaff \set Score.repeatCommands = #'((volta "2.") )
-  \/g2:m7 c:7 f1:6 \/e2:m5-7 a:9- \bar "||" \break
-  \set Score.repeatCommands = #'((volta #f))
-  \/d:m a:9- \/d:m bes:7 \/d:m a:9- \/d:m g:7/b \break
-  \/d:m a:9- \w d:m b4:m5-7 e:7 \/a2:m7 d:7 \/g:m7 c:7 \break \bar "||"
-  f1:7+ \/e2:m5-7 a:9- \/d:m d:m7/c \w g/b bes4:m7 es:7 \break
-  \/a2:m7 d:7 \/g:m7 c:7 f1:6 \/g2:m7 c:7
+  \bar "[|:" \/c2:m7 a:8 \/d:8 g:8 \/c:m7 es:m7 \/d:m5-7 des:7+11+ \break
+\/c:m7 f:m7 \/bes:7 a:8 \/as:7+ d:7+ \/bes:7sus4 c:m7 \break \bar ":|]"
+\/f:8 e:7sus4 \/ces:7+ des:7 \/d:7+ e:7sus4 \w f:m7 bes4:7sus4 g:9-/b \break
+\/c2:m7 a:8 \/d:8 g:8 \/c:m7 es:m7 \/d:m5-7 des:7+11+ \break
+\/c:m7 f:m7 \/bes:7 a:8 \/as:7+ d:7+ \/bes:7sus4 c:m7
   \bar ".." }
 
 marques = \relative c' {
-  s1 ^\markup \bold \box \fontsize #5 A s1*11
-  s1 ^\markup \bold \box \fontsize #5 B s1*7
+  s1 ^\markup \bold \box \fontsize #5 A s1*7
+  s1 ^\markup \bold \box \fontsize #5 B s1*3
   s1 ^\markup \bold \box \fontsize #5 A
 }
 
@@ -203,12 +200,16 @@ marques = \relative c' {
     \score {
       <<
         \new ChordNames { \harmonies }
-        \new Staff \with { instrumentName = \CleSol } <<
+        \new StaffGroup <<
+        \new Staff \with { instrumentName = \CleSol }
+        <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }
           \theNotes
         >>
-      >>
-    } %\form
+        \new Staff \with { \RemoveEmptyStaves \override VerticalAxisGroup #'remove-first = ##t }
+        \Basse
+      >> >>
+    }  %\form
 } }
 
 \book {
@@ -252,21 +253,24 @@ marques = \relative c' {
 \book {
   \paper {
     #(set-paper-size "a4")
-    page-count = #1
+    %page-count = #1
   }
   #(define output-suffix "Ca4")
   \bookpart {
     \score {
       <<
         \new ChordNames { \harmonies }
+        \new StaffGroup <<
         \new Staff \with { instrumentName = \CleSol }
         <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }
           \theNotes
         >>
-      >>
+        \new Staff \with { \RemoveEmptyStaves \override VerticalAxisGroup #'remove-first = ##t }
+        \Basse
+      >> >>
     } %\form
-    %}  \bookpart {
+    }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -317,7 +321,7 @@ marques = \relative c' {
         >>
       >>
     } %\form
-    %}  \bookpart {
+    }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -368,7 +372,7 @@ marques = \relative c' {
         >>
       >>
     } %\form
-    %}  \bookpart {
+    }  \bookpart {
     \score {
       \layout {
         indent = 0
@@ -561,43 +565,3 @@ marques = \relative c' {
 %       >>
 %
 % } } }
-
-\book {
-  \paper {
-    #(set-paper-size "a4")
-    page-count = #1
-  }
-  #(define output-suffix "Vocala4")
-  \bookpart {
-    \score {
-      <<
-        \new ChordNames { \harmonies }
-        \new Staff \with { instrumentName = \CleSol }
-        <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" }
-          \theNotes
-          \addlyrics \verse
-          \addlyrics \verseB
-        >>
-      >>
-} } }
-
-\book {
-  \paper {
-    #(set-paper-size "tablette")
-    %page-count = #1
-  }
-  #(define output-suffix "VocalTab")
-  \bookpart {
-    \score {
-      <<
-        \new ChordNames { \harmonies }
-        \new Staff \with { instrumentName = \CleSol }
-        <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" }
-          \theNotes
-          \addlyrics \verse
-          \addlyrics \verseB
-        >>
-      >>
-} } }

@@ -107,7 +107,7 @@ harmonies = \chordmode {
   e1:m6- s b:9-/dis s e1:m6 s b:9-/dis r1
   b:9-/dis s e1:m6- s b:9-/dis s e1:m6 e:m
   g1 b2:m7/fis f:7+ a:m7/e b:7/dis g1/d b:7/fis
-  e:m6- s fis:m7 b:9-/fis c:6 cis2:m5-7 b:7
+  e:m6- s a4.:m9 fis8:m5-7 s2 b1:9-/fis c:6 cis2:m5-7 b:7
   bes:6 b:7 b1:9-/dis e:m7+9
 }
 
@@ -152,7 +152,7 @@ chordsRhythm = \relative c' {
     { d8 fis b <d g>8~ q2 } { <dis, a' b fis'>1 }
   } \break \mark #3 \bar "||"
   <b e g c e>2 \tuplet 3/2 { e'4 b g } | <e g b g'>2 e8 fis4 g8 |
-  g4 e8 <fis a c>8~ 2 | r8 <b, dis a' c fis>8~ 4 <fis' b dis a'>2 |
+  <g c e>4 e8 <fis a c>8~ 2 | r8 <b, dis a' c fis>8~ 4 <fis' b dis a'>2 |
   <e a c g'>4. q8~ 2
   <g b e>4. <fis b dis a'>8~ q2 | <bes, d g d' f>2 <fis' b dis a'> |
   \toCoda
@@ -176,7 +176,7 @@ Basse = \relative c {
   \alternative {
     { d g,8 b4 d8 } { fis1 }
   } \break \bar "||"\mark #3
-  e'4. b4. g4 | e2 4 4 | a4. g e4 | fis2 dis4 fis | c4. g'8~ 2 |
+  e'4. b4. g4 | e2 4 4 | a4. fis c4 | fis2 dis4 fis | c4. g'8~ 2 |
   cis,4. b8~ 2 | bes2 b \toCoda | dis4-^ r4 r2 \break \bar "|."
   \Coda e1 \fermata \bar ".."
 }
@@ -190,7 +190,7 @@ grille = \chordmode {
   \set Score.repeatCommands = #'((volta #f) end-repeat) \break
   \stopStaff s \bar ""  s \bar "" s \startStaff \set Score.repeatCommands = #'((volta "2"))
   b:7/fis \set Score.repeatCommands = #'((volta #f)) \bar "||" \break
-  \repeat percent 2 e:m6 fis:m7 b:9-/fis \break
+  \repeat percent 2 e:m6 \/a2:m9 fis:m5-7 b1:9-/fis \break
   c:6 \/cis2:m5-7 b:7 \/bes:6 b:7 \Coda b1:9-/dis \break \bar "|."
   \Coda e:m7+9 \bar ".." \stopStaff s \bar ""  s \bar "" s \bar ""
 }
