@@ -36,6 +36,7 @@ composer = #"Serge Gainsbourg"
 meter = #"(Samba)"
 kwtempo = #"Fast"
 kwstyle = #"Samba"
+kwfrench = #"Oui"
 
 realBookTitle = \markup {
   \score {

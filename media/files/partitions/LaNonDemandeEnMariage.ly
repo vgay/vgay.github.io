@@ -30,6 +30,7 @@ composer = #"Georges Brassens"
 meter = #"(Med. Swing)"
 kwtempo = #"Medium"
 kwstyle = #"Swing"
+kwfrench = #"Oui"
 
 realBookTitle = \markup {
   \score {

@@ -27,6 +27,7 @@ composer = #"Serge Gainsbourg"
 meter = #"(Med. Jazz Waltz)"
 kwtempo = #"Medium"
 kwstyle = #"Jazz Waltz"
+kwfrench = #"Oui"
 
 realBookTitle = \markup {
   \score {

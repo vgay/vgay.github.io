@@ -27,6 +27,7 @@ composer = #"Jacques Brel"
 meter = #"(Tango)"
 kwtempo = #"Slow"
 kwstyle = #"Tango"
+kwfrench = #"Oui"
 
 realBookTitle = \markup {
   \score {

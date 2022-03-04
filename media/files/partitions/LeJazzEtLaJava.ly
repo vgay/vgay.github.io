@@ -1,6 +1,7 @@
 
 \version "2.22.0"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -26,6 +27,7 @@ composer = #"J. Datin and Claude Nougaro"
 meter = #"(Med. Jazz Waltz)"
 kwtempo = #"Medium"
 kwstyle = #"Jazz Waltz"
+kwfrench = #"Oui"
 
 realBookTitle = \markup {
   \score {
@@ -78,7 +80,7 @@ realBookTitle = \markup {
     \override SystemStartBar #'collapse-height = #1
     \override ParenthesesItem.font-size = #2
   }
-  \context { 
+  \context {
     \Staff
     printPartCombineTexts = ##f
     \consists "Merge_rests_engraver"
@@ -103,10 +105,10 @@ harmonies = \chordmode {
   \set chordChanges = ##t
   c2:7+ e4:m7 d2:m7 f4:7+ c1.:7+
   c2:7+ e4:m7 d2:m7 f4:7+ e1.:m7
-  f2:7+ f4:7 e2:m7 e4:m6 d1.:m7 
+  f2:7+ f4:7 e2:m7 e4:m6 d1.:m7
   c2:7+ e4:m7 d2:m7 g4:7 c1.:6
- 
-  c2.:m f:m6 c:m bes:9 
+
+  c2.:m f:m6 c:m bes:9
   c:m f:m6 c:m as:7+
   bes:7 es bes:7 es
   g:9- c:m g4:7 c:m g:7 c2.:m
@@ -122,10 +124,10 @@ theNotes =  \relative c' {
   \A
   e4 e8 f g4 | f f8 g a4 | e r r | R2. | e4 e8 f g4 | f f8 g a4 | b r r | R2. \break
   a8 f a c b a | g e g b a g | f4 r r | R2. | e4 e8 f g4 | f f8 e d4 | c r r | R2. \bar "||" \break
-  \B 
+  \B
   \once \override Staff.KeySignature.color = #(x11-color 'red)
   \key es \major
-  g'4  es8 g es g | f4 d f | g es g | bes r r | 
+  g'4  es8 g es g | f4 d f | g es g | bes r r |
   g4  es8 g es g | f4 d f | g es g | c r r | \break
   bes f8 g as f | g4 fis g | bes as f? | g r r | \toCoda
   f8 es d es f d | es4 c es | d c b | c r r \bar ":|]" \break
@@ -161,7 +163,7 @@ verseC = \lyricmode {
   Pour moi jazz et ja -- va c'est du pa -- reil au même
   J'me soûle à la Bas -- tille et m'noir -- cis à Har -- lem
   Pour moi jazz et ja -- va dans le fond c'est tout comme
-  Quand le jazz dit: Go man , la ja -- va dit: Go home. 
+  Quand le jazz dit: Go man , la ja -- va dit: Go home.
 }
 
 verseD = \lyricmode {
@@ -186,9 +188,9 @@ verseD = \lyricmode {
       <<
         \new ChordNames { \harmonies }
         \new Staff \with { instrumentName = \CleSol } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \theNotes
-        >> 
+        >>
       >>
     } %\form
 } }
@@ -198,16 +200,16 @@ verseD = \lyricmode {
     #(set-paper-size "tablette")
     page-count = #1
   }
-  #(define output-suffix "BbTab") 
+  #(define output-suffix "BbTab")
   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
       <<
-        \new ChordNames { \transpose c d \harmonies } 
+        \new ChordNames { \transpose c d \harmonies }
         \new Staff \with { instrumentName = \Bb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" }  
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c d \theNotes
-        >> 
+        >>
       >>
     } %\form
 } }
@@ -224,9 +226,9 @@ verseD = \lyricmode {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" }  
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c a \theNotes
-        >> 
+        >>
       >>
     } %\form
 } }
@@ -241,15 +243,15 @@ verseD = \lyricmode {
     \score {
       <<
         \new ChordNames { \harmonies }
-        \new Staff \with { instrumentName = \CleSol } 
+        \new Staff \with { instrumentName = \CleSol }
         <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \theNotes
           \addlyrics \verse
           \addlyrics \verseB
           \addlyrics \verseC
           \addlyrics \verseD
-        >> 
+        >>
       >>
 } } }
 
@@ -258,19 +260,19 @@ verseD = \lyricmode {
     #(set-paper-size "a4")
     page-count = #1
   }
-  #(define output-suffix "Bba4") 
+  #(define output-suffix "Bba4")
   \bookpart {
     \score {
       <<
-        \new ChordNames { \transpose c d \harmonies } 
+        \new ChordNames { \transpose c d \harmonies }
         \new Staff \with { instrumentName = \Bb  } <<
-          % \new Voice \with { \consists "Pitch_squash_engraver" }  
+          % \new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c d \theNotes
           \addlyrics \verse
           \addlyrics \verseB
           \addlyrics \verseC
           \addlyrics \verseD
-        >> 
+        >>
       >>
 } } }
 
@@ -285,13 +287,13 @@ verseD = \lyricmode {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
-          %\new Voice  
+          %\new Voice
           \transpose c a \theNotes
           \addlyrics \verse
           \addlyrics \verseB
           \addlyrics \verseC
           \addlyrics \verseD
-        >> 
+        >>
       >>
 } } }
 

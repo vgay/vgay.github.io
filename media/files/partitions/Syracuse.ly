@@ -29,6 +29,7 @@ composer = #"Henri Salvador"
 meter = #"(Ballad)"
 kwtempo = #"Slow"
 kwstyle = #"Ballad"
+kwfrench = #"Oui"
 
 realBookTitle = \markup {
   \score {

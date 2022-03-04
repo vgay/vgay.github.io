@@ -28,6 +28,7 @@ composer = #"Ángel Cabral"
 meter = #"(Valse)"
 kwtempo = #"Medium"
 kwstyle = #"Valse"
+kwfrench = #"Oui"
 
 realBookTitle = \markup {
   \score {
@@ -84,7 +85,7 @@ realBookTitle = \markup {
     \override SystemStartBar #'collapse-height = #1
     \override ParenthesesItem.font-size = #2
   }
-  \context { 
+  \context {
     \Staff
     printPartCombineTexts = ##f
     \consists "Merge_rests_engraver"
@@ -112,7 +113,7 @@ harmonies = \chordmode {
   s2 s2. a:m6 s e:m9 s b:7 s e:m s e:m s
   e:m7+ s a:m7 s d:7 s g:6 s
   b:7 s e:m7+ s c:7 s b:7 s b:7 e:m7+ s
-  d:7 s g:6 s d:7 s g:6 s 
+  d:7 s g:6 s d:7 s g:6 s
   b:7 s e:m7+ s c:7 s b:7 s b:7 e:m7+ s
   a:m6 s e:m9 s b:7 s e:m s e:m s e:m
 }
@@ -122,7 +123,7 @@ harmoniesV = \chordmode {
   s4
   e2.:m7+ s a:m7 s d:7 s g:6 s
   b:7 s e:m7+ s c:7 s b:7 s b:7 e:m7+ s
-  d:7 s g:6 s d:7 s g:6 s 
+  d:7 s g:6 s d:7 s g:6 s
   b:7 s e:m7+ s c:7 s b:7 s b:7 e:m7+ s
   %a:m6 s e:m9 s b:7 s e:m s e:m s e:m
 }
@@ -130,11 +131,11 @@ harmoniesV = \chordmode {
 
 theNotes =  \relative c'' {
   \clef "treble" \key g \major \time 3/4 \Intro
-  \partial 2 b4 c | cis d dis | 
+  \partial 2 b4 c | cis d dis |
   \repeat volta 2 {
     <a c e>8 q r <a c fis> q4 | <a c e>8 q r <a c fis> q4 |
     <g b e>8 q r <g b fis'> q4 | <g b e>8 q r <g b fis'> q4 | \break
-    <a b dis>8 q r <a b fis'> q4 | <a b dis>8 q r <a b fis'> q4 | 
+    <a b dis>8 q r <a b fis'> q4 | <a b dis>8 q r <a b fis'> q4 |
   }
   \alternative {
     { <g b e>4 b c | cis d dis } { <g, b e>4 r r | r4 r  ais8 b }
@@ -148,11 +149,11 @@ theNotes =  \relative c'' {
     { e4. 8 fis e | dis2. | r4 r ais8 b }
     { b4. b8 dis dis | e2. | r8 d e d cis d }
   } \bar "||-[|:" \break
-  \repeat volta 2 { 
+  \repeat volta 2 {
     \mark #2
-    fis4. e8 e d | fis4. e8 e d | g4. e8 e d | g e4 e4 d8 | 
+    fis4. e8 e d | fis4. e8 e d | g4. e8 e d | g e4 e4 d8 |
     fis4. e8 e d | fis d4 e4 c8 | b2. | r8 b c b ais b \break
-    dis4. dis8 dis e | fis8 4. e8 dis | fis4 e r8 e | e e e e e e | e e4. 8 8 
+    dis4. dis8 dis e | fis8 4. e8 dis | fis4 e r8 e | e e e e e e | e e4. 8 8
   }
   \alternative {
     { e4 g g | fis2. | r8 d e d cis d }
@@ -162,21 +163,21 @@ theNotes =  \relative c'' {
     \mark #3
     <a c e>8 q r <a c fis> q4 | <a c e>8 q r <a c fis> q4 |
     <g b e>8 q r <g b fis'> q4 | <g b e>8 q r <g b fis'> q4 | \break
-    <a b dis>8 q r <a b fis'> q4 | <a b dis>8 q r <a b fis'> q4 | 
+    <a b dis>8 q r <a b fis'> q4 | <a b dis>8 q r <a b fis'> q4 |
     \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
     \tweak self-alignment-X #RIGHT
     \mark \markup  \with-color #(x11-color 'red) "To Coda"
   }
   \alternative {
     { <g b e>4 b c | cis d dis } { <g, b e>4 r r | r8 b c b ais b \break \bar "|."}
-  } 
+  }
   \mark \markup \with-color #(x11-color 'red) \bold \musicglyph #"scripts.varcoda"
-  <g b e>8 e dis e g b | <g b e>4  r r 
+  <g b e>8 e dis e g b | <g b e>4  r r
   \bar ".."
 }
 
 theNotesV =  \relative c'' {
-  \clef "treble" \key g \major \time 3/4 
+  \clef "treble" \key g \major \time 3/4
   \partial 1 ais8 b
   \bar "||-[|:"
   \repeat volta 2 {
@@ -188,7 +189,7 @@ theNotesV =  \relative c'' {
     { e4. 8 fis e | dis2. | r4 r ais8 b }
     { b4. b8 dis dis | e2. | r8 d e d cis d }
   } \bar "||-[|:" \break
-  \repeat volta 2 { 
+  \repeat volta 2 {
     \mark #2
     fis4. e8 e d | fis4. e8 e d | g4. e8 e d | g e4 e d8 | \break
     fis4. e8 e d | fis d4 e c8 | b2. | r8 b c b ais b \break
@@ -198,9 +199,9 @@ theNotesV =  \relative c'' {
     { e4 g g | fis2. | r8 d e d cis d }
     { dis4 g fis | e2. | R }
   } \break \bar "||-[|:"
- 
+
   %   \mark \markup \with-color #(x11-color 'red) \bold \musicglyph #"scripts.varcoda"
-  %   <g b e>8 e dis e g b | <g b e>4  r r 
+  %   <g b e>8 e dis e g b | <g b e>4  r r
   \bar ".."
 }
 
@@ -229,7 +230,7 @@ Basse = \relative c {
 grille = \chordmode {
   \bar "[|:"
 
-  \repeat volta 2 {  
+  \repeat volta 2 {
     \repeat percent 2 e1:m7+ \repeat percent 2 a:m7 \break
     \repeat percent 2 d:7 \repeat percent 2 g:6 \break
     \repeat percent 2 b:7 \repeat percent 2 e:m \break }
@@ -237,8 +238,8 @@ grille = \chordmode {
   \repeat percent 2 c:7 \repeat percent 2 b:7 \break
   \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
   c:7 b:7 \repeat percent 2 e:m7+ \set Score.repeatCommands = #'((volta #f))
- 
-  \repeat volta 2 {  
+
+  \repeat volta 2 {
     d:7/a d:7 g:6 g:6/d \break
     d:7/a d:7 g:6 g:6/d \break
     \repeat percent 2 b:7 \repeat percent 2 e:m \break
@@ -247,19 +248,19 @@ grille = \chordmode {
   \repeat percent 2 c:7 \repeat percent 2 b:7 \break
   \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
   c:7 b:7 \repeat percent 2 e:m7+ \set Score.repeatCommands = #'((volta #f))
-  \repeat volta 2 { 
+  \repeat volta 2 {
     \repeat percent 2 a1:m6 \repeat percent 2 e:m9 \break
     \repeat percent 2 b:7 e:m e:m \break }
 }
 
-marques = \relative c' { 
-  s1 ^\markup \bold \box \fontsize #5 A s1*19 
+marques = \relative c' {
+  s1 ^\markup \bold \box \fontsize #5 A s1*19
   s1 ^\markup \bold \box \fontsize #5 B s1*19
   s1 ^\markup \bold \box \fontsize #5 C
 }
 
 verse = \lyricmode {
- 
+
   Je re -- vois la ville en fête et en dé -- li -- re
   Suf -- fo -- quant sous le so -- leil et sous la joie
   Et j’en -- tends dans la mu -- sique les cris, les ri -- res
@@ -273,7 +274,7 @@ verse = \lyricmode {
   Nous pousse, en -- chaî -- nés l’un et l’au -- tre
   Et nous lai -- sse tous deux
   É -- pa -- nouis, en -- i -- vrés et heu -- reux.
-  En -- traî -- nés par la 
+  En -- traî -- nés par la
 }
 
 verseB = \lyricmode {
@@ -282,7 +283,7 @@ verseB = \lyricmode {
   É -- tour -- die, dés -- em -- pa -- rée, je res -- te là
   Quand sou -- dain, je me re -- tourne, il se re -- cu -- le,
   Et la foule vient me je \repeat unfold 7 { \skip 1 } ter en -- tre ses bras...
-  Em -- por -- tés par la 
+  Em -- por -- tés par la
 
   fou -- le qui s’é -- lan -- ce
   Et qui dan -- se
@@ -303,16 +304,16 @@ verseB = \lyricmode {
   \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
-      << \new StaffGroup \with { instrumentName = \CleSol } 
+      << \new StaffGroup \with { instrumentName = \CleSol }
          <<
-           \new ChordNames { \harmonies } 
+           \new ChordNames { \harmonies }
            \new Staff \theNotes
            \new Staff \Basse
          >>
       >>
       \layout {
         \context {
-          \Staff 
+          \Staff
           \RemoveEmptyStaves
       } }
     }
@@ -324,21 +325,21 @@ verseB = \lyricmode {
     #(set-paper-size "tablette")
     page-count = #2
   }
-  #(define output-suffix "BbTab") 
+  #(define output-suffix "BbTab")
   \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
       <<
         \new StaffGroup  \with { instrumentName = \Bb }
         <<
-          \new ChordNames { \transpose c d \harmonies } 
+          \new ChordNames { \transpose c d \harmonies }
           \new Staff \transpose c d \theNotes
           \new Staff \transpose c d \Basse
         >>
       >>
       \layout {
         \context {
-          \Staff 
+          \Staff
           \RemoveEmptyStaves
       } }
     } %\form
@@ -356,14 +357,14 @@ verseB = \lyricmode {
       <<
         \new StaffGroup  \with { instrumentName = \Eb }
         <<
-          \new ChordNames { \transpose c a \harmonies } 
+          \new ChordNames { \transpose c a \harmonies }
           \new Staff \transpose c a, \theNotes
           \new Staff \transpose c a \Basse
         >>
       >>
       \layout {
         \context {
-          \Staff 
+          \Staff
           \RemoveEmptyStaves
       } }
     } %\form
@@ -377,16 +378,16 @@ verseB = \lyricmode {
   #(define output-suffix "Ca4")
   \bookpart {
     \score {
-      << \new StaffGroup \with { instrumentName = \CleSol } 
+      << \new StaffGroup \with { instrumentName = \CleSol }
          <<
-           \new ChordNames { \harmonies } 
+           \new ChordNames { \harmonies }
            \new Staff \theNotes
            \new Staff \Basse
          >>
       >>
       \layout {
         \context {
-          \Staff 
+          \Staff
           \RemoveEmptyStaves
       } }
     }
@@ -402,7 +403,7 @@ verseB = \lyricmode {
           \remove "Volta_engraver"
           \omit Clef % Cacher la clef
           \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
+          \omit BarNumber
           \override SpacingSpanner.strict-note-spacing = ##t
           proportionalNotationDuration = #(ly:make-moment 1/16)
         }
@@ -410,14 +411,14 @@ verseB = \lyricmode {
       <<
         \new Staff \with {
           \remove "Staff_symbol_engraver"
-        }    
+        }
         \marques
         \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
+          \override ChordName.extra-offset = #'(10 . -1 )
+          \override ParenthesesItem.extra-offset = #'(10 . -1 )
           \override BarLine.bar-extent = #'(-5 . 5)
           \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
+          \override StaffSymbol.line-positions = #'( -10 10 )
           \consists "Staff_symbol_engraver"
           \consists "Percent_repeat_engraver"
           \consists "Volta_engraver"
@@ -431,20 +432,20 @@ verseB = \lyricmode {
     #(set-paper-size "a4")
     page-count = #1
   }
-  #(define output-suffix "Bba4") 
+  #(define output-suffix "Bba4")
   \bookpart {
     \score {
       <<
         \new StaffGroup  \with { instrumentName = \Bb }
         <<
-          \new ChordNames { \transpose c d \harmonies } 
+          \new ChordNames { \transpose c d \harmonies }
           \new Staff \transpose c d \theNotes
           \new Staff \transpose c d \Basse
         >>
       >>
       \layout {
         \context {
-          \Staff 
+          \Staff
           \RemoveEmptyStaves
       } }
     } %\form
@@ -459,7 +460,7 @@ verseB = \lyricmode {
           \remove "Volta_engraver"
           \omit Clef % Cacher la clef
           \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
+          \omit BarNumber
           \override SpacingSpanner.strict-note-spacing = ##t
           proportionalNotationDuration = #(ly:make-moment 1/16)
         }
@@ -467,14 +468,14 @@ verseB = \lyricmode {
       <<
         \new Staff \with {
           \remove "Staff_symbol_engraver"
-        }    
+        }
         \marques
         \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
+          \override ChordName.extra-offset = #'(10 . -1 )
+          \override ParenthesesItem.extra-offset = #'(10 . -1 )
           \override BarLine.bar-extent = #'(-5 . 5)
           \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
+          \override StaffSymbol.line-positions = #'( -10 10 )
           \consists "Staff_symbol_engraver"
           \consists "Percent_repeat_engraver"
           \consists "Volta_engraver"
@@ -494,14 +495,14 @@ verseB = \lyricmode {
       <<
         \new StaffGroup  \with { instrumentName = \Eb }
         <<
-          \new ChordNames { \transpose c a \harmonies } 
+          \new ChordNames { \transpose c a \harmonies }
           \new Staff \transpose c a, \theNotes
           \new Staff \transpose c a \Basse
         >>
       >>
       \layout {
         \context {
-          \Staff 
+          \Staff
           \RemoveEmptyStaves
       } }
     } %\form %\form
@@ -516,7 +517,7 @@ verseB = \lyricmode {
           \remove "Volta_engraver"
           \omit Clef % Cacher la clef
           \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
+          \omit BarNumber
           \override SpacingSpanner.strict-note-spacing = ##t
           proportionalNotationDuration = #(ly:make-moment 1/16)
         }
@@ -524,14 +525,14 @@ verseB = \lyricmode {
       <<
         \new Staff \with {
           \remove "Staff_symbol_engraver"
-        }    
+        }
         \marques
         \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
+          \override ChordName.extra-offset = #'(10 . -1 )
+          \override ParenthesesItem.extra-offset = #'(10 . -1 )
           \override BarLine.bar-extent = #'(-5 . 5)
           \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
+          \override StaffSymbol.line-positions = #'( -10 10 )
           \consists "Staff_symbol_engraver"
           \consists "Percent_repeat_engraver"
           \consists "Volta_engraver"
@@ -549,18 +550,18 @@ verseB = \lyricmode {
   #(define output-suffix "Vocala4")
   \bookpart {
     \score {
-      << \new StaffGroup \with { instrumentName = \CleSol } 
+      << \new StaffGroup \with { instrumentName = \CleSol }
          <<
-           \new ChordNames { \harmoniesV } 
-           \new Staff 
+           \new ChordNames { \harmoniesV }
+           \new Staff
            \theNotesV
            \addlyrics \verse
-           \addlyrics \verseB 
+           \addlyrics \verseB
          >>
       >>
       \layout {
         \context {
-          \Staff 
+          \Staff
           \RemoveEmptyStaves
       } }
     }
@@ -600,5 +601,5 @@ verseB = \lyricmode {
 
       }
     }
-  } 
+  }
 }

@@ -1,6 +1,7 @@
 
-\version "2.19.80"
-#(set-global-staff-size 18)
+\version "2.22.1"
+#(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -25,6 +26,7 @@ composer = #"Charles Trenet"
 meter = #"(Med. Swing)"
 kwtempo = #"Medium"
 kwstyle = #"Swing"
+kwfrench = #"Oui"
 
 realBookTitle = \markup {
   \score {
@@ -92,19 +94,19 @@ realBookTitle = \markup {
 
 harmonies = \chordmode {
   \set chordChanges = ##f
-  s4 f2:6 d:m7 g:m7 c:7 f2:6 d:m7 g:m7 c:7 
+  s4 f2:6 d:m7 g:m7 c:7 f2:6 d:m7 g:m7 c:7
   f:6 a:7/e d:m7 c:7 f:6 c4:m7 b:7 bes2:7+ d:7/a
-  g:m7 c:7 d:m7 g:m7 g:7sus4 g:7 c:7sus4 c:7 
+  g:m7 c:7 d:m7 g:m7 g:7sus4 g:7 c:7sus4 c:7
   d:m7 g:m7 g2:m7 c:7 f:6 e:7
-  a:6 fis:m7 b:m7 e:7 a:6 fis:m7 b:m7 e:7 
+  a:6 fis:m7 b:m7 e:7 a:6 fis:m7 b:m7 e:7
   a:7+ as:5+7 g:7sus4 g:7
   c:6 a:m7 d:m7 g:7 c:6 a:m7 d:m7 g:7
-  c:6 as:7 g:m7 c:5+7 
-  f2:6 d:m7 g:m7 c:7 f2:6 d:m7 g:m7 c:7 
+  c:6 as:7 g:m7 c:5+7
+  f2:6 d:m7 g:m7 c:7 f2:6 d:m7 g:m7 c:7
   f:6 a:7/e d:m7 c:7 f:6 c4:m7 b:7 bes2:7+ d:7/a
   g:m7 c:7 d:m7 g:m7
-  
-  
+
+
   f1:6
 }
 
@@ -116,7 +118,7 @@ theNotes =  \relative c' {
       \A
       f1~ | f2 \tuplet 3/2 { e4 f g } |
       a2. f8 g~ | g2 \tuplet 3/2 { e4 d c } |
-      a'1~ | a2 g8 a bes c~ | 
+      a'1~ | a2 g8 a bes c~ |
       c4. f,8 f4 f8 d'~ | d1~ |
       d4 d \tuplet 3/2 { c a g } | \break
     }
@@ -125,9 +127,9 @@ theNotes =  \relative c' {
       { f2 d8 f4 g8~ | g1 \repeatTie | f2 r4 e8 a~ \bar "||" }
     }
         \B \break
-        a1 | r8 gis4. a4 b8 cis~ | 
+        a1 | r8 gis4. a4 b8 cis~ |
         cis2. a8 b~ | b2 gis8 fis e e~ |
-        e1~ | e2 r4 g8 c~ | 
+        e1~ | e2 r4 g8 c~ |
         c1~ | c2 b8 c d e~ |
         e2. c8 d~ | d2 b8 a g c~ |
         c1~ | c2 r4 c,8 f~ \break \bar "||"
@@ -137,8 +139,8 @@ theNotes =  \relative c' {
       a'1~ | a2 g8 a bes c~ | \break
       c4. f,8 f4 f8 d'~ | d1~ |
       d4 d \tuplet 3/2 { c a g } | f2 d8 f4 g8~ |
- 
- 
+
+
  g1 | f2. r4 \bar ".."
 }
 
@@ -147,22 +149,22 @@ grille = \chordmode {
  \/f2:6 d:m7 \/g:m7 c:7 \/f2:6 d:m7 \/g:m7 c:7 \break
  \/ f:6 a:7/e \/d:m7 c:7 \/f:6 c:m7 \/bes:7+ d:7/a \break
  \set Score.repeatCommands = #'((volta "1"))
- \/g:m7 c:7 \set Score.repeatCommands = #'((volta #f)) \/d:m7 g:7 
+ \/g:m7 c:7 \set Score.repeatCommands = #'((volta #f)) \/d:m7 g:7
  \/g:7sus4 g:7 \/ c:7sus4 c:7 \bar ":|]" \break
- \set Score.repeatCommands = #'((volta "2")) \/g:m7 c:7 \set Score.repeatCommands = #'((volta #f)) \/d:m7 g:7 
+ \set Score.repeatCommands = #'((volta "2")) \/g:m7 c:7 \set Score.repeatCommands = #'((volta #f)) \/d:m7 g:7
  \/g2:m7 c:7 \/f:6 e:7  \bar "||" \break
- 
+
  \/a:6 fis:m7 \/b:m7 e:7 \/a:6 fis:m7 \/b:m7 e:7 \break
  \/a:7+ as:5+7 \/g:7sus4 g:7 \/c:6 a:m7 \/d:m7 g:7 \break
- 
- 
+
+
  \/c:6 a:m7 \/d:m7 g:7  \/c:6 as:7 \/g:m7 c:5+7 \bar "||" \break
   \/f2:6 d:m7 \/g:m7 c:7 \/f2:6 d:m7 \/g:m7 c:7 \break
  \/ f:6 a:7/e \/d:m7 c:7 \/f:6 c:m7 \/bes:7+ d:7/a \break
  \/g:m7 c:7 \/d:m7 g:7 \startStaff f1:6 \parenthesize fis:7
   \bar ".." }
 
-marques = \relative c' { 
+marques = \relative c' {
   s1  ^\markup \bold \box \fontsize #7 A s1*15
    s1 ^\markup \bold \box \fontsize #7 B s1*11
   s1 ^\markup \bold \box \fontsize #7 A
@@ -222,14 +224,14 @@ Ber -- gè -- re "d'a -"
     #(set-paper-size "tablette")
     page-count = #1
   }
-  #(define output-suffix "BbTab") 
+  #(define output-suffix "BbTab")
   \bookpart {
     \score {
       <<
         \new ChordNames {
           \set chordChanges = ##f
           \transpose c d \harmonies
-        } 
+        }
         \new Staff \with { instrumentName = \Bb \consists "Merge_rests_engraver" } <<
           \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c d \theNotes
       >> >>
@@ -266,13 +268,13 @@ Ber -- gè -- re "d'a -"
           \set chordChanges = ##t
           \harmonies
         }
-        \new Staff \with { instrumentName = \CleSol \consists "Merge_rests_engraver" } 
+        \new Staff \with { instrumentName = \CleSol \consists "Merge_rests_engraver" }
         <<
           \new Voice \with { \consists "Pitch_squash_engraver" } \theNotes
           \addlyrics \verse
           \addlyrics \verseB
       >> >>
-%   }   
+%   }
 %   \markup \pad-markup #2 " "
   } }
   \bookpart {
@@ -286,7 +288,7 @@ Ber -- gè -- re "d'a -"
           \remove "Volta_engraver"
           \omit Clef % Cacher la clef
           \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
+          \omit BarNumber
           \override SpacingSpanner.strict-note-spacing = ##t
           proportionalNotationDuration = #(ly:make-moment 1/16)
         }
@@ -294,14 +296,14 @@ Ber -- gè -- re "d'a -"
       <<
         \new Staff \with {
           \remove "Staff_symbol_engraver"
-        }    
+        }
         \marques
         \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
+          \override ChordName.extra-offset = #'(10 . -1 )
+          \override ParenthesesItem.extra-offset = #'(10 . -1 )
           \override BarLine.bar-extent = #'(-5 . 5)
           \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
+          \override StaffSymbol.line-positions = #'( -10 10 )
           \consists "Staff_symbol_engraver"
           \consists "Percent_repeat_engraver"
           \consists "Volta_engraver"
@@ -315,20 +317,20 @@ Ber -- gè -- re "d'a -"
     #(set-paper-size "a4")
     page-count = #1
   }
-  #(define output-suffix "Bba4") 
+  #(define output-suffix "Bba4")
   \bookpart {
     \score {
       <<
         \new ChordNames {
           \set chordChanges = ##f
           \transpose c d \harmonies
-        } 
+        }
         \new Staff \with { instrumentName = \Bb \consists "Merge_rests_engraver" } <<
           \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c d \theNotes
           \addlyrics \verse
           \addlyrics \verseB
       >> >>
-%   }   
+%   }
 %   \markup \pad-markup #2 " "
   } }
   \bookpart {
@@ -342,7 +344,7 @@ Ber -- gè -- re "d'a -"
           \remove "Volta_engraver"
           \omit Clef % Cacher la clef
           \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
+          \omit BarNumber
           \override SpacingSpanner.strict-note-spacing = ##t
           proportionalNotationDuration = #(ly:make-moment 1/16)
         }
@@ -350,14 +352,14 @@ Ber -- gè -- re "d'a -"
       <<
         \new Staff \with {
           \remove "Staff_symbol_engraver"
-        }    
+        }
         \marques
         \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
+          \override ChordName.extra-offset = #'(10 . -1 )
+          \override ParenthesesItem.extra-offset = #'(10 . -1 )
           \override BarLine.bar-extent = #'(-5 . 5)
           \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
+          \override StaffSymbol.line-positions = #'( -10 10 )
           \consists "Staff_symbol_engraver"
           \consists "Percent_repeat_engraver"
           \consists "Volta_engraver"
@@ -384,7 +386,7 @@ Ber -- gè -- re "d'a -"
           \addlyrics \verse
           \addlyrics \verseB
       >> >>
-%   }   
+%   }
 %   \markup \pad-markup #2 " "
   } }
   \bookpart {
@@ -398,7 +400,7 @@ Ber -- gè -- re "d'a -"
           \remove "Volta_engraver"
           \omit Clef % Cacher la clef
           \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
+          \omit BarNumber
           \override SpacingSpanner.strict-note-spacing = ##t
           proportionalNotationDuration = #(ly:make-moment 1/16)
         }
@@ -406,14 +408,14 @@ Ber -- gè -- re "d'a -"
       <<
         \new Staff \with {
           \remove "Staff_symbol_engraver"
-        }    
+        }
         \marques
         \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
+          \override ChordName.extra-offset = #'(10 . -1 )
+          \override ParenthesesItem.extra-offset = #'(10 . -1 )
           \override BarLine.bar-extent = #'(-5 . 5)
           \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
+          \override StaffSymbol.line-positions = #'( -10 10 )
           \consists "Staff_symbol_engraver"
           \consists "Percent_repeat_engraver"
           \consists "Volta_engraver"
@@ -421,3 +423,8 @@ Ber -- gè -- re "d'a -"
         \transpose c a \grille
       >>
 } } }
+
+%{
+convert-ly (GNU LilyPond) 2.22.1  convert-ly: Traitement de «  »...
+Conversion en cours : 2.20.0, 2.21.0, 2.21.2, 2.22.0
+%}

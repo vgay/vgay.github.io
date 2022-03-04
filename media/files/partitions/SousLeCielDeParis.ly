@@ -26,7 +26,7 @@ composer = #"Hubert Giraud"
 meter = #"(Jazz Waltz)"
 kwtempo = #"Medium"
 kwstyle = #"Jazz Waltz"
-
+kwfrench = #"Oui"
 
 realBookTitle = \markup {
   \score {
@@ -94,26 +94,26 @@ theNotes = \relative c' {
   \repeat volta 2 {
     \A c4 f g | as2 bes4 | c bes as | g f es |
     des2. | c' | bes~ | bes2 r4 | \break
-    c,4 e f | g2 as4 | bes des c | bes as g | 
+    c,4 e f | g2 as4 | bes des c | bes as g |
     \tweak self-alignment-X #RIGHT
     \mark \markup  \with-color #(x11-color 'red) "To Coda"
-    f2.~ | 
+    f2.~ |
   }
   \alternative {
-    { f2.~ | f2. | R2.  } 
+    { f2.~ | f2. | R2.  }
     { f2.\repeatTie ~ | f2 r4 | | g as g \bar "||" } }
-  \bar "||" \break 
+  \bar "||" \break
   \B f2. | f | f | g4 as g | f2. | f | f | g4 as g | \break
   f2 g4 | as2 bes4 | c des es | des c bes| c2.~ | c~ | c~ | c4 r2 \bar "||" \break
   \C c,4 f g | as2 bes4 | c bes as | g f es |
   des2. | c' | bes~ | bes2 r4 | \break
-  c,4 e f | g2 as4 | bes des c | 
-  bes4 as g | a2.~ | a2.~ | a4 r  \startParenthesis \parenthesize  c _\markup { "(Play " \box D" 1st x only)" } | 
+  c,4 e f | g2 as4 | bes des c |
+  bes4 as g | a2.~ | a2.~ | a4 r  \startParenthesis \parenthesize  c _\markup { "(Play " \box D" 1st x only)" } |
   c a \endParenthesis \parenthesize f \bar "||" \break
-  \doubleMark 
+  \doubleMark
   \markup {\with-color #(x11-color 'red) \bold "D.C. al Coda"}
   \markup { \fontsize #2 \box \bold D }
-  
+
   e2. | e~ | e4 r c' | c a f |
   es2. | es~ | es4 r c' | c a f | \break
   d2. | d~ | d4 r bes' | bes f es |
@@ -121,8 +121,8 @@ theNotes = \relative c' {
   c2 4 | des2 4 | d2 4 | e2 4 | f2 4 | g2 4 |
   a2 r4 | bes a bes | \break
   c2.~ | 2.~ | 4 r c | d bes g | c2.~ | 2.~ | c2.~ | 2. \break \bar "|."
-  
-  
+
+
   \mark \markup \with-color #(x11-color 'red) \bold \larger \musicglyph #"scripts.varcoda"
   a2.~ | a2.~ | a2.~| a2.~ | a2. \fermata
   \bar ".."
@@ -135,9 +135,9 @@ harmonies = \chordmode {
   bes2.:m7 f:m7 s bes:m7 s es:7 s as:6 s s s
   des bes:m7 g:5-7 s c:7 c:7/bes f:m/as c:7/g
   f2.*4:m7 bes2.:m7 bes:m7/as bes:m6/g bes:m7/f
-  c2.*3:7 
+  c2.*3:7
   c2.:7 f2.*4:6
-  f2.*4:7+ c:m7 bes:7 bes:m7 f2.:7+ a:7 d:m7 c:7 g:m7 c:7 f:7+ g:m7 f:7+ s c:dim s c c:7 f:m s  
+  f2.*4:7+ c:m7 bes:7 bes:m7 f2.:7+ a:7 d:m7 c:7 g:m7 c:7 f:7+ g:m7 f:7+ s c:dim s c c:7 f:m s
   f:7+ c:7 f:7+ c:7 f:6
 }
 
@@ -149,29 +149,29 @@ grille = \chordmode {
   bes:m7 bes:m/as bes:m/g bes:m7/f \break
   \repeat percent 4 { c1:9- } \break
   \set Score.repeatCommands = #'((volta "1"))
-  f:m7 \set Score.repeatCommands = #'((volta #f)) 
+  f:m7 \set Score.repeatCommands = #'((volta #f))
   f:m7/es
   bes:m7/des
   c:9-
-  
+
   \bar ":|]" \break
 
   \set Score.repeatCommands = #(list(list 'volta voltaEnd))
-  f:m7 \set Score.repeatCommands = #'((volta #f)) 
+  f:m7 \set Score.repeatCommands = #'((volta #f))
   bes:m7
   \repeat percent 2 f:m7
-  \bar "||" \break 
+  \bar "||" \break
   \repeat percent 2 { bes:m7 }
   \repeat percent 2 { es:7 } \break
   \repeat percent 4 { as:6 } \break
   des bes:m7 \repeat percent 2 { g:5-7 } \break
   c:7 c:7/bes f:m/as c:7/g  \bar "||" \break
-  
+
   \repeat percent 4 { f1:m7 } \break
   bes:m7 bes:m/as bes:m/g bes:m7/f \break
   \repeat percent 4 { c1:9- } \break
   \repeat percent 4 { f1:6 } \bar "||" \pageBreak
-  
+
   \repeat percent 4 { f1:7+ } \break
   \repeat percent 4 { c1:m7 } \break
   \repeat percent 4 { bes1:7 } \break
@@ -183,8 +183,8 @@ grille = \chordmode {
   \Coda
   f:7+ c:7 f:7+ c:7 \break
   f:6 \bar ".." \stopStaff s \bar ""  s \bar "" s \bar ""
- 
-  %   c:7 
+
+  %   c:7
   %   \repeat percent 3 { f:6 } \bar "|." \break
   %   \Coda
   %   f:m
@@ -193,11 +193,11 @@ grille = \chordmode {
   %   \bar ".."
 }
 
-marques = \relative c' { 
-  s1 ^\markup \bold \box \fontsize #7 A s1*19 
-  s1 ^\markup \bold \box \fontsize #7 B s1*15 
-  s1 ^\markup \bold \box \fontsize #7 C s1*15 
-  s1 ^\markup \bold \box \fontsize #7 D 
+marques = \relative c' {
+  s1 ^\markup \bold \box \fontsize #7 A s1*19
+  s1 ^\markup \bold \box \fontsize #7 B s1*15
+  s1 ^\markup \bold \box \fontsize #7 C s1*15
+  s1 ^\markup \bold \box \fontsize #7 D
 }
 
 verse = \lyricmode {
@@ -206,7 +206,7 @@ verse = \lyricmode {
   Hum Hum __
   Elle est née d'au -- jour -- d'hui
   Dans le coeur d'un gar -- çon __ ⁣
-  \repeat unfold 3 { \skip 1 } de Ber -- cy 
+  \repeat unfold 3 { \skip 1 } de Ber -- cy
   Un phi -- lo -- sophe as -- sis
   Deux mu -- si -- ciens quel -- ques ba -- dauds
   Puis les gens par mil -- liers __
@@ -237,7 +237,7 @@ verseB = \lyricmode {
   Leur bon -- heur se cons -- truit
   Sur un air fait pour eux __ \skip 1
 
-  Sous le pont 
+  Sous le pont
 }
 
 verseC = \lyricmode {
@@ -266,7 +266,7 @@ verseD = \lyricmode {
   Vien -- nent du mond' en -- tier
   Pour ba -- var -- der entr' eux  __ \skip 1
 
-  Et le ciel  
+  Et le ciel
 }
 
 verseE = \lyricmode {
@@ -280,9 +280,9 @@ verseE = \lyricmode {
 verseF = \lyricmode {
   Mais le ciel de Pa -- ris
   N'est pas long -- temps cru -- el
-  Hum Hum __ 
+  Hum Hum __
   Pour se fair' par -- don -- ner
-  Il offr' un arc en 
+  Il offr' un arc en
 }
 
 \book {
@@ -310,7 +310,7 @@ verseF = \lyricmode {
     #(set-paper-size "tablette")
     page-count = #2
   }
-  #(define output-suffix "BbTab") 
+  #(define output-suffix "BbTab")
   \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
@@ -318,7 +318,7 @@ verseF = \lyricmode {
         \new ChordNames {
           \set chordChanges = ##f
           \transpose c d \harmonies
-        } 
+        }
         \new Staff \with { instrumentName = \Bb \consists "Merge_rests_engraver" } <<
           \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c d \theNotes
       >> >>
@@ -357,7 +357,7 @@ verseF = \lyricmode {
           \set chordChanges = ##t
           \harmonies
         }
-        \new Staff \with { instrumentName = \CleSol } 
+        \new Staff \with { instrumentName = \CleSol }
         <<
           \new Voice \theNotes
       >> >>
@@ -372,7 +372,7 @@ verseF = \lyricmode {
           \Score
           \omit Clef % Cacher la clef
           \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
+          \omit BarNumber
           \override SpacingSpanner.strict-note-spacing = ##t
           proportionalNotationDuration = #(ly:make-moment 1/16)
         }
@@ -380,14 +380,14 @@ verseF = \lyricmode {
       <<
         \new Staff \with {
           \remove "Staff_symbol_engraver"
-        }    
+        }
         \marques
         \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
+          \override ChordName.extra-offset = #'(10 . -1 )
+          \override ParenthesesItem.extra-offset = #'(10 . -1 )
           \override BarLine.bar-extent = #'(-5 . 5)
           \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
+          \override StaffSymbol.line-positions = #'( -10 10 )
           \consists "Staff_symbol_engraver"
           \consists "Percent_repeat_engraver"
         }
@@ -400,14 +400,14 @@ verseF = \lyricmode {
   \paper {
     #(set-paper-size "a4")
   }
-  #(define output-suffix "Bba4") 
+  #(define output-suffix "Bba4")
   \bookpart {
     \score {
       <<
         \new ChordNames {
           \set chordChanges = ##f
           \transpose c d \harmonies
-        } 
+        }
         \new Staff \with { instrumentName = \Bb \consists "Merge_rests_engraver" } <<
           \new Voice \with { \consists "Pitch_squash_engraver" }  \transpose c d \theNotes
       >> >>
@@ -423,7 +423,7 @@ verseF = \lyricmode {
           \Score
           \omit Clef % Cacher la clef
           \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
+          \omit BarNumber
           \override SpacingSpanner.strict-note-spacing = ##t
           proportionalNotationDuration = #(ly:make-moment 1/16)
         }
@@ -431,14 +431,14 @@ verseF = \lyricmode {
       <<
         \new Staff \with {
           \remove "Staff_symbol_engraver"
-        }    
+        }
         \marques
         \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
+          \override ChordName.extra-offset = #'(10 . -1 )
+          \override ParenthesesItem.extra-offset = #'(10 . -1 )
           \override BarLine.bar-extent = #'(-5 . 5)
           \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
+          \override StaffSymbol.line-positions = #'( -10 10 )
           \consists "Staff_symbol_engraver"
           \consists "Percent_repeat_engraver"
         }
@@ -472,7 +472,7 @@ verseF = \lyricmode {
           \Score
           \omit Clef % Cacher la clef
           \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
+          \omit BarNumber
           \override SpacingSpanner.strict-note-spacing = ##t
           proportionalNotationDuration = #(ly:make-moment 1/16)
         }
@@ -480,14 +480,14 @@ verseF = \lyricmode {
       <<
         \new Staff \with {
           \remove "Staff_symbol_engraver"
-        }    
+        }
         \marques
         \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
+          \override ChordName.extra-offset = #'(10 . -1 )
+          \override ParenthesesItem.extra-offset = #'(10 . -1 )
           \override BarLine.bar-extent = #'(-5 . 5)
           \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
+          \override StaffSymbol.line-positions = #'( -10 10 )
           \consists "Staff_symbol_engraver"
           \consists "Percent_repeat_engraver"
         }
@@ -507,7 +507,7 @@ verseF = \lyricmode {
           \set chordChanges = ##t
           \harmonies
         }
-        \new Staff \with { instrumentName = \CleSol } 
+        \new Staff \with { instrumentName = \CleSol }
         <<
           \new Voice \theNotes
           \addlyrics \verse
@@ -515,7 +515,7 @@ verseF = \lyricmode {
 %           \addlyrics \verseC
 %           \addlyrics \verseD
 %           \addlyrics \verseE
-%           \addlyrics \verseF      
+%           \addlyrics \verseF
       >> >>
     } \form
 

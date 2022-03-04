@@ -23,6 +23,7 @@ composer = #"Serge Gainsbourg"
 meter = #"(Med. Latin - Swing)"
 kwtempo = #"Medium"
 kwstyle = #"Latin / Swing"
+kwfrench = #"Oui"
 
 realBookTitle = \markup {
   \score {
@@ -102,7 +103,7 @@ harmonies = \chordmode {
 
 harmoniesV = \chordmode {
   \override ParenthesesItem.font-size = #4
-  s8 g1:m7 d:9- d:dim c:m7+9 d:9- g:m7 cis:dim d:9- 
+  s8 g1:m7 d:9- d:dim c:m7+9 d:9- g:m7 cis:dim d:9-
   g1:m7 d:9- d:dim c:m7+9 d:9- g:m7
   cis2:dim d:7 g1:m7
   c2:m7 f:7 bes:6.9 g:m7
@@ -112,7 +113,7 @@ harmoniesV = \chordmode {
 }
 
 Controle = {
-  
+
 }
 
 global= {
@@ -133,30 +134,30 @@ Melodie = \relative c'' {
     c8 bes!4 bes8 ~ bes4 r8 bes8 | % 8
   }
   \alternative {
-    { 
+    {
       \times 2/3  { bes8 a8 a8 ~ } a8 e8 \times 2/3  { bes'8 a8 a8 ~ } a8 g8 | % 9
       a2 r4. d8
     }
-    { 
+    {
       \times 2/3  { bes8 a8 a8 ~ } a8 e8 \times 2/3  { a8 bes8 a8 ~ } a8 d,8
     }
-  } 
+  }
   g2 r4 r8 g8 \bar "||" \break
   \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
   \mark \markup { \rounded-box \bold Swing \small "(Double-time feel)"}
-  bes8 bes8 a8 bes8 a4 
+  bes8 bes8 a8 bes8 a4
   \times 2/3  {
     a8 bes8 a8
   }
   | % 13
   d8 d8 d4 r4. d8 | % 14
-  es8 es8 es8 es8 
+  es8 es8 es8 es8
   \times 2/3  {
     a,8 a8 a8 ~
   }
   a8 a8 | % 15
   d4 r4 r2  | \break % 16
-  bes8 bes a8 bes8 a4 
+  bes8 bes a8 bes8 a4
   \times 2/3  {
     bes8 a8 g8
   }
@@ -169,9 +170,9 @@ Melodie = \relative c'' {
 Happy = \relative c'' {
   \mark \markup \rounded-box \bold "Birthday"
   \partial 8
-  f,16 f | 
-  g8 f4 bes8 a4 r8 f16 f | 
-  g8 f4 c'8 bes4 r8 f16 f | 
+  f,16 f |
+  g8 f4 bes8 a4 r8 f16 f |
+  g8 f4 c'8 bes4 r8 f16 f |
   f'8 d4 bes8 g f r8 es'16 es |
   d8 bes4 c8 bes2
 }
@@ -189,7 +190,7 @@ RightH = \relative c'' {
   <e g bes>2 <g bes e>2 | % 9
   <fis a c>1
   <e g bes>2 <fis a c>2
-  <g bes d f>1 
+  <g bes d f>1
   <es g bes>2 <es a c>2 | % 13
   <d f g c>2 <d f bes>2 | % 14
   <es g bes>2 <es a c>2 | % 15
@@ -197,7 +198,7 @@ RightH = \relative c'' {
   <es g bes>2 <es a c>2 | % 17
   <d f g c>2 <d f bes>2 | % 18
   <es g bes>2 <fis a c>2 | % 19
-  <g bes d f>2 r2 
+  <g bes d f>2 r2
 
 }
 
@@ -210,7 +211,7 @@ LeftH = \relative c' {
     g8( d'4) -. g,8 -. es'4 -> d4 -. | % 3
     fis,8( d'4) -. fis,8 -. es'4 -> d4 -. | % 4
     f,!8( d'4) -. g,8 -. b4 -> d4 -. | % 5
-    c8( g4) -. d8 -. c4 -. bes8-> c8 | % 6 
+    c8( g4) -. d8 -. c4 -. bes8-> c8 | % 6
     es8( c'4) -. es,8 -. d'4 -> c4 -. | % 7
     d,8( bes'4) -. g8 -. c4 -> bes4 -. }
   \alternative {
@@ -239,9 +240,9 @@ VoicingA = \relative c'' {
   g2 fis | g4-. r2.
   \bar "||" \break
   \mark \markup \rounded-box \bold Swing
-  R1 | r4 \tuplet 3/2 { d8 f d } \tuplet 3/2 { bes a g } \tuplet 3/2 { f d bes } | 
-  c8 r r4 r2 | | r8 f d f g a bes d | 
-  c r2.. | r8 d f g~ g d \tuplet 3/2 { c bes a } | 
+  R1 | r4 \tuplet 3/2 { d8 f d } \tuplet 3/2 { bes a g } \tuplet 3/2 { f d bes } |
+  c8 r r4 r2 | | r8 f d f g a bes d |
+  c r2.. | r8 d f g~ g d \tuplet 3/2 { c bes a } |
   g4 r2. | R1
   \bar "|."
 }
@@ -252,7 +253,7 @@ VoicingB = \relative c' {
   r4. d8~ 2 | r4. d8~ 2 |
   r8 f4 d8~ 8 b4 8 | c1
   r4. d8~ 2 | r4. d8~ 2 |
-  r4. bes8~ 8 c4 cis8 | d8 r4. r2 
+  r4. bes8~ 8 c4 cis8 | d8 r4. r2
   r4. d8~ 2 | r4. d8~ 2 |
   r4. d8~ 2 | c4. d8~ 2 |
   r4. d8~ 2 | r4. d8~ 2 |
@@ -285,31 +286,31 @@ Vocal = \relative c'' {
   c8 bes!4 bes8 ~ bes4 r8 bes8 | % 8
   \times 2/3  { bes8 a8 a8 ~ } a8 e8 \times 2/3  { bes'8 a8 a8 ~ } a8 g8 | % 9
   a2 r4. d8 \break
-  
-  
+
+
   es4 \times 2/3  { d8 es8 d8 } es4 \times 2/3  { d8 es8 f8 } | % 3
   es4. d8 d2 \break
   d4 \times 2/3  { d8 c8 b8 } d4 r8 d8 ~ | % 5
   \times 2/3  { d8 c8 c8 ~ } c8 b8 c4 r8 c8 | \break % 6
   c8 b8 \times 2/3  { c8 b8 c8 ~ } c8 r8 \times 2/3  { b8 c8 d8 } | % 7
   c8 bes!4 bes8 ~ bes4 r8 bes8 \break
-  
-  
-  
+
+
+
   \times 2/3  { bes8 a8 a8 ~ } a8 e8 \times 2/3  { a8 bes8 a8 ~ } a8 d,8
   g2 r4 r8 g8 \bar "||" \break
   \Swing
-  bes8 bes8 a8 bes8 a4 
+  bes8 bes8 a8 bes8 a4
   \times 2/3  { a8 bes8 a8 }
   | % 13
   d8 d8 d4 r4. d8 | \break
-  es8 es8 es8 es8 
+  es8 es8 es8 es8
   \times 2/3  {
     a,8 a8 a8 ~
   }
   a8 a8 | % 15
   d4 r4 r2  | \break % 16
-  bes8 bes a8 bes8 a4 
+  bes8 bes a8 bes8 a4
   \times 2/3  {
     bes8 a8 g8
   }
@@ -345,7 +346,7 @@ verse = \lyricmode {
   Ce sont ces petits riens
   Que j'ai mis bout à bout
   Ces pe -- tits riens
-  Qui me ve -- naient de vous 
+  Qui me ve -- naient de vous
 }
 
 verseB = \lyricmode {
@@ -418,7 +419,7 @@ verseB = \lyricmode {
       >>
     }
   }
-  \bookpart { 
+  \bookpart {
     \score {
       %\new StaffGroup <<
       \relative c' <<
@@ -452,7 +453,7 @@ verseB = \lyricmode {
       >>
     }
   }
-  \bookpart { 
+  \bookpart {
     \score {
       %\new StaffGroup <<
       \relative c' <<

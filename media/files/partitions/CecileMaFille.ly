@@ -1,6 +1,7 @@
 
 \version "2.22.0"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -26,6 +27,7 @@ composer = #"J. Datin and Claude Nougaro"
 meter = #"(Med. Jazz Waltz)"
 kwtempo = #"Medium"
 kwstyle = #"Jazz Waltz"
+kwfrench = #"Oui"
 
 realBookTitle = \markup {
   \score {
@@ -78,7 +80,7 @@ realBookTitle = \markup {
     \override SystemStartBar #'collapse-height = #1
     \override ParenthesesItem.font-size = #2
   }
-  \context { 
+  \context {
     \Staff
     printPartCombineTexts = ##f
     \consists "Merge_rests_engraver"
@@ -104,7 +106,7 @@ harmonies = \chordmode {
   s4 c:m c:m7+ c:m7 f2.:m g2:5+7 g4:7 c2.:m f:m7
   bes:7 es:7+ es:6 d2:m5-7 as4/c g2.:7/b c:m/bes f:7/a
   bes2:m9 es4:9 as2.:7+ d2:m11 g4:7 c2.:m6 c:m6
-  f:m g:7 c:m s f:m/as bes:7 es:7+9 s 
+  f:m g:7 c:m s f:m/as bes:7 es:7+9 s
   f:m g:7 c4:m7 f:m/d es:7+ d2.:9 g:m d:7 f:m/g g2:5+7 g4:7
 c:m c:m7+ c:m7 f2.:m g2:5+7 g4:7 c2.:m f:m7
   bes:7 es:7+ es:6 d2:m5-7 as4/c g2.:7/b c:m/bes f:7/a
@@ -119,7 +121,7 @@ theNotes =  \relative c' {
     \A es4 g es | f2 es8 d | g4 es d | c2 d8 es
     f4 g as | bes2 f4 | g2.~ | g2 f8 g |
     as4 d, es | f2 bes8 as | g4 c, d | es2 g4 |
-    c2( bes4) | g2 f4 | g2( b,4) | 
+    c2( bes4) | g2 f4 | g2( b,4) |
   }
   \alternative {
     { c4 r c8 d }
@@ -151,9 +153,9 @@ theNotes =  \relative c' {
       <<
         \new ChordNames { \harmonies }
         \new Staff \with { instrumentName = \CleSol } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \theNotes
-        >> 
+        >>
       >>
     } %\form
 } }
@@ -163,16 +165,16 @@ theNotes =  \relative c' {
     #(set-paper-size "tablette")
     page-count = #1
   }
-  #(define output-suffix "BbTab") 
+  #(define output-suffix "BbTab")
   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
       <<
-        \new ChordNames { \transpose c d \harmonies } 
+        \new ChordNames { \transpose c d \harmonies }
         \new Staff \with { instrumentName = \Bb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" }  
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c d \theNotes
-        >> 
+        >>
       >>
     } %\form
 } }
@@ -189,9 +191,9 @@ theNotes =  \relative c' {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" }  
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c a \theNotes
-        >> 
+        >>
       >>
     } %\form
 } }
@@ -206,11 +208,11 @@ theNotes =  \relative c' {
     \score {
       <<
         \new ChordNames { \harmonies }
-        \new Staff \with { instrumentName = \CleSol } 
+        \new Staff \with { instrumentName = \CleSol }
         <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \theNotes
-        >> 
+        >>
       >>
 } } }
 
@@ -219,15 +221,15 @@ theNotes =  \relative c' {
     #(set-paper-size "a4")
     page-count = #1
   }
-  #(define output-suffix "Bba4") 
+  #(define output-suffix "Bba4")
   \bookpart {
     \score {
       <<
-        \new ChordNames { \transpose c d \harmonies } 
+        \new ChordNames { \transpose c d \harmonies }
         \new Staff \with { instrumentName = \Bb  } <<
-          % \new Voice \with { \consists "Pitch_squash_engraver" }  
+          % \new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c d \theNotes
-        >> 
+        >>
       >>
 } } }
 
@@ -242,9 +244,9 @@ theNotes =  \relative c' {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
-          %\new Voice  
+          %\new Voice
           \transpose c a \theNotes
-        >> 
+        >>
       >>
 } } }
 
