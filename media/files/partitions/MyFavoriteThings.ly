@@ -23,7 +23,7 @@
 }
 
 title = #"My Favorite Things"
-composer = #"O. Hammerstein II and R. Rogers"
+composer = #"Richard Rogers"
 meter = #"(Jazz Waltz)"
 kwtempo = #"Medium"
 kwstyle = #"Jazz Waltz"
@@ -83,7 +83,7 @@ realBookTitle = \markup {
     \override SystemStartBar #'collapse-height = #1
     \override ParenthesesItem.font-size = #2
   }
-  \context { 
+  \context {
     \Staff
     printPartCombineTexts = ##f
     \consists "Merge_rests_engraver"
@@ -108,7 +108,7 @@ harmonies = \chordmode {
   \set chordChanges = ##t
 e2.:m7 fis:m7 e2.:m7 fis:m7 c2.*4:7+ a2.:m7 d:7 g:7+ c:7+ g:7+ c:7+ fis:m5-7 b:9-
 e2.:7+ fis:m7 e:7+ fis:m7 a2.*4:7+ a2.:m7 d:7 g:7+ c:7+ g:7+ c:7+ fis:m5-7 b:9-
-e2.*2:m7 fis2.:m5-7 b:9- e:m7 e:m/d c2.*2:7+ 
+e2.*2:m7 fis2.:m5-7 b:9- e:m7 e:m/d c2.*2:7+
 c:7+ a:7 g2.:7+ c2.*2:7+ d2.:7
 g:7+ c:7+ g:7+ c:7+ g:7+ c:7+ fis:m5-7 b:9- s s e:m7
 }
@@ -128,11 +128,11 @@ e4 b' a | e fis d | d a' g | c,2. | b4 c d | e fis g | a ais b | c2. \bar "||"  
 \mark #3
 r4 b b | b2 e,4 | r4 a a | a2 dis,4 | r4 g g | g2 b,4 | e2. ~ | e2 e4 \break
 e fis e | fis e fis | g a g | a2 g4  | b c b | c2. ~ | c | b \break
-g ~ g ~ g ~ g R R R R 
+g ~ g ~ g ~ g R R R R
 \once \override Score.RehearsalMark #'direction = #DOWN
 \mark \markup \with-color #red fine
   \bar "|." \stopStaff s2. \bar "" s \startStaff
-%     \doubleMark 
+%     \doubleMark
 %   \markup {\with-color #red \bold "To Coda"}
 %   \markup { \with-color #red \musicglyph "scripts.varcoda" }
 \Coda  R \fermata \bar ".."
@@ -140,7 +140,7 @@ g ~ g ~ g ~ g R R R R
 
 chordsRhythm = \relative c''' {
   \override Rest #'staff-position = #7
-  \improvisationOn \override NoteHead.no-ledgers = ##t 
+  \improvisationOn \override NoteHead.no-ledgers = ##t
 }
 
 Basse = \relative c {
@@ -166,9 +166,9 @@ grille = \chordmode {
  e:m7 \fermata   \bar ".." \stopStaff s \bar "" s \bar "" s \bar ""
  }
 
-marques = \relative c' { 
-  s1 ^\markup \bold \box \fontsize #7 A s1*7 
-  s1 ^\markup \bold \box \fontsize #7 B s1*7 
+marques = \relative c' {
+  s1 ^\markup \bold \box \fontsize #7 A s1*7
+  s1 ^\markup \bold \box \fontsize #7 B s1*7
   s1 ^\markup \bold \box \fontsize #7 A
 }
 
@@ -185,9 +185,9 @@ marques = \relative c' {
       <<
         \new ChordNames { \harmonies }
         \new Staff \with { instrumentName = \CleSol } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \theNotes
-        >> 
+        >>
       >>
     } %\form
 } }
@@ -197,16 +197,16 @@ marques = \relative c' {
     #(set-paper-size "tablette")
     page-count = #1
   }
-  #(define output-suffix "BbTab") 
+  #(define output-suffix "BbTab")
   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
       <<
-        \new ChordNames { \transpose c d \harmonies } 
+        \new ChordNames { \transpose c d \harmonies }
         \new Staff \with { instrumentName = \Bb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" }  
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c d \theNotes
-        >> 
+        >>
       >>
     } %\form
 } }
@@ -223,9 +223,9 @@ marques = \relative c' {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" }  
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c a \theNotes
-        >> 
+        >>
       >>
     } %\form
 } }
@@ -240,11 +240,11 @@ marques = \relative c' {
     \score {
       <<
         \new ChordNames { \harmonies }
-        \new Staff \with { instrumentName = \CleSol } 
+        \new Staff \with { instrumentName = \CleSol }
         <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \theNotes
-        >> 
+        >>
       >>
     } %\form
  } }
@@ -254,15 +254,15 @@ marques = \relative c' {
     #(set-paper-size "a4")
     page-count = #1
   }
-  #(define output-suffix "Bba4") 
+  #(define output-suffix "Bba4")
   \bookpart {
     \score {
       <<
-        \new ChordNames { \transpose c d \harmonies } 
+        \new ChordNames { \transpose c d \harmonies }
         \new Staff \with { instrumentName = \Bb  } <<
-          % \new Voice \with { \consists "Pitch_squash_engraver" }  
+          % \new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c d \theNotes
-        >> 
+        >>
       >>
     } %\form
  } }
@@ -278,9 +278,9 @@ marques = \relative c' {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
-          %\new Voice  
+          %\new Voice
           \transpose c a \theNotes
-        >> 
+        >>
       >>
     } %\form
  } }

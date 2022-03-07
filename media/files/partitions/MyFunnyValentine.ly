@@ -22,7 +22,7 @@
 }
 
 title = #"My Funny Valentine"
-composer = #"Richard Rodgers / Lorenz Hart"
+composer = #"Richard Rodgers and Lorenz Hart"
 meter = #"(Ballad)"
 kwtempo = #"Mod. Slow"
 kwstyle = #"Ballad"
