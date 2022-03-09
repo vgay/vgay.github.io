@@ -1,6 +1,7 @@
 
 \version "2.22.1"
 #(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
@@ -23,7 +24,7 @@
 
 title = #"Begin The Beguine"
 composer = #"Cole Porter"
-meter = #"(Beguine)"
+meter = #"(Biguine)"
 kwtempo = #"Medium"
 kwstyle = #"Beguine"
 
@@ -82,7 +83,7 @@ realBookTitle = \markup {
     \override SystemStartBar #'collapse-height = #1
     \override ParenthesesItem.font-size = #2
   }
-  \context { 
+  \context {
     \Staff
     printPartCombineTexts = ##f
     \consists "Merge_rests_engraver"
@@ -146,11 +147,11 @@ theNotes =  \relative c' {
     \times 2/3 { c4 c c } c4. c8 | \times 2/3 { c2 c4 } \times 2/3 { c b a } | g2 e~ | e2. r4 |
     \times 2/3 { d e f } g2~ | g~ g8 f4 e8 | g1~ | g2 c4 d \bar "||"  \break \mark #6
     \times 2/3 { e e e } \times 2/3 { e e e } | e2 e4. e8 | e1~ | e2. c8 d |
-    \times 2/3 { e4 e e } e4. e8 | f4. e8 d4 c | b2 g~ | g2. a8 b | 
+    \times 2/3 { e4 e e } e4. e8 | f4. e8 d4 c | b2 g~ | g2. a8 b |
     \times 2/3 { c4 c c } c c | d2 \times 2/3 { c4 b a } | g2 e~ | e2. e8 e |
     \times 2/3 { d4 e f } g2~ | g~ g4. g8 | \times 2/3 { d4 e f } g2~ | g1 |
-    \times 2/3 { d4 e f } g2~ | g~ g8 f4 e8 | c1~ | c2. r4 \break  \bar "|." 
-      \doubleMark 
+    \times 2/3 { d4 e f } g2~ | g~ g8 f4 e8 | c1~ | c2. r4 \break  \bar "|."
+      \doubleMark
   \markup {\with-color #red \bold "To Coda"}
   \markup { \with-color #red \musicglyph "scripts.varcoda" }
 
@@ -160,7 +161,7 @@ theNotes =  \relative c' {
 
 chordsRhythm = \relative c''' {
   \override Rest #'staff-position = #7
-  \improvisationOn \override NoteHead.no-ledgers = ##t 
+  \improvisationOn \override NoteHead.no-ledgers = ##t
 }
 
 Basse = \relative c {
@@ -183,9 +184,9 @@ Basse = \relative c {
       <<
         \new ChordNames { \harmonies }
         \new Staff \with { instrumentName = \CleSol } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \theNotes
-        >> 
+        >>
       >>
     } %\form
 } }
@@ -195,16 +196,16 @@ Basse = \relative c {
     #(set-paper-size "tablette")
     page-count = #2
   }
-  #(define output-suffix "BbTab") 
+  #(define output-suffix "BbTab")
   \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
       <<
-        \new ChordNames { \transpose c d \harmonies } 
+        \new ChordNames { \transpose c d \harmonies }
         \new Staff \with { instrumentName = \Bb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" }  
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c d \theNotes
-        >> 
+        >>
       >>
     } %\form
 } }
@@ -221,9 +222,9 @@ Basse = \relative c {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" }  
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c a \theNotes
-        >> 
+        >>
       >>
     } %\form
 } }
@@ -238,32 +239,32 @@ Basse = \relative c {
     \score {
       <<
         \new ChordNames { \harmonies }
-        \new Staff \with { instrumentName = \CleSol } 
+        \new Staff \with { instrumentName = \CleSol }
         <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \theNotes
-        >> 
+        >>
       >>
     }
-} } 
+} }
 
 \book {
   \paper {
     #(set-paper-size "a4")
     page-count = #1
   }
-  #(define output-suffix "Bba4") 
+  #(define output-suffix "Bba4")
   \bookpart {
     \score {
       <<
-        \new ChordNames { \transpose c d \harmonies } 
+        \new ChordNames { \transpose c d \harmonies }
         \new Staff \with { instrumentName = \Bb  } <<
-          % \new Voice \with { \consists "Pitch_squash_engraver" }  
+          % \new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c d \theNotes
-        >> 
+        >>
       >>
-    } 
-} } 
+    }
+} }
 
 \book {
   \paper {
@@ -276,9 +277,9 @@ Basse = \relative c {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
-          %\new Voice  
+          %\new Voice
           \transpose c a \theNotes
-        >> 
+        >>
       >>
     }
-} } 
+} }
