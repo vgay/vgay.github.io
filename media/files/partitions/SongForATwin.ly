@@ -69,8 +69,8 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  %asplayed = #"" % doit être commentée si vide
-  url = #""
+  asplayed = #"Filip Verneert · Enrique Simón Quartet" % doit être commentée si vide
+  url = #"https://www.youtube.com/watch?v=FkMJHhN9rr0"
   arranger = \markup \on-the-fly #played?
   \with-url #url
   \with-color #blue \underline
@@ -164,8 +164,12 @@ theNotes =  \relative c'' {
   c8 | % 41
   es2..  es8  c4  as8  g4
   bes8 | % 42
-  es1 ~  es2. ~ \bar "||"
-  es1 r2. \bar "|."
+  es1 ~  es2. ~ \bar "||" \break
+  \doubleMark
+  \markup { \with-color #red \musicglyph "scripts.varcoda" }
+  \markup { \with-color #red \musicglyph "scripts.varcoda" }
+
+  es1 r2.
   \bar ".."
   \label #'theLastPage
 }
@@ -291,7 +295,9 @@ BasseLine = \relative c {
   es1  bes4.  es4. | % 41
   a1  bes4.  f4. | % 42
    es2  es2  es4.  es4. \bar "||" \break
-   \Coda
+  \doubleMark
+  \markup { \with-color #red \musicglyph "scripts.varcoda" }
+  \markup { \with-color #red \musicglyph "scripts.varcoda" }
   es1 r2.
   \bar ".."   \label #'theLastPage
 
