@@ -277,7 +277,6 @@ verseD  = \lyricmode { \repeat unfold 3 { \skip 1 } "  "
   \paper {
     #(set-paper-size "a4")
     %page-count = #1
-   print-first-page-number = ##t
   }
   #(define output-suffix "Ca4")
   \bookpart {

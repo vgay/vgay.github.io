@@ -189,7 +189,6 @@ Basse = \relative c {
     print-first-page-number = ##t
   }
   #(define output-suffix "CTab")
-  \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
       <<
@@ -210,7 +209,6 @@ Basse = \relative c {
     print-first-page-number = ##t
   }
   #(define output-suffix "BbTab")
-  \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
       <<
@@ -231,7 +229,6 @@ Basse = \relative c {
     print-first-page-number = ##t
   }
   #(define output-suffix "EbTab")
-  \header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
       <<
