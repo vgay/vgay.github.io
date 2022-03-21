@@ -29,3 +29,9 @@
 <div class="popup" onclick="tooglePopUp()">Tri mode d'emploi
   <span class="popuptext" id="myPopup">Les flèches dans les en-têtes de colonnes permettent d'activer / désactiver le tri du tableau.<br>Un chiffre est ajouté à droite du titre pour indiquer l'ordre du tri.<br>La flèche rouge indique la direction du tri.</span></div>
 <table id="users"class="tableau zebre avectri"><thead><tr><th>Titre</th><th>Compositeur</th><th>Tempo</th><th>Style</th><th>Comme joué par</th><th>Paroles</th></tr><thead><tbody>
+<tr><td><a href="213ChaCha.html">213 Cha Cha</a></td><td>David Torres</td><td>Medium</td><td>Cha Cha</td><td><a href="https:\/\/www.youtube.com\/watch?v=oguo-OmuSCU">Poncho Sanchez</a></td><td></td></tr>
+<tr><td><a href="500MilesHigh.html">500 Miles High</a></td><td>Chick Corea</td><td>Medium</td><td>Rock</td><td><a href="https:\/\/www.youtube.com\/watch?v=UD21FG2Nmcw">Chick Corea and Return to Forever</a></td><td>✓</td></tr>
+<tr><td><a href="AChildIsBorn.html">A Child Is Born</a></td><td>Thad Jones</td><td>Slow</td><td>Jazz Waltz</td><td><a href="https:\/\/www.youtube.com\/watch?v=-M2ADUgffFE">Thad Jones</a></td><td></td></tr>
+<tr><td><a href="AdamsApple.html">Adam's Apple</a></td><td>Wayne Shorter</td><td>Medium</td><td>Latin Funk</td><td><a href="https:\/\/www.youtube.com\/watch?v=eYMfrrdwrdE">Wayne Shorter</a></td><td></td></tr>
+<tr><td><a href="AFelicidade.html">A Felicidade</a></td><td>Tom Jobim</td><td>Med. Up</td><td>Bossa</td><td><a href="https:\/\/www.youtube.com\/watch?v=gqhzemroh14">Tom Jobim</a></td><td>✓</td></tr>
+<tr><td><a href="AfricanSkies.html">African Skies</a></td><td>Michael Brecker</td><td>Medium</td><td>African Groove</td><td><a href="https:\/\/www.youtube.com\/watch?v=QCOAvvumyWg">Michael Brecker</a></td><td></td></tr>

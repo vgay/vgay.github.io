@@ -136,21 +136,21 @@ theNotes =  \relative c'' {
   \alternative {
     { es4 r8 es' d2 }
     { es,4 r8 \scoop es' d4 c }
-  } \bar "||" \break
+  } \bar "||" \break \noPageBreak
   \doubleMark
   \markup { \with-color #red \musicglyph "scripts.varcoda" }
   \markup \box B
 
   bes1~ | 2.. c8 | bes1~ | 4. es8 d4 c | bes1~ | 1~ | 1 | r4. es8 d4 c |
-  bes1~ | 1~ | 2. r4 | R1 \bar "||" \break
+  bes1~ | 1~ | 2. r4 | R1 \bar "||" \break \noPageBreak
   \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
   \mark \markup { \box C "played in unison" }
   g,4-_ r8 bes~ bes r4 a8~ | a c16 d es4 4 r8 d | b c g'4-_ r8 d es c'~ |
-  c bes4-_ fis8~ 8 d b a | \break
+  c bes4-_ fis8~ 8 d b a | \break \noPageBreak
   g4-_ r8 bes~ bes r4 a8~ | a r4 es'8 d cis d bes'~ |
-  bes c,4-_ a'8~ a bes,4-_ g'8~ | 8 a, g'4 fis8 es d c |
+  bes c,4-_ a'8~ a bes,4-_ g'8~ | 8 a, g'4 fis8 es d c |  \noPageBreak
   \bar "||" \break b g'4 r8 c, a'4 r8 | cis,8 d bes' e, fis d'4. |
-  c!4 r8 bes8~ 8 a4-_ c8~ | 8 bes4-_ fis8~ 8 es d8. c16 | \break
+  c!4 r8 bes8~ 8 a4-_ c8~ | 8 bes4-_ fis8~ 8 es d8. c16 | \break  \noPageBreak
   g4 r8 c bes4 r8 gis | a4 r8 f' es4 r8 b | c4 r8 a' g4 r8 d | es4 r8 es' d2 \laissezVibrer
   \break
   \mark-y-dir #`( (,left . ,DOWN) (,right . ,UP) )
@@ -327,153 +327,3 @@ grille = \chordmode {
       \new ChordGrid \transpose c a \grille
 } } }
 
-% \book {
-%   \paper {
-%     #(set-paper-size "tablette")
-%     %page-count = #1
-%   }
-%   #(define output-suffix "BassTab")
-%   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
-%   \bookpart {
-%     \score {
-%       <<
-%         \new ChordNames { \harmonies }
-%         \new Staff \with { instrumentName = \CleFa } <<
-%           %\new Voice \with { \consists "Pitch_squash_engraver" }
-%           \Basse
-%         >>
-%       >>
-%     } %\form
-% } }
-%
-% \book {
-%   \paper {
-%     #(set-paper-size "a4")
-%     %page-count = #1
-%   }
-%   #(define output-suffix "Bassa4")
-%   \bookpart {
-%     \score {
-%       <<
-%         \new ChordNames { \harmonies }
-%         \new Staff \with { instrumentName = \CleFa }
-%         <<
-%           %\new Voice \with { \consists "Pitch_squash_engraver" }
-%           \Basse
-%         >>
-%       >>
-%     } %\form
-%     %}  \bookpart {
-%     \score {
-%       \layout {
-%         indent = 0
-%         \context {
-%           \Score
-%           \override SpacingSpanner.strict-note-spacing = ##t
-%           proportionalNotationDuration = #(ly:make-moment 1/16)
-%         }
-%         \context {
-%           \ChordGrid
-%           \override BarLine.bar-extent = #'(-5 . 5)
-%           \consists "Bar_engraver"
-%           \override StaffSymbol.line-positions = #'( -10 10 )
-%           \consists "Percent_repeat_engraver"
-%         }
-%       }
-%       \new ChordGrid \\grille
-% } } }
-
-% \book {
-%   %\paper { %page-count = #1
-%	#(set-paper-size "a4")}
-%   \header {meter = \markup \pad-around #1 \circle \bold \fontsize #-3 \concat {" " \musicglyph #"clefs.G" " "} }
-%   \bookpart {
-%     #(define output-suffix "RSa4")
-%     \score {
-%       <<
-%         \new ChordNames {
-%           \set chordChanges = ##f
-%           \Accords
-%         }
-%         \new Staff
-%         <<
-%           \set Staff.instrumentName = "Piano"
-%           \new Voice = "Mel" { \chordsRhythm }
-%         >>
-%         \new Staff
-%         <<
-%           \set Staff.instrumentName = "Basse"
-%           \new Voice = "Mel" { \clef "bass_8" \Basse }
-%           \new Voice = "Ctrl" { \ossature }
-%         >>
-%       >>
-%
-%     } %\form
-%     %}  \bookpart {
-%     \score {
-%       \layout {
-%         indent = 0
-%         \context {
-%           \Score
-%           \override SpacingSpanner.strict-note-spacing = ##t
-%           proportionalNotationDuration = #(ly:make-moment 1/16)
-%         }
-%         \context {
-%           \ChordGrid
-%           \override BarLine.bar-extent = #'(-5 . 5)
-%           \consists "Bar_engraver"
-%           \override StaffSymbol.line-positions = #'( -10 10 )
-%           \consists "Percent_repeat_engraver"
-%         }
-%       }
-%       \new ChordGrid \transpose c a \grille
-% } } }
-
-% \book {
-%   %\paper { %page-count = #2
-%	#(set-paper-size "tablette")}
-%   \header {meter = \markup \pad-around #1 \circle \bold \fontsize #-3 \concat {" " \musicglyph #"clefs.G" " "} }
-%   \bookpart {
-%     #(define output-suffix "RSTab")
-%     \score {
-%       <<
-%         \new ChordNames {
-%           \set chordChanges = ##f
-%           \Accords
-%         }
-%         \new Staff
-%         <<
-%           \set Staff.instrumentName = "Piano"
-%           \new Voice = "Mel" { \chordsRhythm }
-%         >>
-%         \new Staff
-%         <<
-%           \set Staff.instrumentName = "Basse"
-%           \new Voice = "Mel" { \clef "bass_8" \Basse }
-%           \new Voice = "Ctrl" { \ossature }
-%         >>
-%       >>
-%
-% } } }
-\book {
-  \paper {
-    #(set-paper-size "a4")
-    page-count = #1
-  }
-  #(define output-suffix "Bassa4")
-  \bookpart {
-    \score {
-      <<
-        \new ChordNames { \harmonies }
-        \new Staff \with { instrumentName = \CleFa }
-        <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" }
-         {  \clef "bass" \transpose c c,, \theNotes }
-        >>
-      >>
-    } %\form
-    %}  \bookpart {
-    \score {
-      \gridLayout
-      \new ChordGrid \grille
-} } }
