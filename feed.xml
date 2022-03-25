@@ -3,7 +3,7 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2022-03-19T10:46:48+01:00</updated>
+    <updated>2022-03-25T10:52:54+01:00</updated>
     <author>
         <name>Vincent</name>
     </author>
@@ -34,6 +34,44 @@
 <p>la condition <code>\on-the-fly \print-page-number-check-first</code> vérifie que impression du numéro de page doit se faire y compris pour la première page, ce qui n'est  pas l'option par défaut. <strong>Donc</strong> dans les books ou bookparts concernés rajouter</p>
 <pre>  <code>\paper {</code><br><code>   print-first-page-number = ##t</code><br><code>  }</code></pre>
 <figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/29//BeginTheBeguine.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/29//responsive/BeginTheBeguine-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/29//responsive/BeginTheBeguine-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/29//responsive/BeginTheBeguine-md.png 768w"  alt="" width="543" height="209"></figure>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Grille harmonique</title>
+        <author>
+            <name>Vincent</name>
+        </author>
+        <link href="https://myrealbook.vintherine.org/grille-harmonique.html"/>
+        <id>https://myrealbook.vintherine.org/grille-harmonique.html</id>
+
+        <updated>2022-03-25T10:52:54+01:00</updated>
+            <summary>
+                <![CDATA[
+                    <p>La grille harmonique (voir sur <a title="https://fr.wikipedia.org/wiki/Grille_harmonique">Wikipédia</a>) est paraît-il une spécificité du jazz français. Elle m'est souvent réclamée par la section rythmique qui la trouve plus facile à lire qu'une ligne d'accords au dessus d'une portée. </p>
+<p>Voici les divisions que j'utilise (mesures à 4 temps, les chiffres dans les case indiquant l'ordre de lecture)</p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/28//ordreAccords-2.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/28//responsive/ordreAccords-2-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/28//responsive/ordreAccords-2-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/28//responsive/ordreAccords-2-md.png 768w"  alt="" width="792" height="202"></figure>
+<p>Jusqu'à ce jour le code Lilypond utilisé pour produire ce genre de grille tenait franchement de la bidouille et il fallait souvent mettre les mains dans le cambouis pour produire un résultat à peu près présentable. Je me suis donc décidé à re-porter ce problème sur la liste francophone des utilisateurs de Lilypond. <a title="https://lists.gnu.org/archive/html/lilypond-user-fr/2022-03/msg00014.html">Le fil de la discussion</a>.</p>
+<p>Avec l'aide décisive de Jean, notre développeur en chef, je dispose enfin d'un code propre et lisible.</p>
+
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>La grille harmonique (voir sur <a title="https://fr.wikipedia.org/wiki/Grille_harmonique">Wikipédia</a>) est paraît-il une spécificité du jazz français. Elle m'est souvent réclamée par la section rythmique qui la trouve plus facile à lire qu'une ligne d'accords au dessus d'une portée. </p>
+<p>Voici les divisions que j'utilise (mesures à 4 temps, les chiffres dans les case indiquant l'ordre de lecture)</p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/28//ordreAccords-2.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/28//responsive/ordreAccords-2-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/28//responsive/ordreAccords-2-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/28//responsive/ordreAccords-2-md.png 768w"  alt="" width="792" height="202"></figure>
+<p>Jusqu'à ce jour le code Lilypond utilisé pour produire ce genre de grille tenait franchement de la bidouille et il fallait souvent mettre les mains dans le cambouis pour produire un résultat à peu près présentable. Je me suis donc décidé à re-porter ce problème sur la liste francophone des utilisateurs de Lilypond. <a title="https://lists.gnu.org/archive/html/lilypond-user-fr/2022-03/msg00014.html">Le fil de la discussion</a>.</p>
+<p>Avec l'aide décisive de Jean, notre développeur en chef, je dispose enfin d'un code propre et lisible.</p>
+
+<p>Voici un exemple minimal avec reprise alternative :</p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/28//DemoChordGrid.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/28//responsive/DemoChordGrid-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/28//responsive/DemoChordGrid-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/28//responsive/DemoChordGrid-md.png 768w"  alt="" width="783" height="285"></figure>
+<p>Tout d'abord il est nécessaire d'enregistrer et d'inclure la fonction codée par Jean, modifiée par mes soins  pour augmenter la taille des cases, téléchargeable <a href="https://acloud.zaclys.com/index.php/s/SJeiZD7oxbn8G62">depuis mon cloud</a>. </p>
+<p>Pour l'inclure reportez vous <a href="https://lilypond.org/doc/v2.22/Documentation/notation/including-lilypond-files.html">à cette page</a> ou, si vous utilisez Frescobaldi, sauvegardez le dans un répertoire que vous aurez préalablement désigné comme répertoire d'inclusion. Voir <a href="https://frescobaldi.org/uguide.fr.html#help_preferences_lilypond">le manuel en ligne</a>. </p>
+<p>La grille est décrite à la manière d'un <a href="https://lilypond.org/doc/v2.22/Documentation/notation/chord-mode">chordmode</a> en intégrant les sauts de ligne (<code>\break</code>) : même nombre de cases par ligne, en principe 4.  Jean s'est bien proposé de coder un saut automatique mais d'une part cela ne fonctionne pas encore et d'autre part cela n'est pas bien pénible de saisir un <code>\break</code> manuellement </p>
+<p>Pour les reprises alternatives, comme vous pouvez le voir ci-dessus, l'idée est de faire une ligne représentant la 2ème alternative en n'affichant que la ou les mesure(s) différenciée(s). Pour ne pas faire de cases vides on remplace les autres par des <code>s1 </code>(silences invisibles) et des <code>\bar ""</code> (barres invisibles) entourés d'un <code>\stopStaff </code>et d'un <code>\startStaff</code></p>
+<p>Voici le code de l'exemple ci-dessus</p>
+<pre><code>\version "2.22.2"</code><br><code>\include "jazzchords.ily"    % Si vous utilisez Lilyjazz</code><br><code>\include "lilyjazz.ily"      % Si vous utilisez Lilyjazz</code><br><code>\include "chord-grid-JAS.ly" % la fonction codée par Jean Abou-Samra</code><br><br><code>#(set-global-staff-size 18)</code><br><br><code>\paper {</code><br><code>  #(set-paper-size "a4")</code><br><code>  indent = 0</code><br><code>}</code><br><br><code>\layout {</code><br><code>  \context {</code><br><code>    \Score</code><br><code>    startRepeatType = #"[|:"</code><br><code>    endRepeatType = #":|]"</code><br><code>    doubleRepeatType = #":|][|:"</code><br><code>   }</code><br><code>}</code><br><br><code>mus = \chordmode {  <br>% la grille proprement dite, 1 ligne par case</code><br><code>  g1:m7+</code><br><code>  a2:m5-7 d:5+7</code><br><code>  a4:m5-7 d2.:5+7</code><br><code>  a2.:m5-7 d4:5+7</code><br><code>  \break</code><br><code>  a4:m5-7 d:5+7 g2:m7</code><br><code>  g2:m7+ a4:m5-7 d:5+7</code><br><code>  g4:m7+ e:m5-7 a:m5-7 d:5+7</code><br><code>  \set Score.repeatCommands = #'((volta "1.") )</code><br><code>  a2:m5-7 d:5+7</code><br><code>  \set Score.repeatCommands = #'((volta #f) end-repeat)</code><br><code>  \break</code><br><code>  \stopStaff s1 \bar "" s \bar "" s \startStaff</code><br><code>  \set Score.repeatCommands = #'((volta "2.") )</code><br><code>  g1:m6</code><br><code>  \set Score.repeatCommands = #'((volta #f))</code><br><code>  \bar ".."</code><br><code>}</code><br><br><code>\score {</code><br><code> \gridLayout  % layout enregistré dans le fichier inclus "chord-grid-JAS.ly"</code><br><code> \new ChordGrid \mus</code><br><code>}</code></pre>
             ]]>
         </content>
     </entry>
@@ -365,61 +403,6 @@
 <p>Cette technique s'apparente donc au page-link du chapitre précédent à ceci près qu'au lieu de donner un numéro de page en paramètre on fera référence à une étiquette préalablement établie.</p>
 <p>Par exemple :</p>
 <pre>% une étiquette au Segno<br>\label #'Segno<br>\mark \markup \bold { \box { A } \musicglyph "scripts.varsegno"  }<br><br>% puis plus tard<br>\mark \markup { \with-link #'Segno {  D.S. al Coda } }</pre>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Insérer un QR-Code dans un markup</title>
-        <author>
-            <name>Vincent</name>
-        </author>
-        <link href="https://myrealbook.vintherine.org/inserer-un-qr-code-dans-une-partition.html"/>
-        <id>https://myrealbook.vintherine.org/inserer-un-qr-code-dans-une-partition.html</id>
-
-        <updated>2021-11-22T10:10:07+01:00</updated>
-            <summary>
-                <![CDATA[
-                    <p>Sur la liste de discussion des utilisateurs francophones de Lilypond a été évoqué la possibilité mettre un QR-code avec une adresse web sur des partitions. En voilà une idée qu'elle est bonne. Et hop, exécution !</p>
-<h5>I -  se documenter</h5>
-<p>La page de référence est ici : <a href="http://lilypond.org/doc/v2.22/Documentation/notation/graphic">http://lilypond.org/doc/v2.22/Documentation/notation/graphic</a></p>
-<p>C'est assez sommaire et pour une fois non traduit en français. </p>
-<pre><code>\epsfile <var>axis</var> (number) <var>size</var> (number) <var>file-name</var> (string)  </code></pre>
-<p>Inline an EPS image. The image is scaled along <var>axis</var> to <var>size</var>.</p>
-<pre><code>\markup {
-  \general-align #Y #DOWN {
-    \epsfile #X #20 #"context-example.eps"
-  }
-}
-</code></pre>
-
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>Sur la liste de discussion des utilisateurs francophones de Lilypond a été évoqué la possibilité mettre un QR-code avec une adresse web sur des partitions. En voilà une idée qu'elle est bonne. Et hop, exécution !</p>
-<h5>I -  se documenter</h5>
-<p>La page de référence est ici : <a href="http://lilypond.org/doc/v2.22/Documentation/notation/graphic">http://lilypond.org/doc/v2.22/Documentation/notation/graphic</a></p>
-<p>C'est assez sommaire et pour une fois non traduit en français. </p>
-<pre><code>\epsfile <var>axis</var> (number) <var>size</var> (number) <var>file-name</var> (string)  </code></pre>
-<p>Inline an EPS image. The image is scaled along <var>axis</var> to <var>size</var>.</p>
-<pre><code>\markup {
-  \general-align #Y #DOWN {
-    \epsfile #X #20 #"context-example.eps"
-  }
-}
-</code></pre>
-
-<p>Bien, on sait au moins qu'il est nécessaire que l'image générée soit au format eps !</p>
-<h5>II - générer le QR-Code</h5>
-<p>Les applications permettant de générer du QR-code sont légions, sans compter les sites Internet  soit-disant gratuit. Sous Linux <a href="https://launchpad.net/qr-tools">Qtqr</a> est une interface graphique à <a href="https://fukuchi.org/works/qrencode/manual/index.html">qrencode</a> et <a href="http://zbar.sourceforge.net/">zbar</a>. Il est facile d'emploi mais souffre de faiblesse au niveau du format de sortie : png comme seule format de fichier, pas de couleur... Alors pourquoi ne pas utiliser la ligne de commande ? Bien sûr il faudra consulter la page man de qrencode. ou consulter <a href="https://www.linux-magazine.com/Online/Features/Generating-QR-Codes-in-Linux">cette page sur Linux-Magazine</a>. Voilà la commande avec les options qui conviennent pour MyRealBook :</p>
-<pre><code>qrencode -l Q -t EPS -o MyQR.eps https://myrealbook.vintherine.org</code></pre>
-<p>- l'option -l permet de gérer la tolérance aux erreurs (LMQH) qui est à Low par défaut <br>- l'option -t permet de choisir le type de fichier en sortie<br>- l'option -o indique le nom et l'extension du fichier de sortie</p>
-<h5>III - intégration dans Lilypond</h5>
-<p>Pour plus de facilité on mettra le fichier eps dans le même répertoire que le fichier lilypond. </p>
-<p>Le code :</p>
-<pre><code>\version "2.22.1"</code><br>\header {<br>  title = "Essai de QR-Code"<br>  composer = \markup { <br>    \center-column { <br>      Vincent <br>      { \epsfile #X #10 #"MyQR.eps" }<br>    } <br>  }<br>  tagline = ##f<br>}<br><code>\repeat unfold 8 c'</code></pre>
-<p>Le résultat :</p>
-<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/17/Vincent-Gay-Essai-de-QR-Code-2.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/17/responsive/Vincent-Gay-Essai-de-QR-Code-2-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/17/responsive/Vincent-Gay-Essai-de-QR-Code-2-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/17/responsive/Vincent-Gay-Essai-de-QR-Code-2-md.png 768w"  alt="" width="756" height="194"></figure>
             ]]>
         </content>
     </entry>
