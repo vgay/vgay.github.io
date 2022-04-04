@@ -6,6 +6,8 @@
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
 \include "lilyjazz.ily"
+\include "chord-grid-JAS.ly"
+
 
 
 
@@ -145,7 +147,7 @@ theNotes =  \relative c' {
     g4 as4 bes4
   } \break
   \repeat volta 3 {
-    \A
+    \mark #1
     g2 f8 g4 f8 | g2 r8  f f bes | f2 es8 f4 es8 |  f2 r8  es es as
     | % 21
     es2 r8 c es c
@@ -193,7 +195,7 @@ Basse = \relative c {
   \repeat volta 2 {
     es8. es bes'8 des8. bes16 des8 es
     es,8. es bes'8 des8. as16 bes des es8
-    f,8. f ces'8 es8. c16 es8 f
+    f,8. f ces'8 es8. ces16 es8 f
     bes,,8. bes f'8 as8. d,16 f8 bes \break
   }
   \once \override Score.RehearsalMark.break-visibility = #end-of-line-visible
@@ -255,21 +257,21 @@ chordsRhythm = \relative c, {
 
 }
 grille = \chordmode {
-  \bar "[|:"
+  \bar "[|:" \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
+  \Intro
   \repeat percent 2 { es1:m7 }  f1:m5-7 bes:9- \bar ":|]" \break
-  es1:7+ \/ c2:m5-7 f:7 \startStaff f1:m7 bes:7
-  \bar "||-[|:" \break
-  f1:m7 bes:7 \/ es2:7+ as:7 \/ g:m7 ges:dim \startStaff \break
-  f1:m7 bes:7 \set Score.repeatCommands = #'((volta "1")) \/ es2:7+ as:7 \s g:m7 c:7
+  es1:7+ c2:m5-7 f:7 f1:m7 bes:7
+  \bar "||-[|:" \break \mark #1
+  f1:m7 bes:7 es2:7+ as:7 g:m7 ges:dim \break
+  f1:m7 bes:7 \set Score.repeatCommands = #'((volta "1")) es2:7+ as:7 g:m7 c:7
   \set Score.repeatCommands = #'((volta #f))
-  \bar ":|]" \break
+  \bar ":|]" \break \stopStaff
   s1 \bar "" s \startStaff \set Score.repeatCommands = #'((volta "2"))
-  bes:m7 es:7 \set Score.repeatCommands = #'((volta #f)) \bar "||" \break
-  as1:7+ \/ as2:m7 des:7  \/ es:6 as:7  \/ g:m7 c:7 \startStaff \break
-  f1:m7  \/ c2:m7 f:7 \startStaff f1:m7 \/ bes2:7 c:7 \startStaff \bar "||" \break
-
-  f1:m7 bes:7 \/ es2:7+ as:7 \/ g:m7 ges:dim \startStaff \break
-  f1:m7 bes:7  \/ es2:7+ as:7 \/ g:m7 c:7
+  bes:m7 es:7 \set Score.repeatCommands = #'((volta #f)) \bar "||" \break \mark #2
+  as1:7+ as2:m7 des:7 es:6 as:7  g:m7 c:7 \break
+  f1:m7  c2:m7 f:7 f1:m7 bes2:7 c:7 \bar "||" \break \mark #1
+  f1:m7 bes:7 es2:7+ as:7 g:m7 ges:dim  \break
+  f1:m7 bes:7   es2:7+ as:7  g:m7 c:7
   \bar ".." }
 
 marques = \relative c' {
@@ -356,35 +358,8 @@ marques = \relative c' {
   } }
   \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )
-          \override ParenthesesItem.extra-offset = #'(10 . -1 )
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 )
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-        }
-        \grille
-      >>
+      \gridLayout
+      \new ChordGrid \grille
 } } }
 
 \book {
@@ -408,35 +383,8 @@ marques = \relative c' {
   } }
   \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )
-          \override ParenthesesItem.extra-offset = #'(10 . -1 )
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 )
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-        }
-        \transpose c d \grille
-      >>
+      \gridLayout
+      \new ChordGrid \transpose c d \grille
 } } }
 
 \book {
@@ -459,35 +407,8 @@ marques = \relative c' {
   } }
   \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )
-          \override ParenthesesItem.extra-offset = #'(10 . -1 )
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 )
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-        }
-        \transpose c a \grille
-      >>
+      \gridLayout
+      \new ChordGrid \transpose c a \grille
 } } }
 
 \book {
@@ -523,37 +444,9 @@ marques = \relative c' {
     } %\form
   }  \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )
-          \override ParenthesesItem.extra-offset = #'(10 . -1 )
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 )
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \grille
-      >>
+      \gridLayout
+      \new ChordGrid \transpose c a \grille
+
 } } }
 
 
