@@ -3,12 +3,63 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2022-03-25T10:52:54+01:00</updated>
+    <updated>2022-04-09T16:53:35+02:00</updated>
     <author>
         <name>Vincent</name>
     </author>
     <id>https://myrealbook.vintherine.org</id>
 
+    <entry>
+        <title>Indication de Swing</title>
+        <author>
+            <name>Vincent</name>
+        </author>
+        <link href="https://myrealbook.vintherine.org/indication-de-swing.html"/>
+        <id>https://myrealbook.vintherine.org/indication-de-swing.html</id>
+
+        <updated>2022-04-09T16:53:35+02:00</updated>
+            <summary>
+                <![CDATA[
+                    <p>On trouve assez fréquemment des indications de Swing sous la forme </p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/30//Swing.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/30//responsive/Swing-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/30//responsive/Swing-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/30//responsive/Swing-md.png 768w"  alt="Swing" width="373" height="131"></figure>
+<p>Voyons comment faire ceci sous Lilypond. Une solution "simple" est de loger tout ceci dans un <code>\markup</code> que l'on utilisera soit dans l'entête, ici dans <code>meter</code>, soit dans la musique elle-même.</p>
+
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>On trouve assez fréquemment des indications de Swing sous la forme </p>
+<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/30//Swing.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/30//responsive/Swing-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/30//responsive/Swing-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/30//responsive/Swing-md.png 768w"  alt="Swing" width="373" height="131"></figure>
+<p>Voyons comment faire ceci sous Lilypond. Une solution "simple" est de loger tout ceci dans un <code>\markup</code> que l'on utilisera soit dans l'entête, ici dans <code>meter</code>, soit dans la musique elle-même.</p>
+
+<p>Dans ce <code>\markup</code> nous allons inclure une partition (<code>\score</code>) et une portée (<code>\new Staff</code>) contenant les 2 croches et le triolet, séparés par un silence invisible affecté d'une marque pour le signe égal.<br>Toutes les propriétés seront fixées dans le <code>\layout {}</code> </p>
+<h5>La musique tient entièrement dans une ligne de code :</h5>
+<pre><code>\relative { a'8[ 8] s2^\markup " = " \tuplet 3/2 { 4 8 } }</code></pre>
+<h5>Voyons ensuite le <code>\layout {}</code></h5>
+<h6>Utilise le nom d'instrument pour la zone textuelle Swing</h6>
+<pre><code>\set Staff.instrumentName = \markup \fontsize #2  Swing</code></pre>
+<h6>Pas de clef, de mesure ni d'armure</h6>
+<pre><code>\omit Staff.Clef<br>\omit Staff.TimeSignature<br>\omit Staff.KeySignature</code></pre>
+<h6>Supprime les lignes de la portée et les barres de mesures</h6>
+<pre><code>\override Staff.StaffSymbol.line-count = #0<br>\override Score.BarLine.break-visibility = ##(#f #f #f)</code></pre>
+<h6>Diminue la taille de la police</h6>
+<pre><code>\set Staff.fontSize = #-1</code></pre>
+<h6>Diminue l'écartement entre les lignes de la portée</h6>
+<p>Permet de diminuer la hauteur des hampes, fixée en fonction de  l'écartement entre les lignes.</p>
+<pre><code>\override Staff.StaffSymbol.staff-space = #(magstep -3)</code></pre>
+<h6>Ajuste l'emplacement du <code>\markup</code> pour le signe =</h6>
+<pre><code>\override Staff.TextScript #'extra-offset = #'( -0.7 . -1.8 )</code></pre>
+<h6>Défini la taille de la portée</h6>
+<p>Permet d'ajuster l'écart entre les notes</p>
+<pre><code>line-width = #23</code></pre>
+<h6>Défini l'indentation de la première ligne de la portée</h6>
+<p>Permet de fixer l'écart entre l'indication textuel (Swing) et les notes</p>
+<pre><code>indent = #1</code></pre>
+<h5>Tout le code :</h5>
+<pre><code>\version "2.22.2"</code><br><br><code>\include "lilyjazz.ily" % facultatif</code><br><br><code>swingMark = \markup  {</code><br><code>  \score { </code><br><code>    \new Staff</code> <code>\relative { </code><code>a'8[ 8] </code>s2^\markup " = " \tuplet 3/2 { 4 8 } }<br><code>    \layout {<br>      \set Staff.instrumentName = \markup \fontsize #2  Swing<br>      \omit Staff.Clef<br>      \omit Staff.TimeSignature<br>      \omit Staff.KeySignature<br>      \override Staff.StaffSymbol.line-count = #0<br>      \override Score.BarLine.break-visibility = ##(#f #f #f)<br>      \set Staff.fontSize = #-1<br>      \override Staff.StaffSymbol.staff-space = #(magstep -3)<br>      \override Staff.TextScript #'extra-offset = #'( -0.7 . -1.8 )<br>      line-width = #23<br>      indent = #1<br>    }}</code><br><br><code>\header {</code><br><code>  meter = \swingMark</code><br><code>}</code><br><br><code>\repeat unfold 4 { c''1 } </code></pre>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Numérotation des pages</title>
         <author>
@@ -358,51 +409,6 @@
 <p>le résultat : </p>
 <figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/20/Vision-2.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/20/responsive/Vision-2-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/20/responsive/Vision-2-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/20/responsive/Vision-2-md.png 768w"  alt="" width="879" height="201"></figure>
 <p> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Liens dans la partitions</title>
-        <author>
-            <name>Vincent</name>
-        </author>
-        <link href="https://myrealbook.vintherine.org/liens-dans-la-partitions.html"/>
-        <id>https://myrealbook.vintherine.org/liens-dans-la-partitions.html</id>
-
-        <updated>2021-11-22T10:07:30+01:00</updated>
-            <summary>
-                <![CDATA[
-                    <p>Depuis qu'on affiche sur des tablettes plutôt que de les imprimer les partitions sont devenues interactives. Avec Lilypond 3 instructions nous permettent d'en profiter pleinement.</p>
-<h5>I - with-url, une ouverture sur le web</h5>
-<p>Pour aller télécharger des partitions ou pour regarder une vidéo, il suffit d'associer un markup avec une adresse web. Sous le titre des partitions proposées sur ce site  apparaissent quelquefois des liens vers une interprétation de référence. Par exemple :</p>
-<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/19//BreakfastWine.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/19//responsive/BreakfastWine-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/19//responsive/BreakfastWine-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/19//responsive/BreakfastWine-md.png 768w"  alt="Breakfast Wine" width="790" height="198"></figure>
-
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>Depuis qu'on affiche sur des tablettes plutôt que de les imprimer les partitions sont devenues interactives. Avec Lilypond 3 instructions nous permettent d'en profiter pleinement.</p>
-<h5>I - with-url, une ouverture sur le web</h5>
-<p>Pour aller télécharger des partitions ou pour regarder une vidéo, il suffit d'associer un markup avec une adresse web. Sous le titre des partitions proposées sur ce site  apparaissent quelquefois des liens vers une interprétation de référence. Par exemple :</p>
-<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/19//BreakfastWine.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/19//responsive/BreakfastWine-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/19//responsive/BreakfastWine-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/19//responsive/BreakfastWine-md.png 768w"  alt="Breakfast Wine" width="790" height="198"></figure>
-
-<p>Le code :</p>
-<pre><code>\header {</code><br><code>  title = "Breakfast Wine"</code><br><code>  asplayed = #"Bobby Shew" % doit être commentée si vide</code><br><code>  url = #"https://www.youtube.com/watch?v=sNlNoqxGOLo"</code><br><code>  arranger = \markup </code><br><code>  \with-url #url</code><br><code>  \with-color #blue \underline</code><br><code>  \concat { "(as played by " \fromproperty #'header:asplayed ")" }</code><br><code>  }</code></pre>
-<p>N.B. voir <a href="https://myrealbook.vintherine.org/titres-a-la-realbook.html">cet article</a> au sujet des présentations "à la Realbook"  </p>
-<h5>II - page-link pour faire de belles pages de garde</h5>
-<p>Si une partition contient plusieurs parties une jolie page d'accueil permettant d'accéder à chacune d'entre elles d'un simple clic sera bien plus ergonomique que de tourner des pages. </p>
-<p>page-link s'emploie dans un markup avec comme paramètre un simple numéro de page. </p>
-<pre><code>\markup { \page-link #3 { Texte du lien vers la page 3 } }</code></pre>
-<p>voici un exemple tiré d'un recueil de partitions pour big band. Chaque nom d'instrument dans la liste est un lien amenant à la bonne page. </p>
-<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/19/Cambios.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/19/responsive/Cambios-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/19/responsive/Cambios-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/19/responsive/Cambios-md.png 768w"  alt="" width="909" height="562"></figure>
-<p> </p>
-<p>la partie du code concernée :</p>
-<pre>    <code>\markup {</code><br><code>      \column {      </code><br><code>        \vspace #3</code><br><code>        \fill-line { \fontsize #9 "Cambios" }</code><br><code>        \fill-line { "Music for Little Big Band" }</code><br><code>        \vspace #6      </code><br><code>        \fontsize #4 {</code><br><code>          \page-link #2 \line  {  \hspace #10 \underline { Horn I \fontsize #-2 "(Alto Sax)" } }</code><br><code>          \vspace #0.3</code><br><code>          \page-link #6 \line  {  \hspace #10 \underline { Horn II \fontsize #-2 "(Tenor Sax)" } }</code><br><code>          \vspace #0.3</code><br><code>          \page-link #10 \line  {  \hspace #10 \underline { Horn III \fontsize #-2 "(Baryton Sax)" } }</code><br><code>          \vspace #0.3</code><br><code>          \page-link #14 \line  {  \hspace #10 \underline { Horn IV \fontsize #-2 "(Trumpet 1)" } }</code><br><code>          \vspace #0.3</code><br><code>          \page-link #18 \line  {  \hspace #10 \underline { Horn V \fontsize #-2 "(Trumpet 2)" } }</code><br><code>          \vspace #0.3</code><br><code>          \page-link #22 \line  {  \hspace #10 \underline { Horn VI \fontsize #-2 "(Trombone)" } }</code><br><code>          \vspace #0.3</code><br><code>          \page-link #26 \line  {  \hspace #10 \underline { Piano \fontsize #-2 "(or Guitare)" } }</code><br><code>          \vspace #0.3</code><br><code>          \page-link #30 \line  {  \hspace #10 \underline { Bass } }</code><br><code>        }</code><br><code>        \vspace #1</code><br><code>        \override #'(line-width . 120)</code><br><code>        \fontsize #2 \fill-line { " " "Lilypond sources embeded in pdf file" }</code><br><code>      }</code><br><code>    }</code></pre>
-<h5>III - with-link pour se déplacer aisément dans la partition</h5>
-<p>La surface utile d'une tablette ordinaire étant tout juste équivalente à la moitié d'une feuille a4 on est amené à tourner les pages beaucoup plus fréquemment. Bien sûr cela peut se faire au pied avec un tourne-page bluetooth ou usb, mais quand il faut remonter 4 pages après un D.C. al Coda puis les redescendre aussitôt pour atteindre la susdite coda cela devient fastidieux. La solution ? Cliquer sur les liens que constituent les textes D.C. ou To Coda.</p>
-<p>Cette technique s'apparente donc au page-link du chapitre précédent à ceci près qu'au lieu de donner un numéro de page en paramètre on fera référence à une étiquette préalablement établie.</p>
-<p>Par exemple :</p>
-<pre>% une étiquette au Segno<br>\label #'Segno<br>\mark \markup \bold { \box { A } \musicglyph "scripts.varsegno"  }<br><br>% puis plus tard<br>\mark \markup { \with-link #'Segno {  D.S. al Coda } }</pre>
             ]]>
         </content>
     </entry>
