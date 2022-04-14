@@ -6,6 +6,7 @@
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
 \include "lilyjazz.ily"
+\include "chord-grid-JAS.ly"
 
 
 
@@ -326,16 +327,16 @@ WoodBlock = \drummode {
 }
 
 grille = \chordmode {
-  \bar "[|:"
-  c1:7 bes c:7 bes \break \bar ":|]"
+  \bar "[|:" \mark #1
+  c1:7 \autoLineBreaksOff bes c:7 bes \break \bar ":|]"
   \once \override Score.RehearsalMark.break-visibility = #end-of-line-visible
 
   \mark \markup 4X
 
-  \repeat percent 2 c1:7 \repeat percent 2 bes \break
+  \repeat percent 2 c1:7 \repeat percent 2 bes \break \mark #2
   \repeat percent 2 a:m7 \repeat percent 2 as:7 \break
-  \repeat percent 2 c:7 \repeat percent 2d:m7 \break
-  \repeat percent 2 e:m7 \repeat percent 2 f:7+
+  \repeat percent 2 c:7 \repeat percent 2 d:m7 \break
+  \repeat percent 2 e1:m7 \repeat percent 2 { f1:7+ }
   \bar ".." }
 
 marques = \relative c' {
@@ -416,37 +417,8 @@ marques = \relative c' {
     } %\form
     %}  \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )
-          \override ParenthesesItem.extra-offset = #'(10 . -1 )
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 )
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \grille
-      >>
+      \gridLayout
+      \new ChordGrid \grille
 } } }
 
 \book {
@@ -466,37 +438,8 @@ marques = \relative c' {
     } %\form
     %}  \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )
-          \override ParenthesesItem.extra-offset = #'(10 . -1 )
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 )
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \transpose c d \grille
-      >>
+      \gridLayout
+      \new ChordGrid \transpose c d \grille
 } } }
 
 \book {
@@ -516,37 +459,8 @@ marques = \relative c' {
     } %\form
     %}  \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )
-          \override ParenthesesItem.extra-offset = #'(10 . -1 )
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 )
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \transpose c a \grille
-      >>
+      \gridLayout
+      \new ChordGrid \transpose c a \grille
 } } }
 
 \book {
@@ -580,38 +494,10 @@ marques = \relative c' {
     } %\form
     }  \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )
-          \override ParenthesesItem.extra-offset = #'(10 . -1 )
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 )
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \grille
-      >>
+      \gridLayout
+      \new ChordGrid \grille
 } } }
+
 \book {
   \paper {
     #(set-paper-size "tablette")
@@ -672,6 +558,30 @@ marques = \relative c' {
       >> >>
 }}}
 
+% \book {
+%   \paper {
+%     #(set-paper-size "tablette")
+%     ragged-bottom = ##t
+%     ragged-last = ##t
+%     page-count = #1
+%   }
+%   \header { meter = \Bb }
+%   #(define output-suffix "GuitarBb")
+%   \bookpart {
+%     \score {
+%       <<
+%         \new StaffGroup <<
+%           \new ChordNames { \transpose c d \harmoniesR }
+%           \new FretBoards
+%           \with {
+%             \RemoveEmptyStaves
+%             \override VerticalAxisGroup #'remove-first = ##t
+%           }
+%           \new Staff \with { instrumentName = Guitar }  \transpose c d \chordsRhythm
+%
+%       >> >>
+% }}}
+
 
 \book {
   \paper {
@@ -702,39 +612,10 @@ marques = \relative c' {
           \WoodBlock
       >> >>
     }
-        \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )
-          \override ParenthesesItem.extra-offset = #'(10 . -1 )
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 )
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \grille
-      >>
-  }}
+    \score {
+      \gridLayout
+      \new ChordGrid \grille
+} }
    \bookpart {
     \score {
       <<
@@ -757,6 +638,7 @@ marques = \relative c' {
       >> >>
 } } }
 
+
 \book {
   \paper {
     #(set-paper-size "tablette")
@@ -775,6 +657,7 @@ marques = \relative c' {
       >>
     } %\form
 } }
+
 
 \book {
   \paper {
@@ -795,35 +678,6 @@ marques = \relative c' {
     } %\form
     %}  \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )
-          \override ParenthesesItem.extra-offset = #'(10 . -1 )
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 )
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \grille
-      >>
+      \gridLayout
+      \new ChordGrid \grille
 } } }
