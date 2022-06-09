@@ -71,13 +71,13 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  %asplayed = #"" % doit être commentée si vide
-  url = #""
+  asplayed = #"Michel Petrucciani" % doit être commentée si vide
+  url = #"https://www.youtube.com/watch?v=Pqzr4AZB7tY"
   arranger = \markup \on-the-fly #played?
   \with-url #url
   \with-color #blue \underline
   \concat { "(as played by " \fromproperty #'header:asplayed ")" }
-  meter = \markup { \small  { \tiny \raise #0.4 \note {4} #1 } "= 160""Half Time Feel" }
+  %meter = \markup { \small  { \tiny \raise #0.4 \note {4} #1 } "= 160""Half Time Feel" }
   tagline = ##f
 }
 
@@ -115,8 +115,8 @@ structure = {
   \bar "||" \break \mark \markup \box A
   s1*4 \break  \mark \markup {  \with-color #red \bold \larger \musicglyph "scripts.varsegno" }
   \acciaccatura s8 s1*4 \bar "||" \break \mark \markup \box B
-  s1*4 \break  s1*4 \break  s1*3 \break s1*3 \bar "||" \break \mark \markup \box C
-  s1*4 \break  s1*3 \break \bar "||" \mark \markup \box D
+  s1*4 \break  s1*4 \break  s1*4 \break  \bar "||" \break \mark \markup \box C
+  s1*3 \break  s1*3 \break  s1*3 \break \bar "||" \mark \markup \box D
   s1*4 \break  s1*4 \bar "||" \break \mark \markup \box E s1*4 \break s1*4  \bar ".."
   \once \override Score.RehearsalMark #'direction = #DOWN
   \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
@@ -161,7 +161,7 @@ theNotes = \relative c' {
   e2 ~ e8 d g e8 ~ |  % 32
   e1 | % 33
   R1*2
-  R1*8
+  \comp #32
   e1 ~ | % 44
   e8 es d c \times 2/3 { a4 e d ~ } | % 45
   d1 | % 46
@@ -171,6 +171,7 @@ theNotes = \relative c' {
   c,1 ~ |
   c4. \startParenthesis \parenthesize b8 ^\markup "only before D.S." ~ \times 2/3 { b4 c \endParenthesis \parenthesize  d }
 }
+
 
 alto = \relative c' {
   \clef "treble"\time 4/4 \key c \major
@@ -231,6 +232,61 @@ Guitar = \relative c {
   g8 d'4 b'8 ~ b d,4 g,8 | % 12
   f4 c'8 a' ~ a c,4 r8 | % 13
   <a' dis fis>4. q8 ~ q8 q4.
+  <fis b dis gis>4. q8 r q4 <fis b e a>8 ~ | % 15
+  q4. q8 ~ q2 | % 16
+  <fis b dis gis>4. q8 q4. <f b d as'>8 ~ | % 17
+  q4. q8 ~ q8 q4. | % 18
+  <es bes' d g>8 r4 q8 r q r8 <es a des f> | % 19
+  r8 q r4 q r |
+  <f as des f>8 r4 q8 r q r <b des g>8 | % 21
+  r8 q r4 q r | % 22
+  r4 <bes des as'>8 q q q4 <b des g>8 ~ | % 23
+  q4. q8 ~ q2 | % 24
+  <bes des ges>4. q8 ~ q q4 <b des f>8 ~ | % 25
+  q1 | % 26
+  <bes es g>2 ~ q8 q4 q8 ~ | % 27
+  q4. q8 ~ q2
+  a,4 e'8 c' ~ c e,4 g,8 ~ | % 29
+  g8 d'4 b'8 ~ b d,4 g,8 |
+  f4 c'8 a' ~ a c,4 g8 ~ | % 31
+  g8 d'4 b'8 ~ b d,4 g,8 | % 32
+  a4. <cis gis' b e gis>8 ~ q2 | % 33
+  <a e' a cis e>2 <as es' as c f as> | % 34
+  <a fis cis' e a>2 <c f c' es as>
+  <es as es' f>4 q q8 q4 q8 ~ | % 36
+  q8 q4 q8 q4 q4 | % 37
+  <d g d' e>4 q q8 q4 q8 ~ | % 38
+  q8 q4 q8 q4 q | % 39
+  <d a' b f'>4 q q8 q4 q8 ~ |
+  q8 q4 q8 q4 q | % 41
+  <c e g b e>4 q q8 q4 <b e gis b e>8 ~ | % 42
+  q8 q4 q8 ~ q2
+  a4 e'8 c' ~ c e,4 g,8 ~ | % 44
+  g8 d'4 b'8 ~ b d,4 g,8 | % 45
+  f4 c'8 a' ~ a c,4 g8 ~ | % 46
+  g8 d'4 b'8 ~ b d,4 g,8 | % 47
+  a4 e'8 c' ~ c e,4 g,8 ~ | % 48
+  g8 d'4 b'8 ~ b d,4 g,8 | % 49
+  f4 c'8 a' ~ a c,4 g8 ~ |
+  g8 d'4 b'8 ~ b2
+}
+
+Piano = \relative c {
+  \time 4/4 \key c \major | % 1
+  a4 e'8 < b' c> ~ q e,4 g,8 ~ | % 2
+  g8 d'4 <a' b>8 ~ q d,4 g,8 | % 3
+  f4 c'8 <g' a> ~ q c,4 g8 ~
+  g8 d'4 <a' b>8 ~ b d,4 g,8
+  R1
+  a4 e'8 < b' c> ~ q e,4 g,8 ~ | % 2
+  g8 d'4 <a' b>8 ~ q d,4 g,8 | % 3
+  f4 c'8 <g' a> ~ q c,4 g8 ~
+  g8 d'4 <a' b>8 ~ b d,4 g,8
+  \acciaccatura s8
+  a4 e'8 < b' c> ~ q e,4 g,8 ~ | % 2
+  g8 d'4 <a' b>8 ~ q d,4 g,8 | % 3
+  f4 c'8 <g' a> ~ q c,4 r8
+  <a' dis fis>4. q8 ~ q8 q4.
   <gis b dis fis>4. q8 r q4 <a b e>8 ~ | % 15
   q4. q8 ~ q2 | % 16
   <gis b dis fis>4. q8 q4. <as b d f>8 ~ | % 17
@@ -245,30 +301,31 @@ Guitar = \relative c {
   q1 | % 26
   <g bes>2 ~ q8 q4 q8 ~ | % 27
   q4. <c es>8 ~ q2
-  a,4 e'8 c' ~ c e,4 g,8 ~ | % 29
-  g8 d'4 b'8 ~ b d,4 g,8 |
-  f4 c'8 a' ~ a c,4 g8 ~ | % 31
-  g8 d'4 b'8 ~ b d,4 g,8 | % 32
+  a,4 e'8 < b' c> ~ q e,4 g,8 ~ | % 2
+  g8 d'4 <a' b>8 ~ q d,4 g,8 | % 3
+  f4 c'8 <g' a> ~ q c,4 g8 ~
+  g8 d'4 <a' b>8 ~ b d,4 g,8
   a4. <cis e gis b cis>8 ~ q2 | % 33
   <a a' cis e>2 <as as' c f a> | % 34
   <fis fis' e' a cis>2 <f f' es' as es'>
-  <es' bes' f' as>4 q q8 q4 q8 ~ | % 36
+  <es' as es' f>4 q q8 q4 q8 ~ | % 36
   q8 q4 q8 q4 q4 | % 37
-  <d a' e' g>4 q q8 q4 <cis a' e' g>8 ~ | % 38
+  <d g d' e>4 q q8 q4 q8 ~ | % 38
   q8 q4 q8 q4 q | % 39
-  <b g' d' f>4 q q8 q4 q8 ~ |
+  <d a' b f'>4 q q8 q4 q8 ~ |
   q8 q4 q8 q4 q | % 41
-  <c g' e' b'>4 q q8 q4 q8 ~ | % 42
-  <b gis' e' b'>8 q4 q8 ~ q2
-  a4 e'8 c' ~ c e,4 g,8 ~ | % 44
-  g8 d'4 b'8 ~ b d,4 g,8 | % 45
-  f4 c'8 a' ~ a c,4 g8 ~ | % 46
-  g8 d'4 b'8 ~ b d,4 g,8 | % 47
-  a4 e'8 c' ~ c e,4 g,8 ~ | % 48
-  g8 d'4 b'8 ~ b d,4 g,8 | % 49
-  f4 c'8 a' ~ a c,4 g8 ~ |
+  <c e g b e>4 q q8 q4 <b e gis b e>8 ~ | % 42
+  q8 q4 q8 ~ q2
+  a4 e'8 < b' c> ~ q e,4 g,8 ~ | % 2
+  g8 d'4 <a' b>8 ~ q d,4 g,8 | % 3
+  f4 c'8 <g' a> ~ q c,4 g8 ~
+  g8 d'4 <a' b>8 ~ b d,4 g,8
+  a4 e'8 < b' c> ~ q e,4 g,8 ~ | % 2
+  g8 d'4 <a' b>8 ~ q d,4 g,8 | % 3
+  f4 c'8 <g' a> ~ q c,4 g8 ~
   g8 d'4 b'8 ~ b2
 }
+
 
 Basse = \relative c {
   \clef "bass" \time 4/4 \key c \major
@@ -323,50 +380,54 @@ Basse = \relative c {
 }
 
 harmoniesAlto = \chordmode {
-  s1*5 a1:m g:6 f:7+ g:6 a1:m g:6 f:7+ ces:7
-  fes:7+9 ces:7sus4 fes:7+9 g:9-
-  c:m9 f:5+7 bes:m9 es:5+7
-  e:7+ es:8 as:9sus4 g:8
-  c:m7 c:m7/bes
-  a1:m g:6 f:7+ g:6
-  a:7+9 a2:7+ f:m/as fis:m7 f:m7
-  f1:m7 bes:7sus4 e:m7 a:7
-  d:m6 g:7 c:7+11+ e:7
-  a1:m g:6 f:7+ g:6 a1:m g:6 f:7+ g:6
+  s1*5 a2..:m g8:6 s1 f2..:7+ g8:6 s1 a2..:m g8:6 s1 f1:7+ ces:7
+  fes2..:7+9 ces8:7sus4 s1 fes2..:7+9 g8:9- s1
+  c2..:m9 f8:5+7 s1 bes2..:m7 es8:5+7 s1
+  bes2..:m5-7/e es8:5+7 s1 as2..:9sus4 g8:8 s1
+  c2..:m7 c8:m7/bes s1
+  a2..:m g8:6 s1 f2..:7+ g8:6 s1
+  as:7+9 a2 f:m/as fis:m7 f:m7
+  bes2..:7sus4/f bes8:7sus4 s1 a2..:7sus4/e a8:7sus4 s1
+  g2..:9/d g8:9 s1 c2..:7+ e8:7 s1
+  a2..:m g8:6 s1 f2..:7+ g8:6 s1
+  a2..:m g8:6 s1 f2..:7+ g8:6 s1
 }
 
 grilleAlto = \chordmode {
   \mark #1 a1:m g:6 f:7+ g:6 \break
   a1:m g:6 f:7+ ces:7 \break \mark #2 \bar "||"
   fes:7+9 ces:7sus4 fes:7+9 g:9- \break
-  c:m9 f:5+7 bes:m9 es:7+ \break
-  e:7+ es:8 as:9sus4 g:8
-  c:m7 c:m7/bes   \bar "||" \stopStaff s1 \bar "" s \bar "" \startStaff \break \mark #3
-  a1:m g:6 f:7+ g:6 \break
-  as:7+9 a2:7+ f:m/as fis:m7 f:m7 \bar "||" \stopStaff s1 \bar ""\startStaff \break \mark #4
-  f:m7 bes:7sus4 e:m7 a:7 \break
-  d:m6 g:7 c:7+11+ e:7 \break \mark #5
+  c:m9 f:5+7 bes:m7 es:5+7 \break
+  bes:m5-7/e es:5+7 as:9sus4 g:8 \bar "||" \break \mark #3
+  c:m7 c:m7/bes  a1:m  \break
+  g:6 f:7+ g:6 \break
+  as:7+9 a2 f:m/as fis:m7 f:m7 \bar "||" \break \mark #4
+  bes1:7sus4/f bes:7sus4 a:7sus4/e a:7sus4 \break
+  g:9/d g:9 c:7+ e:7 \break \mark #5
   \repeat volta 2 { a:m g:6 f:7+ g:6 }
 }
 
 harmonies = \chordmode {
-  s1*5 a1:m g:6 f:7+ g:6 a1:m g:6 f:7+ b:7
-  e:7+9 b:7sus4 e:7+9 g:9- c:m9 f:5+7 bes:m9 es:5+7 e:7+ es:8 as:9sus4 g:8 c:m7 c:m7/bes
-  a1:m g:6 f:7+ g:6 a:7+9 a2:7+ f:m/as fis:m7 f:m7 f1:m7 bes:7sus4 e:m7 a:7 d:m6 g:7 c:7+11+ e:7
-  a1:m g:6 f:7+ g:6 a1:m g:6 f:7+ g:6
+  s1*5 a2..:m g8:6 s1 f2..:7+ g8:6 s1 a2..:m g8:6 s1 f1:7+ b1:7
+  e2..:7+9 b8:7sus4 s1 e2..:7+9 g8:9- s1 c2..:m9 f8:5+7 s1 bes2..:m7 es8:5+7 s1
+  bes2..:m5-7/e es8:5+7 s1 as2..:9sus4 g8:8 s1 c2..:m7 c8:m7/bes s1
+  a2..:m g8:6 s1 f2..:7+ g8:6 s1 a:7+9 a2 f:m/as fis:m7 f:m7  bes2..:7sus4/f bes8:7sus4 s1 a2..:7sus4/e a8:7sus4 s1
+  g2..:9/d g8:9 s1 c2..:7+ e8:7 s1
+  a2..:m g8:6 s1 f2..:7+ g8:6 s1
+  a2..:m g8:6 s1 f2..:7+ g8:6 s1
 }
 
 grille = \chordmode {
   \mark #1 a1:m g:6 f:7+ g:6 \break
   a1:m g:6 f:7+ b:7 \break \mark #2 \bar "||"
   e:7+9 b:7sus4 e:7+9 g:9- \break
-  c:m9 f:5+7 bes:m9 es:7+ \break
-  e:7+ es:8 as:9sus4 g:8
-  c:m7 c:m7/bes   \bar "||" \stopStaff s1 \bar "" s \bar "" \startStaff \break \mark #3
-  a1:m g:6 f:7+ g:6 \break
-  as:7+9 a2:7+ f:m/as fis:m7 f:m7 \bar "||" \stopStaff s1 \bar ""\startStaff \break \mark #4
-  f:m7 bes:7sus4 e:m7 a:7 \break
-  d:m6 g:7 c:7+11+ e:7 \break \mark #5
+  c:m9 f:5+7 bes:m7 es:5+7 \break
+  bes:m5-7/e es:5+7 as:9sus4 g:8 \bar "||" \mark #3
+  c:m7 c:m7/bes a1:m \break
+  g:6 f:7+ g:6 \break
+  as:7+9 a2 f:m/as fis:m7 f:m7 \bar "||" \break \mark #4
+  bes1:7sus4/f bes:7sus4 a:7sus4/e a:7sus4 \break
+  g:9/d g:9 c:7+ e:7 \break \mark #5
   \repeat volta 2 { a:m g:6 f:7+ g:6 }
 }
 
@@ -378,7 +439,7 @@ grille = \chordmode {
   \paper {
     #(set-paper-size "a5landscape")
     print-first-page-number = ##t
-  ragged-last-bottom = ##f
+    ragged-last-bottom = ##f
     page-count = #2
     system-system-spacing = #'((basic-distance . 13)
                                (minimum-distance . 10)
@@ -403,7 +464,7 @@ grille = \chordmode {
   \paper {
     #(set-paper-size "a5landscape")
     print-first-page-number = ##t
-  ragged-last-bottom = ##f
+    ragged-last-bottom = ##f
     page-count = #2
     system-system-spacing = #'((basic-distance . 13)
                                (minimum-distance . 10)
@@ -428,7 +489,7 @@ grille = \chordmode {
   \paper {
     #(set-paper-size "a5landscape")
     print-first-page-number = ##t
-  ragged-last-bottom = ##f
+    ragged-last-bottom = ##f
     page-count = #2
     system-system-spacing = #'((basic-distance . 13)
                                (minimum-distance . 10)
@@ -440,7 +501,7 @@ grille = \chordmode {
     \score {
       <<
         \new Devnull \structure
-        \new ChordNames { \transpose c a \harmonies }
+        \new ChordNames { \transpose c a \harmoniesAlto }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c a, \alto
@@ -541,8 +602,10 @@ grille = \chordmode {
         \new ChordNames { \harmonies }
         \new StaffGroup <<
           \new Devnull \structure
-          \new Staff \with { instrumentName = \CleSol } \theNotes
-          \new Staff { \clef "treble_8" \Guitar }
+          \new PianoStaff <<
+            \new Staff \with { instrumentName = \CleSol } \theNotes
+            \new Staff { \clef "bass" \Piano }
+          >>
           \new Staff \Basse
       >> >>
 } } }
@@ -561,13 +624,13 @@ grille = \chordmode {
         \new PianoStaff <<
           \new Devnull \structure
           \new Staff \with { instrumentName = \CleSol } \theNotes
-          \new Staff { \clef "bass" \Guitar }
+          \new Staff { \clef "bass" \Piano }
       >> >>
     }
   }  \bookpart {
     \score {
       \gridLayout
-      \new ChordGrid \transpose c a \grilleAlto
+      \new ChordGrid \grille
 } } }
 
 \book {
@@ -588,7 +651,7 @@ grille = \chordmode {
   }  \bookpart {
     \score {
       \gridLayout
-      \new ChordGrid \transpose c a \grilleAlto
+      \new ChordGrid \grille
 } } }
 
 \book {
@@ -628,14 +691,14 @@ grille = \chordmode {
   }  \bookpart {
     \score {
       \gridLayout
-      \new ChordGrid \transpose c a \grilleAlto
+      \new ChordGrid \grille
 } } }
 
 \book {
   \paper {
     #(set-paper-size "a5landscape")
     print-first-page-number = ##t
-  ragged-last-bottom = ##f
+    ragged-last-bottom = ##f
     page-count = #2
     system-system-spacing = #'((basic-distance . 13)
                                (minimum-distance . 10)
@@ -647,6 +710,6 @@ grille = \chordmode {
       <<
         \new ChordNames { \harmonies }
         \new Devnull \structure
-        \new Staff \with { instrumentName = \CleFa } << \Basse \\ { s1*27 \pageBreak } >>
+        \new Staff \with { instrumentName = \CleFa } \Basse
       >>
 } } }

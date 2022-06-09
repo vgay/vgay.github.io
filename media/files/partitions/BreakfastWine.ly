@@ -1,21 +1,35 @@
 
-\version "2.20.0"
-#(set-global-staff-size 18)
+\version "2.22.2"
+#(set-global-staff-size 17)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
 \include "lilyjazz.ily"
+\include "chord-grid-JAS.ly"
 
 
 
 \paper {
   indent = 0\mm
   ragged-last-bottom = ##t
-  ragged-bottom = ##f
+  ragged-bottom = ##t
   ragged-last = ##f
   markup-system-spacing = #'((basic-distance . 23)
                              (minimum-distance . 8)
                              (padding . 1))
+  system-system-spacing = #'((basic-distance . 15)
+                             (minimum-distance . 8)
+                             (padding . 0))
+  oddHeaderMarkup = \markup {
+    \on-the-fly \print-page-number-check-first {
+      \fill-line { \null \concat { \fromproperty #'page:page-number-string "/" \page-ref #'theLastPage "0" "?"} }
+  } }
+  evenHeaderMarkup = \markup {
+    \on-the-fly \print-page-number-check-first {
+      \fill-line { \concat { \fromproperty #'page:page-number-string "/" \page-ref #'theLastPage "0" "?"} \null }
+    }
+  }
 }
 
 title = #"Breakfast Wine"
@@ -76,7 +90,7 @@ realBookTitle = \markup {
     \override SystemStartBar #'collapse-height = #1
     \override ParenthesesItem.font-size = #2
   }
-  \context { 
+  \context {
     \Staff
     printPartCombineTexts = ##f
     \consists "Merge_rests_engraver"
@@ -101,7 +115,7 @@ realBookTitle = \markup {
   }
 }
 
-\defineBarLine "||-[|:" #'("||" "[|:" "[|:") 
+\defineBarLine "||-[|:" #'("||" "[|:" "[|:")
 
 % accords intro
 IntroH  = \chordmode {
@@ -113,9 +127,9 @@ IntroH  = \chordmode {
 IntroB = \relative c {
   \clef "bass" \key bes \major \time 4/4
   \override Rest #'staff-position = #0
-  \partial 8 f8( 
-  \repeat volta 2 { 
-    \once \override TextScript #'extra-offset = #'( -8 . 0 ) 
+  \partial 8 f8(
+  \repeat volta 2 {
+    \once \override TextScript #'extra-offset = #'( -8 . 0 )
     bes,1) ~ _\markup "(pn. w/ bass)" | 2.. f'8( | bes,1) ~ | 2.. f'8
     \break
 } }
@@ -125,10 +139,10 @@ IntroP = \relative c'' {
   %\clef "bass" \key bes \major \time 4/4
   \override Rest #'staff-position = #7
   \partial 8 s8
-  r2 <f,, bes d>4 r8 <ges bes c es>8~ | 
-  q1 | 
-  r2 <f bes d>4 r8 <ges bes c es>8~ | 
-  q1 
+  r2 <f,, bes d>4 r8 <ges bes c es>8~ |
+  q1 |
+  r2 <f bes d>4 r8 <ges bes c es>8~ |
+  q1
 }
 
 
@@ -138,8 +152,8 @@ harmonies = \chordmode {
  \parenthesize bes2 bes4. es8:m6/bes s1
   \repeat unfold 3 { s2 bes4. es8:m6/bes s1 }
   s2 bes4. es8:m6/bes |
-  s2 es:m6/a | 
-  g1:m7 | 
+  s2 es:m6/a |
+  g1:m7 |
   s8 bes2.:7+9/f es8:7+ |
   s2 es4. as8:m6/es  |
   s1 |
@@ -176,7 +190,7 @@ harmonies = \chordmode {
   d:m7  |
   g:5+7  |
   c:m7.11  |
-  f:13 
+  f:13
 }
 
 % le thème
@@ -184,50 +198,50 @@ theNotes =  \relative c' {
   \clef "treble" \key bes \major \time 4/4
   \override Rest #'staff-position = #0
   \override MultiMeasureRest #'expand-limit = #3
-  \showStartRepeatBar \bar "[|:" 
-  \A
+  \showStartRepeatBar \bar "[|:"
+  \mark #1
   \repeat volta 3 {
     d4 es8 f~ 2~ | 1~ | 1~ | 4. ges8 f4 es-. |
     d c8 bes~ 2~| 1~ | 1~ | 2. r4 \break
     d4 es8 f~ 2~ | 1 | \stemUp g4 a8 bes^~ 2~ | \stemDown 8 c4.-> a4-. f8 g~ |
     1~ | 1~ | }
-  \alternative { 
-    { 1~ | 
-      2. r4 \break 
-    }   
-    { g1~ \repeatTie | 
-      2. r4   \set Score.repeatCommands = #'((volta #f)) \bar "||" \B
-      c4 d8 es~ 2~ | 
-      8 f4.-> d4-. bes8 c8~ | 
-      1~ | 
+  \alternative {
+    { 1~ |
+      2. r4 \break
+    }
+    { g1~ \repeatTie |
+      2. r4   \set Score.repeatCommands = #'((volta #f)) \bar "||" \mark #2
+      c4 d8 es~ 2~ |
+      8 f4.-> d4-. bes8 c8~ |
+      1~ |
       1 |
-      bes4 c8 d~ 2~ | 
-      8 bes4.-> g4-.  d8 e~ | 
-      1~ | 
+      bes4 c8 d~ 2~ |
+      8 bes4.-> g4-.  d8 e~ |
+      1~ |
       2. r4 \break
       \repeat unfold 2 { f4 g8 a~ 2~ | 2 r8 g4.-> }
-      f4 g8 a~ 2~ | 
-      4 b~ 8 g4.-> | 
-      c1~ | 
-      1~ | 
-      1~ | 
-      2. r4  \break 
+      f4 g8 a~ 2~ |
+      4 b~ 8 g4.-> |
+      c1~ |
+      1~ |
+      1~ |
+      2. r4  \break
     }
-    { g1~ \repeatTie | 
-      2. r4 \bar "||" 
-    } 
+    { g1~ \repeatTie |
+      2. r4 \bar "||"
+    }
   }
-  \C c4 d8 ^\markup \with-color #red \fontsize #6 \bold \eyeglasses es~ 2~ | 
-  1~ | 
-  1 | 
-  r8 f4.-> d4-. bes8 c~ | 
-  1~ | 
-  1~ | 
-  1 | 
+  \mark #3 c4 d8 es~ 2~ |
+  1~ |
+  1 |
+  r8 f4.-> d4-. bes8 c~ |
+  1~ |
+  1~ |
+  1 |
   r8 d4.-> bes4-. ges8 f~ | \break
-  1~ | 
-  1~ | 
-  1~ | 
+  1~ |
+  1~ |
+  1~ |
   2. r4 \toCoda
 }
 
@@ -237,27 +251,27 @@ Rythme=  \relative c''' {
   \override NoteHead.no-ledgers = ##t % pas de lignes additionelles
   \override Rest #'staff-position = #7 % position des silences
   \repeat unfold 4 {r2 b4-. r8 b~ | 1 }
-  r2 b4-. r8 b~ | 
+  r2 b4-. r8 b~ |
   2 2 \improvisationOff \stemDown
-  \once \override TextScript #'extra-offset = #'( -4 . 4 ) 
-  bes,,4 _\markup "(pn.)" c8 d_~ 2 | 
-  \improvisationOn \stemUp r8 b''4. 4-. 8 8 \laissezVibrer | 
-  \comp 2 4-. r8 b~ | 
+  \once \override TextScript #'extra-offset = #'( -4 . 4 )
+  bes,,4 _\markup "(pn.)" c8 d_~ 2 |
+  \improvisationOn \stemUp r8 b''4. 4-. 8 8 \laissezVibrer |
+  \comp 2 4-. r8 b~ |
   1 |
-  r2 b4-. r8 b~ | 
-  1 | 
-  r2 b4-. r8 b~ | 
+  r2 b4-. r8 b~ |
+  1 |
+  r2 b4-. r8 b~ |
   4 \comp 3
   s1*8 |
-  b2. b4~ | 
-  1 |  
-  b2. b4~ | 
-  1 | 
-  b2. b4 \laissezVibrer | 
-  s1*5 |
-  r2 b4-. r8 b~ | 
+  b2. b4~ |
   1 |
-  s1*12 
+  b2. b4~ |
+  1 |
+  b2. b4 \laissezVibrer |
+  s1*5 |
+  r2 b4-. r8 b~ |
+  1 |
+  s1*12
 }
 
 
@@ -270,15 +284,15 @@ EndH  = \chordmode {
 % ligne de basse fin du thème
 EndB = \relative c {
   \clef "bass" \key bes \major \time 4/4
-  \showStartRepeatBar \bar "[|:" 
+  \showStartRepeatBar \bar "[|:"
   \override Rest #'staff-position = #0
-  \repeat volta 2 { 
-    \once \override TextScript #'extra-offset = #'( -10 . 0 ) 
-    bes1 ~ _\markup "(pn. w/ bass)" | 
-    2.. f'8( | 
-    bes,1) ~ | 
+  \repeat volta 2 {
+    \once \override TextScript #'extra-offset = #'( -10 . 0 )
+    bes1 ~ _\markup "(pn. w/ bass)" |
+    2.. f'8( |
+    bes,1) ~ |
     2.. f'8
-  } 
+  }
   \once \override Score.RehearsalMark #'direction = #DOWN
   \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
   \mark \markup "Après Solo AABAC D.S. al Coda"
@@ -288,10 +302,10 @@ EndB = \relative c {
 EndP = \relative c'' {
   \clef "bass" \key bes \major \time 4/4
   \override Rest #'staff-position = #7
-  r2 <f,, bes d>4 r8 <ges bes c es>8~ | 
-  q1 | 
-  r2 <f bes d>4 r8 <ges bes c es>8~ | 
-  q1 |  
+  r2 <f,, bes d>4 r8 <ges bes c es>8~ |
+  q1 |
+  r2 <f bes d>4 r8 <ges bes c es>8~ |
+  q1 |
 }
 
 % accords coda
@@ -303,35 +317,36 @@ CodaH  = \chordmode {
 % ligne de basse coda
 CodaB = \relative c {
   \clef "bass" \key bes \major \time 4/4
-  \showStartRepeatBar \bar "[|:" 
+  \showStartRepeatBar \bar "[|:"
   \override Rest #'staff-position = #0
   \Coda
-  \repeat volta 2 { 
-    \once \override TextScript #'extra-offset = #'( -10 . 0 ) 
-    bes1 ~ _\markup "(pn. w/ bass)" | 
-    2.. f'8( | 
-    bes,1) ~ | 
+  \repeat volta 2 {
+    \once \override TextScript #'extra-offset = #'( -10 . 0 )
+    bes1 ~ _\markup "(pn. w/ bass)" |
+    2.. f'8( |
+    bes,1) ~ |
     2.. f'8
-  } 
-  bes,1 ~ | 
-  2.. f'8( | 
-  bes,1) ~ | 
-  1 \fermata | 
+  }
+  bes,1 ~ |
+  2.. f'8( |
+  bes,1) ~ |
+  1 \fermata |
   \improvisationOn d1 ^\fermata
+   \label #'theLastPage
 }
 
 % voicing piano coda
 CodaP = \relative c'' {
   \clef "bass" \key bes \major \time 4/4
   \override Rest #'staff-position = #7
-  r2 <f,, bes d>4 r8 <ges bes c es>8~ | 
-  q1 | 
-  r2 <f bes d>4 r8 <ges bes c es>8~ | 
+  r2 <f,, bes d>4 r8 <ges bes c es>8~ |
   q1 |
-  r2 <f bes d>4 r8 <ges bes c es>8~ | 
+  r2 <f bes d>4 r8 <ges bes c es>8~ |
   q1 |
-  2 <f bes d>4 r8 <ges bes c es>8~ | 
-  q1 \fermata | 
+  r2 <f bes d>4 r8 <ges bes c es>8~ |
+  q1 |
+  2 <f bes d>4 r8 <ges bes c es>8~ |
+  q1 \fermata |
   s
 }
 
@@ -340,22 +355,22 @@ grille = \chordmode {
  \bar "[|:"
  bes1 es:m6/bes bes  es:m6/bes \break
  bes1 es:m6/bes bes  es:m6/bes \break
- bes1 \/es2:m6/bes es:m6/a g1:m7 bes:7+9/f \break
- \/es2:7+ es as1:m6/es \/as2:m6/es es 
+ bes1 es2:m6/bes es:m6/a g1:m7 bes:7+9/f \break
+ es2:7+ es as1:m6/es as2:m6/es es
  \set Score.repeatCommands = #'((volta "1"))
- as1:m6/es 
+ as1:m6/es
  \set Score.repeatCommands = #'((volta #f))  \bar ":|]" \break
  \stopStaff s1 \bar "" s1 \bar "" s1 \startStaff
- \set Score.repeatCommands = #'((volta "2")) 
- \/g2:13 g:5+7
+ \set Score.repeatCommands = #'((volta "2"))
+ g2:13 g:5+7
  \set Score.repeatCommands = #'((volta #f))  \bar "||" \break
  c1:m7 es:7+9/bes a:m5-7 d:9+ \break
- g:m7 g:m7/f e:m5-7 a:9+ \break 
- d:m7 es:7+9.11+ d:m7 es:7+9.11+ \break 
- d:m7 \/g2:13 g:5+7  \repeat percent 2 c1:9sus4 \break
- \repeat percent 2 f1:9sus4 \bar ":|]" \stopStaff s1 \bar "" s1  \bar "" 
+ g:m7 g:m7/f e:m5-7 a:9+ \break
+ d:m7 es:7+9.11+ d:m7 es:7+9.11+ \break
+ d:m7 g2:13 g:5+7  \repeat percent 2 c1:9sus4 \break
+ \repeat percent 2 f1:9sus4 \bar ":|]" \stopStaff s1 \bar "" s1  \bar ""
  s1 \bar "" s1 \bar "" s1 \startStaff
- \set Score.repeatCommands = #'((volta "3")) 
+ \set Score.repeatCommands = #'((volta "3"))
  g:5+7
  \set Score.repeatCommands = #'((volta #f))  \bar "||" \break
  c:m7 c:m7/bes a:m5-7 d:5+7.9+ \pageBreak
@@ -363,149 +378,32 @@ grille = \chordmode {
  d:m7 g:5+7 c:m7.11 f:13 \break \bar "||-[|:"
  \repeat volta 2 {
    bes es:m6/bes bes es:m6/bes }
+
   %\bar ".."
 }
 
-marques = \relative c' { 
-   s1 ^\markup \bold \box \fontsize #7 A s1*19 
-  s1 ^\markup \bold \box \fontsize #7 B s1*23 
-  s1 ^\markup \bold \box \fontsize #7 C s1*11
-  s1 ^\markup \bold \box \fontsize #7 Interlude
-}
 
 
 
 % partition pour instrument en do format tablette
 \book {
   \paper {
-    #(set-paper-size "tablette")
+    #(set-paper-size "a5landscape")
     page-count = #2
+    print-first-page-number = ##t
   }
-  \header { meter = \markup \with-color #red "Partition sur 2 pages" }
+  %\header { meter = \markup \with-color #red "Partition sur 2 pages" }
   #(define output-suffix "CTab")
   \bookpart {
     \score { <<
       \new ChordNames { \set chordChanges = ##t \IntroH }
-      \new Staff \with { instrumentName = \CleSol } 
-      << \Intro \IntroP \\ \IntroB >> 
+      \new Staff \with { instrumentName = \CleSol }
+      << \Intro \IntroP \\ \IntroB >>
     >> }
-    \score { 
+    \score {
       <<
         \new ChordNames { \harmonies }
-        \new Staff << \Rythme \\ \theNotes >> 
-      >>
-      \layout { indent = 0 }
-    }
-    \score {
-      <<
-        \new ChordNames { \EndH }
-        \new Staff << \EndP \\ \EndB >> 
-      >>
-      \layout { indent = 0 }
-    }
-    \score {
-      <<
-        \new ChordNames { \CodaH }
-        \new Staff << \CodaP \\ \CodaB >> 
-      >>
-      \layout { indent = 0 }
-} } } 
-
-% partition pour instrument en Bb format tablette
-\book {
-  \paper {
-    #(set-paper-size "tablette")
-    page-count = #2
-  }
-  \header { meter = \markup \with-color #red "Partition sur 2 pages" }
-  #(define output-suffix "BbTab") 
-  \bookpart {
-    \score { 
-      <<
-        \new ChordNames { \transpose c d  \IntroH }
-        \new Staff \with { instrumentName = \Bb } 
-        << \Intro \transpose c d \IntroP \\ \transpose c d \IntroB >> 
-      >> 
-    }
-    \score { 
-      <<
-        \new ChordNames { \transpose c d \harmonies }
-        \new Staff << \Rythme \\ \transpose c d \theNotes >> 
-      >>
-      \layout { indent = 0 }
-    }
-    \score {
-      <<
-        \new ChordNames { \transpose c d \EndH }
-        \new Staff << \transpose c d \EndP \\ \transpose c d \EndB >> 
-      >>
-      \layout { indent = 0 }
-    }
-    \score {
-      <<
-        \new ChordNames { \transpose c d \CodaH }
-        \new Staff << \transpose c d \CodaP \\ \transpose c d \CodaB >> 
-      >>
-      \layout { indent = 0 }
-} } } 
-
-% partition pour instrument en Eb format tablette
-\book {
-  \paper {
-    #(set-paper-size "tablette")
-    page-count = #2
-  }
-  \header { meter = \markup \with-color #red "Partition sur 2 pages" }
-  #(define output-suffix "EbTab")
-  \bookpart {
-    \score { 
-      <<
-        \new ChordNames { \transpose c a  \IntroH }
-        \new Staff \with { instrumentName = \Eb }  
-        << \Intro \transpose c a \IntroP \\ \transpose c d \IntroB >> 
-      >> 
-    }
-    \score { 
-      <<
-        \new ChordNames { \transpose c a \harmonies }
-        \new Staff << \Rythme \\ \transpose c a, \theNotes >> 
-      >>
-      \layout { indent = 0 }
-    }
-    \score {
-      <<
-        \new ChordNames { \transpose c a \EndH }
-        \new Staff << \transpose c a \EndP \\ \transpose c a \EndB >> 
-      >>
-      \layout { indent = 0 }
-    }
-    \score {
-      <<
-        \new ChordNames { \transpose c a \CodaH }
-        \new Staff << \transpose c a \CodaP \\ \transpose c a \CodaB >> 
-      >>
-      \layout { indent = 0 }
-} } } 
-
-% partition pour instrument en do format a4
-\book {
-  \paper {
-    #(set-paper-size "a4")
-    %page-count = #1
-  }
-  #(define output-suffix "Ca4")
-  \bookpart {
-    \score { 
-      <<
-        \new ChordNames { \IntroH }
-        \new Staff \with { instrumentName = \CleSol } 
-        << \Intro \IntroP \\ \IntroB >> 
-      >>
-    }
-    \score { 
-      <<
-        \new ChordNames { \harmonies }
-        \new Staff << \Rythme \\ \theNotes >> 
+        \new Staff << \Rythme \\ \theNotes >>
       >>
       \layout { indent = 0 }
     }
@@ -519,135 +417,212 @@ marques = \relative c' {
     \score {
       <<
         \new ChordNames { \CodaH }
-        \new Staff << \CodaP \\ \CodaB >> 
+        \new Staff << \CodaP \\ \CodaB >>
       >>
       \layout { indent = 0 }
-        } } \bookpart {
-    \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }    
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \grille
-      >>
-} } } 
+} } }
 
-% partition pour instrument en Bb format a4
+% partition pour instrument en Bb format tablette
 \book {
   \paper {
-    #(set-paper-size "a4")
-    page-count = #1
+    #(set-paper-size "a5landscape")
+    page-count = #2
+    print-first-page-number = ##t
   }
-  #(define output-suffix "Bba4") 
+  %\header { meter = \markup \with-color #red "Partition sur 2 pages" }
+  #(define output-suffix "BbTab")
   \bookpart {
-    \score { 
+    \score {
       <<
         \new ChordNames { \transpose c d  \IntroH }
-        \new Staff \with { instrumentName = \Bb }  
-        << \Intro \transpose c d \IntroP \\ \transpose c d \IntroB >> 
-      >> 
+        \new Staff \with { instrumentName = \Bb }
+        << \Intro \transpose c d \IntroP \\ \transpose c d \IntroB >>
+      >>
     }
-    \score { 
+    \score {
       <<
         \new ChordNames { \transpose c d \harmonies }
-        \new Staff << \Rythme \\ \transpose c d \theNotes >> 
+        \new Staff << \Rythme \\ \transpose c d \theNotes >>
       >>
       \layout { indent = 0 }
     }
     \score {
       <<
         \new ChordNames { \transpose c d \EndH }
-        \new Staff << \transpose c d \EndP \\ \transpose c d \EndB >> 
+        \new Staff << \transpose c d \EndP \\ \transpose c d \EndB >>
       >>
       \layout { indent = 0 }
     }
     \score {
       <<
         \new ChordNames { \transpose c d \CodaH }
-        \new Staff << \transpose c d \CodaP \\ \transpose c d \CodaB >> 
+        \new Staff << \transpose c d \CodaP \\ \transpose c d \CodaB >>
       >>
       \layout { indent = 0 }
-} } } 
+} } }
 
-% partition pour instrument en Eb format a4
+% partition pour instrument en Eb format tablette
 \book {
   \paper {
-    #(set-paper-size "a4")
-    page-count = #1
+    #(set-paper-size "a5landscape")
+    page-count = #2
+    print-first-page-number = ##t
   }
-  #(define output-suffix "Eba4")
+  %\header { meter = \markup \with-color #red "Partition sur 2 pages" }
+  #(define output-suffix "EbTab")
   \bookpart {
-    \score { 
+    \score {
       <<
         \new ChordNames { \transpose c a  \IntroH }
-        \new Staff \with { instrumentName = \Eb }  
-        << \Intro \transpose c a \IntroP \\ \transpose c d \IntroB >> 
-      >> 
+        \new Staff \with { instrumentName = \Eb }
+        << \Intro \transpose c a \IntroP \\ \transpose c d \IntroB >>
+      >>
     }
-    \score { 
+    \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
-        \new Staff << \Rythme \\ \transpose c a, \theNotes >> 
+        \new Staff << \Rythme \\ \transpose c a, \theNotes >>
       >>
       \layout { indent = 0 }
     }
     \score {
       <<
         \new ChordNames { \transpose c a \EndH }
-        \new Staff << \transpose c a \EndP \\ \transpose c a \EndB >> 
+        \new Staff << \transpose c a \EndP \\ \transpose c a \EndB >>
       >>
       \layout { indent = 0 }
     }
     \score {
       <<
         \new ChordNames { \transpose c a \CodaH }
-        \new Staff << \transpose c a \CodaP \\ \transpose c a \CodaB >> 
+        \new Staff << \transpose c a \CodaP \\ \transpose c a \CodaB >>
       >>
       \layout { indent = 0 }
-} } } 
+} } }
 
-% partition pour instrument en Bb format tablette
+% partition pour instrument en do format a4
 \book {
   \paper {
-    #(set-paper-size "tablette")
+    #(set-paper-size "a4")
     page-count = #1
+   print-page-number = ##f
   }
-  #(define output-suffix "BbTab1p") 
+  #(define output-suffix "Ca4")
   \bookpart {
-    \score { 
+    \score {
+      <<
+        \new ChordNames { \IntroH }
+        \new Staff \with { instrumentName = \CleSol }
+        << \Intro \IntroP \\ \IntroB >>
+      >>
+    }
+    \score {
+      <<
+        \new ChordNames { \harmonies }
+        \new Staff << \Rythme \\ \theNotes >>
+      >>
+      \layout { indent = 0 }
+    }
+    \score {
+      <<
+        \new ChordNames { \EndH }
+        \new Staff << \EndP \\ \EndB >>
+      >>
+      \layout { indent = 0 }
+    }
+    \score {
+      <<
+        \new ChordNames { \CodaH }
+        \new Staff << \CodaP \\ \CodaB >>
+      >>
+      \layout { indent = 0 }
+        }
+  } \bookpart {
+    \score {
+      \gridLayout
+      \new ChordGrid \grille
+} } }
+
+% partition pour instrument en Bb format a4
+\book {
+  \paper {
+    #(set-paper-size "a4")
+    page-count = #1
+   print-page-number = ##f
+  }
+  #(define output-suffix "Bba4")
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \transpose c d  \IntroH }
+        \new Staff \with { instrumentName = \Bb }
+        << \Intro \transpose c d \IntroP \\ \transpose c d \IntroB >>
+      >>
+    }
+    \score {
       <<
         \new ChordNames { \transpose c d \harmonies }
-        \new Staff << { { \transpose c d \theNotes } { R1*4 } } >>
+        \new Staff << \Rythme \\ \transpose c d \theNotes >>
       >>
+      \layout { indent = 0 }
+    }
+    \score {
+      <<
+        \new ChordNames { \transpose c d \EndH }
+        \new Staff << \transpose c d \EndP \\ \transpose c d \EndB >>
+      >>
+      \layout { indent = 0 }
+    }
+    \score {
+      <<
+        \new ChordNames { \transpose c d \CodaH }
+        \new Staff << \transpose c d \CodaP \\ \transpose c d \CodaB >>
+      >>
+      \layout { indent = 0 }
+  } } \bookpart {
+    \score {
+      \gridLayout
+      \new ChordGrid \transpose c d \grille
+} } }
+% partition pour instrument en Eb format a4
+\book {
+  \paper {
+    #(set-paper-size "a4")
+    page-count = #1
+   print-page-number = ##f
+  }
+  #(define output-suffix "Eba4")
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \transpose c a  \IntroH }
+        \new Staff \with { instrumentName = \Eb }
+        << \Intro \transpose c a \IntroP \\ \transpose c d \IntroB >>
+      >>
+    }
+    \score {
+      <<
+        \new ChordNames { \transpose c a \harmonies }
+        \new Staff << \Rythme \\ \transpose c a, \theNotes >>
+      >>
+      \layout { indent = 0 }
+    }
+    \score {
+      <<
+        \new ChordNames { \transpose c a \EndH }
+        \new Staff << \transpose c a \EndP \\ \transpose c a \EndB >>
+      >>
+      \layout { indent = 0 }
+    }
+    \score {
+      <<
+        \new ChordNames { \transpose c a \CodaH }
+        \new Staff << \transpose c a \CodaP \\ \transpose c a \CodaB >>
+      >>
+      \layout { indent = 0 }
+  } } \bookpart {
+    \score {
+      \gridLayout
+      \new ChordGrid \transpose c a \grille
+} } }
 
-} 
-\markup  \fill-line {
-  \column {  }
-  \column { \line { \with-color #red \fontsize #2 "Interlude et coda rhytmique" } }
-}
-} } 

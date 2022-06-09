@@ -6,6 +6,7 @@
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
 \include "lilyjazz.ily"
+\include "chord-grid-JAS.ly"
 
 
 
@@ -90,6 +91,7 @@ realBookTitle = \markup {
     \ChordNames
     \override ParenthesesItem.font-size = #2
   }
+  \context { \Score markFormatter = #format-mark-box-alphabet }
 }
 
 
@@ -140,13 +142,13 @@ theNotes =  \relative c' {
   \Intro
   R1 *2  | e'8 c a e' ees d4 r8 | c a e c' b gis4 r8 | % 4
   R1 *2  | e'8 a4 d,8 g4 r8 c, | f8 dis4 e8~ e4 r |  \break % 8
-  \A \repeat volta 2 {
+  \mark #1 \repeat volta 2 {
     a,2 c | d4. dis8~ dis2 | e4 a,8 d~ d a d4 | c a8 b~ b e, b'4 | \bar "||" \break% 12
     a2 c | d8 c a dis~ dis2 | r8 e4 a,8 d4 a8 d | r8 c4 a8 b4 e \bar "||"  \break % 16
-    \B
+    \mark #2
     a4. a8~ a d, f a~ | a2~ a8 a b c | b2~ b8 a g fis | g4-^ a, b c | \break % 20
     cis8 g' a bes a g f e | f2 d4 e8 a,~ | a2~ a8 e' dis e~ | e1 \bar "||"  \break
-    \A
+    \mark #1
     a,2 c | d8 c a dis~ dis2 | r8 e4 a,8 d4 a8 d | r8 c4 a8 b4 e }
 
   b1 \fermata _\markup "(Last X)"
@@ -157,29 +159,60 @@ theNotesII =  \relative c' {
   \clef "treble" \key c \major \time 4/4
   \Intro
   R1 *6  | e'8 c4 d8 b4 r8 f | bes8 gis4 a8~ 4 r |  \break % 8
-  \A \repeat volta 2 {
+  \mark #1 \repeat volta 2 {
     a2 g | fis4. 8~ 2 | r8 e4 fis8~ 2| r8 e4 gis8~ 2 | \bar "||" \break% 12
     a2 g | fis4. 8~ 2 | r8 e4 fis8~ 2| r8 e4 gis8~ 2 |  \bar "||"  \break % 16
-    \B
+    \mark #2
     f4. 8~ 8 d e f~ | 2~ 8 4 8~ | 2~ 8 8 e dis  | e4-^ e g bes | \break % 20
-    cis2. r8 cis8| 8 4. 8 4. | 8 4. 8 4. | a8 4. b2  \bar "||"  \break
-    \A
+    cis2. r8 c8| 8 4. 8 4. | 8 4. 8 4. | a8 4. b2  \bar "||"  \break
+    \mark #1
     a2 g | fis4. 8~ 2 | r8 e4 fis8~ 2| r8 e4 gis8~ 2 | }
 
   gis1 \fermata _\markup "(Last X)"
   \bar ".."
 }
 
+\layout {
+  \context {
+    \ChordNames
+    \consists Script_engraver
+    \consists Text_engraver
+    \consists
+      #(lambda (context)
+         (let ((chord-name #f)
+               (scripts '()))
+           (make-engraver
+            (acknowledgers
+             ((chord-name-interface engraver grob source-engraver) ;; détecte les ChordName
+              (set! chord-name grob))
+             ((script-interface engraver grob source-engraver) ;; détecte les Script
+              (set! scripts (cons grob scripts))))
+            ((stop-translation-timestep engraver)
+             (if chord-name
+                 (for-each
+                   (lambda (s)
+                     ;; Le ChordName devient parent du Script...
+                     (ly:grob-set-parent! s X chord-name)
+                     (ly:grob-set-parent! s Y chord-name)
+                     ;; ... et c'est contre lui que le Script se positionne.
+                     (ly:pointer-group-interface::add-grob s 'side-support-elements chord-name))
+                   scripts))
+             (set! chord-name #f)
+             (set! scripts '())))))
+    %% Réglage de la distance entre le nom d'accord et le script
+    \override Script.padding = 1.2
+  }
+}
 
 
 grille = \chordmode {
-  \bar "[|:"
-  a1:m7 \/d2:7 dis:dim7 \/e:7 d:7 \/c e:7 \break
-  a1:m7 \/d2:7 dis:dim7 \/e:7 d:7 \/c e:7 \break
-  \repeat percent 2 d1:m7 g:7 \w c2:7 e4:m c:7 \break
-  a1:7 d:m7 a:m7 \/f2:7+ e
-  a1:m7 \/d2:7 dis:dim7 \/e:7 d:7 \/c e:7 \break \bar ":|]"
-  a1:m7+ \bar ".." \stopStaff s \bar ""  s \bar "" s \bar ""
+  \bar "[|:" \mark #1
+  a1:m7 d2:7 dis:dim7 e:7 d:7 c e:7 \break \mark #2 \bar ":|]"
+  \repeat percent 2 d1:m7 g:7  c2:7 e4:m c:7 \break
+  a1:7 d:m7 a:m7 f2:7+ e \break \mark #1  \bar "||"
+  a1:m7 d2:7 dis:dim7 e:7 d:7 c e:7 \break \bar "|."
+  \mark \markup  \with-color #red \musicglyph "scripts.varcoda"
+  a1:m7+ \fermata \bar ".." \stopStaff s \bar ""  s \bar "" s \bar ""
 }
 
 marques = \relative c' {
@@ -194,13 +227,13 @@ Vocal =  \relative c'' {
   %\set Staff.instrumentName = " "
   \clef "treble" \key c \major \time 4/4
   \Intro
-  R1*8 \break \A
+  R1*8 \break \mark #1
   \repeat volta 4 {
     a2 c | d4. dis8~ dis2 | e4 a,8 d~ d a d4 | c a8 b~ b e, b'4 | \break
-    \A a2 c | d8( c a) dis~ dis2 | r8 e4 a,8 d4 a8 d | r8 c4 a8 b4 e | \break
-    \B a,8 a' a a a a \tuplet 3/2 { d, f a~ }  | a2~ a8 a b c | b2~ b8 a g fis | g4-^ a, b c | \break
+    \mark #1 a2 c | d8( c a) dis~ dis2 | r8 e4 a,8 d4 a8 d | r8 c4 a8 b4 e | \break
+   \mark #2 a,8 a' a a a a \tuplet 3/2 { d, f a~ }  | a2~ a8 a b c | b2~ b8 a g fis | g4-^ a, b c | \break
     cis8 g' a bes a g f e | f2 d4( e8) a,~ | a2~ a8 e' dis e~ | e1 | \break
-    \A a,2 c | d4. dis8~ dis2 | e4 a,8 d~ d a d4 }
+    \mark #1 a,2 c | d4. dis8~ dis2 | e4 a,8 d~ d a d4 }
   \alternative {
     {r8 c4 a8 b8 e8 e4 } {r8 c4 a8 b8 e4. }
   }
@@ -269,13 +302,13 @@ Basse = \relative c {
   \Intro
   a2 c | d dis | e4 dis d cis | c b gis e | % 4
   a2 c | d dis | e8 r r4 r2 | R1  | \break %8
-  \A \repeat volta 2 {
+  \mark #1 \repeat volta 2 {
     a4 e a g | d fis dis fis | e e d d | c c b e |  \break \bar "||" % 12
     a e a g | d fis dis fis | e dis d cis | c4 b gis e' | \break \bar "||" % 16
-    \B
+    \mark #2
     d e f a | d c a as | g f d b | c c e g | \break % 20
     a g e cis | d e f a | a g e c | f4 c e b | \break \bar "||" % 24
-    \A
+    \mark #1
     a' e a g | d fis dis fis | e dis d cis | c4 b e b | }
 
   a1 \fermata _\markup "(Last X)"
@@ -286,19 +319,19 @@ RightH = \relative c' {
   \Intro
   r8 e <a b>4 r8 e <a c>4 | r8 fis <a d>4 r8 fis <a dis>4 | R1  | r4 <e g b> r <e gis b> \break % 4
   r8 e <a b>4 r8 e <a c>4 | r8 fis <a d>4 r8 fis <a dis>4 | <gis dis' e>8 r r4 r2 | R1 \break %8
-  \A \bar "[|:"
+  \mark #1 \bar "[|:"
   r4. <e a c>8~ <e a c>4 r8 <fis a c>~ | <fis a c>4 r8 <fis a c>~ <fis a c> <fis a c>4 r8 | % 10
   <gis d'>4 <gis d'>8 <fis c'>~ <fis c'>4 <fis c'> | <e c'> <e c'>8 <d gis>~ <d gis>4 <d gis>   \break| % 12
-  \A
+  \mark #1
   r4. <e a c>8~ <e a c>4 r8 <fis a c>~ | <fis a c>4 r8 <fis a c>~ <fis a c> <fis a c>4 r8 | % 10
   <gis d'>4 <gis d'>8 <fis c'>~ <fis c'>4 <fis c'> | <e c'> <e c'>8 <d gis>~ <d gis>2   \break| % 12
 
-  \B
+  \mark #2
   r8 <f c'>4 r8 <f c'>4 <f c'> | r8 <f c'>4 r8 <f c'>2 | % 18
   r8 <f b>4 r8 <f b>4 <f b> | r <c e> <e g> <g bes> |  \break % 20
   <g cis> <g cis>8 <g cis>~ <g cis>4 <g cis> | <f c'>8 <f c'>4. <f c'>8 <f c'>4. | % 22
   <g c>8 <g c>4. <g c>8 <g c>4. | <e a>8 <e a>4. <e b'>2 |  \break \bar "||" % 24
-  \A
+  \mark #1
   r4. <e a c>8~ <e a c>4 r8 <fis a c>~ | <fis a c>4 r8 <fis a c>~ <fis a c> <fis a c>4 r8 | % 26
   <gis d'>4 <gis d'>8 <fis c'>~ <fis c'>4 <fis c'> | <e c'>4 <e c'>8 <d gis>~ <d gis>4 <d gis> | \break \bar ":|]" % 28
   \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
@@ -336,19 +369,19 @@ Guitare =  \relative c' {
   r8  e8  <a b>4 r8  e8  <a c>4 | r8  fis8  <a d>4 r8  fis8  <a dis>4 | % 5
   R1 | R |
   r8  e8  <a b>4 r8  e8  <a c>4 | r8  fis8  <a d>4 r8  fis8  <a dis>4 | % 9
-  R1*2 \break \A \bar "[|:"
+  R1*2 \break \mark #1 \bar "[|:"
   e8  a8  c8  e8  e,8 a8  c8  fis8 | fis,8  a8  c8  <a dis>8 ~ <a dis>8  <a dis>4 r8 |
   <d, gis b e>4  <d gis b e>8  <d a' c fis>4 <d a' c fis>8 r4 | % 14
   <e g c e>4  <e g c e>8  <d gis b e>4 <d gis b e>8 r4 | \break
   e8  a8  c8  e8  e,8 a8  c8  fis8 | fis,8  a8  c8  <a dis>8 ~ <a dis>8  <a dis>4 r8 |
   <d, gis b e>4  <d gis b e>8  <d a' c fis>4 <d a' c fis>8 r4 | % 18
-  <e g c e>4  <e g c e>8  <d gis b e>8 ~ <d gis b e>2 \break \B \bar "||"
+  <e g c e>4  <e g c e>8  <d gis b e>8 ~ <d gis b e>2 \break \mark #2 \bar "||"
   d8  <a' c f>4  d,8  <a' c f>4 <a c f>4 | d,8  <a' c f>4  d,8  <a' c f>2 | % 21
   d,8  <g b f'>4  d8  <g b f'>4 <g b f'>4 | <g, c e>4  <c e g>4  <e g b>4  <g bes e>4 | \break
   <e a cis g'>4  <e a cis g'>8  <e a cis g'>4  <e a cis g'>8 r4 | % 24
   <d a' c f>8  <d a' c f>4.  <d a' c f>8 <d a' c f>4. | % 25
   <e a c g'>8  <e a c g'>4.  <e a c g'>8 <e a c g'>4. | % 26
-  <f a c e>8  <f a c e>4.  <e gis b>2 |\break \A \bar "||"
+  <f a c e>8  <f a c e>4.  <e gis b>2 |\break \mark #1 \bar "||"
   e8  a8  c8  e8  e,8 a8  c8  fis8 | fis,8  a8  c8  <a dis>8 ~ <a dis>8  <a dis>4 r8 | % 29
   <d, gis b e>4  <d gis b e>8  <d a' c fis>4 <d a' c fis>8 r4 |
   <e g c e>4  <e g c e>8  <d gis b e>8 ~ <d gis b e>2 |
@@ -434,6 +467,7 @@ Guitare =  \relative c' {
     \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
+
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c a, \theNotes
@@ -445,7 +479,7 @@ Guitare =  \relative c' {
     \score {
       <<
         \new ChordNames { \transpose c d \harmonies }
-        \new Staff \with { instrumentName = \Bb } <<
+        \new Staff \with { instrumentName = \Eb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c a, \theNotesII
         >>
@@ -463,47 +497,19 @@ Guitare =  \relative c' {
     \score {
       <<
         \new ChordNames { \harmonies }
+        \new StaffGroup <<
         \new Staff \with { instrumentName = \CleSol }
         <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }
           \theNotes
         >>
         \new Staff \theNotesII
-      >>
+      >> >>
     } %\form
-    }  \bookpart {
+  }  \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )
-          \override ParenthesesItem.extra-offset = #'(10 . -1 )
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 )
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \grille
-      >>
+      \gridLayout
+      \new ChordGrid \grille
 } } }
 
 \book {
@@ -516,46 +522,18 @@ Guitare =  \relative c' {
     \score {
       <<
         \new ChordNames { \transpose c d \harmonies }
+        \new StaffGroup <<
         \new Staff \with { instrumentName = \Bb  } <<
           % \new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c d \theNotes
         >>
         \new Staff \transpose c d \theNotesII
-      >>
+      >> >>
     } %\form
-    }  \bookpart {
+  }  \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )
-          \override ParenthesesItem.extra-offset = #'(10 . -1 )
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 )
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \transpose c d \grille
-      >>
+      \gridLayout
+      \new ChordGrid \transpose c d \grille
 } } }
 
 \book {
@@ -568,46 +546,18 @@ Guitare =  \relative c' {
     \score {
       <<
         \new ChordNames { \transpose c a \harmonies }
+        \new StaffGroup <<
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice
           \transpose c a, \theNotes
         >>
         \new Staff \transpose c a, \theNotesII
-      >>
+      >> >>
     } %\form
-    }  \bookpart {
+  }  \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )
-          \override ParenthesesItem.extra-offset = #'(10 . -1 )
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 )
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \transpose c a \grille
-      >>
+      \gridLayout
+      \new ChordGrid \transpose c a \grille
 } } }
 
 \book {
