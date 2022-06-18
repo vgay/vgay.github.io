@@ -37,8 +37,8 @@
 title = #"El Gato Triste"
 composer = #"Chuck Mangione"
 meter = #"(Med. Latin)"
-kwtempo = #"Latin"
-kwstyle = #"Medium"
+kwtempo = #"Medium"
+kwstyle = #"Latin"
 
 realBookTitle = \markup {
   \score {
@@ -167,7 +167,7 @@ Basse = \relative c {
   \clef "bass" \key bes \major \time 4/4
   % \partial 8
   \showStartRepeatBar \bar "[|:"
-  \repeat unfold 2 { g4 d'8 g r g, d' g | as, f' as c r bes8 a d,8  }
+  g4 d'8 g r g, d' g | as, f' as c r bes4 as8 | g,4 d'8 g r g, d' g | as, f' as c r bes8  a8 d,
   g,4 d'8 g as, f' as c | g,4 d'8 g r d g d' | a4. es8 d r fis a |\repeat unfold 2 {  g,4 d'8 g r g, d' g } |
   c,4 g'8 c r c, g' c | g,4 d'8 g r g, d' g | c,4 g'8 c r f,, c' es | bes g' bes r f a bes4
   \repeat unfold 2 { a4. es8 d r fis a | g,4 d'8 g r g, d' g | }
