@@ -1,6 +1,6 @@
 
 \version "2.22.0"
-#(set-global-staff-size 18)
+#(set-global-staff-size 17)
 \include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
@@ -27,7 +27,7 @@ title = #"Blue Train"
 composer = #"John Coltrane"
 meter = #"(Med. Swing)"
 kwtempo = #"Medium"
-kwstyle = #"Swing"
+kwstyle = #"Blues"
 
 realBookTitle = \markup {
   \score {
@@ -80,7 +80,7 @@ realBookTitle = \markup {
     \override SystemStartBar #'collapse-height = #1
     \override ParenthesesItem.font-size = #2
   }
-  \context { 
+  \context {
     \Staff
     printPartCombineTexts = ##f
     \consists "Merge_rests_engraver"
@@ -103,58 +103,58 @@ form = \markup  \fill-line {
 
 harmonies = \chordmode {
   \set chordChanges = ##t
-  s8 s2 es1:7 as:7 es1*2:7 as:7 es:7 
+  s8 s2 es1:7 as:7 es1*2:7 as:7 es:7
   f1:m bes:7 es:7 f2:m bes:7
 }
 
 
 theNotes =  \relative c'' {
+  \mark \markup "In unison 1st X"
   \clef "treble" \key as \major \time 4/4
-  \showStartRepeatBar \bar "[|:"
-  \partial 8*5 bes8 des f des es ~ 
+  \override Rest #'staff-position = #0
+  \partial 8*5 bes8 des f des es ~
   \repeat volta 2 {
-    es1 | r4. bes8 des f des es ~ | 
+    es1 | r4. bes8 des f des es ~ |
     es1 | r4. es,8 ges bes ges as ~ \bar "||"
-    as1| \noBreak r4. bes8 des f des es ~ | 
+    as1| \noBreak r4. bes8 des f des es ~ |
     es1 | r4. bes8 des ges es des ~ \bar "||"
-    des1 | r4. bes8 des f des es ~ | 
-    es1 | }
-  \alternative {
-    { r4.bes8 des f des  es \laissezVibrer }
-    { R1 }
-  } \bar ".."
-}
+    des1 | r4. bes8 des f des es ~ |
+    es1 |
+    r4.\startParenthesis \parenthesize bes8 des f des  \endParenthesis \parenthesize es \laissezVibrer
+} }
 
 PartTwo =  \relative c'' {
   \clef "treble" \key as \major \time 4/4
-  \partial 8*5 ges8 as c as bes ~ 
-  bes1 | r4. ges8 as c as bes ~ | 
-  bes1 | r4. bes8 c des c c ~ | 
-  c1 | r4. ges8 as c as bes ~ | 
-  bes1 | r4. ges8 bes des bes as ~ | 
-  as1 | r4. f8 as c as bes ~ | 
-  bes1 | R1 R1
+  \override Rest #'staff-position = #0
+  \partial 8*5 ges8 as c as bes ~
+  bes1 | r4. ges8 as c as bes ~ |
+  bes1 | r4. bes8 c des c c ~ |
+  c1 | r4. ges8 as c as bes ~ |
+  bes1 | r4. ges8 bes des bes as ~ |
+  as1 | r4. f8 as c as bes ~ |
+  bes1 | r4. \startParenthesis \parenthesize ges8 as c as \endParenthesis \parenthesize bes \laissezVibrer
 }
 
 PartThree =  \relative c' {
   \clef "treble" \key as \major \time 4/4
-  \partial 8*5 es8 f as f ges ~ 
-  ges1 | r4. es8 f as f ges ~ | 
-  ges1 | r4. des8 es f es es ~ |  
-  es1 | r4. es8 f as f ges ~ | 
-  ges1 | r4. es8 ges bes ges d ~ |  
-  d1 | r4. es8 f as f ges ~ | 
-  ges1 | R1 R1
+   \override Rest #'staff-position = #0
+ \partial 8*5 es8 f as f ges ~
+  ges1 | r4. es8 f as f ges ~ |
+  ges1 | r4. des8 es f es es ~ |
+  es1 | r4. es8 f as f ges ~ |
+  ges1 | r4. es8 ges bes ges d ~ |
+  d1 | r4. es8 f as f ges ~ |
+  ges1 | r4.  \startParenthesis \parenthesize es8 f as f \endParenthesis \parenthesize ges \laissezVibrer
 }
 
 voicing =  \relative c' {
   \clef "treble" \key as \major \time 4/4
   \once \override Score.RehearsalMark.break-align-symbols = #'(clef)
-  \once \override Score.RehearsalMark #'self-alignment-X = #LEFT 
+  \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
   \mark \markup "Voicing sur dernière grille de chaque chorus"
   \partial 4 es4-. \mark \markup \pad-markup #2 " "
   \repeat volta 2 {
-    as2.( ~ as8 ges-.) | r4 r8 bes,( des8. bes16 d8 es) | R1 | 
+    as2.( ~ as8 ges-.) | r4 r8 bes,( des8. bes16 d8 es) | R1 |
     r2 r4 es-.
     \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
     \mark \markup \bold "3x"
@@ -164,9 +164,9 @@ voicing =  \relative c' {
 piano =  \relative c' {
   \clef "treble_8" \key as \major \time 4/4
   \once \override Score.RehearsalMark.break-align-symbols = #'(clef)
-  \once \override Score.RehearsalMark #'self-alignment-X = #LEFT 
+  \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
   \mark \markup "Voicing piano et ligne de basse"
-  \partial 8*5 r8 r2 
+  \partial 8*5 r8 r2
   \repeat volta 2 {
     r2 <g des' ges>4. <g des' ges>8 | R1
     r2 <g des' ges>4. <g des' ges>8 | R1 \bar "||"
@@ -183,10 +183,10 @@ piano =  \relative c' {
 
 basse =  \relative c {
   \clef "bass" \key as \major \time 4/4
-  \partial 8*5 r8 r2 
+  \partial 8*5 r8 r2
   \repeat volta 2 {
     r2 bes4. es,8 | R1 | r2 bes'4. es,8 | R1 |
-    r2 es4. as8 | R1 | r2 bes4. es,8 | R1 | r2 f4. bes8 | R1 | 
+    r2 es4. as8 | R1 | r2 bes4. es,8 | R1 | r2 f4. bes8 | R1 |
   }
   \alternative {
     { r2 bes4. es,8 | R1 }
@@ -197,10 +197,10 @@ basse =  \relative c {
 
 grille = \chordmode {
   \bar "[|:"
- 
+
   \bar ".." }
 
-marques = \relative c' { 
+marques = \relative c' {
 
 }
 
@@ -224,15 +224,15 @@ rythmique = \chordmode {
       <<
         \new ChordNames { \harmonies }
         \new Staff \with { instrumentName = \CleSol } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \theNotes
-        >> 
+        >>
         \new Staff \PartTwo
         \new Staff \PartThree
       >>
     } %\form
     \score { \new Staff \voicing }
-  } 
+  }
   \bookpart {
     \score {
       <<
@@ -240,10 +240,10 @@ rythmique = \chordmode {
           \set chordChanges = ##f
           \rythmique
         }
-        \new StaffGroup <<       
+        \new StaffGroup <<
           \new Staff  << \piano  \\ {  s8 s2 s1*4 \break  s1*4 \break  } >>
-          \new Staff  \basse 
-        >>        
+          \new Staff  \basse
+        >>
       >>
 } } }
 
@@ -252,16 +252,16 @@ rythmique = \chordmode {
     #(set-paper-size "tablette")
     page-count = #1
   }
-  #(define output-suffix "BbTab") 
+  #(define output-suffix "BbTab")
   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
   \bookpart {
     \score {
       <<
-        \new ChordNames { \transpose c d \harmonies } 
+        \new ChordNames { \transpose c d \harmonies }
         \new Staff \with { instrumentName = \Bb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" }  
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c d \theNotes
-        >> 
+        >>
         \new Staff \transpose c d \PartTwo
         \new Staff \transpose c d \PartThree
       >>
@@ -279,11 +279,11 @@ rythmique = \chordmode {
   \bookpart {
     \score {
       <<
-        \new ChordNames { \transpose c a \harmonies } 
+        \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" }  
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c a \theNotes
-        >> 
+        >>
         \new Staff \transpose c a \PartTwo
         \new Staff \transpose c a \PartThree
       >>
@@ -300,17 +300,17 @@ rythmique = \chordmode {
     \score {
       <<
         \new ChordNames { \harmonies }
-        \new Staff \with { instrumentName = \CleSol } 
+        \new Staff \with { instrumentName = \CleSol }
         <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
           \theNotes \\ { s8 s2 s1*4 \break  s1*4 \break  }
-        >> 
+        >>
         \new Staff \PartTwo
         \new Staff \PartThree
       >>
     } %\form
     \score { \new Staff \voicing }
-    \markup " " 
+    \markup " "
     \score {
       <<
         \new ChordNames {
@@ -318,7 +318,7 @@ rythmique = \chordmode {
           \rythmique
         }
         \new Staff  << \piano  \\ {  s8 s2 s1*4 \break  s1*4 \break  } >>
-        \new Staff  \basse 
+        \new Staff  \basse
       >>
 } } }
 
@@ -327,15 +327,15 @@ rythmique = \chordmode {
     #(set-paper-size "a4")
     page-count = #1
   }
-  #(define output-suffix "Bba4") 
+  #(define output-suffix "Bba4")
   \bookpart {
     \score {
       <<
-        \new ChordNames { \transpose c d \harmonies } 
+        \new ChordNames { \transpose c d \harmonies }
         \new Staff \with { instrumentName = \Bb  } <<
-          % \new Voice \with { \consists "Pitch_squash_engraver" }  
+          % \new Voice \with { \consists "Pitch_squash_engraver" }
           \transpose c d \theNotes\\ { s8 s2 s1*4 \break  s1*4 \break  }
-        >> 
+        >>
         \new Staff \transpose c d \PartTwo
         \new Staff \transpose c d \PartThree
       >>
@@ -354,9 +354,9 @@ rythmique = \chordmode {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
-          %\new Voice  
+          %\new Voice
           \transpose c a \theNotes\\ { s8 s2 s1*4 \break  s1*4 \break  }
-        >> 
+        >>
         \new Staff \transpose c a \PartTwo
         \new Staff \transpose c a \PartThree
       >>

@@ -1,11 +1,12 @@
 
 \version "2.19.80"
 #(set-global-staff-size 18)
+\include "double-mark.ly"
 \include "AdditionalFunctions.ly"
 \include "VariablesJazz.ly"
 \include "jazzchords.ily"
 \include "lilyjazz.ily"
-
+\include "chord-grid-JAS.ly"
 
 
 \paper {
@@ -18,13 +19,19 @@
   markup-system-spacing = #'((basic-distance . 23)
                              (minimum-distance . 8)
                              (padding . 1))
+  system-system-spacing = #'((basic-distance . 15)
+                             (minimum-distance . 10)
+                             (padding . 0))
+  score-system-spacing = #'((basic-distance . 23)
+                            (minimum-distance . 8)
+                            (padding . 3))
 }
 
 title = #"Footprints"
 composer = #"Wayne Shorter"
 meter = #"(Med. Swing)"
 kwtempo = #"Medium"
-kwstyle = #"Swing"
+kwstyle = #"Blues"
 
 realBookTitle = \markup {
   \score {
@@ -71,7 +78,7 @@ realBookTitle = \markup {
     \override SystemStartBar #'collapse-height = #1
     \override ParenthesesItem.font-size = #2
   }
-  \context { 
+  \context {
     \Staff
     printPartCombineTexts = ##f
     \consists "Merge_rests_engraver"
@@ -99,26 +106,38 @@ realBookTitle = \markup {
 harmonies = \chordmode {
   \set chordChanges = ##f
   c1.:m11 s s s f:m11 s c:m11 s
-  s8 fis2.:m5-7 f:11+13 e:5+7.9-11+ a:5+7.9-11+ c1.:m11
+  fis2.:m5-7 f:11+13 e:8 a:8 c1.:m11
 }
 
 
-theNotes =  \relative c' {
-  \clef "treble" \key bes \major \time 4/4
+theNotes =  \relative c'' {
+  \clef "treble" \key bes \major \time 6/4
   \showStartRepeatBar \bar "[|:"
-  <f bes>4-- q-- q--  q8( <g c> ~ q4. <e a>8 
-  \times 6/5 { <f bes>8 <e a> <d g> <c f> <a d> ~ } q2 <g c>4-.)
-  r2 r8 <a d>( ~ q2 <g c>4-.)
-  r2 r8 <a d>( ~ q2 <g c>4-.) \break
-  <f' bes>4-- q-- q--  q8( <g c> ~ q4. <as! d>8 
-  \times 6/5 { <bes es>8 <as d> <g c> <f bes> <d g> ~ } q2 <c f>4-.)
-  \times 6/5 { <f bes>8( <e a> <d g> <c f> <a d> ~ } q2 <g c>4-.)
-  r2 r8 <a d>( ~ q2 <g c>4-.) \break
-  \cadenzaOn s8
-  %\once \override Score.AccidentalPlacement.right-padding = #-0.4
-  <fis' b>4( q q <f b>8 <a d> ~ q4 <d, g>8 <f bes> ~ \cadenzaOff \bar "|"
-  q2 ~ \times 2/3 { q8 <e a> <es as> } <d g>2 ~ q16 <g c> <d g> <des ges>)
-  <c f>1. ~ q1. \break
+  bes4-- 4-- 4--  8 c ~ 4. a8
+  \times 3/5 { bes4 a g f d ~ } 2 c4-.
+  \repeat unfold 2 { r2 r8 d ~ 2 c4-. } \break
+  bes'4-- 4-- 4--  8 c ~ 4. d8
+  \times 3/5 { es4 d c bes g ~ } 2 f4-.
+  \times 3/5 { bes4 a g f d } ~  2 c4-.
+  r2 r8 d ~ 2 c4-. \break
+  b'4 4 4 8 d ~ 4. g,8  %\cadenzaOff \bar "|"
+  bes2 ~ \times 2/3 { 8 a as } g2 ~ 16 c g ges
+  f1. ~ 1. \break
+  \bar ":|]"
+}
+
+theNotesII =  \relative c'' {
+  \clef "treble" \key bes \major \time 6/4
+  f4-- 4-- 4--  8 g ~ 4. e8
+  \times 3/5 { f4 e d c a ~ } 2 g4-.
+  \repeat unfold 2 { r2 r8 a  ~ 2 g4-. } \break
+  f'4-- 4-- 4--  8 g ~ 4. as8
+  \times 3/5 { bes4 as g f d ~ } 2 c4-.
+  \times 3/5 { f4 e d c a ~ } 2 g4-.
+  r2 r8 a  ~ 2 g4-. \break
+  fis'4 4 4 f8 a ~ 4. d,8
+  f2 ~ \times 2/3 { 8 e es } d2 ~ 16 g d des
+  c1. ~ 1. \break
   \bar ":|]"
 }
 
@@ -130,19 +149,19 @@ Basse = \relative c' {
   \repeat unfold 4 { c,4 g' c es2 ~ es8 g, }
   \repeat unfold 2 { c,4 f bes es2 ~ es8 a, }
   \repeat unfold 2 { c,4 g' c es2 ~ es8 g, }
-  \cadenzaOn s8 fis2. f \cadenzaOff | e a, | \repeat unfold 2 { c4 g' c es2 ~ es8 g, }
+  fis2. f | e a, | \repeat unfold 2 { c4 g' c es2 ~ es8 g, }
 }
 
 
 grille = \chordmode {
   \bar "[|:"
- \repeat percent 4 c1:m11 \break
- \repeat percent 2 f:m11 \repeat percent 2 c:m11 \break
- \/ fis2:m5-7 f:7.11+13 \/ e2:5+7.9-11+ a2:5+7.9-11+ \repeat percent 2 c1:m11
+  \repeat percent 4 c1:m11 \break
+  \repeat percent 2 f:m11 \repeat percent 2 c:m11 \break
+  fis2:m5-7 f:11+13 e2:8 a2:8 \repeat percent 2 c1:m11
   \bar ":|]" }
 
-marques = \relative c' { 
-  s1 
+marques = \relative c' {
+  s1
 }
 
 
@@ -155,18 +174,17 @@ marques = \relative c' {
   \bookpart {
     \score {
       <<
-        \new StaffGroup <<     
-        \new Staff \with { instrumentName = \CleSol } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          \theNotes
-        >>
-        \new ChordNames {
-          \set chordChanges = ##t
-          \harmonies
-        }
-        \new Staff  <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          \Basse
+        \new StaffGroup <<
+          \new Staff \with { instrumentName = \CleSol } <<
+            \theNotes \\ \transpose c c, \theNotesII
+          >>
+          \new ChordNames {
+            \set chordChanges = ##t
+            \harmonies
+          }
+          \new Staff  <<
+            %\new Voice \with { \consists "Pitch_squash_engraver" }
+            \Basse
       >> >> >>
 } } }
 
@@ -175,23 +193,18 @@ marques = \relative c' {
     #(set-paper-size "tablette")
     page-count = #1
   }
-  #(define output-suffix "BbTab") 
+  #(define output-suffix "BbTab")
   \bookpart {
     \score {
       <<
-        \new StaffGroup <<     
-        \new Staff \with { instrumentName = \Bb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          \transpose c d \theNotes
-        >>
         \new ChordNames {
           \set chordChanges = ##t
           \transpose c d \harmonies
         }
-        \new Staff  <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          \Basse
-      >> >> >>
+        \new StaffGroup <<
+          \new Staff \with { instrumentName = \Bb } \transpose c d \theNotes
+          \new Staff \with { instrumentName = \markup \center-column { "sounds 1" "octave lower" } } \transpose c d \theNotesII
+      >> >>
 } } }
 
 \book {
@@ -203,19 +216,14 @@ marques = \relative c' {
   \bookpart {
     \score {
       <<
-        \new StaffGroup <<     
-        \new Staff \with { instrumentName = \Eb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          \transpose c a \theNotes
-        >>
         \new ChordNames {
           \set chordChanges = ##t
           \transpose c a \harmonies
         }
-        \new Staff  <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          \Basse
-      >> >> >>
+        \new StaffGroup <<
+          \new Staff \with { instrumentName = \Eb } \transpose c a \theNotes
+          \new Staff \transpose c a, \theNotesII
+      >> >>
 } } }
 
 \book {
@@ -227,52 +235,21 @@ marques = \relative c' {
   \bookpart {
     \score {
       <<
-        \new StaffGroup <<     
-        \new Staff \with { instrumentName = \CleSol } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          \theNotes
-        >>
         \new ChordNames {
           \set chordChanges = ##t
           \harmonies
         }
-        \new Staff  <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          \Basse
+        \new StaffGroup <<
+          \new Staff \with { instrumentName = \CleSol } \theNotes
+          \new Staff \with { instrumentName = \markup \center-column { "sounds 1" "octave lower" } } \theNotesII
+          \new Staff  <<
+            %\new Voice \with { \consists "Pitch_squash_engraver" }
+            \Basse
       >> >> >>
-} % }  \bookpart {
+    } % }  \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }    
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \grille
-      >>
+      \gridLayout
+      \new ChordGrid \grille
 } } }
 
 \book {
@@ -280,56 +257,22 @@ marques = \relative c' {
     #(set-paper-size "a4")
     page-count = #1
   }
-  #(define output-suffix "Bba4") 
+  #(define output-suffix "Bba4")
   \bookpart {
     \score {
       <<
-        \new StaffGroup <<     
-        \new Staff \with { instrumentName = \Bb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          \transpose c d \theNotes
-        >>
         \new ChordNames {
           \set chordChanges = ##t
           \transpose c d \harmonies
         }
-        \new Staff  <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          \Basse
-      >> >> >>
-} % }  \bookpart {
+        \new StaffGroup <<
+          \new Staff \with { instrumentName = \Bb } \transpose c d \theNotes
+          \new Staff \with { instrumentName = \markup \center-column { "sounds 1" "octave lower" } } \transpose c d \theNotesII
+      >> >>
+    } % }  \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }    
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \transpose c d \grille
-      >>
+      \gridLayout
+      \new ChordGrid \transpose c d \grille
 } } }
 
 \book {
@@ -341,50 +284,16 @@ marques = \relative c' {
   \bookpart {
     \score {
       <<
-        \new StaffGroup <<     
-        \new Staff \with { instrumentName = \Eb } <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          \transpose c a \theNotes
-        >>
         \new ChordNames {
           \set chordChanges = ##t
           \transpose c a \harmonies
         }
-        \new Staff  <<
-          %\new Voice \with { \consists "Pitch_squash_engraver" } 
-          \Basse
-      >> >> >>
-} % }  \bookpart {
+        \new StaffGroup <<
+          \new Staff \with { instrumentName = \Eb } \transpose c a \theNotes
+          \new Staff \transpose c a, \theNotesII
+      >> >>
+    } % }  \bookpart {
     \score {
-      \layout {
-        indent = 0
-        ragged-right = ##f
-        ragged-last = ##f
-        \context {
-          \Score
-          \remove "Volta_engraver"
-          \omit Clef % Cacher la clef
-          \omit TimeSignature % cacher la métrique
-          \omit BarNumber             
-          \override SpacingSpanner.strict-note-spacing = ##t
-          proportionalNotationDuration = #(ly:make-moment 1/16)
-        }
-      }
-      <<
-        \new Staff \with {
-          \remove "Staff_symbol_engraver"
-        }    
-        \marques
-        \new ChordNames \with {
-          \override ChordName.extra-offset = #'(10 . -1 )         
-          \override ParenthesesItem.extra-offset = #'(10 . -1 ) 
-          \override BarLine.bar-extent = #'(-5 . 5)
-          \consists "Bar_engraver"
-          \override StaffSymbol.line-positions = #'( -10 10 ) 
-          \consists "Staff_symbol_engraver"
-          \consists "Percent_repeat_engraver"
-          \consists "Volta_engraver"
-        }
-        \transpose c a \grille
-      >>
+      \gridLayout
+      \new ChordGrid \transpose c a \grille
 } } }
