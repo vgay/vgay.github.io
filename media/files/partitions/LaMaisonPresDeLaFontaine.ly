@@ -176,7 +176,7 @@ theNotes =  \relative c' {
   b4 r bes8 b~ b e~ | 4 r d e | d1 | c4 r r r8 c | \break
   b4 r bes8 b~ b e~ | 4 r d e | d1~ | 4 r r r8 c, | \break
   a'4 a g g | f r8 f e f g f | a4 a e e | a r r r8 fis | \break
-  b4 b ais ais | a!8 a4 gis8 ~ gis4 r8 fis | b4 4 ais8~ 4 a8~ | 4 r gis8 a gis g~ | \break
+  b4 b bes bes | a!8 a4 gis8 ~ gis4 r8 fis | b4 4 bes8~ 4 a8~ | 4 r gis8 a gis g~ | \break
   1 | R1| R1 | r1   \break \key as \major  \bar "||"
   \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
   \mark \markup \box Solo
@@ -214,29 +214,32 @@ voiceII = \relative c {
   %\startStaff \undo \omit StaffSymbol
   << { \override MultiMeasureRest #'staff-position = #0 R1 } \\ { \hideNotes c1 } >> R1*5 r4 c8 c bes c~ \tuplet 3/2 { c bes as } | f4 r r2 | r4 es'8 b c es~ \tuplet 3/2 { es b c }
   g4 r r2 | r4 b8 c es d ~ \tuplet 3/2 { d des c } | b4 r r2 | r4 e8 g c,4. r8 | c'4-^ r r2 |
-  f,,4-. f-. f8 as bes c~ | 4-. r r2 | f,4-. f-. f8 as bes c~ | 4-. r es4. e8 |
-  f4 e es d | c bes as f8 as | b4 bes8 as \tuplet 3/2 { bes as f } es c | es e4 f8~ f2 \fermata
-
-  %r4 r8 c, as'8 4. | f4 r r2 | r4 r8 c8 as'8 4. | f4 r r2 | r4 r8 c8 as'8 4. | f4 r r2 | R1*4
-
-
-}
+  f,,4-. f-. f8 as bes c~ | 4-. r r2 | f,4-. f-. f8 as bes c~ | 4-. r r2 |
+  << { \override MultiMeasureRest #'staff-position = #0 R1 } \\ { \hideNotes c1 } >>  R1*3 }
 
 voiceIII = \relative c {
   \clef "treble_8" \key as \major \time 4/4
-  R1*12 r4 f8 as c4 bes8 as | \tuplet 3/2 { c bes as~ } as4 r2 |
+  R1*10 r4 f8 as c4 bes8 as | \tuplet 3/2 { c bes as~ } as4 r2 |
   r4 \tuplet 3/2 { g8 as a } bes b c es | c4 r r2 |
   r4 es8 c \tuplet 3/2 { es4 es f, } | b2 r |
-  c,8 g' c, bes~ bes g' bes, as~ | as g' as, g~ g2 \key c \major
-  R1 R1 r4 \tuplet 3/2 { g'8 gis a } g f c a | g f c'4 r8 d4 c8 | b4 r4 r2 | R1 |
-  r4 e \tuplet 3/2 { d'8 c bes } \tuplet 3/2 { g e d } | c4. d8~ 4 e | f-. r r2
-  R1*7 | \tuplet 3/2 { r8 c' d } \tuplet 3/2 { g d c } \tuplet 3/2 { bes c d } \tuplet 3/2 { g d c }  |
+  c8 g' c, bes~ bes g' bes, as~ | as g' as, g~ g2
+  \override Staff.KeyCancellation.color =#red
+  \override Staff.KeySignature.color = #red
+  \key c \major
+  R1 R1 r4 \tuplet 3/2 { g'8 gis a } g f c a | g f e f a d4 c8 | b4 r4 r2 | R1 |
+  r4 e \tuplet 3/2 { d8 c bes } \tuplet 3/2 { g' e d } | c4. d8~ 4 e | f-. r r2
+  R1*3  << { \override MultiMeasureRest #'staff-position = #0 R1 } \\ { \hideNotes c1 } >>  R1*3
+  | \tuplet 3/2 { r8 c d } \tuplet 3/2 { g d c } \tuplet 3/2 { bes c d } \tuplet 3/2 { g d c }  |
   \tuplet 3/2 { bes c d } \tuplet 3/2 { g d c } \tuplet 3/2 { bes c d } \tuplet 3/2 { g d c } |
   \tuplet 3/2 { bes c d } \tuplet 3/2 { gis d c } \tuplet 3/2 { bes c d } \tuplet 3/2 { gis d c } |
   bes2 r \key as \major
-  r4 r8 c, as'8 4. | f4 r r2 | r4 r8 c8 as'8 4. | f4 r r2 | r4 r8 c8 as'8 4. | f4 r r2 | R1*4
-
-
+  %\stopStaff \omit StaffSymbol
+  R1*14
+  %\startStaff \undo \omit StaffSymbol
+  << { \override MultiMeasureRest #'staff-position = #0 R1 } \\ { \hideNotes c1 } >> R1*5 r4 c8 c bes c~ \tuplet 3/2 { c bes as } | f4 r r2 | r4 es'8 b c es~ \tuplet 3/2 { es b c }
+  g4 r r2 | r4 b8 c es d ~ \tuplet 3/2 { d des c } | b4 r r2 | r4 e8 g c,4. r8 | c'4-^ r r2 |
+  f,,4-. f-. f8 as bes c~ | 4-. r r2 | f,4-. f-. f8 as bes c~ | 4-. r r2 |
+  << { \override MultiMeasureRest #'staff-position = #0 R1 } \\ { \hideNotes c1 } >>  R1*3
 }
 
 Basse = \relative c' {
@@ -355,6 +358,26 @@ grille = \chordmode {
     } %\form
 } }
 
+\book {
+  \paper {
+    #(set-paper-size "tablette")
+    page-count = #5
+    ragged-last-bottom = ##f
+    print-first-page-number = ##t
+  }
+  #(define output-suffix "EbTab")
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \transpose c a \harmonies }
+        \new StaffGroup <<
+          \new Staff \with { instrumentName = \Eb  } <<
+            % \new Voice \with { \consists "Pitch_squash_engraver" }
+            \transpose c a, \theNotes
+          >>
+          \new Staff \with { \RemoveEmptyStaves } \transpose c a, \voiceIII
+      >> >>
+} } }
 
 \book {
   \paper {
@@ -406,6 +429,32 @@ grille = \chordmode {
     \score {
       \gridLayout
       \new ChordGrid \transpose c d \grille
+} } }
+
+\book {
+  \paper {
+    #(set-paper-size "a4")
+    page-count = #2
+    print-page-number = ##f
+  }
+  #(define output-suffix "Eba4")
+  \bookpart {
+    \score {
+      <<
+        \new ChordNames { \transpose c a \harmonies }
+        \new StaffGroup <<
+          \new Staff \with { instrumentName = \Eb  } <<
+            % \new Voice \with { \consists "Pitch_squash_engraver" }
+            \transpose c a, \theNotes
+          >>
+          \new Staff \with { \RemoveEmptyStaves } \transpose c a, \voiceIII
+      >> >>
+    } %\form
+  }  \bookpart {
+    \paper { print-page-number = #f }
+    \score {
+      \gridLayout
+      \new ChordGrid \transpose c a \grille
 } } }
 
 
