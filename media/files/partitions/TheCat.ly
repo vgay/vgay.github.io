@@ -234,7 +234,7 @@ grille = \chordmode {
   \bookpart {
     \score {
       <<
-        \new ChordNames { \harmonies }
+        \new ChordNames { \transpose c d \harmonies }
         \new StaffGroup <<
           \new Staff \with { instrumentName = \Bb } \transpose c d \theNotes
           \new Staff << \chordsRhythm \\ \BasseIntro >>
@@ -253,7 +253,7 @@ grille = \chordmode {
   \bookpart {
     \score {
       <<
-        \new ChordNames { \harmonies }
+        \new ChordNames { \transpose c a \harmonies }
         \new StaffGroup <<
           \new Staff \with { instrumentName = \Eb } \transpose c a \theNotes
           \new Staff << \chordsRhythm \\ \BasseIntro >>
@@ -303,7 +303,7 @@ grille = \chordmode {
   \bookpart {
     \score {
       <<
-        \new ChordNames { \harmonies }
+        \new ChordNames { \transpose c d \harmonies }
         \new StaffGroup <<
           \new Staff \with { instrumentName = \Bb } \transpose c d \theNotes
           \new Staff << \chordsRhythm \\ \BasseIntro >>
@@ -332,7 +332,7 @@ grille = \chordmode {
   \bookpart {
     \score {
       <<
-        \new ChordNames { \harmonies }
+        \new ChordNames { \transpose c a \harmonies }
         \new StaffGroup <<
           \new Staff \with { instrumentName = \Eb } \transpose c a \theNotes
           \new Staff << \chordsRhythm \\ \BasseIntro >>
