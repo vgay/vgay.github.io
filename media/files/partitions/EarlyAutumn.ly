@@ -34,9 +34,9 @@
   }
 }
 
-title = #"Black Coffee"
-composer = #"Sonny Burke"
-meter = #"(Bluesy Ballad)"
+title = #"Early Autumn"
+composer = #"Ralph Burns and Woody Herman"
+meter = #"(Med. Ballad)"
 kwtempo = #"Mod. Slow"
 kwstyle = #"Ballad"
 
@@ -108,56 +108,63 @@ realBookTitle = \markup {
 }
 
 
-form = \markup  \fill-line {
-  \column {  }
-  \column { \line { \with-color #red \fontsize #2 "Solos on AABBA then D.S. al Fine" } }
+verse = \lyricmode {
+When an ear -- ly au -- tumn walks the land __ and chills the breeze
+And tou -- ches with her hand __  the sum -- mer trees
+Per -- haps you'll un -- der -- stand __ what me -- mo -- ries I own __
+There's a dance pa
+
+\repeat unfold 5 { \skip 1 } ours that start -- ed so A -- pril heart -- ed
+Seemed made for just a boy and girl __
+I ne -- ver dreamed, did you, an -- y fall would come in view
+So ear -- ly, ear -- ly
+Dar -- ling if you care, __ please, let me know
+I'll meet you an -- y -- where, __ I miss you so
+Let's ne -- ver have to share __ an -- oth -- er ear -- ly au -- tumn __
+}
+
+verseB = \lyricmode {
+\repeat unfold 4 { \skip 1 } vi -- lion in the rain __ all shut -- t'red down
+A win -- ding coun -- try lane __ all rus -- set brown
+A fros -- ty win -- dow pane __ shows me a town grown \repeat unfold 5 { \skip 1 }lone -- ly __ That spring of
 }
 
 harmonies = \chordmode {
   \set chordChanges = ##f
-  s8 f2:9+ ges:9+ f2:9+ ges:9+ f2:9+ ges:9+ f2:9+ b:13
-  bes1:9 s f2:9+ ges:9+ f:9+ d:9+
-  g1:m7 g:m7/f f2:9+ d:9+ g:m7 c:9+
-  f2:9+ ges:9+ f2 b:5+7
-  bes2:m7 es:7 f1:m
-  g2:m5-7 c:9- f1:7+  as2:m7 des:7 ges:7+ es:m7
-  as:m7 des:7 g:m7 c:7
-  f2:9+ ges:9+ f2:9+ ges:9+ f2:9+ ges:9+ f2:9+ b:13
-  bes1:9 s f2:7+ g:m7 a:m7 as:7 g1:m7 g:m7/c f2:9+ ges:9+ f:9+
-  \parenthesize ges:9+
+ s2 c1:7+ b:7 bes:7+ a:7 as:7+ g:7
+  c2:7+ a:m7 d:m7 g:7 c1*2:6
+  d2:m7 g:13 e:m7 es:dim d2:m7 g:13 c1:7+9
+  c2:m7 f:13 bes:7+ es:13 d4:7+ cis:7 c:9 b:9+ bes:7 a:7+ as:9- g:9
+  c1:7+ b:7 bes:7+ a:7 as:7+ g:7 d:6
 }
 
 
-theNotes =  \relative c' {
-  \clef "treble" \key f \major \time 4/4
-  % \partial 8
-  % \showStartRepeatBar \bar "[|:"
-  \partial 8 c8
+theNotes =  \relative c'' {
+  \clef "treble" \key c \major \time 4/4
+  \partial 2 g8 gis a bes
   \repeat volta 2 {
-    f f f c es c4. | f8 f f c es4. c8 |
-    f f f c es es es c | f f f c es4 f | \break
-    as8 d,4. ~ d2 | \times 2/3 { r4 c' bes } \times 2/3 { as f d } |
-    c1 ~ | c2. r8 c | \break
-    g' a bes c a f4. | r8 \parenthesize d d as'8 g4 f8 f ~ |
+    \mark #1
+    b g e c b'2 ~ | b8 c d c b4. bes8
+    a f d bes a'2 ~ | a8 bes c bes a4. as8 |
+    g es c as g'2 ~ | g8 as bes as g4. e8
   }
   \alternative {
-    { f1~ | f2. r8 c8 }
-    { f1 \repeatTie ~ | }
+    { g1 ~ | g4 r g8 gis a bes }
+    { d,4 c2. ~ | c2 r8 g a b }
   }
-  f2 r4 f8 f
   \bar "||" \break
-  bes c bes as bes4. c8 | as8 f4. ~ f4. f8 |
-  bes c  bes c des4 es | c2.. c8 |  \break
-  des des des des des4. es8 | des des4. ~ des bes8 |
-  des des des des des,4. des'8 | \times 2/3 { c c c } c c c,4. c8
-  \bar "||" \break
-  f f f c es c4. | f8 f f c es4. c8 |
-  f f f c es es es c | f f f c es4 f | \break
-  as8 d,4. ~ d2 | \times 2/3 { r4 c' bes } \times 2/3 { as f d } |
-  c1 | r8 d \tuplet 3/2 { f a c } es es4 d8 | \break
-  bes a bes c a f4. | r8 d f as g4 f8 f~ | f1~ | f2 r
+  \mark #2
+  c4. a8 e' e4. | r8 b d c b' b4.
+  a4 g8 f e d e g | d2 ~ d8 g, a b
+  c4. bes8 d4 b8 c | cis d f a c4 bes
+  cis2 d | gis, a
+  \bar "||" \break \mark #1
+    b8 g e c b'2 ~ | b8 c d c b4. bes8
+    a f d bes a'2 ~ | a8 bes c bes a4. as8  |
+    g es c as g'2 ~ | g8 as bes as g4. e8
+    d4 c2. ~ | c2 r2
   \bar ".."
-  \label #'theLastPage
+   \label #'theLastPage
 }
 
 chordsRhythm = \relative c' {
@@ -178,67 +185,25 @@ Basse = \relative c' {
 }
 
 grille = \chordmode {
-  \bar "[|:" \repeat percent 3 { f2:9+ ges:9+ } f2:9+ b:13 \break
-  \repeat percent 4 { bes1:9 } \break
-  g:m7 g:m7/f \set Score.repeatCommands = #'((volta "1.") ) f2:9+ d:9+ g:m7 c:9+
-  \set Score.repeatCommands = #'((volta #f)) \break \bar ":|]"
-  \stopStaff s1 \bar "" s \startStaff \set Score.repeatCommands = #'((volta "2.") )
-  f2:9+ ges:9+ f b:5+7 \set Score.repeatCommands = #'((volta #f)) \bar "||" \break
-  bes:m7 es:7 f1:m g2:m5-7 c:9- f1:7+ \break
-  as2:m7 des:7 ges:7+ es:m7 as2:m7 des:7 g:m7 c:7  \bar "||" \break
-  \repeat percent 3 { f2:9+ ges:9+ } f2:9+ b:13 \break
-  \repeat percent 4 { bes1:9 } \break
-  g:m7 g:m7/f \repeat unfold 2 { f2:9+ ges:9+ }
+  \bar "[|:" \mark #1
+c1:7+ b:7 bes:7+ a:7 \break
+as:7+ g:7 \set Score.repeatCommands = #'((volta "1.") ) c2:7+ a:m7 d:m7 g:7
+\set Score.repeatCommands = #'((volta #f) end-repeat) \break
+\stopStaff s1 \bar "" s \startStaff \set Score.repeatCommands = #'((volta "2.") )
+\repeat percent 2 { c1:6 } \set Score.repeatCommands = #'((volta #f)) \bar "||" \break \mark #2
+  d2:m7 g:13 e:m7 es:dim d2:m7 g:13 c1:7+9 \break
+  c2:m7 f:13 bes:7+ es:13 d4:7+ cis:7 c:9 b:9+ bes:7 a:7+ as:9- g:9 \bar "||" \break \mark #1
+  c1:7+ b:7 bes:7+ a:7 \break
+  as:7+ g:7 \repeat percent 2 { d:6 }
   \bar ".." }
 
-verse = \lyricmode {
-  I'm fee -- lin' might -- y lone -- some
-  Ha -- ven't slept a wink
-  I walk the floor and watch the door
-  And in bet -- ween I drink
-  Black Cof -- fee __
-  Love's a hand me down brew __
-  I'll ne -- ver know a Sun -- day
-  { \skip 1 } In this week -- day room __ I'm
 
-  \repeat unfold 3 { { \skip 1 } } man is born to go a lo -- vin' __
-  A wo -- man's born to weep and fret
-  To stay at home and tend her o -- ven __
-  And drown her past re -- grets
-  In cof -- fee and ci -- ga -- rettes
-
-  I'm moo -- dy all the mor -- ning
-  Mour -- ning all the night
-  And in bet -- ween it's ni -- co -- tine
-  And not much hard to fight
-  Black Cof -- fee __
-  Fee -- lin' low as the ground
-  It's dri -- ving me cra -- zy just wait -- in' for my ba -- by
-  To may -- be come a -- round __
-
-  % My nerves have gone to pieces
-  % My hair is turning gray
-  % All I do is drink black coffee
-  % Since my man's gone away
-
-}
-
-verseB = \lyricmode {
-  { \skip 1 } tal -- kin' to the sha -- dows
-  One o' -- clock to four
-  And Lord, how slow the mo -- ments go
-  When all I do is pour
-  Black Cof -- fee __
-  Since the blues caught my eye __
-  I'm han -- gin' out on Mon -- day
-  My Sun -- day dreams to dry __ \repeat unfold 2 { { \skip 1 } }  Now a
-}
 
 \book {
   \paper {
     #(set-paper-size "a5landscape")
     %page-count = #1
-    print-first-page-number = ##t
+    %print-first-page-number = ##t
   }
   #(define output-suffix "CTab")
   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
@@ -258,7 +223,7 @@ verseB = \lyricmode {
   \paper {
     #(set-paper-size "a5landscape")
     %page-count = #1
-    print-first-page-number = ##t
+    %print-first-page-number = ##t
   }
   #(define output-suffix "BbTab")
   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
@@ -278,7 +243,7 @@ verseB = \lyricmode {
   \paper {
     #(set-paper-size "a5landscape")
     %page-count = #1
-    print-first-page-number = ##t
+    %print-first-page-number = ##t
   }
   #(define output-suffix "EbTab")
   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
@@ -288,7 +253,7 @@ verseB = \lyricmode {
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }
-          \transpose c a, \theNotes
+          \transpose c a \theNotes
         >>
       >>
     } %\form
@@ -298,9 +263,7 @@ verseB = \lyricmode {
   \paper {
     #(set-paper-size "a4")
     print-page-number = ##f
-    system-system-spacing = #'((basic-distance . 20)
-                               (minimum-distance . 15)
-                               (padding . 0))
+    page-count = #1
   }
   #(define output-suffix "Ca4")
   \bookpart {
@@ -309,11 +272,12 @@ verseB = \lyricmode {
         \new ChordNames { \harmonies }
         \new Staff \with { instrumentName = \CleSol }
         <<
-          \theNotes
-         >>
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
+          << \theNotes \\ { s2 s1*22 \break } >>
+        >>
       >>
     } %\form
-  }  \bookpart {
+    }  \bookpart {
     \score {
       \gridLayout
       \new ChordGrid \grille
@@ -323,9 +287,7 @@ verseB = \lyricmode {
   \paper {
     #(set-paper-size "a4")
     print-page-number = ##f
-    system-system-spacing = #'((basic-distance . 18)
-                               (minimum-distance . 15)
-                               (padding . 0))
+    page-count = #1
   }
   #(define output-suffix "Bba4")
   \bookpart {
@@ -333,11 +295,12 @@ verseB = \lyricmode {
       <<
         \new ChordNames { \transpose c d \harmonies }
         \new Staff \with { instrumentName = \Bb  } <<
-          \transpose c d \theNotes
+          % \new Voice \with { \consists "Pitch_squash_engraver" }
+           \transpose c d \theNotes \\ { s2 s1*22 \break }
         >>
       >>
     } %\form
-  }  \bookpart {
+    }  \bookpart {
     \score {
       \gridLayout
       \new ChordGrid \transpose c d \grille
@@ -347,9 +310,7 @@ verseB = \lyricmode {
   \paper {
     #(set-paper-size "a4")
     print-page-number = ##f
-    system-system-spacing = #'((basic-distance . 18)
-                               (minimum-distance . 15)
-                               (padding . 0))
+    page-count = #1
   }
   #(define output-suffix "Eba4")
   \bookpart {
@@ -357,11 +318,12 @@ verseB = \lyricmode {
       <<
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
-          \transpose c a, \theNotes
+          %\new Voice
+          \transpose c a \theNotes \\ { s2 s1*22 \break }
         >>
       >>
     } %\form
-  }  \bookpart {
+    }  \bookpart {
     \score {
       \gridLayout
       \new ChordGrid \transpose c a \grille
@@ -372,7 +334,6 @@ verseB = \lyricmode {
     #(set-paper-size "a4")
     print-page-number = ##f
     page-count = #1
-    ragged-last-bottom = ##f
   }
   #(define output-suffix "Vocala4")
   \bookpart {
@@ -385,8 +346,7 @@ verseB = \lyricmode {
           << \theNotes
              \addlyrics \verse
              \addlyrics \verseB
-             %\\ { s2 s1*6 \break s1*16 \break }
-          >>
+             \\ { s2 s1*6 \break s1*16 \break } >>
         >>
       >>
  } } }
@@ -407,8 +367,7 @@ verseB = \lyricmode {
           << \theNotes
              \addlyrics \verse
              \addlyrics \verseB
-             %\\ { s2 s1*6 \break s1*16 \break }
-          >>
+             \\ { s2 s1*6 \break s1*16 \break } >>
         >>
       >>
  } } }
