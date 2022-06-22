@@ -34,11 +34,11 @@
   }
 }
 
-title = #"Ghana"
-composer = #"Donald Bird"
-meter = #"(Fast Latin)"
-kwtempo = #"Fast"
-kwstyle = #"Latin"
+title = #"Black Coffee"
+composer = #"Sonny Burke"
+meter = #"(Bluesy Ballad)"
+kwtempo = #"Mod. Slow"
+kwstyle = #"Ballad"
 
 realBookTitle = \markup {
   \score {
@@ -71,8 +71,8 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  asplayed = #"Donald Bird" % doit être commentée si vide
-  url = #"https://www.youtube.com/watch?v=IhE2KM5WiWI"
+  %asplayed = #"" % doit être commentée si vide
+  url = #""
   arranger = \markup \on-the-fly #played?
   \with-url #url
   \with-color #blue \underline
@@ -110,79 +110,54 @@ realBookTitle = \markup {
 
 form = \markup  \fill-line {
   \column {  }
-  \right-column { \line { \with-color #red \fontsize #2 "Solos on AABBA (Swing)" }
-                  \line { "After solos D.S. (play head) then D.C. (Outro) al Coda" }
-  }
+  \column { \line { \with-color #red \fontsize #2 "Solos on AABBA then D.S. al Fine" } }
 }
 
 harmonies = \chordmode {
-  \set chordChanges = ##f es1*4:m es1*8:m
-  es1*4:m as2:7 des:7 ges:7 ces:7 f1:m5-7 bes:7 f2:m5-7 bes:7 es1:m
-  as1:m7 des:7 ges:7+ s as:m7 des:7 ges:7+ s b:m7 e:7 a:7+ s c:m7 f:7 f:m7 bes:7
-  es1*4:m as2:7 des:7 ges:7 ces:7 f2:m5-7 bes:8 es1:m
-
+  \set chordChanges = ##f
+  s8 f2:9+ ges:9+ f2:9+ ges:9+ f2:9+ ges:9+ f2:9+ b:13
+  bes1:9 s f2:9+ ges:9+ f:9+ d:9+
+  g1:m7 g:m7/f f2:9+ d:9+ g:m7 c:9+
+  f2:9+ ges:9+ f2 b:5+7
+  bes2:m7 es:7 f1:m
+  g2:m5-7 c:9- f1:7+  as2:m7 des:7 ges:7+ es:m7
+  as:m7 des:7 g:m7 c:7
+  f2:9+ ges:9+ f2:9+ ges:9+ f2:9+ ges:9+ f2:9+ b:13
+  bes1:9 s f2:7+ g:m7 a:m7 as:7 g1:m7 g:m7/c f2:9+ ges:9+ f:9+
+  \parenthesize ges:9+
 }
 
-Piano =  \relative c' {
-  \clef "treble" \key ges \major \time 4/4
-  \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
-  \mark \markup { \box Intro / \box Outro }
-  \showStartRepeatBar \bar "[|:"
-  \repeat volta 2 { \grace < des ges>8 _\markup Pn. <c f>1~ | q4 r8 8 r <des ges> r <c f> | <des ges> <c f>~ q2.~ | q1 }
-\break
-}
 
 theNotes =  \relative c' {
-  \clef "treble" \key ges \major \time 4/4
-\override Staff.TimeSignature.break-visibility = ##(#f #f #f)
-\set Staff.printKeyCancellation = ##f
-\break
-
-%   \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
-%   \mark \markup { \box Intro / \box Outro }
-%   \showStartRepeatBar \bar "[|:"
-%   \repeat volta 2 { \grace < des ges>8 _\markup Pn. <c f>1~ | q4 r8 8 r <des ges> r <c f> | <des ges> <c f>~ q2.~ | q1 }
-  << { \voiceOne bes'1 ^\markup Trp. | c2 des | f8 des r f des2~ | 2 c | bes1~ | 1~ | 2. }
-     \\
-     { \voiceTwo ges1 _\markup "Ten. 8va B." | as2 bes | des8 bes r des bes2~ | 2 as | ges1~ | 1~ | 2.}
-  >>
-  \oneVoice r4 | \toCoda r2 r4 r8 bes8 \break
-  \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
-  \mark \markup { \box A \raise #1 \with-color #red \musicglyph "scripts.varsegno" }
+  \clef "treble" \key f \major \time 4/4
+  % \partial 8
+  % \showStartRepeatBar \bar "[|:"
+  \partial 8 c8
   \repeat volta 2 {
-    es4-. 8 8 des f r es | r es bes4 r2 | r4 es8 8 des f r es | r2 r4 r8 es \break
-    <<  { \voiceOne bes'4 ces8 as~ 4. des,8 | as'4 bes8 ges~ 2 }
-        \\
-        { \voiceTwo ges,4. f8~ 2 | e4. es8~ 2 }
-    >>
-    \oneVoice
+    f f f c es c4. | f8 f f c es4. c8 |
+    f f f c es es es c | f f f c es4 f | \break
+    as8 d,4. ~ d2 | \times 2/3 { r4 c' bes } \times 2/3 { as f d } |
+    c1 ~ | c2. r8 c | \break
+    g' a bes c a f4. | r8 \parenthesize d d as'8 g4 f8 f ~ |
   }
   \alternative {
-    { r8 bes des bes ces des es ges | bes bes as4-. r r8 bes8 }
-    { f'8 as r ges f4 d8 << { \voiceOne  f~ | 4} \\ { \voiceTwo d8~ | 4 } >> r4 bes,8 es f ges }
-  } \break \mark #2 \bar "||"
-  bes4. as8 r2 | r as8 bes des bes | f es r f es4-. f8 es | r4 r8 ges f es d es
-  bes'8 as r4 r bes8 as | r4 r8 as g as bes ces | des1 | r2 des4 4 \break
-  cis2 a4 fis4 | gis a b cis | e,1 | r4 fis8 gis a b cis d
-  d2 bes!4 g a bes c d | f1 | r2 r4 r8 bes, \break \bar "||" \mark #1
-  es4-. 8 8 des f r es | r es bes4 r2 | r4 es8 8 des f r es | r2 r4 r8 es \break
-  <<  { \voiceOne bes'4 ces8 as~ 4. des,8 | as'4 bes8 ges~ 2 }
-      \\
-      { \voiceTwo ges,4. f8~ 2 | e4. es8~ 2 }
-  >>
-  \oneVoice bes''8 as r ges e4 d8 es |
-  \once \override Score.RehearsalMark #'direction = #DOWN
-  \once \override Score.RehearsalMark #'self-alignment-X = #LEFT
-  \mark \markup "  Solo Break"
-  \comp #3 \startParenthesis \parenthesize \endParenthesis r8 \parenthesize bes
+    { f1~ | f2. r8 c8 }
+    { f1 \repeatTie ~ | }
+  }
+  f2 r4 f8 f
+  \bar "||" \break
+  bes c bes as bes4. c8 | as8 f4. ~ f4. f8 |
+  bes c  bes c des4 es | c2.. c8 |  \break
+  des des des des des4. es8 | des des4. ~ des bes8 |
+  des des des des des,4. des'8 | \times 2/3 { c c c } c c c,4. c8
+  \bar "||" \break
+  f f f c es c4. | f8 f f c es4. c8 |
+  f f f c es es es c | f f f c es4 f | \break
+  as8 d,4. ~ d2 | \times 2/3 { r4 c' bes } \times 2/3 { as f d } |
+  c1 | r8 d \tuplet 3/2 { f a c } es es4 d8 | \break
+  bes a bes c a f4. | r8 d f as g4 f8 f~ | f1~ | f2 r
   \bar ".."
   \label #'theLastPage
-}
-
-theCoda = {
-  \showStartRepeatBar \bar "[|:" \repeat volta 2 { \comp #8 }
-  \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
-  \mark \markup \rounded-box { "Vamp & Fade" }
 }
 
 chordsRhythm = \relative c' {
@@ -194,28 +169,70 @@ chordsRhythm = \relative c' {
 
 }
 
-Basse = \relative c {
-  \clef "bass" \key ges \major \time 4/4
-  \override Staff.TimeSignature.break-visibility = ##(#f #f #f)
-  \repeat volta 2 { \repeat unfold 2 { \grace s8 es4. bes'8~ 8 4 8 | es,4 bes' bes es,} }
+Basse = \relative c' {
+  \clef "bass" \key f \major \time 4/4
+  % \partial 8
+  % \showStartRepeatBar \bar "[|:"
 
+  \bar ".."
 }
 
 grille = \chordmode {
-   \mark #1 \bar "[|:"\repeat percent 4 { es1:m } \break
-  as2:7 des:7 ges:7 ces:7 \set Score.repeatCommands = #'((volta "1.") )
-  f1:m5-7 bes:7 \set Score.repeatCommands = #'((volta #f)) \bar ":|]"\break
-   \stopStaff s1 \bar "" s \startStaff \set Score.repeatCommands = #'((volta "2.") )
-    f2:m5-7 bes:7 es1:m \set Score.repeatCommands = #'((volta #f)) \break \bar "||" \mark #2
-    \repeat unfold 2 { as1:m7 des:7 \repeat percent 2 { ges:7+ } } \break
-    b:m7 e:7\repeat percent 2 {  a:7+  } \break
-    c:m7 f:7 f:m7 bes:7 \break \bar "||" \mark #1
-    \repeat percent 4 { es1:m } \break
-  as2:7 des:7 ges:7 ces:7 f2:m5-7 bes:8 es1:m
-
+  \bar "[|:" \repeat percent 3 { f2:9+ ges:9+ } f2:9+ b:13 \break
+  \repeat percent 4 { bes1:9 } \break
+  g:m7 g:m7/f \set Score.repeatCommands = #'((volta "1.") ) f2:9+ d:9+ g:m7 c:9+
+  \set Score.repeatCommands = #'((volta #f)) \break \bar ":|]"
+  \stopStaff s1 \bar "" s \startStaff \set Score.repeatCommands = #'((volta "2.") )
+  f2:9+ ges:9+ f b:5+7 \set Score.repeatCommands = #'((volta #f)) \bar "||" \break
+  bes:m7 es:7 f1:m g2:m5-7 c:9- f1:7+ \break
+  as2:m7 des:7 ges:7+ es:m7 as2:m7 des:7 g:m7 c:7  \bar "||" \break
+  \repeat percent 3 { f2:9+ ges:9+ } f2:9+ b:13 \break
+  \repeat percent 4 { bes1:9 } \break
+  g:m7 g:m7/f \repeat unfold 2 { f2:9+ ges:9+ }
   \bar ".." }
 
+verse = \lyricmode {
+  I'm fee -- lin' might -- y lone -- some
+  Ha -- ven't slept a wink
+  I walk the floor and watch the door
+  And in bet -- ween I drink
+  Black Cof -- fee __
+  Love's a hand me down brew __
+  I'll ne -- ver know a Sun -- day
+  { \skip 1 } In this week -- day room __ I'm
 
+  \repeat unfold 3 { { \skip 1 } } man is born to go a lo -- vin' __
+  A wo -- man's born to weep and fret
+  To stay at home and tend her o -- ven __
+  And drown her past re -- grets
+  In cof -- fee and ci -- ga -- rettes
+
+  I'm moo -- dy all the mor -- ning
+  Mour -- ning all the night
+  And in bet -- ween it's ni -- co -- tine
+  And not much hard to fight
+  Black Cof -- fee __
+  Fee -- lin' low as the ground
+  It's dri -- ving me cra -- zy just wait -- in' for my ba -- by
+  To may -- be come a -- round __
+
+  % My nerves have gone to pieces
+  % My hair is turning gray
+  % All I do is drink black coffee
+  % Since my man's gone away
+
+}
+
+verseB = \lyricmode {
+  { \skip 1 } tal -- kin' to the sha -- dows
+  One o' -- clock to four
+  And Lord, how slow the mo -- ments go
+  When all I do is pour
+  Black Cof -- fee __
+  Since the blues caught my eye __
+  I'm han -- gin' out on Mon -- day
+  My Sun -- day dreams to dry __ \repeat unfold 2 { { \skip 1 } }  Now a
+}
 
 \book {
   \paper {
@@ -229,20 +246,12 @@ grille = \chordmode {
     \score {
       <<
         \new ChordNames { \harmonies }
-        \new StaffGroup <<
-          \new Staff \with { instrumentName = \CleSol } <<
-            %\new Voice \with { \consists "Pitch_squash_engraver" }
-            { \Piano \set Staff.explicitKeySignatureVisibility = ##(#f #f #f) \theNotes }
-          >>
-          \new Staff \Basse
-      >> >>
-    } \form
-    \score {
-      <<
-        \new ChordNames { \chordmode { es1:m } }
-        \new Staff \with { instrumentName = \markup \fontsize #3 \with-color #red \musicglyph "scripts.varcoda" } \theCoda
+        \new Staff \with { instrumentName = \CleSol } <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
+          \theNotes
+        >>
       >>
-    }
+    } %\form
 } }
 
 \book {
@@ -256,21 +265,13 @@ grille = \chordmode {
   \bookpart {
     \score {
       <<
-        \new ChordNames {\transpose c d  \harmonies }
-        \new StaffGroup <<
-          \new Staff \with { instrumentName = \Bb } <<
-            %\new Voice \with { \consists "Pitch_squash_engraver" }
-            { \Piano \set Staff.explicitKeySignatureVisibility = ##(#f #t #t) \transpose c d \theNotes }
-          >>
-          \new Staff \Basse
-      >> >>
-    } \form
-    \score {
-      <<
-        \new ChordNames { \chordmode { es1:m } }
-        \new Staff \with { instrumentName = \markup \fontsize #3 \with-color #red \musicglyph "scripts.varcoda" } \theCoda
+        \new ChordNames { \transpose c d \harmonies }
+        \new Staff \with { instrumentName = \Bb } <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
+          \transpose c d \theNotes
+        >>
       >>
-    }
+    } %\form
 } }
 
 \book {
@@ -284,49 +285,37 @@ grille = \chordmode {
   \bookpart {
     \score {
       <<
-        \new ChordNames {\transpose c a  \harmonies }
-        \new StaffGroup <<
-          \new Staff \with { instrumentName = \Eb } <<
-            %\new Voice \with { \consists "Pitch_squash_engraver" }
-            { \Piano \set Staff.explicitKeySignatureVisibility = ##(#f #t #t) \transpose c a, \theNotes }
-          >>
-          \new Staff \Basse
-      >> >>
-    } \form
-    \score {
-      <<
-        \new ChordNames { \chordmode { es1:m } }
-        \new Staff \with { instrumentName = \markup \fontsize #3 \with-color #red \musicglyph "scripts.varcoda" } \theCoda
+        \new ChordNames { \transpose c a \harmonies }
+        \new Staff \with { instrumentName = \Eb } <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
+          \transpose c a, \theNotes
+        >>
       >>
-    }
+    } %\form
 } }
 
 \book {
   \paper {
     #(set-paper-size "a4")
-    page-count = #1
     print-page-number = ##f
+    system-system-spacing = #'((basic-distance . 18)
+                               (minimum-distance . 15)
+                               (padding . 0))
   }
   #(define output-suffix "Ca4")
   \bookpart {
     \score {
       <<
         \new ChordNames { \harmonies }
-        \new StaffGroup <<
-          \new Staff \with { instrumentName = \CleSol } <<
-            %\new Voice \with { \consists "Pitch_squash_engraver" }
-            { \Piano \set Staff.explicitKeySignatureVisibility = ##(#f #f #f) \theNotes }
-          >>
-          \new Staff \Basse
-      >> >>
-    } \form
-    \score {
-      <<
-        \new ChordNames { \chordmode { es1:m } }
-        \new Staff \with { instrumentName = \markup \fontsize #3 \with-color #red \musicglyph "scripts.varcoda" } \theCoda
+        \new Staff \with { instrumentName = \CleSol }
+        <<
+          \theNotes
+          \addlyrics \verse
+          \addlyrics \verseB
+        >>
       >>
-    }
-    }  \bookpart {
+    } %\form
+  }  \bookpart {
     \score {
       \gridLayout
       \new ChordGrid \grille
@@ -336,28 +325,23 @@ grille = \chordmode {
   \paper {
     #(set-paper-size "a4")
     print-page-number = ##f
-    %page-count = #1
+    system-system-spacing = #'((basic-distance . 18)
+                               (minimum-distance . 15)
+                               (padding . 0))
   }
   #(define output-suffix "Bba4")
   \bookpart {
     \score {
       <<
-        \new ChordNames {\transpose c d  \harmonies }
-        \new StaffGroup <<
-          \new Staff \with { instrumentName = \Bb } <<
-            %\new Voice \with { \consists "Pitch_squash_engraver" }
-            { \Piano \set Staff.explicitKeySignatureVisibility = ##(#f #t #t) \transpose c d \theNotes }
-          >>
-          \new Staff \Basse
-      >> >>
-    } \form
-    \score {
-      <<
-        \new ChordNames { \chordmode { es1:m } }
-        \new Staff \with { instrumentName = \markup \fontsize #3 \with-color #red \musicglyph "scripts.varcoda" } \theCoda
+        \new ChordNames { \transpose c d \harmonies }
+        \new Staff \with { instrumentName = \Bb  } <<
+          \transpose c d \theNotes
+          \addlyrics \verse
+          \addlyrics \verseB
+        >>
       >>
-    }
-    }  \bookpart {
+    } %\form
+  }  \bookpart {
     \score {
       \gridLayout
       \new ChordGrid \transpose c d \grille
@@ -367,27 +351,23 @@ grille = \chordmode {
   \paper {
     #(set-paper-size "a4")
     print-page-number = ##f
-    %page-count = #1
+    system-system-spacing = #'((basic-distance . 18)
+                               (minimum-distance . 15)
+                               (padding . 0))
   }
   #(define output-suffix "Eba4")
   \bookpart {
     \score {
       <<
-        \new ChordNames {\transpose c a  \harmonies }
-        \new StaffGroup <<
-          \new Staff \with { instrumentName = \Eb } <<
-            %\new Voice \with { \consists "Pitch_squash_engraver" }
-            { \Piano \set Staff.explicitKeySignatureVisibility = ##(#f #t #t) \transpose c a, \theNotes }
-          >>
-          \new Staff \Basse
-      >> >>
-    } \form
-    \score {
-      <<
-        \new ChordNames { \chordmode { es1:m } }
-        \new Staff \with { instrumentName = \markup \fontsize #3 \with-color #red \musicglyph "scripts.varcoda" } \theCoda
+        \new ChordNames { \transpose c a \harmonies }
+        \new Staff \with { instrumentName = \Eb } <<
+          \transpose c a, \theNotes
+          \addlyrics \verse
+          \addlyrics \verseB
+        >>
       >>
-    }    }  \bookpart {
+    } %\form
+  }  \bookpart {
     \score {
       \gridLayout
       \new ChordGrid \transpose c a \grille
