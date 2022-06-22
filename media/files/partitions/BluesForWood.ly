@@ -34,9 +34,9 @@
   }
 }
 
-title = #"Dingo Rock"
-composer = #"Michel Legrand"
-meter = #"(Med. Latin Rock)"
+title = #"Blues for Wood"
+composer = #"Woody Shaw"
+meter = #"(Med. Blues)"
 kwtempo = #"Medium"
 kwstyle = #"Blues"
 
@@ -71,8 +71,8 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  asplayed = #"Michel Legrand" % doit être commentée si vide
-  url = #"https://www.youtube.com/watch?v=UzGp6ZLTQgk"
+  asplayed = #"Woody Shaw" % doit être commentée si vide
+  url = #"https://www.youtube.com/watch?v=ZHq_llnPlYU"
   arranger = \markup \on-the-fly #played?
   \with-url #url
   \with-color #blue \underline
@@ -115,45 +115,17 @@ form = \markup  \fill-line {
 
 harmonies = \chordmode {
   \set chordChanges = ##f
-  s4 e1*4:m7 a1:m7 c2:m7 a:m7 e1*2:m7
-  b1*2:dim e1*2:m7
+f1*4:m des1*2:7.11+ f:m des1:7.11+ b:7+11+ g2:m5-7 c:9+ f1:m
 }
 
 
-theNotes =  \relative c' {
-  \clef "treble" \key g \major \time 4/4
-  \mark \markup "unison 1st X"
-  \partial 4 e8 g
-  \repeat volta 2 {
-    b8 b r4 r8 \tuplet 3/2 { bes16 a g } a8. e16 | \noBreak
-    g4 r r e8 g | \noBreak
-    b d4.-- r8 \tuplet 3/2 { bes16 a g } a8. e16 | \noBreak
-    g4 r r e8 g | \break
-    b4 a g8. e16 g8 b |
-    d4 c b e,8 g |
-    a8 a r4 r8 \tuplet 3/2 { g16 fis e } fis8. d16 |
-    e4 r4 r2 | \break
-    d4 f gis b | d f r4 es8 e-.
-    %r8 d4 f8~ f gis4 b8~ | b d f4 r4 es8 e-. |
-    e,4 r r8 \tuplet 3/2 { g16 fis e } fis8. d16 |
-    e4 r4 r \startParenthesis \parenthesize e8 \endParenthesis \parenthesize g
-  }
+theNotes =  \relative c'' {
+  \clef "treble" \key es \major \time 4/4
+c8 es f bes,~ bes4 as8 bes | es, f g c,~ c4 es8 f | c4-^ es2-> c8 f~ | f1 \break
+b8 es f bes,~ bes4 as8 bes | c, es f b,~ b4 es8 f | c4 es2 c8 f~ | f2 r8 f as bes~ \break
+bes2~ 8 f as bes~ | bes4. 8 b16 bes as f es8 f~ | f2 es4-> f->~ | f1
+  \bar ".."
    \label #'theLastPage
-}
-
-theNotesII =  \relative c' {
-  \clef "treble" \key g \major \time 4/4
-  \override TextSpanner.bound-details.left.text = "w/ Bass" \textSpannerDown
-  \partial 4 r4
-  \repeat volta 2 {
-    r4 e8_\markup "Sounds 1 octave lower" g b4 r | r8 \tuplet 3/2 { bes16 a g } a8. e16 g4 r |
-    r4 e8 g b d4.-- | r8 \tuplet 3/2 { bes16 a g } a8. e16 g4 b,8 e|
-    g4 fis e8. c16 e8 g | bes4 a g r |
-    r e8 g a4 r | r8 \tuplet 3/2 { g16 fis e } fis8. d16 e4 r |
-    r16 b8.~ \startTextSpan 16 d8.~ 16 f8.~ 16 as8.~ | 16 b8. b,4 \stopTextSpan r4 es'8 e-. |
-    b,4 r2. |
-    r8 \tuplet 3/2 { g'16 fis e } fis8. d16 e4 r
-  }
 }
 
 chordsRhythm = \relative c' {
@@ -175,9 +147,9 @@ Basse = \relative c' {
 
 grille = \chordmode {
   \bar "[|:"
-\repeat percent 4 { e1:m7 } \break
-a1:m7 c2:m7 a:m7 \repeat percent 2 { e1:m7 } \break
- \repeat percent 2 {  b1:dim } \repeat percent 2 { e1:m7 }
+\repeat percent 4 { f1:m  } \break
+\repeat percent 2 { des1:7.11+ } \repeat percent 2 { f:m } \break
+des1:7.11+ b:7+11+ g2:m5-7 c:9+ f1:m
   \bar ":|]" }
 
 
@@ -236,7 +208,7 @@ a1:m7 c2:m7 a:m7 \repeat percent 2 { e1:m7 } \break
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice \with { \consists "Pitch_squash_engraver" }
-          \transpose c a, \theNotes
+          \transpose c a \theNotes
         >>
       >>
     } %\form
@@ -252,10 +224,12 @@ a1:m7 c2:m7 a:m7 \repeat percent 2 { e1:m7 } \break
     \score {
       <<
         \new ChordNames { \harmonies }
-        \new StaffGroup <<
-          \new Staff \with { instrumentName = \CleSol } \theNotes
-          \new Staff \theNotesII
-      >> >>
+        \new Staff \with { instrumentName = \CleSol }
+        <<
+          %\new Voice \with { \consists "Pitch_squash_engraver" }
+          \theNotes
+        >>
+      >>
     } %\form
     %}  \bookpart {
     \score {
@@ -297,7 +271,7 @@ a1:m7 c2:m7 a:m7 \repeat percent 2 { e1:m7 } \break
         \new ChordNames { \transpose c a \harmonies }
         \new Staff \with { instrumentName = \Eb } <<
           %\new Voice
-          \transpose c a, \theNotes
+          \transpose c a \theNotes
         >>
       >>
     } %\form
@@ -307,131 +281,3 @@ a1:m7 c2:m7 a:m7 \repeat percent 2 { e1:m7 } \break
       \new ChordGrid \transpose c a \grille
 } } }
 
-% \book {
-%   \paper {
-%     #(set-paper-size "tablette")
-%     %page-count = #1
-%   }
-%   #(define output-suffix "BassTab")
-%   %\header { meter = \markup \with-color #red \bold "partition sur 2 pages" }
-%   \bookpart {
-%     \score {
-%       <<
-%         \new ChordNames { \harmonies }
-%         \new Staff \with { instrumentName = \CleFa } <<
-%           %\new Voice \with { \consists "Pitch_squash_engraver" }
-%           \Basse
-%         >>
-%       >>
-%     } %\form
-% } }
-%
-% \book {
-%   \paper {
-%     #(set-paper-size "a4")
-%     %page-count = #1
-%   }
-%   #(define output-suffix "Bassa4")
-%   \bookpart {
-%     \score {
-%       <<
-%         \new ChordNames { \harmonies }
-%         \new Staff \with { instrumentName = \CleFa }
-%         <<
-%           %\new Voice \with { \consists "Pitch_squash_engraver" }
-%           \Basse
-%         >>
-%       >>
-%     } %\form
-%     %}  \bookpart {
-%     \score {
-%       \layout {
-%         indent = 0
-%         \context {
-%           \Score
-%           \override SpacingSpanner.strict-note-spacing = ##t
-%           proportionalNotationDuration = #(ly:make-moment 1/16)
-%         }
-%         \context {
-%           \ChordGrid
-%           \override BarLine.bar-extent = #'(-5 . 5)
-%           \consists "Bar_engraver"
-%           \override StaffSymbol.line-positions = #'( -10 10 )
-%           \consists "Percent_repeat_engraver"
-%         }
-%       }
-%       \new ChordGrid \\grille
-% } } }
-
-% \book {
-%   %\paper { %page-count = #1
-%	#(set-paper-size "a4")}
-%   \header {meter = \markup \pad-around #1 \circle \bold \fontsize #-3 \concat {" " \musicglyph #"clefs.G" " "} }
-%   \bookpart {
-%     #(define output-suffix "RSa4")
-%     \score {
-%       <<
-%         \new ChordNames {
-%           \set chordChanges = ##f
-%           \Accords
-%         }
-%         \new Staff
-%         <<
-%           \set Staff.instrumentName = "Piano"
-%           \new Voice = "Mel" { \chordsRhythm }
-%         >>
-%         \new Staff
-%         <<
-%           \set Staff.instrumentName = "Basse"
-%           \new Voice = "Mel" { \clef "bass_8" \Basse }
-%           \new Voice = "Ctrl" { \ossature }
-%         >>
-%       >>
-%
-%     } %\form
-%     %}  \bookpart {
-%     \score {
-%       \layout {
-%         indent = 0
-%         \context {
-%           \Score
-%           \override SpacingSpanner.strict-note-spacing = ##t
-%           proportionalNotationDuration = #(ly:make-moment 1/16)
-%         }
-%         \context {
-%           \ChordGrid
-%           \override BarLine.bar-extent = #'(-5 . 5)
-%           \consists "Bar_engraver"
-%           \override StaffSymbol.line-positions = #'( -10 10 )
-%           \consists "Percent_repeat_engraver"
-%         }
-%       }
-%       \new ChordGrid \transpose c a \grille
-% } } }
-
-% \book {
-%   %\paper { %page-count = #2
-%	#(set-paper-size "tablette")}
-%   \header {meter = \markup \pad-around #1 \circle \bold \fontsize #-3 \concat {" " \musicglyph #"clefs.G" " "} }
-%   \bookpart {
-%     #(define output-suffix "RSTab")
-%     \score {
-%       <<
-%         \new ChordNames {
-%           \set chordChanges = ##f
-%           \Accords
-%         }
-%         \new Staff
-%         <<
-%           \set Staff.instrumentName = "Piano"
-%           \new Voice = "Mel" { \chordsRhythm }
-%         >>
-%         \new Staff
-%         <<
-%           \set Staff.instrumentName = "Basse"
-%           \new Voice = "Mel" { \clef "bass_8" \Basse }
-%           \new Voice = "Ctrl" { \ossature }
-%         >>
-%       >>
-%
-% } } }
