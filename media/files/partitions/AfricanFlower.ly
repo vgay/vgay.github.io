@@ -290,57 +290,57 @@ Basse = \relative c, {
   \clef "bass" \key des \major \time 4/4 \mark #1
   % \partial 8
   % \showStartRepeatBar \bar "[|:"
-  es8 bes'4 ges'8 ~ ges bes,8 ~ bes bes | % 2
-  es,8 bes'4 ges'8 ~ ges bes,8 ~ bes bes | % 3
-  ges8 des'4 bes'8 ~ bes des,8 ~ des des | % 4
-  ges,8 des'4 bes'8 ~ bes des,8 ~ des des \break | % 5
-  as8 es'4 ces'8 ~ ces es,8 ~ es des | % 6
-  ges,8 des'4 beses'8 ~ beses des,8 ~ des4 | % 7
-  es,8 bes'4 ges'8 ~ ges bes,8 ~ bes bes | % 8
-  es,8 bes'4 ges'8 ~ ges bes,8 ~ bes4  \break | % 9
-  bes8 as'4 des8 ~ des as8 ~ as des, |
-  bes8 as'4 des8 ~ des as8 ~ as4 | % 11
-  es,8 bes'4 ges'8 ~ ges bes,8 ~ bes bes | % 12
-  es,8 bes'4 ges'8 ~ ges bes,8 ~ bes bes
+  es8 bes'4 ges'8 ~ ges bes,4 8 | % 2
+  es,8 bes'4 ges'8 ~ ges bes,4 8 | % 3
+  ges8 des'4 bes'8 ~ bes des,4 8 | % 4
+  ges,8 des'4 bes'8 ~ bes des,4 8 \break | % 5
+  as8 es'4 ces'8 ~ ces es,4 8 | % 6
+  ges,8 des'4 beses'8 ~ beses des,4 8 | % 7
+  es,8 bes'4 ges'8 ~ ges bes,4 8 | % 8
+  es,8 bes'4 ges'8 ~ ges bes,4 8  \break | % 9
+  bes8 f'4 as8 ~ as f4 des8 |
+  bes8 f'4 bes8 ~ bes as4 f8 | % 11
+  es,8 bes'4 ges'8 ~ ges bes,4 8 | % 12
+  es,8 bes'4 ges'8 ~ ges bes,4 8
   \break  \bar "||-[|:"
   \doubleMark
   \markup  { \with-color #red { "To Coda" \raise #1 \musicglyph "scripts.varcoda" } }
   \markup \box A' | % 13
   \repeat volta 2 {
-    es,8 bes'4 ges'8 ~ ges bes,8 ~ bes bes | % 14
-    es,8 bes'4 ges'8 ~ ges bes,8 ~ bes bes | % 15
+    es,8 bes'4 ges'8 ~ ges bes,4 8 | % 14
+    es,8 bes'4 ges'8 ~ ges bes,4 8 | % 15
     ges8 des'4 bes'8 ~ bes des,8 ~ des des | % 16
     ges,8 des'4 bes'8 ~ bes des,8 ~ des des  | \break % 17
-    as8 es'4 ces'8 ~ ces es,8 ~ es des | % 18
+    as8 es'4 ces'8 ~ ces es,4 8 | % 18
     ges,8 des'4 beses'8 ~ beses des,8 ~ des bes | % 19
-    es,8 bes'4 ges'8 ~ ges bes,8 ~ bes bes |
-    es,8 bes'4 ges'8 ~ ges bes,8 ~ bes bes \break | % 21
-    bes8 f'4 as8 ~ as  f8 ~ f f | % 22
-    bes,8 f'4 as8 ~ as f8 ~ f4 | % 23
-    es,8 bes'4 ges'8 ~ ges bes,8 ~ bes bes | % 24
+    es,8 bes'4 ges'8 ~ ges bes,4 8 |
+    es,8 bes'4 ges'8 ~ ges bes,4 8 \break | % 21
+    bes8 f'4 as8 ~ as  f4 8 | % 22
+    bes,8 f'4 as8 ~ as f4 8 | % 23
+    es,8 bes'4 ges'8 ~ ges bes,4 8 | % 24
     es,8 bes'4 ges'8 ~ ges bes,8 ~ bes4 \bar "||" \break
     \doubleMark
     \markup  { \with-color #red { " after 2nd X D.C al Coda" } }
     \markup \box B
-    ges8 des'4 bes'8 ~ bes des,8 ~ des des | % 26
-    ges,8 des'4 bes'8 ~ bes des,8 ~ des des | % 27
-    ces8 es4 beses'8 ~ beses ges8 ~ ges des | % 28
-    ces8 es4 beses'8 ~ beses ges8 ~ ges des | \break % 29
-    ges,8 des'4 bes'8 ~ bes des,8 ~ des des |
-    ges,8 des'4 bes'8 ~ bes des,8 ~ des des | % 31
-    ges,8 des'4 fes8 ~ fes des8 ~ des des | % 32
-    ges,8 des'4 fes8 ~ fes des8 ~ des des \break | % 33
-    as8 es'4 ces'8 ~ ces es,8 ~ es es | % 34
-    ges,8 des'4 beses'8 ~ beses des,8 ~ des des | % 35
-    es,8 bes'4 ges'8 ~ ges bes,8 ~ bes bes | % 36
-    es,8 bes'4 ges'8 ~ ges bes,8 ~ bes bes | \break % 37
-    d,8 a'4 fis'8 ~ fis a,8 ~ a a | % 38
-    bes8 f'4 as8 ~ as  bes,8 ~ bes bes | % 39
-    es,8 bes'4 ges'8 ~ ges bes,8 ~ bes bes |
+    ges8 des'4 bes'8 ~ bes des,4 8 | % 26
+    ges,8 des'4 bes'8 ~ bes des,4 8 | % 27
+    ces8 es4 beses'8 ~ beses ges4 des8 | % 28
+    ces8 es4 beses'8 ~ beses ges4 des8 | \break % 29
+    ges,8 des'4 bes'8 ~ bes des,4 8 |
+    ges,8 des'4 bes'8 ~ bes des,4 8 | % 31
+    ges,8 des'4 fes8 ~ fes des4 8 | % 32
+    ges,8 des'4 fes8 ~ fes des4 8 \break | % 33
+    as8 es'4 ces'8 ~ ces es,4 8 | % 34
+    ges,8 des'4 beses'8 ~ beses des,4 8 | % 35
+    es,8 bes'4 ges'8 ~ ges bes,4 8 | % 36
+    es,8 bes'4 ges'8 ~ ges bes,4 8 | \break % 37
+    d,8 a'4 fis'8 ~ fis a,4 8 | % 38
+    bes8 f'4 as8 ~ as  bes,4 8 | % 39
+    es,8 bes'4 ges'8 ~ ges bes,4 8 |
     es,1 \break }
   \mark \markup  \with-color #red \musicglyph "scripts.varcoda"
-  es8 bes'4 ges'8 ~ ges bes,8 ~ bes bes | % 2
-  es,8 bes'4 ges'8 ~ ges bes,8 ~ bes bes | % 3
+  es8 bes'4 ges'8 ~ ges bes,4 8 | % 2
+  es,8 bes'4 ges'8 ~ ges bes,4 8 | % 3
   ges8 des'4 bes'8 ~ bes des,8 ~ des des | % 4
   ges,8 des'4 bes'8 ~ bes des,8 ~ des des | % 5
   es,1 \fermata
@@ -514,7 +514,7 @@ ges:7+ ges2.:7+ ges4:7 \repeat percent 2 { ces1:7 } \break
         \new ChordNames { \harmonies }
         \new PianoStaff  \with { instrumentName = Piano } <<
           \new Staff \PianoRH
-          \new Staff \Basse
+          \new Staff \transpose c c' \Basse
       >> >>
 } } }
 
