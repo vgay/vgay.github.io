@@ -3,12 +3,124 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2022-07-01T10:40:57+02:00</updated>
+    <updated>2022-07-08T08:04:18+02:00</updated>
     <author>
         <name>Vincent</name>
     </author>
     <id>https://myrealbook.vintherine.org</id>
 
+    <entry>
+        <title>Marques de repères et de reprises (Rehearsal Marks)</title>
+        <author>
+            <name>Vincent</name>
+        </author>
+        <link href="https://myrealbook.vintherine.org/double-marks.html"/>
+        <id>https://myrealbook.vintherine.org/double-marks.html</id>
+
+        <updated>2022-07-08T08:04:18+02:00</updated>
+            <summary>
+                <![CDATA[
+                    <p>C'est ce qu'on appelle un marronnier (sujet qui revient régulièrement) : comment gérer les marques de repères et de reprises (reheasal marks), leurs positions verticales et horizontales, comment les faire apparaître en fin de ligne, comment mettre deux marques successivement... Le besoin le plus fréquemment exprimé est une ligne se terminant par un "D.C. al Coda", la suivante commençant par la Coda en question. </p>
+<figure class="post__image align-center"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/18/DCalCoda.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/18/responsive/DCalCoda-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/18/responsive/DCalCoda-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/18/responsive/DCalCoda-md.png 768w"  alt="" width="501" height="184"></figure>
+<p>Voici un petit tour de mes modestes connaissances  :</p>
+<ul>
+<li><a href="#mark">la commande \mark et ses (nombreux) \override</a></li>
+<li><a href="#double">Double-Mark : deux marques à un saut de ligne</a></li>
+<li><a href="#poly">PolyMark, un graveur alternatif</a></li>
+</ul>
+
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>C'est ce qu'on appelle un marronnier (sujet qui revient régulièrement) : comment gérer les marques de repères et de reprises (reheasal marks), leurs positions verticales et horizontales, comment les faire apparaître en fin de ligne, comment mettre deux marques successivement... Le besoin le plus fréquemment exprimé est une ligne se terminant par un "D.C. al Coda", la suivante commençant par la Coda en question. </p>
+<figure class="post__image align-center"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/18/DCalCoda.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/18/responsive/DCalCoda-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/18/responsive/DCalCoda-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/18/responsive/DCalCoda-md.png 768w"  alt="" width="501" height="184"></figure>
+<p>Voici un petit tour de mes modestes connaissances  :</p>
+<ul>
+<li><a href="#mark">la commande \mark et ses (nombreux) \override</a></li>
+<li><a href="#double">Double-Mark : deux marques à un saut de ligne</a></li>
+<li><a href="#poly">PolyMark, un graveur alternatif</a></li>
+</ul>
+
+<h3 id="mark">La commande \mark et ses (nombreux) \override</h3>
+<p>Commençons par le commencement : une marque de repère s'obtient par la commande <code>\mark</code> Voici ce qu'en dit la <a href="https://lilypond.org/doc/v2.22/Documentation/notation/writing-text#text-marks">documentation</a> :</p>
+<p class="msg msg--highlight ">Le résultat de <code>\mark</code> n’apparaîtra que sur la portée supérieure d’un système. Si vous introduisez la commande <code>\mark</code> au moment d’une barre de mesure, la marque se placera au-dessus de la barre. Si vous y faites appel au milieu d’une mesure, cette marque sera positionnée entre les notes. Si elle intervient en début de ligne, elle sera placée juste avant la première note de cette portée. Enfin, une marque qui tomberait sur un saut de ligne sera imprimée au début de la ligne suivante. </p>
+<p>Ce qui n'est pas précisément explicité c'est que sauf dispositif complémentaire  il n'est pas possible de placer plus d'une marque au même endroit.</p>
+<p>Il est possible par des <code>\override</code> de modifier les comportements par défaut</p>
+<ul>
+<li>Direction (haut / bas)
+<ul>
+<li>Haut (défaut)  : <code>[\once] \override Score.RehearsalMark #'direction = #UP</code></li>
+<li>Bas  :  <code>[\once] \override Score.RehearsalMark #'direction = #DOWN</code></li>
+</ul>
+</li>
+<li>Alignement (gauche / centre / droit)
+<ul>
+<li>Gaughe : <code>[\once] \override Score.RehearsalMark #'self-alignment-X = #LEFT</code></li>
+<li>Centre (défaut) : <code>[\once] \override Score.RehearsalMark #'self-alignment-X = #CENTER</code></li>
+<li>Droit :  <code>[\once] \override Score.RehearsalMark #'self-alignment-X = #RIGHT</code></li>
+</ul>
+</li>
+<li>Fin de ligne
+<ul>
+<li><code>\once \override Score.RehearsalMark.break-visibility = #end-of-line-visible</code></li>
+</ul>
+</li>
+</ul>
+<figure class="post__image align-center"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/18/Directions.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/18/responsive/Directions-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/18/responsive/Directions-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/18/responsive/Directions-md.png 768w"  alt="" width="546" height="260"></figure>
+<p>Si l’alignement se fait par défaut sur la barre de mesure il est possible de choisir  un autre objet tel que clef, armure, métrique, respiration...</p>
+<p>Par exemple : </p>
+<ul>
+<li><code>[\once] override Score.RehearsalMark.break-align-symbols = #'(clef)</code></li>
+<li><code>[\once] \override Score.RehearsalMark.break-align-symbols = #'(time-signature)</code></li>
+</ul>
+<p>extrait de la  <a href="http://lilypond.org/doc/v2.22/Documentation/notation/aligning-objects#using-the-break_002dalignable_002dinterface">documentation </a> : </p>
+<p class="msg msg--highlight ">Les différents objets sur lesquels l’alignement pourrait intervenir seront regroupés dans une liste. Si l’un des objets est invisible à l’endroit voulu, en raison d’un réglage de <code>break-visibility</code> ou bien par forçage de la visibilité des armures et clefs, le repère ou le numéro de mesure viendra s’aligner sur le premier élément de cette liste qui soit visible. Dans le cas où aucun objet de la liste n’est visible, l’alignement se fera sur la barre de mesure ou, dans le cas où la barre de mesure est invisible, à l’endroit même où la barre prendrait place. </p>
+<p>Enfin la propriété <code>extra-offset</code> offre la possibilité de contrôler entièrement le placement d’un objet, aussi bien horizontalement que verticalement. :</p>
+<ul>
+<li>[<code>\once] \override Score.RehearsalMark.extra-offset = #'(X . Y)</code></li>
+</ul>
+<p>X et Y sont des nombres décimaux permettant de déplacer vers la droite / vers le haut s'ils sont positifs, vers la gauche / vers le bas s'ils sont négatif.</p>
+<h3 id="double">Double-Mark : deux marques à un saut de ligne</h3>
+<p>Double-Mark est une fonction écrite par ArnoldTheresius pour gérer spécifiquement deux marques successives lors d'un saut de lignes (l'une avant l'autre après).  Elle est disponible sur <a href="https://lsr.di.unimi.it/LSR/Item?id=977">cette page de lsr</a> (un clic sur l'image affiche le code). Enregistrez-la dans un fichier à inclure. Sa syntaxe :</p>
+<pre><code>\doubleMark</code><br><code>   texte ou \markup</code><br><code>   texte ou \markup</code></pre>
+<p>La marque avant le saut de ligne sera alignée à droite, celle après le saut de ligne à gauche et toutes deux seront positionnées par défaut au dessus du système de portées. Il est possible de modifier la direction haut / bas  par un appel préalable à une fonction complémentaire <code>\set_mark-y-dir</code> que l'on trouve sur la même page.</p>
+<p class="msg msg--success"><strong>Préalable</strong> : \set_mark-y-dir fonctionne parfaitement (lilypond 2.22.2) si ce n'est que Frescobaldi lisant quelque-chose commençant par \set  s'attend à un signe égal avant l'argument et perd tous ses moyens tant en matière d’indentation que d’autocomplétion. Une manière simple de contourner le problème est de rebaptiser mark-y-dir la fonction <strong>dans le fichier inclus</strong> en supprimant le set du début. <strong>C'est sous cette forme que j'y ferai référence</strong>. </p>
+<p>La commande prend en paramètre optionnel une "alist" de paire d'arguments dont le premier est la position par rapport au point d'insertion (avant = left, après = right) et le second la position verticale (au dessus = UP, au dessous = DOWN). Pour indiquer par exemple un "D.C. al coda" en dessous de la portée puis, après le saut de ligne, un signe coda au dessus de la portée (image en haut de page) :</p>
+<pre><code>include "double-mark.ly"<br><br>\relative c'' {
+    c2 c c c \break
+    \mark-y-dir #`(  (,left . ,DOWN) (,right . ,UP) 
+    \doubleMark
+    \markup  {\with-color #red "D.S. al Coda" }
+    \markup { \with-color #red  \musicglyph "scripts.varcoda" }
+    c c c c \bar ".." 
+}</code></pre>
+<p>Ceci est assez peu intuitif puisque après un saut de ligne les valeurs gauche et droite nous paraissent inversées mais on fini par s'y faire.</p>
+<p class="msg msg--success"><strong>Attention</strong> :<code>\mark-y-dir</code> fait un <code>\override</code> de <code>Score.RehearsalMark.before-line-breaking</code> qui influencera sur les <code>\mark</code> suivants. Dans ce cas penser à faire un <code>\revert Score.RehearsalMark.before-line-breaking</code>.</p>
+<h3 id="poly">PolyMark, un graveur alternatif</h3>
+<p>C'est à ce même ArnoldTheresius que nous devons PolyMark qui se présente comme un graveur alternatif à \mark. On le trouve sur <a href="https://lsr.di.unimi.it/LSR/Item?id=976">cette page lsr</a>. Il semble au premier abord un peu plus complexe à prendre en main mais dès qu'on a compris son fonctionnement  il ressemble fort à la solution universelle. </p>
+<p>la commande : <code>\polyMark #'identifiant [texte ou \markup]</code></p>
+<p>Pour résumer on peut mettre autant de marques à un même point d'insertion pour autant qu'elle aient des mêmes identifiants différents. Pour afficher un repère  <code>\polyMark \default</code> fonctionne mais pas <span style="text-decoration: line-through;"><code>\polyMark #1</code> .</span></p>
+<p>En l'absence d'indications de direction et d'alignement les valeurs par défaut sont <em>centré</em> et <em>au dessus</em>. En cas de multiples marques celles-ci seront alors empilées.</p>
+<pre><code>\include "poly-mark-engraver.ly"<br><br>\relative c'' {</code><br><code>    c2 c \polyMark \default</code><br><code>    c2 c</code><br><code>    \polyMark #'myKey "something"</code><br><code>    \polyMark #'anotherKey \markup "something else"</code><br><code>    c c</code><br><code>}</code></pre>
+<figure class="post__image align-center"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/18/DoublePolyMark.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/18/responsive/DoublePolyMark-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/18/responsive/DoublePolyMark-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/18/responsive/DoublePolyMark-md.png 768w"  alt="" width="522" height="120"></figure>
+<p>Il est possible d'indiquer de différentes manières directions et alignements.</p>
+<p>La manière basique (mais pas la plus simple) :</p>
+<pre><code>\include "poly-mark-engraver.ly"<br><br>\relative c'' {</code><br><code>  c c \polyMark #'W "Default" c c \break</code><br><code>  \polyMark #'(X (direction . -1) (self-alignment-X . -1.0) )  "New Line"</code><br><code>  \polyMark #'(Y (direction . -1) (self-alignment-X . 1.0) (break-visibility . #(#t #f #f)))  "Down"</code><br><code>  \polyMark #'(Z (self-alignment-X . 1.0) (break-visibility . #(#t #f #f)))  "Up"</code><br><code>  c c c c</code><br><code>  \bar ".." <br>}</code></pre>
+<figure class="post__image align-center"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/18/PolyMarkDir1.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/18/responsive/PolyMarkDir1-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/18/responsive/PolyMarkDir1-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/18/responsive/PolyMarkDir1-md.png 768w"  alt="" width="505" height="189"></figure>
+<p>En utilisant les mêmes<code> \tweak</code> ou <code>\override</code> qu'avec<code> \mark</code> :</p>
+<pre><code>\include "poly-mark-engraver.ly"<br><br>\relative c'' {</code><br><code>  c2 c  </code><br><code>  \polyMark #'myKey "UP"</code><br><code>  \tweak direction #DOWN</code><br><code>  \polyMark #'anotherKey \markup "DOWN"</code><br><code>  c c 2 c</code><br><code>  \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT</code><br><code>  \once \override Score.RehearsalMark.break-visibility = #end-of-line-visible</code><br><code>  \polyMark #'EOF "End of Line"</code><br><code>  \bar ".." </code><br><code>}</code></pre>
+<p class="msg msg--success">N.B. voir sur cette page la différence entre <code>\tweak</code> et <code>\override</code></p>
+<figure class="post__image align-center"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/18/PolyMarkDir3.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/18/responsive/PolyMarkDir3-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/18/responsive/PolyMarkDir3-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/18/responsive/PolyMarkDir3-md.png 768w"  alt="" width="507" height="104"></figure>
+<p>En définissant dans un layout des valeurs associées à un identifiant</p>
+<pre><code>\include "poly-mark-engraver.ly"<br><br>\score {</code><br><code>  \relative c'' {</code><br><code>    c2 c  c2 c</code><br><code>    \polyMark #'DC "D.C. al Coda"</code><br><code>    \bar ".." </code><br><code>  }</code><br><code>  \layout {</code><br><code>    \context { \Score</code><br><code>               polyMarkOptions = #`((DC</code><br><code>                                     (direction        . ,DOWN)</code><br><code>                                     (self-alignment-X . ,RIGHT)</code><br><code>                                     (break-visibility . ,begin-of-line-invisible)))</code><br><code>  } }</code><br><code>}</code></pre>
+<figure class="post__image align-center"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/18/PolyMarkDir2.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/18/responsive/PolyMarkDir2-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/18/responsive/PolyMarkDir2-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/18/responsive/PolyMarkDir2-md.png 768w"  alt="" width="499" height="105"></figure>
+<p>Enfin j'ai gardé le meilleur pour la fin : il y a au sein du fichier poly-mark-engraver.ly une "<em>default-option-lists</em>" sur le modèle de polyMarkOptions et que l'on vient de voir et que l'on peut utiliser à tous moments sans avoir à les déclarer. Les identifiants parlent d'eux-mêmes et sont facile à retenir : RightUp, RightDown, Right, CenterEndUp, CenterEndDown, CenterEnd, LeftUp, LeftDown, Left, CenterUp, CenterDown, Center, CenterEndBoth, CenterEndBothRotated, CenterEndBothMirrore. Complétez-la avec des options que vous utilisez fréquemment : pour ma part j'ai ajouté RighEnd et RightEndDown. voici quelques exemples : </p>
+<pre><code>\include "poly-mark-engraver.ly"<br><br>\relative c'' {</code><br><code>  c1  </code><br><code>  \polyMark #'Right \markup \with-color #red \musicglyph "scripts.varsegno"</code><br><code>  \tweak extra-offset #'(1 . -4.5)</code><br><code>  \polyMark #'Left \default</code><br><code>  c</code><br><code>  \polyMark #'Right "RightUp"</code><br><code>  \polyMark #'LeftDown "LeftDown"</code><br><code>  c</code><br><code>  \polyMark #'CenterEndBothRotated \markup \musicglyph "scripts.ufermata"  </code><br><code>  \bar ".." </code><br><code>}</code></pre>
+<figure class="post__image align-center"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/18/PolyMarkDir4.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/18/responsive/PolyMarkDir4-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/18/responsive/PolyMarkDir4-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/18/responsive/PolyMarkDir4-md.png 768w"  alt="" width="505" height="109"></figure>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Lilypond : indications rythmiques</title>
         <author>
@@ -381,44 +493,6 @@
 <p>Principal défaut de ce tableau : il n'est pas "<em>Responsive design</em>", c'est à dire qu'il ne se redimensionne pas en fonction des tailles d'écran. Il n'est donc pas adapté à un ordiphone.</p>
 <h4><a href="https://github.com/vgay/vgay.github.io">Cloner GitHub</a></h4>
 <p>Ce site est sur GitHub, clonez-le avec toutes ses partitions ou téléchargez le .zip (cliquez sur le bouton vert "Code" puis sur le lien "Download ZIP")</p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Un peu de couleur</title>
-        <author>
-            <name>Vincent</name>
-        </author>
-        <link href="https://myrealbook.vintherine.org/un-peu-de-couleur.html"/>
-        <id>https://myrealbook.vintherine.org/un-peu-de-couleur.html</id>
-
-        <updated>2021-12-24T17:16:18+01:00</updated>
-            <summary>
-                <![CDATA[
-                    <p>À la lecture d'une grille harmonique un jazzman chevronné sait immédiatement ce que recouvre chaque accord et quelles gammes et arpèges il peut jouer. Un débutant devra au contraire étudier longuement sa partition, repérer les notes fortes, l'annoter et répéter inlassablement les enchaînements caractéristiques tels les II-V-I , les cadences plagale (IV-I), les marches harmoniques...</p>
-<p>Lorsque j'étais moi-même débutant j'utilisais mes crayons de couleur pour repérer plus visuellement les tonalités, une peu comme ceci :</p>
-<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/21/LesPassantes.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/21/responsive/LesPassantes-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/21/responsive/LesPassantes-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/21/responsive/LesPassantes-md.png 768w"  alt="Les Passantes de Georges Brassens" width="793" height="391"></figure>
-<p>Voyons comment faire ceci avec Lilypond.</p>
-
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>À la lecture d'une grille harmonique un jazzman chevronné sait immédiatement ce que recouvre chaque accord et quelles gammes et arpèges il peut jouer. Un débutant devra au contraire étudier longuement sa partition, repérer les notes fortes, l'annoter et répéter inlassablement les enchaînements caractéristiques tels les II-V-I , les cadences plagale (IV-I), les marches harmoniques...</p>
-<p>Lorsque j'étais moi-même débutant j'utilisais mes crayons de couleur pour repérer plus visuellement les tonalités, une peu comme ceci :</p>
-<figure class="post__image"><img loading="lazy"  src="https://myrealbook.vintherine.org/media/posts/21/LesPassantes.png" sizes="(max-width: 48em) 100vw, 100vw" srcset="https://myrealbook.vintherine.org/media/posts/21/responsive/LesPassantes-xs.png 300w ,https://myrealbook.vintherine.org/media/posts/21/responsive/LesPassantes-sm.png 480w ,https://myrealbook.vintherine.org/media/posts/21/responsive/LesPassantes-md.png 768w"  alt="Les Passantes de Georges Brassens" width="793" height="391"></figure>
-<p>Voyons comment faire ceci avec Lilypond.</p>
-
-<p>Commençons par écrire une partitions ordinaire avec une ou deux voix. Dans l'exemple ci-dessus j'utilise les notes fortes des accords (généralement tierces et septièmes) en guise de guide-ton. Dans chaque mesure j'indique par un changement de clef la tonalité induite par les accords.</p>
-<p>Le style Realbook est utilisé comme à l'habitude mais n'est pas indispensable. Voir les posts  <a href="https://myrealbook.vintherine.org/a-propos-des-logiciels-deditions-utilises.html">À propos des logiciels</a>, (partie Lilyjazz) et <a href="https://myrealbook.vintherine.org/titres-a-la-realbook.html">Titres à la Realbook.</a></p>
-<p>Pour avoir une barre de reprise avant la première mesure je triche par un \partial 256 s256 (penser à mettre ce s256 également avant les noms d'accords). Cela permet aussi d'indiquer la tonalité initiale à l'intérieur la première mesure. Pour éviter que ce silence ne prenne trop de place au début de la ligne  il est nécessaire d'indiquer à Lilypond d'écrire de façon proportionnelle par le code suivant :</p>
-<pre><code>\layout { </code><br><code>  \context { </code><br><code>    \Score </code><br><code>    proportionalNotationDuration = #(ly:make-moment 1/10) </code><br><code>} }</code></pre>
-<p>Venons-en maintenant au coloriage des mesures. Elle est possible grâce à la fonction staffColor écrite par Jean Abou Samra et postée dans la liste de discussion des utilisateurs francophones de lilypond. </p>
-<pre><code>\version "2.22.1"</code><br><br><code>#(define (define-grob! grob-name grob-entry)</code><br><code>   (set! all-grob-descriptions</code><br><code>         (cons ((@@ (lily) completize-grob-entry)</code><br><code>                (cons grob-name grob-entry))</code><br><code>               all-grob-descriptions)))</code><br><br><code>#(define (staff-colorizer::print grob)</code><br><code>   (let* ((staff-symbol (ly:grob-object grob 'staff-symbol))</code><br><code>          (left (ly:spanner-bound grob LEFT))</code><br><code>          (right (ly:spanner-bound grob RIGHT))</code><br><code>          (refp (ly:grob-system grob))</code><br><code>          (spacing-pair (ly:grob-property grob 'spacing-pair))</code><br><code>          (coord-adjust (ly:grob-relative-coordinate grob refp X))</code><br><code>          (x-span (cons (- (interval-end (ly:paper-column::break-align-width</code><br><code>                                          left</code><br><code>                                          (car spacing-pair)))</code><br><code>                           coord-adjust)</code><br><code>                        (- (interval-start (ly:paper-column::break-align-width</code><br><code>                                            right</code><br><code>                                            (cdr spacing-pair)))</code><br><code>                           coord-adjust)))</code><br><code>          (y-span (ly:grob-extent staff-symbol staff-symbol Y)))</code><br><code>     (make-filled-box-stencil x-span y-span)))</code><br><br><code>#(define-grob!</code><br><code>   'StaffColorizer</code><br><code>   `((stencil . ,staff-colorizer::print)</code><br><code>     (layer . -1)</code><br><code>     (spacing-pair . (staff-bar . staff-bar))</code><br><code>     (meta . ((class . Spanner)</code><br><code>              (interfaces . (text-interface))))))</code><br><br><code>#(set-object-property! 'staffColor 'translation-type? color?)</code><br><br><code>#(define (Staff_colorizer_engraver context)</code><br><code>   (let ((current-color #f)</code><br><code>         (spanner #f))</code><br><code>     (make-engraver</code><br><code>       ((process-music engraver)</code><br><code>          (let ((color (ly:context-property context 'staffColor #f)))</code><br><code>            (if (and color</code><br><code>                     (not (equal? color current-color)))</code><br><code>                (let ((column (ly:context-property context 'currentCommandColumn)))</code><br><code>                  (set! current-color color)</code><br><code>                  (if spanner</code><br><code>                      (ly:spanner-set-bound! spanner RIGHT column))</code><br><code>                  (set! spanner (ly:engraver-make-grob engraver 'StaffColorizer '()))</code><br><code>                  (ly:grob-set-property! spanner 'color current-color)</code><br><code>                  (ly:spanner-set-bound! spanner LEFT column)))))</code><br><code>       ((finalize engraver)</code><br><code>          (if spanner</code><br><code>              (let ((column (ly:context-property context 'currentCommandColumn)))</code><br><code>                (ly:spanner-set-bound! spanner RIGHT column)))))))</code><br><br><code>\layout {</code><br><code>  \context {</code><br><code>    \Global</code><br><code>    \grobdescriptions #all-grob-descriptions</code><br><code>  }</code><br><code>  \context {</code><br><code>    \Staff</code><br><code>    \consists #Staff_colorizer_engraver</code><br><code>  }</code><br><code>}</code><br><br><code>staffColor = \set Staff.staffColor = \etc </code></pre>
-<p>j'ai enregistré ce code dans un fichier staffColor.ly que j'appelle dans mes \include</p>
-<p>Le code complet :</p>
-<pre><code>\version "2.22.1"</code><br><code>#(set-global-staff-size 18)</code><br><code>\include "jazzchords.ily"</code><br><code>\include "lilyjazz.ily"</code><br><code>\include "staffColor.ly"</code><br><br><code>\paper {</code><br><code>  indent = 0\mm</code><br><code>  ragged-last-bottom = ##t</code><br><code>  ragged-bottom = ##f</code><br><code>  ragged-last = ##f</code><br><code>  markup-system-spacing = #'((basic-distance . 23)</code><br><code>                             (minimum-distance . 8)</code><br><code>                             (padding . 1))</code><br><code>}</code><br><br><code>title = #"Les passantes"</code><br><code>composer = #"Georges Brassens"</code><br><code>meter = #"(Ballad)"</code><br><br><code>realBookTitle = \markup {</code><br><code>  \score {</code><br><code>    {</code><br><code>      \override TextScript.extra-offset = #'(0 . -4.5)</code><br><code>      s4</code><br><code>      s^\markup {</code><br><code>        \fill-line {</code><br><code>          \fontsize #1 \lower #1 \rotate #7 \concat { " " #meter }</code><br><code>          \fontsize #4</code><br><code>          \override #'(offset . 9)</code><br><code>          \override #'(thickness . 6)</code><br><code>          \underline \larger \larger #title</code><br><code>          \fontsize #1 \lower #1 \concat { #composer " " }</code><br><code>        }</code><br><code>      }</code><br><code>      s</code><br><code>    }</code><br><code>    \layout {</code><br><code>      \omit Staff.Clef</code><br><code>      \omit Staff.TimeSignature</code><br><code>      \omit Staff.KeySignature</code><br><code>      ragged-right = ##f</code><br><code>    }</code><br><code>  }</code><br><code>}</code><br><br><code>voltaAdLib = \markup { 1. 2. 3… \italic \text "ad lib." }</code><br><code>voltaOnCue = \markup \small \text "Last X"</code><br><br><code>\header {</code><br><code>  pdftitle = #title</code><br><code>  pdfauthor = #composer</code><br><code>  title = \realBookTitle</code><br><code>  tagline = ##f</code><br><code>}</code><br><br><code>\layout {</code><br><code>  \context {</code><br><code>    \Score</code><br><code>    proportionalNotationDuration = #(ly:make-moment 1/10)</code><br><code>    \omit BarNumber</code><br><code>    startRepeatType = #"[|:"</code><br><code>    endRepeatType = #":|]"</code><br><code>    doubleRepeatType = #":|][|:"</code><br><code>    \override Clef #'break-visibility = #'#(#f #f #f)</code><br><code>    \override KeySignature #'break-visibility = #'#(#f #t #t)</code><br><code>    \override SystemStartBar #'collapse-height = #1</code><br><code>  }</code><br><code>  \context { </code><br><code>    \Staff</code><br><code>    printPartCombineTexts = ##f</code><br><code>    \consists "Merge_rests_engraver"</code><br><code>  }</code><br><code>  \context {</code><br><code>    \ChordNames</code><br><code>    \override ParenthesesItem.font-size = #2</code><br><code>  }</code><br><code>  \context { \Score markFormatter = #format-mark-box-alphabet }</code><br><code>}</code><br><br><br><code>accords = \chordmode {</code><br><code>  \set chordChanges = ##t</code><br><code>  s512</code><br><code>  f1:7+ e:7 a:7 d:7 d:m7 g:7 c:7+ e:7 </code><br><code>  f1:7+ e:7 a:7 d:7 a:m7 g:7 a:m7 g2:m7 c:7 a1:m </code><br><code>}</code><br><br><code>theNotes =  \relative c''' {</code><br><code>  \clef "treble" \time 4/4</code><br><code>  \partial 512 s512</code><br><code>  %\showStartBar \bar "[|:"</code><br><code>  \set Staff.explicitKeySignatureVisibility = ##(#f #t #t)</code><br><code>  \override Staff.KeyCancellation.break-visibility = #all-invisible </code><br><br><code>  \repeat volta 2</code><br><code>  {</code><br><code>    &lt;&lt; </code><br><code>      { \key f \major \staffColor aqua a1 </code><br><code>        \key a \major \staffColor pink  gis </code><br><code>        \key d \major \staffColor orange g! </code><br><code>        \key g \major \staffColor yellow fis \break </code><br><code>        \key c \major \staffColor Chartreuse f! f e </code><br><code>        \key a \major \staffColor pink d \break</code><br><code>        \key f \major \staffColor aqua e </code><br><code>        \key a \major \staffColor pink d </code><br><code>        \key d \major \staffColor orange cis </code><br><code>        \key g \major \staffColor yellow c! \break </code><br><code>        \once \override Staff.KeyCancellation.break-visibility = ##(#f #t #t)</code><br><code>        \key c \major \staffColor Chartreuse c b c  } </code><br><code>      \\ </code><br><code>      { e d cis c </code><br><code>        c b b gis</code><br><code>        a gis g! fis</code><br><code>        g f c </code><br><code>      } </code><br><code>    &gt;&gt;</code><br><code>  }</code><br><code>  \alternative {</code><br><code>    { </code><br><code>      \overrideProperty Score.VoltaBracket.text \voltaAdLib</code><br><code>      &lt;&lt; { \key f \major \staffColor aqua bes' } \\ { f2 e } &gt;&gt; }</code><br><code>    { </code><br><code>      \overrideProperty Score.VoltaBracket.text \voltaOnCue</code><br><code>      &lt;&lt; { \key c \major \staffColor Chartreuse c'1 } \\ { e,1 } &gt;&gt; \bar ".." }</code><br><code>  }</code><br><code>}</code><br><br><code>    \score {</code><br><code>      &lt;&lt;</code><br><code>        \new ChordNames { \accords }</code><br><code>        \new Staff \theNotes</code><br><code>      &gt;&gt;</code><br><code>} </code></pre>
-<p> </p>
             ]]>
         </content>
     </entry>
