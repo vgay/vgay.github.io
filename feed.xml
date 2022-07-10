@@ -3,7 +3,7 @@
     <title>MyRealBook</title>
     <link href="https://myrealbook.vintherine.org/feed.xml" rel="self" />
     <link href="https://myrealbook.vintherine.org" />
-    <updated>2022-07-08T08:04:18+02:00</updated>
+    <updated>2022-07-08T22:55:47+02:00</updated>
     <author>
         <name>Vincent</name>
     </author>
@@ -181,7 +181,7 @@
         <link href="https://myrealbook.vintherine.org/indication-de-swing.html"/>
         <id>https://myrealbook.vintherine.org/indication-de-swing.html</id>
 
-        <updated>2022-04-09T16:53:35+02:00</updated>
+        <updated>2022-07-08T22:55:47+02:00</updated>
             <summary>
                 <![CDATA[
                     <p>On trouve assez fréquemment des indications de Swing sous la forme </p>
@@ -220,7 +220,7 @@
 <p>Permet de fixer l'écart entre l'indication textuel (Swing) et les notes</p>
 <pre><code>indent = #1</code></pre>
 <h5>Tout le code :</h5>
-<pre><code>\version "2.22.2"</code><br><br><code>\include "lilyjazz.ily" % facultatif</code><br><br><code>swingMark = \markup  {</code><br><code>  \score { </code><br><code>    \new Staff</code> <code>\relative { </code><code>a'8[ 8] </code>s2^\markup " = " \tuplet 3/2 { 4 8 } }<br><code>    \layout {<br>      \set Staff.instrumentName = \markup \fontsize #2  Swing<br>      \omit Staff.Clef<br>      \omit Staff.TimeSignature<br>      \omit Staff.KeySignature<br>      \override Staff.StaffSymbol.line-count = #0<br>      \override Score.BarLine.break-visibility = ##(#f #f #f)<br>      \set Staff.fontSize = #-1<br>      \override Staff.StaffSymbol.staff-space = #(magstep -3)<br>      \override Staff.TextScript #'extra-offset = #'( -0.7 . -1.8 )<br>      line-width = #23<br>      indent = #1<br>    }}</code><br><br><code>\header {</code><br><code>  meter = \swingMark</code><br><code>}</code><br><br><code>\repeat unfold 4 { c''1 } </code></pre>
+<pre><code>\version "2.22.2"</code><br><br><code>\include "lilyjazz.ily" % facultatif</code><br><br><code>swingMark = \markup  {</code><br><code>  \score { </code><br><code>    \new Staff</code> <code>\relative { </code><code>a'8[ 8] </code>s2^\markup " = " \tuplet 3/2 { 4 8 } }<br><code>    \layout {<br>      \set Staff.instrumentName = \markup \fontsize #2  Swing<br>      \omit Staff.Clef<br>      \omit Staff.TimeSignature<br>      \omit Staff.KeySignature<br>      \override Staff.StaffSymbol.line-count = #0<br>      \override Score.BarLine.break-visibility = ##(#f #f #f)<br>      \set Staff.fontSize = #-1<br>      \override Staff.StaffSymbol.staff-space = #(magstep -3)<br>      \override Staff.TextScript #'extra-offset = #'( -0.7 . -1.8 )<br>      line-width = #23<br>      indent = #1<br>    }}}</code><br><br><code>\header {</code><br><code>  meter = \swingMark</code><br><code>}</code><br><br><code>\repeat unfold 4 { c''1 } </code></pre>
             ]]>
         </content>
     </entry>
