@@ -74,8 +74,8 @@ realBookTitle = \markup {
   pdfauthor = #composer
   pdfkeywords = \markup \concat { #kwtempo " " #kwstyle }
   title = \realBookTitle
-  asplayed = #"Larry Willis" % doit être commentée si vide
-  url = #"https://www.youtube.com/watch?v=nhAigPteeCQ"
+  asplayed = #"Gary Bartz" % doit être commentée si vide
+  url = #"https://www.youtube.com/watch?v=tSSTcYWO0Kw"
   arranger = \markup \on-the-fly #played?
   \with-url #url
   \with-color #blue \underline
